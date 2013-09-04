@@ -42,7 +42,7 @@ void table::Send(String name, int value, String description)
   Serial.println("}");
 }
 
-void table::Table(String name, byte value, String description)
+void table::Send(String name, byte value, String description)
 {
   Serial.print("{TABLE");
   Serial.print("|SET|");
