@@ -1,9 +1,9 @@
 #include "timeplot.h"
 #include "table.h"
+#include "xyplot.h"
 
-timeplot TimePlot;
-table Table;
 
+float test = 65.987;
 void setup() 
 {
   // put your setup code here, to run once:
@@ -13,9 +13,13 @@ void setup()
 void loop() 
 {
   int DataValue = analogRead(0);
-  
+
   // put your main code here, to run repeatedly: 
-  TimePlot.Send("ChannelName","SeriesName",DataValue);
-  Table.Send("DataValue",DataValue,"this is a reading from analog channel 0");
+  timeplot::Send("ChannelName","SeriesName",test,"r-2s2");
+  timeplot::Title("ChannelName","hello");
+  timeplot::Xlabel("ChannelName","test");
+  table::Send("DataValue",DataValue,"this is a reading from analog channel 0");
+  xyplot::Send("ChannelName","SeriesName",millis(),56.589,"b-2s2");
   delay(1000);
 }
+
