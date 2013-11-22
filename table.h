@@ -2,22 +2,42 @@
 #include <Arduino.h>
 
 
-class table
+namespace table
 {
 
+  template<class T> void Send(String name, T value, String description)
+  {
+    Serial.print("{TABLE");
+    Serial.print("|SET|");
+    Serial.print(name);
+    Serial.print("|");
+    Serial.print(value);
+    Serial.print("|");
+    Serial.print(description);
+    Serial.println("}");
+  }
 
-public:
-  table();
+  void Clear()
+  {
+    Serial.print("{TABLE");
+    Serial.println("|CLEAR}");
+  }
 
+  void ClearEntry(String name)
+  {
+    Serial.print("{TABLE");
+    Serial.print("|CLEAR|");
+    Serial.print(name);
+    Serial.println("}");
+  }
 
-  //Table Functions
-  void Send(String name, float value, String description);
-  void Send(String name, double value, String description);
-  void Send(String name, int value, String description);
-  void Send(String name, byte value, String description);
-  void Clear();
-  void ClearEntry(String name);
-  void GetEntry(String name);
+  void GetEntry(String name)
+  {
+    Serial.print("{TABLE");
+    Serial.print("|GET|");
+    Serial.print(name);
+    Serial.println("}");
+  }
 
 };
 
