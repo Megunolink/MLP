@@ -6,56 +6,61 @@ timeplot::timeplot()
 }
 
 //Timeplot Plotting
-void timeplot::Send(String channelName, String seriesName, float value)
+void timeplot::Send(String channelName, String seriesName, float value, String plotProperties)
 {
   Serial.print("{TIMEPLOT:");
   Serial.print(channelName);
   Serial.print("|data|");
   Serial.print(seriesName);
+  Serial.print(plotProperties);
   Serial.print("|T|");
   Serial.print(value, 3);
   Serial.println("}");
 }
 
-void timeplot::Send(String channelName, String seriesName, double value)
+void timeplot::Send(String channelName, String seriesName, double value, String plotProperties)
 {
   Serial.print("{TIMEPLOT:");
   Serial.print(channelName);
   Serial.print("|data|");
   Serial.print(seriesName);
+  Serial.print(plotProperties);
   Serial.print("|T|");
   Serial.print(value, 3);
   Serial.println("}");
 }
 
-void timeplot::Send(String channelName, String seriesName, unsigned long value)
+void timeplot::Send(String channelName, String seriesName, unsigned long value, String plotProperties)
 {
   Serial.print("{TIMEPLOT:");
   Serial.print(channelName);
   Serial.print("|data|");
   Serial.print(seriesName);
+  Serial.print(plotProperties);
   Serial.print("|T|");
   Serial.print(value, 3);
   Serial.println("}");
 }
 
-void timeplot::Send(String channelName, String seriesName, int value)
+void timeplot::Send(String channelName, String seriesName, int value, String plotProperties)
 {
   Serial.print("{TIMEPLOT:");
   Serial.print(channelName);
   Serial.print("|data|");
   Serial.print(seriesName);
+  Serial.print(plotProperties);
   Serial.print("|T|");
   Serial.print(value, 3);
   Serial.println("}");
 }
 
-void timeplot::Send(String channelName, String seriesName, byte value)
+void timeplot::Send(String channelName, String seriesName, byte value, String plotProperties)
 {
   Serial.print("{TIMEPLOT:");
   Serial.print(channelName);
   Serial.print("|data|");
   Serial.print(seriesName);
+  Serial.print(plotProperties);
   Serial.print("|T|");
   Serial.print(value, 3);
   Serial.println("}");
