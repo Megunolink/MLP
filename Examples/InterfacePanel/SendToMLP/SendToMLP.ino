@@ -1,6 +1,6 @@
 /* **********************************************************************************************
 *  Example program to set values on a MegunoLink Pro User Interface
-*  Panel. Visit http://www.megunolink.com/updating-interface-panel-controls-from-the-arduino/
+*  Panel. Visit http://www.megunolink.com/how-to-update-interface-panel-controls-from-the-arduino/
 *  for more information. 
 *  
 *  This program sends out commands to set the value of a progress bar named 'Progress', a 
