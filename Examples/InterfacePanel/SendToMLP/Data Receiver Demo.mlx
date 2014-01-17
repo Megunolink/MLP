@@ -158,7 +158,7 @@
   <windows>
     <window>
       <position left="1912" top="-8" width="1936" height="1216" state="Maximized" />
-      <DockPanel FormatVersion="1.0" DockLeftPortion="0.25" DockRightPortion="220" DockTopPortion="0.25" DockBottomPortion="0.25" ActiveDocumentPane="3" ActivePane="3">
+      <DockPanel FormatVersion="1.0" DockLeftPortion="0.25" DockRightPortion="220" DockTopPortion="0.25" DockBottomPortion="0.25" ActiveDocumentPane="1" ActivePane="1">
         <Contents Count="4">
           <Content ID="0" PersistString="VisualizerToolbox" AutoHidePortion="220" IsHidden="False" IsFloat="False" />
           <Content ID="1" PersistString="InterfacePanel" AutoHidePortion="0.25" IsHidden="False" IsFloat="False">
@@ -198,6 +198,7 @@
                 </component>
                 <component type="IPControlLibrary.Controls.IPTextBox, IPControlLibrary, Version=1.1.1312.2001, Culture=neutral, PublicKeyToken=null" name="Status">
                   <properties>
+                    <property name="OnTextChangedSend" />
                     <property name="Text">unknown</property>
                     <property name="Location">3, 50</property>
                     <property name="Name">Status</property>
@@ -208,7 +209,7 @@
               </children>
               <properties>
                 <property name="Name">UserControl1</property>
-                <property name="Size">451, 401</property>
+                <property name="Size">295, 207</property>
               </properties>
               <components>
                 <component type="IPControlLibrary.Protocols.MLPMessageProcessor.MLPUIMessageProcessor, IPControlLibrary, Version=1.1.1312.2001, Culture=neutral, PublicKeyToken=null" name="MLPUIMessageProcessor1">
@@ -220,13 +221,13 @@
             </design>
             <values>
               <value name="Current">
-                <property name="Value"><![CDATA[6]]></property>
+                <property name="Value"><![CDATA[0]]></property>
               </value>
               <value name="Progress">
-                <property name="Value"><![CDATA[6]]></property>
+                <property name="Value"><![CDATA[0]]></property>
               </value>
               <value name="Status">
-                <property name="Text"><![CDATA[Working]]></property>
+                <property name="Text"><![CDATA[unknown]]></property>
               </value>
             </values>
             <SourceId>1</SourceId>
@@ -235,7 +236,7 @@
           <Content ID="2" PersistString="SourceManager" AutoHidePortion="0.25" IsHidden="False" IsFloat="False">
             <ShowSourceInTitle>true</ShowSourceInTitle>
             <ShowPortInTitle>false</ShowPortInTitle>
-            <SourceId>-1</SourceId>
+            <SourceId>1</SourceId>
             <TabTitle>Connection Manager</TabTitle>
           </Content>
           <Content ID="3" PersistString="SerialMonitor" AutoHidePortion="0.25" IsHidden="False" IsFloat="False">
@@ -279,18 +280,18 @@
               <Pane ID="2" RefID="3" PrevPane="2" Alignment="Bottom" Proportion="0.5" />
             </NestedPanes>
           </DockWindow>
-          <DockWindow ID="1" DockState="DockLeft" ZOrderIndex="2">
+          <DockWindow ID="1" DockState="DockLeft" ZOrderIndex="1">
             <NestedPanes Count="0" />
           </DockWindow>
-          <DockWindow ID="2" DockState="DockRight" ZOrderIndex="3">
+          <DockWindow ID="2" DockState="DockRight" ZOrderIndex="2">
             <NestedPanes Count="1">
               <Pane ID="0" RefID="0" PrevPane="-1" Alignment="Bottom" Proportion="0.5" />
             </NestedPanes>
           </DockWindow>
-          <DockWindow ID="3" DockState="DockTop" ZOrderIndex="4">
+          <DockWindow ID="3" DockState="DockTop" ZOrderIndex="3">
             <NestedPanes Count="0" />
           </DockWindow>
-          <DockWindow ID="4" DockState="DockBottom" ZOrderIndex="5">
+          <DockWindow ID="4" DockState="DockBottom" ZOrderIndex="4">
             <NestedPanes Count="0" />
           </DockWindow>
         </DockWindows>

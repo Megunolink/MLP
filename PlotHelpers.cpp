@@ -2,7 +2,7 @@
 
 namespace MLPPlotHelpers
 {
-  void SetParameter(const char * channelName, const char * Value, const __FlashStringHelper *pfstrParameter, const __FlashStringHelper *pPlotType)
+  void SetParameter(const __FlashStringHelper *pPlotType, const char * channelName, const char * Value, const __FlashStringHelper *pfstrParameter)
   {
     Serial.print('{');
     Serial.print(pPlotType);
