@@ -1,97 +1,22 @@
 #pragma once
 #include <Arduino.h>
+#include "PlotHelpers.h"
 
-
-namespace timeplot
+namespace TimePlot
 {
 
+  void SetTitle(const char * channelName, const char * title);
+  void SetXlabel(const char * channelName, const char * xlabel);
+  void SetYlabel(const char * channelName, const char * ylabel);
 
-  //Timeplot Plotting
-  //void Send(String channelName, String seriesName, float value, String plotProperties);
-  //void Send(String channelName, String seriesName, unsigned long value, String plotProperties);
-  //void Send(String channelName, String seriesName, double value, String plotProperties);
-  //void Send(String channelName, String seriesName, byte value, String plotProperties);
-  //void Send(String channelName, String seriesName, int value, String plotProperties);
-  //void Title(String channelName, String title);
-  //void Xlabel(String channelName, String xlabel);
-  //void Ylabel(String channelName, String ylabel);
-  void Title(String channelName, String title)
+  template<class T> void SendData(const char * channelName, const char * seriesName, T yValue, const char * seriesProperties = NULL)
   {
-    Serial.print("{TIMEPLOT:");
-    Serial.print(channelName);
-    Serial.print("|set|title=");
-    Serial.print(title);
-    Serial.println("}");
+    MLPPlotHelpers::SendDataHeader(F("TIMEPLOT"), channelName, seriesName, seriesProperties);
+    Serial.print(F("T|"));
+    Serial.print(yValue);
+    MLPPlotHelpers::SendDataTail();
   }
 
-  void Xlabel(String channelName, String xlabel)
-  {
-    Serial.print("{TIMEPLOT:");
-    Serial.print(channelName);
-    Serial.print("|set|x-label=");
-    Serial.print(xlabel);
-    Serial.println("}");
-  }
-
-  void Ylabel(String channelName, String ylabel)
-  {
-    Serial.print("{TIMEPLOT:");
-    Serial.print(channelName);
-    Serial.print("|set|y-label=");
-    Serial.print(ylabel);
-    Serial.println("}");
-  }
-
-  template<class T> void Send(String channelName, String seriesName, T value, String plotProperties)
-  {
-    Serial.print("{TIMEPLOT:");
-    Serial.print(channelName);
-    Serial.print("|data|");
-    Serial.print(seriesName);
-    Serial.print(":");
-    Serial.print(plotProperties);
-    Serial.print("|T|");
-    Serial.print(value);
-    Serial.println("}");
-  }
-
-
-  template<> void Send<float>(String channelName, String seriesName, float value, String plotProperties)
-  {
-    Serial.print("{TIMEPLOT:");
-    Serial.print(channelName);
-    Serial.print("|data|");
-    Serial.print(seriesName);
-    Serial.print(":");
-    Serial.print(plotProperties);
-    Serial.print("|T|");
-    Serial.print(value,3);
-    Serial.println("}");
-  }
-
-
-  template<class T> void Send(String channelName, String seriesName, T value)
-  {
-    Serial.print("{TIMEPLOT:");
-    Serial.print(channelName);
-    Serial.print("|data|");
-    Serial.print(seriesName);
-    Serial.print("|T|");
-    Serial.print(value);
-    Serial.println("}");
-  }
-
-
-  template<> void Send<float>(String channelName, String seriesName, float value)
-  {
-    Serial.print("{TIMEPLOT:");
-    Serial.print(channelName);
-    Serial.print("|data|");
-    Serial.print(seriesName);
-    Serial.print("|T|");
-    Serial.print(value,3);
-    Serial.println("}");
-  }
-
-
+  
+  void SendFloatData(const char * channelName, const char * seriesName, float value, int nDecimalPlaces, const char * seriesProperties = NULL);
 };

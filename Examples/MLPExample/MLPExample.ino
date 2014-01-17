@@ -15,11 +15,11 @@ void loop()
   int DataValue = analogRead(0);
 
   // put your main code here, to run repeatedly: 
-  timeplot::Send("ChannelName","SeriesName",test,"r-2s2");
-  timeplot::Title("ChannelName","hello");
-  timeplot::Xlabel("ChannelName","test");
-  table::Send("DataValue",DataValue,"this is a reading from analog channel 0");
-  xyplot::Send("ChannelName","SeriesName",millis(),56.589,"b-2s2");
+  TimePlot::Send("ChannelName","SeriesName",test,"r-2s2");
+  TimePlot::Title("ChannelName","hello");
+  TimePlot::Xlabel("ChannelName","test");
+  Table::Send("DataValue",DataValue,"this is a reading from analog channel 0");
+  XYPlot::Send("ChannelName","SeriesName",millis(),56.589,"b-2s2");
   delay(1000);
 }
 

@@ -2,7 +2,7 @@
 #include <Arduino.h>
 
 
-namespace table
+namespace Table
 {
 
   template<class T> void Send(String name, T value, String description)

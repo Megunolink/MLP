@@ -1,96 +1,29 @@
 #pragma once
 #include <Arduino.h>
+#include "PlotHelpers.h"
 
-
-namespace xyplot
+namespace XYPlot
 {
 
+  void SetTitle(const char * channelName, const char * title);
+  void SetXlabel(const char * channelName, const char * xlabel);
+  void SetYlabel(const char * channelName, const char * ylabel);
 
-  void Title(String channelName, String title)
+  template<class TXData, class TYData> void SendData(const char * channelName, const char * seriesName, TXData xValue, TYData yValue, const char * seriesProperties=NULL)
   {
-    Serial.print("{XYPLOT:");
-    Serial.print(channelName);
-    Serial.print("|set|title=");
-    Serial.print(title);
-    Serial.println("}");
-  }
-
-  void Xlabel(String channelName, String xlabel)
-  {
-    Serial.print("{XYPLOT:");
-    Serial.print(channelName);
-    Serial.print("|set|x-label=");
-    Serial.print(xlabel);
-    Serial.println("}");
-  }
-
-  void Ylabel(String channelName, String ylabel)
-  {
-    Serial.print("{XYPLOT:");
-    Serial.print(channelName);
-    Serial.print("|set|y-label=");
-    Serial.print(ylabel);
-    Serial.println("}");
-  }
-
-
-
-
-  template<class T, class M> void Send(String channelName, String seriesName, T xValue, M yValue)
-  {
-    Serial.print("{XYPLOT:");
-    Serial.print(channelName);
-    Serial.print("|data|");
-    Serial.print(seriesName);
-    Serial.print("|");
+    MLPPlotHelpers::SendDataHeader(F("XYPLOT"), channelName, seriesName, seriesProperties);
     Serial.print(xValue);
-    Serial.print("|");
+    Serial.print('|');
     Serial.print(yValue);
-    Serial.println("}");
+    MLPPlotHelpers::SendDataTail();
   }
 
-  //template<> void Send<float,float>(String channelName, String seriesName, float xValue, float yValue)
-  //{
-  //  Serial.print("{XYPLOT:");
-  //  Serial.print(channelName);
-  //  Serial.print("|data|");
-  //  Serial.print(seriesName);
-  //  Serial.print("|");
-  //  Serial.print(xValue,3);
-  //  Serial.print("|");
-  //  Serial.print(yValue,3);
-  //  Serial.println("}");
-  //}
-
-  template<class T, class M> void Send(String channelName, String seriesName, T xValue, M yValue, String plotProperties)
+  template<class TXData> void SendData(const char * channelName, const char * seriesName, TXData xValue, float yValue, int nDecimalPlaces, const char * seriesProperties=NULL)
   {
-    Serial.print("{XYPLOT:");
-    Serial.print(channelName);
-    Serial.print("|data|");
-    Serial.print(seriesName);
-    Serial.print(":");
-    Serial.print(plotProperties);
-    Serial.print("|");
+    MLPPlotHelpers::SendDataHeader(F("XYPLOT"), channelName, seriesName, seriesProperties);
     Serial.print(xValue);
-    Serial.print("|");
-    Serial.print(yValue);
-    Serial.println("}");
+    Serial.print('|');
+    Serial.print(yValue, nDecimalPlaces);
+    MLPPlotHelpers::SendDataTail();
   }
-
-  //template<> void Send<float,float>(String channelName, String seriesName, float xValue, float yValue, String plotProperties)
-  //{
-  //  Serial.print("{XYPLOT:");
-  //  Serial.print(channelName);
-  //  Serial.print("|data|");
-  //  Serial.print(seriesName);
-  //  Serial.print(":");
-  //  Serial.print(plotProperties);
-  //  Serial.print("|");
-  //  Serial.print(xValue,3);
-  //  Serial.print("|");
-  //  Serial.print(yValue,3);
-  //  Serial.println("}");
-  //}
-
-
 };

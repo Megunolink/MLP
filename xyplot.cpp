@@ -1,29 +1,21 @@
 #include "xyplot.h"
+#include "PlotHelpers.h"
 
-xyplot::xyplot()
+namespace XYPlot
 {
+ 
+  void SetTitle(const char * channelName, const char * title)
+  {
+    MLPPlotHelpers::SetParameter(F("XYPLOT"), channelName, title, F("title"));
+  }
 
-}
-//Timeplot Plotting
-void xyplot::TimePlot(String channelName, String seriesName, float value)
-{
-  Serial.print("{TIMEPLOT:");
-  Serial.print(channelName);
-  Serial.print("|data|");
-  Serial.print(seriesName);
-  Serial.print("|T|");
-  Serial.print(value, 3);
-  Serial.println("}");
-}
+  void SetXlabel(const char * channelName, const char * xlabel)
+  {
+    MLPPlotHelpers::SetParameter(F("XYPLOT"), channelName, xlabel, F("x-label"));
+  }
 
-void xyplot::TimePlot(String channelName, String seriesName, double value)
-{
-  Serial.print("{TIMEPLOT:");
-  Serial.print(channelName);
-  Serial.print("|data|");
-  Serial.print(seriesName);
-  Serial.print("|T|");
-  Serial.print(value, 3);
-  Serial.println("}");
+  void SetYlabel(const char * channelName, const char * ylabel)
+  {
+    MLPPlotHelpers::SetParameter(F("XYPLOT"), channelName, ylabel, F("y-label"));
+  }
 }
-
