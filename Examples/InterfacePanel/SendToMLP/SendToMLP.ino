@@ -16,6 +16,9 @@ long LastSent;
 // Progress value
 int Progress; 
 
+// The interface panel we are sending data to
+InterfacePanel Panel("Test");
+
 void setup()
 {
   Serial.begin(9600);
@@ -30,22 +33,18 @@ void loop()
   {
     LastSent = millis();
 
-    InterfacePanel::SetProgress("Test", "Progress", Progress);
-    InterfacePanel::SetNumber("Test", "Current", Progress);
-    
+    Panel.SetProgress("Progress", Progress);
+    Panel.SetNumber("Current", Progress);
+
     if (Progress == 0)
-      InterfacePanel::SetText("Test", "Status", "Start");
+      Panel.SetText("Status", "Start");
     else if (Progress == 8)
-      InterfacePanel::SetText("Test", "Status", "Nearly there");
+      Panel.SetText("Status", "Nearly there");
     else if (Progress == 9)
-      InterfacePanel::SetText("Test", "Status", "End");
+      Panel.SetText("Status", "End");
     else
-      InterfacePanel::SetText("Test", "Status", "Working");
+      Panel.SetText("Status", "Working");
 
     Progress = (Progress + 1) % 10;
-
-    XYPlot::SendData("Test", "Fish", Progress, Progress);
-    TimePlot::SendData("Test", "Fish", Progress);
   }
-
 }
