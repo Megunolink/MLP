@@ -1,0 +1,137 @@
+\hypertarget{class_time_plot}{\section{Time\-Plot Class Reference}
+\label{class_time_plot}\index{Time\-Plot@{Time\-Plot}}
+}
+
+
+{\ttfamily \#include $<$Time\-Plot.\-h$>$}
+
+Inheritance diagram for Time\-Plot\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_time_plot}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_time_plot_a8d0140572be69a6270552b9180ff1e38}{Time\-Plot} (const char $\ast$channel\-Name=N\-U\-L\-L)
+\item 
+\hyperlink{class_time_plot_a2c5a3ade229494c3d0e285a7d3b55add}{Time\-Plot} (const \-\_\-\-\_\-\-Flash\-String\-Helper $\ast$channel\-Name)
+\item 
+{\footnotesize template$<$class T\-Y\-Data $>$ }\\void \hyperlink{class_time_plot_a15555221a62dc532d69211d639acf412}{Send\-Data} (const char $\ast$series\-Name, T\-Y\-Data y\-Value, const char $\ast$series\-Properties=N\-U\-L\-L)
+\item 
+{\footnotesize template$<$class T\-Y\-Data $>$ }\\void \hyperlink{class_time_plot_a72c411fcef4241143981dfe46b8bd0b8}{Send\-Data} (const char $\ast$series\-Name, T\-Y\-Data y\-Value, \hyperlink{class_plot_af4d6704578791a812f3f78617adc7040}{Colors} Color, \hyperlink{class_plot_a05a5ea232f5115847a9861a9660205c7}{Line\-Style} Line=\hyperlink{class_plot_a05a5ea232f5115847a9861a9660205c7a4a144f2b97cc3762d40863bde0853f22}{Solid}, uint8\-\_\-t u\-Line\-Width=1, \hyperlink{class_plot_a888bde9c76bb38843a5ab09097cbeeab}{Marker\-Style} Marker=\hyperlink{class_plot_a888bde9c76bb38843a5ab09097cbeeaba9eb079a6c0fcf4d7125147671b071e2e}{Circle})
+\item 
+void \hyperlink{class_time_plot_ac28dbd64c6900d80f9ef901d4391f46d}{Send\-Float\-Data} (const char $\ast$series\-Name, float y\-Value, int n\-Decimal\-Places, const char $\ast$series\-Properties=N\-U\-L\-L)
+\item 
+void \hyperlink{class_time_plot_a69f54f61224cd683732978d314206aec}{Send\-Float\-Data} (const char $\ast$series\-Name, float y\-Value, int n\-Decimal\-Places, \hyperlink{class_plot_af4d6704578791a812f3f78617adc7040}{Colors} Color, \hyperlink{class_plot_a05a5ea232f5115847a9861a9660205c7}{Line\-Style} Line=\hyperlink{class_plot_a05a5ea232f5115847a9861a9660205c7a4a144f2b97cc3762d40863bde0853f22}{Solid}, uint8\-\_\-t u\-Line\-Width=1, \hyperlink{class_plot_a888bde9c76bb38843a5ab09097cbeeab}{Marker\-Style} Marker=\hyperlink{class_plot_a888bde9c76bb38843a5ab09097cbeeaba9eb079a6c0fcf4d7125147671b071e2e}{Circle})
+\item 
+{\footnotesize template$<$class T\-Y\-Data $>$ }\\void \hyperlink{class_time_plot_a30570da83785d7d4ce8a38b4e6cc21de}{Send\-Data} (const \-\_\-\-\_\-\-Flash\-String\-Helper $\ast$series\-Name, T\-Y\-Data y\-Value, const char $\ast$series\-Properties=N\-U\-L\-L)
+\item 
+void \hyperlink{class_time_plot_a8b1f5f200af3ea81b6b481c7560839fc}{Send\-Float\-Data} (const \-\_\-\-\_\-\-Flash\-String\-Helper $\ast$series\-Name, float y\-Value, int n\-Decimal\-Places, const char $\ast$series\-Properties=N\-U\-L\-L)
+\item 
+void \hyperlink{class_time_plot_aa7944c43852b8029a409218554653b79}{Send\-Float\-Data} (const \-\_\-\-\_\-\-Flash\-String\-Helper $\ast$series\-Name, float y\-Value, int n\-Decimal\-Places, \hyperlink{class_plot_af4d6704578791a812f3f78617adc7040}{Colors} Color, \hyperlink{class_plot_a05a5ea232f5115847a9861a9660205c7}{Line\-Style} Line=\hyperlink{class_plot_a05a5ea232f5115847a9861a9660205c7a4a144f2b97cc3762d40863bde0853f22}{Solid}, uint8\-\_\-t u\-Line\-Width=1, \hyperlink{class_plot_a888bde9c76bb38843a5ab09097cbeeab}{Marker\-Style} Marker=\hyperlink{class_plot_a888bde9c76bb38843a5ab09097cbeeaba9eb079a6c0fcf4d7125147671b071e2e}{Circle})
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_time_plot_a8d0140572be69a6270552b9180ff1e38}{\index{Time\-Plot@{Time\-Plot}!Time\-Plot@{Time\-Plot}}
+\index{Time\-Plot@{Time\-Plot}!TimePlot@{Time\-Plot}}
+\subsubsection[{Time\-Plot}]{\setlength{\rightskip}{0pt plus 5cm}Time\-Plot\-::\-Time\-Plot (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{channel\-Name = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)}}\label{class_time_plot_a8d0140572be69a6270552b9180ff1e38}
+\hypertarget{class_time_plot_a2c5a3ade229494c3d0e285a7d3b55add}{\index{Time\-Plot@{Time\-Plot}!Time\-Plot@{Time\-Plot}}
+\index{Time\-Plot@{Time\-Plot}!TimePlot@{Time\-Plot}}
+\subsubsection[{Time\-Plot}]{\setlength{\rightskip}{0pt plus 5cm}Time\-Plot\-::\-Time\-Plot (
+\begin{DoxyParamCaption}
+\item[{const \-\_\-\-\_\-\-Flash\-String\-Helper $\ast$}]{channel\-Name}
+\end{DoxyParamCaption}
+)}}\label{class_time_plot_a2c5a3ade229494c3d0e285a7d3b55add}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_time_plot_a15555221a62dc532d69211d639acf412}{\index{Time\-Plot@{Time\-Plot}!Send\-Data@{Send\-Data}}
+\index{Send\-Data@{Send\-Data}!TimePlot@{Time\-Plot}}
+\subsubsection[{Send\-Data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T\-Y\-Data $>$ void Time\-Plot\-::\-Send\-Data (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{series\-Name, }
+\item[{T\-Y\-Data}]{y\-Value, }
+\item[{const char $\ast$}]{series\-Properties = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_time_plot_a15555221a62dc532d69211d639acf412}
+\hypertarget{class_time_plot_a72c411fcef4241143981dfe46b8bd0b8}{\index{Time\-Plot@{Time\-Plot}!Send\-Data@{Send\-Data}}
+\index{Send\-Data@{Send\-Data}!TimePlot@{Time\-Plot}}
+\subsubsection[{Send\-Data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T\-Y\-Data $>$ void Time\-Plot\-::\-Send\-Data (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{series\-Name, }
+\item[{T\-Y\-Data}]{y\-Value, }
+\item[{{\bf Colors}}]{Color, }
+\item[{{\bf Line\-Style}}]{Line = {\ttfamily {\bf Solid}}, }
+\item[{uint8\-\_\-t}]{u\-Line\-Width = {\ttfamily 1}, }
+\item[{{\bf Marker\-Style}}]{Marker = {\ttfamily {\bf Circle}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_time_plot_a72c411fcef4241143981dfe46b8bd0b8}
+\hypertarget{class_time_plot_a30570da83785d7d4ce8a38b4e6cc21de}{\index{Time\-Plot@{Time\-Plot}!Send\-Data@{Send\-Data}}
+\index{Send\-Data@{Send\-Data}!TimePlot@{Time\-Plot}}
+\subsubsection[{Send\-Data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T\-Y\-Data $>$ void Time\-Plot\-::\-Send\-Data (
+\begin{DoxyParamCaption}
+\item[{const \-\_\-\-\_\-\-Flash\-String\-Helper $\ast$}]{series\-Name, }
+\item[{T\-Y\-Data}]{y\-Value, }
+\item[{const char $\ast$}]{series\-Properties = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_time_plot_a30570da83785d7d4ce8a38b4e6cc21de}
+\hypertarget{class_time_plot_ac28dbd64c6900d80f9ef901d4391f46d}{\index{Time\-Plot@{Time\-Plot}!Send\-Float\-Data@{Send\-Float\-Data}}
+\index{Send\-Float\-Data@{Send\-Float\-Data}!TimePlot@{Time\-Plot}}
+\subsubsection[{Send\-Float\-Data}]{\setlength{\rightskip}{0pt plus 5cm}void Time\-Plot\-::\-Send\-Float\-Data (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{series\-Name, }
+\item[{float}]{y\-Value, }
+\item[{int}]{n\-Decimal\-Places, }
+\item[{const char $\ast$}]{series\-Properties = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)}}\label{class_time_plot_ac28dbd64c6900d80f9ef901d4391f46d}
+\hypertarget{class_time_plot_a69f54f61224cd683732978d314206aec}{\index{Time\-Plot@{Time\-Plot}!Send\-Float\-Data@{Send\-Float\-Data}}
+\index{Send\-Float\-Data@{Send\-Float\-Data}!TimePlot@{Time\-Plot}}
+\subsubsection[{Send\-Float\-Data}]{\setlength{\rightskip}{0pt plus 5cm}void Time\-Plot\-::\-Send\-Float\-Data (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{series\-Name, }
+\item[{float}]{y\-Value, }
+\item[{int}]{n\-Decimal\-Places, }
+\item[{{\bf Colors}}]{Color, }
+\item[{{\bf Line\-Style}}]{Line = {\ttfamily {\bf Solid}}, }
+\item[{uint8\-\_\-t}]{u\-Line\-Width = {\ttfamily 1}, }
+\item[{{\bf Marker\-Style}}]{Marker = {\ttfamily {\bf Circle}}}
+\end{DoxyParamCaption}
+)}}\label{class_time_plot_a69f54f61224cd683732978d314206aec}
+\hypertarget{class_time_plot_a8b1f5f200af3ea81b6b481c7560839fc}{\index{Time\-Plot@{Time\-Plot}!Send\-Float\-Data@{Send\-Float\-Data}}
+\index{Send\-Float\-Data@{Send\-Float\-Data}!TimePlot@{Time\-Plot}}
+\subsubsection[{Send\-Float\-Data}]{\setlength{\rightskip}{0pt plus 5cm}void Time\-Plot\-::\-Send\-Float\-Data (
+\begin{DoxyParamCaption}
+\item[{const \-\_\-\-\_\-\-Flash\-String\-Helper $\ast$}]{series\-Name, }
+\item[{float}]{y\-Value, }
+\item[{int}]{n\-Decimal\-Places, }
+\item[{const char $\ast$}]{series\-Properties = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)}}\label{class_time_plot_a8b1f5f200af3ea81b6b481c7560839fc}
+\hypertarget{class_time_plot_aa7944c43852b8029a409218554653b79}{\index{Time\-Plot@{Time\-Plot}!Send\-Float\-Data@{Send\-Float\-Data}}
+\index{Send\-Float\-Data@{Send\-Float\-Data}!TimePlot@{Time\-Plot}}
+\subsubsection[{Send\-Float\-Data}]{\setlength{\rightskip}{0pt plus 5cm}void Time\-Plot\-::\-Send\-Float\-Data (
+\begin{DoxyParamCaption}
+\item[{const \-\_\-\-\_\-\-Flash\-String\-Helper $\ast$}]{series\-Name, }
+\item[{float}]{y\-Value, }
+\item[{int}]{n\-Decimal\-Places, }
+\item[{{\bf Colors}}]{Color, }
+\item[{{\bf Line\-Style}}]{Line = {\ttfamily {\bf Solid}}, }
+\item[{uint8\-\_\-t}]{u\-Line\-Width = {\ttfamily 1}, }
+\item[{{\bf Marker\-Style}}]{Marker = {\ttfamily {\bf Circle}}}
+\end{DoxyParamCaption}
+)}}\label{class_time_plot_aa7944c43852b8029a409218554653b79}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Dropbox/\-Arduino\-Development/\-Git\-Hub/\-M\-L\-P/utility/\hyperlink{_time_plot_8h}{Time\-Plot.\-h}\item 
+/\-Dropbox/\-Arduino\-Development/\-Git\-Hub/\-M\-L\-P/utility/\hyperlink{_time_plot_8cpp}{Time\-Plot.\-cpp}\end{DoxyCompactItemize}
