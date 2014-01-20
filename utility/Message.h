@@ -12,7 +12,14 @@ public:
 
   void Send(const char *Message);
   void Send(const __FlashStringHelper *Message);
-  
+
+  template<class TValue> void Send(TValue Value)
+  {
+    SendDataHeader(F("DATA"));
+    Serial.print(Value);
+    SendDataTail();
+  }
+
   template<class TValue> void Send(const char *Label, TValue Value)
   {
     SendDataHeader(F("DATA"));
@@ -20,7 +27,7 @@ public:
     Serial.print(F(": "));
     Serial.print(Value);
     SendDataTail();
-}
+  }
 
   template<class TValue> void Send(const __FlashStringHelper *Label, TValue Value)
   {
