@@ -35,9 +35,6 @@ void setup()
 }
 
 
-
-double i=0;
-
 void loop()
 {
   double dY, dY2;

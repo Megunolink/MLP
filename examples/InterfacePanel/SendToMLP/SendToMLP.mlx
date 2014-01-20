@@ -1,83 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <meguno-link-project version="1.0">
   <culture>en-NZ</culture>
-  <policies>
-    <enable>false</enable>
-    <protect>false</protect>
-    <application>
-      <allow-tool-setup>true</allow-tool-setup>
-      <allow-reporting>true</allow-reporting>
-      <title-text />
-    </application>
-    <visualizers>
-      <allow-creation>true</allow-creation>
-      <allow-close>true</allow-close>
-      <allow-source-selection>true</allow-source-selection>
-      <allow-channel-selection>true</allow-channel-selection>
-      <custom>
-        <policy id="DataTable">
-          <allow-source-selection>Inherit</allow-source-selection>
-          <allow-channel-selection>Inherit</allow-channel-selection>
-          <allow-send>true</allow-send>
-        </policy>
-        <policy id="FileWriter">
-          <allow-source-selection>Inherit</allow-source-selection>
-          <allow-channel-selection>Inherit</allow-channel-selection>
-          <allow-path-change>true</allow-path-change>
-          <allow-edit-timestamp>true</allow-edit-timestamp>
-        </policy>
-        <policy id="LogToFile">
-          <allow-source-selection>Inherit</allow-source-selection>
-          <allow-channel-selection>Inherit</allow-channel-selection>
-          <allow-path-change>true</allow-path-change>
-          <allow-edit-timestamp>true</allow-edit-timestamp>
-        </policy>
-        <policy id="MessageStreamViewer">
-          <allow-source-selection>Inherit</allow-source-selection>
-          <allow-channel-selection>Inherit</allow-channel-selection>
-          <allow-send>true</allow-send>
-          <allow-edit-wordwrap>true</allow-edit-wordwrap>
-          <allow-edit-timestamp>true</allow-edit-timestamp>
-        </policy>
-        <policy id="SerialMonitor">
-          <allow-source-selection>Inherit</allow-source-selection>
-          <allow-channel-selection>Inherit</allow-channel-selection>
-          <allow-send>true</allow-send>
-          <allow-edit-wordwrap>true</allow-edit-wordwrap>
-          <allow-edit-timestamp>true</allow-edit-timestamp>
-        </policy>
-        <policy id="SourceManager">
-          <allow-source-selection>Inherit</allow-source-selection>
-          <allow-channel-selection>Inherit</allow-channel-selection>
-          <allow-edit-baud>true</allow-edit-baud>
-          <allow-edit-advanced>true</allow-edit-advanced>
-          <allow-delete>true</allow-delete>
-          <allow-edit-autoconnect>true</allow-edit-autoconnect>
-          <allow-new-source>true</allow-new-source>
-          <allow-edit-name>true</allow-edit-name>
-          <allow-reset>true</allow-reset>
-          <allow-udp-port-change>true</allow-udp-port-change>
-        </policy>
-        <policy id="InterfacePanel">
-          <allow-source-selection>Inherit</allow-source-selection>
-          <allow-channel-selection>Inherit</allow-channel-selection>
-          <allow-designer>true</allow-designer>
-        </policy>
-        <policy id="mlpChart">
-          <allow-source-selection>Inherit</allow-source-selection>
-          <allow-channel-selection>Inherit</allow-channel-selection>
-          <allow-edit-properties>true</allow-edit-properties>
-          <allow-edit-series-properties>true</allow-edit-series-properties>
-        </policy>
-        <policy id="ScatterPlotter">
-          <allow-source-selection>Inherit</allow-source-selection>
-          <allow-channel-selection>Inherit</allow-channel-selection>
-          <allow-edit-properties>true</allow-edit-properties>
-          <allow-edit-series-properties>true</allow-edit-series-properties>
-        </policy>
-      </custom>
-    </visualizers>
-  </policies>
   <data>
     <properties>
       <title />
@@ -145,7 +68,7 @@
         <auto-connect>false</auto-connect>
         <port-name>
           <type>Fixed</type>
-          <port>COM30</port>
+          <port>COM47</port>
         </port-name>
         <baud-rate>9600</baud-rate>
         <data-bits>8</data-bits>
@@ -157,8 +80,8 @@
   </serial-sources>
   <windows>
     <window>
-      <position left="1912" top="-8" width="1936" height="1216" state="Maximized" />
-      <DockPanel FormatVersion="1.0" DockLeftPortion="0.25" DockRightPortion="220" DockTopPortion="0.25" DockBottomPortion="0.25" ActiveDocumentPane="1" ActivePane="1">
+      <position left="2552" top="152" width="1040" height="1256" state="Maximized" />
+      <DockPanel FormatVersion="1.0" DockLeftPortion="0.25" DockRightPortion="220" DockTopPortion="0.25" DockBottomPortion="0.25" ActiveDocumentPane="2" ActivePane="2">
         <Contents Count="4">
           <Content ID="0" PersistString="VisualizerToolbox" AutoHidePortion="220" IsHidden="False" IsFloat="False" />
           <Content ID="1" PersistString="InterfacePanel" AutoHidePortion="0.25" IsHidden="False" IsFloat="False">
@@ -221,13 +144,13 @@
             </design>
             <values>
               <value name="Current">
-                <property name="Value"><![CDATA[0]]></property>
+                <property name="Value"><![CDATA[1]]></property>
               </value>
               <value name="Progress">
-                <property name="Value"><![CDATA[0]]></property>
+                <property name="Value"><![CDATA[1]]></property>
               </value>
               <value name="Status">
-                <property name="Text"><![CDATA[unknown]]></property>
+                <property name="Text"><![CDATA[Working]]></property>
               </value>
             </values>
             <SourceId>1</SourceId>
