@@ -7,7 +7,7 @@ Message::Message( const char *channelName /*= NULL*/ )
 }
 
 Message::Message( const __FlashStringHelper *channelName )
-  : MegunoLinkProtocol(F("XYPLOT"), channelName)
+  : MegunoLinkProtocol(F("MESSAGE"), channelName)
 {
 
 }
