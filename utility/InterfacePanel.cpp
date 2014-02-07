@@ -31,6 +31,30 @@ void InterfacePanel::SetNumber(const char * ControlName, int nValue)
   SendDataTail();
 }
 
+void InterfacePanel::SetListIndex(const char * ControlName, int nIndex)
+{
+  SendControlHeader(ControlName, F("SelectedIndex"));
+  Serial.print(nIndex);
+  SendDataTail();
+}
+
+void InterfacePanel::SetListIndex(const __FlashStringHelper * ControlName, int nIndex)
+{
+  SendControlHeader(ControlName, F("SelectedIndex"));
+  Serial.print(nIndex);
+  SendDataTail();
+}
+
+void InterfacePanel::SetListValue(const char * ControlName, int nValue)
+{
+  SetNumber(ControlName, nValue);
+}
+
+void InterfacePanel::SetListValue(const __FlashStringHelper * ControlName, int nValue)
+{
+  SetNumber(ControlName, nValue);
+}
+
 void InterfacePanel::SetCheck(const char * ControlName, bool bChecked)
 {
   SendControlHeader(ControlName, F("Checked"));

@@ -18,6 +18,11 @@ public:
   void SetNumber(const char * ControlName, int nValue);
   void SetNumber(const __FlashStringHelper * ControlName, int nValue);
 
+  void SetListIndex(const char * ControlName, int nIndex);
+  void SetListIndex(const __FlashStringHelper * ControlName, int nIndex);
+  void SetListValue(const char * ControlName, int nIndex);
+  void SetListValue(const __FlashStringHelper * ControlName, int nIndex);
+
   void SetCheck(const char * ControlName, bool bChecked = true);
   void SetCheck(const __FlashStringHelper * ControlName, bool bChecked = true);
 
