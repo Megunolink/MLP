@@ -34,7 +34,7 @@ void loop()
     LastSent = millis();
 
     int DataValue = analogRead(0);
-    MyPlot.SendData("ADCValue", millis(),DataValue);
+    MyPlot.SendData("ADCValue", millis(),DataValue); //millis() goes on the xaxis, DataValue goes on the yaxis
   }
 }
 
