@@ -29,6 +29,12 @@ public:
   void ClearCheck(const char * ControlName);
   void ClearCheck(const __FlashStringHelper * ControlName);
 
+  void CallCommand(const char* CommandName);
+  void CallCommand(const __FlashStringHelper* CommandName);
+
+  void GetValue(const char* ControlName, const char* PropertyName);
+  void GetValue(const __FlashStringHelper* ControlName, const __FlashStringHelper* PropertyName);
+
 protected:
   void SendControlHeader(const char *ControlName, const __FlashStringHelper *PropertyName);
   void SendControlHeader(const __FlashStringHelper *ControlName, const __FlashStringHelper *PropertyName);

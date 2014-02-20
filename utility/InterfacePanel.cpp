@@ -109,6 +109,38 @@ void InterfacePanel::SetText(const __FlashStringHelper * ControlName, const __Fl
   SendDataTail();
 }
 
+void InterfacePanel::CallCommand( const char* CommandName )
+{
+  SendDataHeader(F("CMD"));
+  Serial.print(CommandName);
+  SendDataTail();
+}
+
+void InterfacePanel::CallCommand( const __FlashStringHelper* CommandName )
+{
+  SendDataHeader(F("CMD"));
+  Serial.print(CommandName);
+  SendDataTail();
+}
+
+void InterfacePanel::GetValue( const char* ControlName, const char* PropertyName )
+{
+  SendDataHeader(F("GET"));
+  Serial.print(ControlName);
+  Serial.print('.');
+  Serial.print(PropertyName);
+  SendDataTail();
+}
+
+void InterfacePanel::GetValue( const __FlashStringHelper* ControlName, const __FlashStringHelper* PropertyName )
+{
+  SendDataHeader(F("GET"));
+  Serial.print(ControlName);
+  Serial.print('.');
+  Serial.print(PropertyName);
+  SendDataTail();
+}
+
 void InterfacePanel::SendControlHeader(const char *ControlName, const __FlashStringHelper *PropertyName)
 {
   SendDataHeader(F("SET"));
@@ -126,3 +158,4 @@ void InterfacePanel::SendControlHeader(const __FlashStringHelper *ControlName, c
   Serial.print(PropertyName);
   Serial.print('=');
 }
+
