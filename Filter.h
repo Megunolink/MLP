@@ -26,7 +26,9 @@ public:
     m_WeightNew = NewWeight;
   }
 
-  float Current() const { return m_Current; }
+  T GetWeight() const { return m_WeightNew; }
+
+  T Current() const { return m_Current; }
 };
 
 // Specialization for floating point math. 
@@ -50,6 +52,8 @@ public:
   {
     m_fWeightNew = NewWeight;
   }
+
+  float GetWeight() const { return m_fWeightNew; }
 
   float Current() const { return m_fCurrent; }
 };
