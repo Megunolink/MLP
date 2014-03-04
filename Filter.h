@@ -50,10 +50,10 @@ public:
 
   void SetWeight(float NewWeight)
   {
-    m_fWeightNew = NewWeight;
+    m_fWeightNew = NewWeight/100.0;
   }
 
-  float GetWeight() const { return m_fWeightNew; }
+  float GetWeight() const { return m_fWeightNew*100.0; }
 
   float Current() const { return m_fCurrent; }
 };
