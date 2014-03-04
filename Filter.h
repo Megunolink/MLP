@@ -6,7 +6,7 @@
 template<class T> class ExponentialFilter
 {
   // Weight for new values, as a percentage ([0..100])
-  const T m_WeightNew;
+  T m_WeightNew;
 
   // Current filtered value. 
   T m_Current;
@@ -21,13 +21,18 @@ public:
     m_Current = (m_WeightNew * New + (100 - m_WeightNew) * m_Current) / 100;
   }
 
+  void SetWeight(T NewWeight)
+  {
+    m_WeightNew = NewWeight;
+  }
+
   float Current() const { return m_Current; }
 };
 
 // Specialization for floating point math. 
 template<> class ExponentialFilter<float>
 {
-  const float m_fWeightNew;
+  float m_fWeightNew;
   float m_fCurrent;
 
 public:
@@ -39,6 +44,11 @@ public:
   void Filter(float fNew)
   {
     m_fCurrent = m_fWeightNew * fNew + (1.0 - m_fWeightNew) * m_fCurrent;
+  }
+
+  void SetWeight(float NewWeight)
+  {
+    m_fWeightNew = NewWeight;
   }
 
   float Current() const { return m_fCurrent; }
