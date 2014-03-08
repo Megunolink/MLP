@@ -140,7 +140,8 @@ void Plot::SendSeriesProperties( Colors Color, LineStyle Line, uint8_t uLineWidt
   char Data[5] = {':', Color, Marker, Line, '\0'};
 
   Serial.print(Data);
-  Serial.print(uLineWidth);
+  if (Line != NoLine)
+    Serial.print(uLineWidth);
   Serial.print('|');
 }
 
