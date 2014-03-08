@@ -17,7 +17,7 @@ long LastSent;
 int Progress; 
 
 // The interface panel we are sending data to
-InterfacePanel Panel("Test");
+InterfacePanel Panel;
 
 void setup()
 {

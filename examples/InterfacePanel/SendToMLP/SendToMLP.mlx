@@ -1,6 +1,83 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <meguno-link-project version="1.0">
   <culture>en-NZ</culture>
+  <policies>
+    <enable>false</enable>
+    <protect>false</protect>
+    <application>
+      <allow-tool-setup>true</allow-tool-setup>
+      <allow-reporting>true</allow-reporting>
+      <title-text />
+    </application>
+    <visualizers>
+      <allow-creation>true</allow-creation>
+      <allow-close>true</allow-close>
+      <allow-source-selection>true</allow-source-selection>
+      <allow-channel-selection>true</allow-channel-selection>
+      <custom>
+        <policy id="DataTable">
+          <allow-source-selection>Inherit</allow-source-selection>
+          <allow-channel-selection>Inherit</allow-channel-selection>
+          <allow-send>true</allow-send>
+        </policy>
+        <policy id="FileWriter">
+          <allow-source-selection>Inherit</allow-source-selection>
+          <allow-channel-selection>Inherit</allow-channel-selection>
+          <allow-path-change>true</allow-path-change>
+          <allow-edit-timestamp>true</allow-edit-timestamp>
+        </policy>
+        <policy id="LogToFile">
+          <allow-source-selection>Inherit</allow-source-selection>
+          <allow-channel-selection>Inherit</allow-channel-selection>
+          <allow-path-change>true</allow-path-change>
+          <allow-edit-timestamp>true</allow-edit-timestamp>
+        </policy>
+        <policy id="MessageStreamViewer">
+          <allow-source-selection>Inherit</allow-source-selection>
+          <allow-channel-selection>Inherit</allow-channel-selection>
+          <allow-send>true</allow-send>
+          <allow-edit-wordwrap>true</allow-edit-wordwrap>
+          <allow-edit-timestamp>true</allow-edit-timestamp>
+        </policy>
+        <policy id="SerialMonitor">
+          <allow-source-selection>Inherit</allow-source-selection>
+          <allow-channel-selection>Inherit</allow-channel-selection>
+          <allow-send>true</allow-send>
+          <allow-edit-wordwrap>true</allow-edit-wordwrap>
+          <allow-edit-timestamp>true</allow-edit-timestamp>
+        </policy>
+        <policy id="SourceManager">
+          <allow-source-selection>Inherit</allow-source-selection>
+          <allow-channel-selection>Inherit</allow-channel-selection>
+          <allow-edit-baud>true</allow-edit-baud>
+          <allow-edit-advanced>true</allow-edit-advanced>
+          <allow-delete>true</allow-delete>
+          <allow-edit-autoconnect>true</allow-edit-autoconnect>
+          <allow-new-source>true</allow-new-source>
+          <allow-edit-name>true</allow-edit-name>
+          <allow-reset>true</allow-reset>
+          <allow-udp-port-change>true</allow-udp-port-change>
+        </policy>
+        <policy id="InterfacePanel">
+          <allow-source-selection>Inherit</allow-source-selection>
+          <allow-channel-selection>Inherit</allow-channel-selection>
+          <allow-designer>true</allow-designer>
+        </policy>
+        <policy id="mlpChart">
+          <allow-source-selection>Inherit</allow-source-selection>
+          <allow-channel-selection>Inherit</allow-channel-selection>
+          <allow-edit-properties>true</allow-edit-properties>
+          <allow-edit-series-properties>true</allow-edit-series-properties>
+        </policy>
+        <policy id="ScatterPlotter">
+          <allow-source-selection>Inherit</allow-source-selection>
+          <allow-channel-selection>Inherit</allow-channel-selection>
+          <allow-edit-properties>true</allow-edit-properties>
+          <allow-edit-series-properties>true</allow-edit-series-properties>
+        </policy>
+      </custom>
+    </visualizers>
+  </policies>
   <data>
     <properties>
       <title />
@@ -68,7 +145,7 @@
         <auto-connect>false</auto-connect>
         <port-name>
           <type>Fixed</type>
-          <port>COM47</port>
+          <port>COM30</port>
         </port-name>
         <baud-rate>9600</baud-rate>
         <data-bits>8</data-bits>
@@ -80,7 +157,7 @@
   </serial-sources>
   <windows>
     <window>
-      <position left="2552" top="152" width="1040" height="1256" state="Maximized" />
+      <position left="2612" top="400" width="636" height="278" state="Normal" />
       <DockPanel FormatVersion="1.0" DockLeftPortion="0.25" DockRightPortion="220" DockTopPortion="0.25" DockBottomPortion="0.25" ActiveDocumentPane="2" ActivePane="2">
         <Contents Count="4">
           <Content ID="0" PersistString="VisualizerToolbox" AutoHidePortion="220" IsHidden="False" IsFloat="False" />
@@ -100,7 +177,7 @@
                     <property name="TabIndex">3</property>
                   </properties>
                 </component>
-                <component type="IPControlLibrary.Controls.IPNumericUpDown, IPControlLibrary, Version=1.1.1312.2001, Culture=neutral, PublicKeyToken=null" name="Current">
+                <component type="IPControlLibrary.Controls.IPNumericUpDown, IPControlLibrary, Version=1.1.1402.1602, Culture=neutral, PublicKeyToken=null" name="Current">
                   <children child-list="Controls" />
                   <properties>
                     <property name="OnValueChangedSend" />
@@ -110,7 +187,7 @@
                     <property name="TabIndex">2</property>
                   </properties>
                 </component>
-                <component type="IPControlLibrary.Controls.IPProgressBar, IPControlLibrary, Version=1.1.1312.2001, Culture=neutral, PublicKeyToken=null" name="Progress">
+                <component type="IPControlLibrary.Controls.IPProgressBar, IPControlLibrary, Version=1.1.1402.1602, Culture=neutral, PublicKeyToken=null" name="Progress">
                   <properties>
                     <property name="Maximum">9</property>
                     <property name="Location">3, 76</property>
@@ -119,7 +196,7 @@
                     <property name="TabIndex">1</property>
                   </properties>
                 </component>
-                <component type="IPControlLibrary.Controls.IPTextBox, IPControlLibrary, Version=1.1.1312.2001, Culture=neutral, PublicKeyToken=null" name="Status">
+                <component type="IPControlLibrary.Controls.IPTextBox, IPControlLibrary, Version=1.1.1402.1602, Culture=neutral, PublicKeyToken=null" name="Status">
                   <properties>
                     <property name="OnTextChangedSend" />
                     <property name="Text">unknown</property>
@@ -132,22 +209,20 @@
               </children>
               <properties>
                 <property name="Name">UserControl1</property>
-                <property name="Size">295, 207</property>
+                <property name="Size">450, 598</property>
               </properties>
               <components>
-                <component type="IPControlLibrary.Protocols.MLPMessageProcessor.MLPUIMessageProcessor, IPControlLibrary, Version=1.1.1312.2001, Culture=neutral, PublicKeyToken=null" name="MLPUIMessageProcessor1">
-                  <properties>
-                    <property name="ChannelName">Test</property>
-                  </properties>
+                <component type="IPControlLibrary.Protocols.MLPMessageProcessor.MLPUIMessageProcessor, IPControlLibrary, Version=1.1.1402.1602, Culture=neutral, PublicKeyToken=null" name="MLPUIMessageProcessor1">
+                  <properties />
                 </component>
               </components>
             </design>
             <values>
               <value name="Current">
-                <property name="Value"><![CDATA[1]]></property>
+                <property name="Value"><![CDATA[4]]></property>
               </value>
               <value name="Progress">
-                <property name="Value"><![CDATA[1]]></property>
+                <property name="Value"><![CDATA[4]]></property>
               </value>
               <value name="Status">
                 <property name="Text"><![CDATA[Working]]></property>
@@ -173,8 +248,8 @@
             <TabTitle>Monitor</TabTitle>
           </Content>
         </Contents>
-        <Panes Count="4">
-          <Pane ID="0" DockState="DockRight" ActiveContent="0">
+        <Panes Count="3">
+          <Pane ID="0" DockState="DockRightAutoHide" ActiveContent="0">
             <Contents Count="1">
               <Content ID="0" RefID="0" />
             </Contents>
@@ -185,22 +260,17 @@
             </Contents>
           </Pane>
           <Pane ID="2" DockState="Document" ActiveContent="3">
-            <Contents Count="1">
+            <Contents Count="2">
               <Content ID="0" RefID="3" />
-            </Contents>
-          </Pane>
-          <Pane ID="3" DockState="Document" ActiveContent="2">
-            <Contents Count="1">
-              <Content ID="0" RefID="2" />
+              <Content ID="1" RefID="2" />
             </Contents>
           </Pane>
         </Panes>
         <DockWindows>
           <DockWindow ID="0" DockState="Document" ZOrderIndex="0">
-            <NestedPanes Count="3">
+            <NestedPanes Count="2">
               <Pane ID="0" RefID="1" PrevPane="-1" Alignment="Right" Proportion="0.5" />
               <Pane ID="1" RefID="2" PrevPane="1" Alignment="Right" Proportion="0.5" />
-              <Pane ID="2" RefID="3" PrevPane="2" Alignment="Bottom" Proportion="0.5" />
             </NestedPanes>
           </DockWindow>
           <DockWindow ID="1" DockState="DockLeft" ZOrderIndex="1">
