@@ -42,6 +42,16 @@ public:
     SendDataTail();
   }
 
+  template<class TYData> void SendData(const __FlashStringHelper * seriesName, TYData yValue, Colors Color, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle)
+  {
+    SendDataHeader(F("DATA"));
+    Serial.print(seriesName);
+    SendSeriesProperties(Color, Line, uLineWidth, Marker);
+    Serial.print(F("T|"));
+    Serial.print(yValue);
+    SendDataTail();
+  }
+
   void SendFloatData(const __FlashStringHelper * seriesName, float yValue, int nDecimalPlaces, const char * seriesProperties=NULL);
   void SendFloatData(const __FlashStringHelper * seriesName, float yValue, int nDecimalPlaces, Colors Color, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle);
 };

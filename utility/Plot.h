@@ -23,6 +23,7 @@ public:
     Dotted = ':',
     DashDot = ';',
     DashDotDot = '%',
+    NoLine = '#',
   };
 
   enum MarkerStyle 
