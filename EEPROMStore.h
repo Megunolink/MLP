@@ -35,9 +35,16 @@ public:
 
   void Save()
   {
+    // We only save if the current version in the eeprom doesn't match the data we plan to save. 
+    // This helps protect the eeprom against save called many times within the arduino loop,
+    // though it makes things a little slower. 
     uint16_t uChecksum = CalculateChecksum(Data);
-    eeprom_write_word(&m_EEPROMData.m_uChecksum, uChecksum);
-    eeprom_write_block(&Data, &m_EEPROMData.m_UserData, sizeof(Data));
+    CEEPROMData StoredVersion;
+    if (!Load(StoredVersion) || StoredVersion.m_uChecksum != uChecksum || memcmp(&StoredVersion.m_UserData, &Data, sizeof(Data)) != 0)
+    {
+      eeprom_write_word(&m_EEPROMData.m_uChecksum, uChecksum);
+      eeprom_write_block(&Data, &m_EEPROMData.m_UserData, sizeof(Data));
+    }
   }
 
   void Reset()
