@@ -6,7 +6,7 @@
 *  ********************************************************************************************** */
 #include "MegunoLink.h"
 
-Message MyCSVMessage("Data"); //"Waveforms" = the taget plotting channel (remember to select this in megunolink)
+Message MyCSVMessage("Data"); //"Data" = the taget message channel (remember to select this in megunolink)
 
 // When logging make sure you specifiy a path for the logfile and enable logging.
 
