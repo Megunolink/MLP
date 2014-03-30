@@ -3,7 +3,7 @@
 
 
 MegunoLinkProtocol::MegunoLinkProtocol( const __FlashStringHelper *Context )
-  : m_pfchContext((const prog_char*)Context), m_bFlashString(false)
+  : m_pfchContext((const prog_char*)Context), m_bFlashString(false), m_ChannelName(NULL)
 {
 }
 
