@@ -36,5 +36,12 @@ void Message::Send( const __FlashStringHelper *Message )
   SendDataTail();
 }
 
+void Message::Clear()
+{
+  SendDataHeader(F("CLEAR"));
+  SendDataTail();
+}
+
+
 
 

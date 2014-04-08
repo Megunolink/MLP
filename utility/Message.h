@@ -38,5 +38,6 @@ public:
     SendDataTail();
   }
 
+  void Clear();
 };
 
