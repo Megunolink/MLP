@@ -33,7 +33,7 @@ public:
     return false;
   }
 
-  void Save()
+  bool Save()
   {
     // We only save if the current version in the eeprom doesn't match the data we plan to save. 
     // This helps protect the eeprom against save called many times within the arduino loop,
@@ -44,7 +44,9 @@ public:
     {
       eeprom_write_word(&m_EEPROMData.m_uChecksum, uChecksum);
       eeprom_write_block(&Data, &m_EEPROMData.m_UserData, sizeof(Data));
+      return true; 
     }
+    return false; 
   }
 
   void Reset()
