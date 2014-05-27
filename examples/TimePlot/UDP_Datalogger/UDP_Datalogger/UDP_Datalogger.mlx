@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<meguno-link-project version="1.0">
+  <culture>en-NZ</culture>
+  <policies>
+    <enable>false</enable>
+    <protect>false</protect>
+    <application>
+      <allow-tool-setup>true</allow-tool-setup>
+      <allow-reporting>true</allow-reporting>
+      <title-text />
+    </application>
+    <visualizers>
+      <allow-creation>true</allow-creation>
+      <allow-close>true</allow-close>
+      <allow-source-selection>true</allow-source-selection>
+      <allow-channel-selection>true</allow-channel-selection>
+      <custom>
+        <policy id="DataTable">
+          <allow-source-selection>Inherit</allow-source-selection>
+          <allow-channel-selection>Inherit</allow-channel-selection>
+          <allow-send>true</allow-send>
+        </policy>
+        <policy id="FileWriter">
+          <allow-source-selection>Inherit</allow-source-selection>
+          <allow-channel-selection>Inherit</allow-channel-selection>
+          <allow-path-change>true</allow-path-change>
+          <allow-edit-timestamp>true</allow-edit-timestamp>
+        </policy>
+        <policy id="LogToFile">
+          <allow-source-selection>Inherit</allow-source-selection>
+          <allow-channel-selection>Inherit</allow-channel-selection>
+          <allow-path-change>true</allow-path-change>
+          <allow-edit-timestamp>true</allow-edit-timestamp>
+        </policy>
+        <policy id="MessageStreamViewer">
+          <allow-source-selection>Inherit</allow-source-selection>
+          <allow-channel-selection>Inherit</allow-channel-selection>
+          <allow-send>true</allow-send>
+          <allow-edit-wordwrap>true</allow-edit-wordwrap>
+          <allow-edit-timestamp>true</allow-edit-timestamp>
+        </policy>
+        <policy id="SerialMonitor">
+          <allow-source-selection>Inherit</allow-source-selection>
+          <allow-channel-selection>Inherit</allow-channel-selection>
+          <allow-send>true</allow-send>
+          <allow-edit-wordwrap>true</allow-edit-wordwrap>
+          <allow-edit-timestamp>true</allow-edit-timestamp>
+        </policy>
+        <policy id="SourceManager">
+          <allow-source-selection>Inherit</allow-source-selection>
+          <allow-channel-selection>Inherit</allow-channel-selection>
+          <allow-edit-baud>true</allow-edit-baud>
+          <allow-edit-advanced>true</allow-edit-advanced>
+          <allow-delete>true</allow-delete>
+          <allow-edit-autoconnect>true</allow-edit-autoconnect>
+          <allow-new-source>true</allow-new-source>
+          <allow-edit-name>true</allow-edit-name>
+          <allow-reset>true</allow-reset>
+          <allow-udp-port-change>true</allow-udp-port-change>
+        </policy>
+        <policy id="InterfacePanel">
+          <allow-source-selection>Inherit</allow-source-selection>
+          <allow-channel-selection>Inherit</allow-channel-selection>
+          <allow-designer>true</allow-designer>
+        </policy>
+        <policy id="mlpChart">
+          <allow-source-selection>Inherit</allow-source-selection>
+          <allow-channel-selection>Inherit</allow-channel-selection>
+          <allow-edit-properties>true</allow-edit-properties>
+          <allow-edit-series-properties>true</allow-edit-series-properties>
+        </policy>
+        <policy id="ScatterPlotter">
+          <allow-source-selection>Inherit</allow-source-selection>
+          <allow-channel-selection>Inherit</allow-channel-selection>
+          <allow-edit-properties>true</allow-edit-properties>
+          <allow-edit-series-properties>true</allow-edit-series-properties>
+        </policy>
+      </custom>
+    </visualizers>
+  </policies>
+  <data>
+    <properties>
+      <title />
+      <description />
+      <image-48 />
+    </properties>
+    <shared-visualizer-data>
+      <data id="SerialMonitorData">
+        <send-cr-default>true</send-cr-default>
+        <send-lf-default>true</send-lf-default>
+        <word-wrap-default>true</word-wrap-default>
+        <include-date>false</include-date>
+        <include-time>false</include-time>
+        <clear-on-send>false</clear-on-send>
+        <message-history />
+      </data>
+      <data id="DefaultPlotConfigurationData">
+        <show-summary-table>false</show-summary-table>
+        <show-legend>true</show-legend>
+        <default-symbol-size>4</default-symbol-size>
+        <default-line-width>1</default-line-width>
+        <default-dash-style>Solid</default-dash-style>
+        <default-visibility>true</default-visibility>
+        <next-color>6</next-color>
+        <next-symbol>0</next-symbol>
+        <series-styles>
+          <style name="adc vale">
+            <SeriesStyle xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+              <LineStyle>Solid</LineStyle>
+              <LineColor>LightSeaGreen</LineColor>
+              <LineWidth>1</LineWidth>
+              <SymbolType>Star</SymbolType>
+              <SymbolColor>LightSeaGreen</SymbolColor>
+              <SymbolSize>4</SymbolSize>
+              <Visible>true</Visible>
+            </SeriesStyle>
+          </style>
+        </series-styles>
+      </data>
+    </shared-visualizer-data>
+  </data>
+  <serial-sources>
+    <default>7</default>
+    <sources>
+      <source type="SharedUDPPort">
+        <id>7</id>
+        <is-programmer>false</is-programmer>
+        <display-name>UDP</display-name>
+        <auto-connect>false</auto-connect>
+        <port-number>1269</port-number>
+      </source>
+    </sources>
+  </serial-sources>
+  <windows>
+    <window>
+      <position left="-8" top="-8" width="1696" height="1026" state="Maximized" />
+      <DockPanel FormatVersion="1.0" DockLeftPortion="0.15" DockRightPortion="0.25" DockTopPortion="0.25" DockBottomPortion="0.25" ActiveDocumentPane="3" ActivePane="3">
+        <Contents Count="4">
+          <Content ID="0" PersistString="VisualizerToolbox" AutoHidePortion="0.25" IsHidden="False" IsFloat="False" />
+          <Content ID="1" PersistString="SourceManager" AutoHidePortion="0.25" IsHidden="False" IsFloat="False">
+            <ShowSourceInTitle>true</ShowSourceInTitle>
+            <ShowPortInTitle>false</ShowPortInTitle>
+            <SourceId>7</SourceId>
+            <TabTitle>Connection Manager</TabTitle>
+          </Content>
+          <Content ID="2" PersistString="SerialMonitor" AutoHidePortion="0.25" IsHidden="False" IsFloat="False">
+            <ShowSourceInTitle>true</ShowSourceInTitle>
+            <ShowPortInTitle>false</ShowPortInTitle>
+            <WordWrap>true</WordWrap>
+            <IncludeDate>false</IncludeDate>
+            <IncludeTime>false</IncludeTime>
+            <InsertTimestamp>false</InsertTimestamp>
+            <SourceId>7</SourceId>
+            <TabTitle>Monitor</TabTitle>
+          </Content>
+          <Content ID="3" PersistString="mlpChart" AutoHidePortion="0.25" IsHidden="False" IsFloat="False">
+            <ShowSourceInTitle>true</ShowSourceInTitle>
+            <ShowPortInTitle>false</ShowPortInTitle>
+            <SourceId>7</SourceId>
+            <TabTitle>Time Plot</TabTitle>
+            <reporting-enabled>false</reporting-enabled>
+            <show-summary>false</show-summary>
+            <active-channels />
+            <reporting>
+              <width>640</width>
+              <height>480</height>
+              <dpi>96</dpi>
+              <anti-alias>true</anti-alias>
+              <filename-pattern>Graph {Seq}</filename-pattern>
+              <format>b96b3caf-0728-11d3-9d7b-0000f81ef32e</format>
+            </reporting>
+            <title>
+              <text>Chart</text>
+              <visible>true</visible>
+              <font>
+                <color>-16777216</color>
+                <family>Microsoft Sans Serif</family>
+                <bold>true</bold>
+                <italic>false</italic>
+                <size>16</size>
+              </font>
+            </title>
+            <x-axis>
+              <minimum>41692.536423611455</minimum>
+              <maximum>41692.536597222555</maximum>
+              <major-step>5</major-step>
+              <minor-step>1</minor-step>
+              <major-unit>Second</major-unit>
+              <minor-unit>Second</minor-unit>
+              <minimum-auto>true</minimum-auto>
+              <maximum-auto>true</maximum-auto>
+              <major-step-auto>true</major-step-auto>
+              <minor-step-auto>true</minor-step-auto>
+              <text>Time</text>
+              <visible>true</visible>
+              <font>
+                <color>-16777216</color>
+                <family>Microsoft Sans Serif</family>
+                <bold>true</bold>
+                <italic>false</italic>
+                <size>14</size>
+              </font>
+            </x-axis>
+            <y-axis>
+              <minimum>0</minimum>
+              <maximum>7</maximum>
+              <major-step>1</major-step>
+              <minor-step>0.2</minor-step>
+              <major-unit>Day</major-unit>
+              <minor-unit>Day</minor-unit>
+              <minimum-auto>true</minimum-auto>
+              <maximum-auto>true</maximum-auto>
+              <major-step-auto>true</major-step-auto>
+              <minor-step-auto>true</minor-step-auto>
+              <text>y</text>
+              <visible>true</visible>
+              <font>
+                <color>-16777216</color>
+                <family>Microsoft Sans Serif</family>
+                <bold>true</bold>
+                <italic>false</italic>
+                <size>14</size>
+              </font>
+            </y-axis>
+            <run>false</run>
+          </Content>
+        </Contents>
+        <Panes Count="4">
+          <Pane ID="0" DockState="DockRightAutoHide" ActiveContent="0">
+            <Contents Count="1">
+              <Content ID="0" RefID="0" />
+            </Contents>
+          </Pane>
+          <Pane ID="1" DockState="Document" ActiveContent="1">
+            <Contents Count="1">
+              <Content ID="0" RefID="1" />
+            </Contents>
+          </Pane>
+          <Pane ID="2" DockState="Document" ActiveContent="3">
+            <Contents Count="1">
+              <Content ID="0" RefID="3" />
+            </Contents>
+          </Pane>
+          <Pane ID="3" DockState="Document" ActiveContent="2">
+            <Contents Count="1">
+              <Content ID="0" RefID="2" />
+            </Contents>
+          </Pane>
+        </Panes>
+        <DockWindows>
+          <DockWindow ID="0" DockState="Document" ZOrderIndex="0">
+            <NestedPanes Count="3">
+              <Pane ID="0" RefID="1" PrevPane="-1" Alignment="Right" Proportion="0.5" />
+              <Pane ID="1" RefID="2" PrevPane="1" Alignment="Right" Proportion="0.5" />
+              <Pane ID="2" RefID="3" PrevPane="1" Alignment="Bottom" Proportion="0.5" />
+            </NestedPanes>
+          </DockWindow>
+          <DockWindow ID="1" DockState="DockLeft" ZOrderIndex="1">
+            <NestedPanes Count="0" />
+          </DockWindow>
+          <DockWindow ID="2" DockState="DockRight" ZOrderIndex="2">
+            <NestedPanes Count="1">
+              <Pane ID="0" RefID="0" PrevPane="-1" Alignment="Bottom" Proportion="0.5" />
+            </NestedPanes>
+          </DockWindow>
+          <DockWindow ID="3" DockState="DockTop" ZOrderIndex="3">
+            <NestedPanes Count="0" />
+          </DockWindow>
+          <DockWindow ID="4" DockState="DockBottom" ZOrderIndex="4">
+            <NestedPanes Count="0" />
+          </DockWindow>
+        </DockWindows>
+        <FloatWindows Count="0" />
+      </DockPanel>
+    </window>
+  </windows>
+  <reporting>
+    <generate-scheduled-reports>false</generate-scheduled-reports>
+    <destinations>
+      <report-to-folder>
+        <last-report-number>0</last-report-number>
+        <folder-path>\\RUADFS11\HOME$\Hrrpxr\My Documents</folder-path>
+        <use-sub-folder>true</use-sub-folder>
+        <sub-folder-pattern>Report {Seq}</sub-folder-pattern>
+        <enabled>true</enabled>
+        <period>PT1H</period>
+        <last-sent>0001-01-01T00:00:00</last-sent>
+      </report-to-folder>
+    </destinations>
+  </reporting>
+</meguno-link-project>
