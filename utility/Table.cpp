@@ -1,8 +1,8 @@
 #include "table.h"
 
 
-Table::Table()
-  : MegunoLinkProtocol(F("TABLE"))
+Table::Table(Print &rDestination)
+  : MegunoLinkProtocol(F("TABLE"), rDestination)
 {
 
 }
@@ -10,27 +10,27 @@ Table::Table()
 void Table::SetDescription(const char *RowName, const char *Description)
 {
   SendDataHeader(F("DESCRIPTION"));
-  Serial.print(RowName);
-  Serial.print('|');
-  Serial.print(Description);
+  m_rDestination.print(RowName);
+  m_rDestination.print('|');
+  m_rDestination.print(Description);
   SendDataTail();
 }
 
 void Table::SetDescription(const __FlashStringHelper *RowName, const char *Description)
 {
   SendDataHeader(F("DESCRIPTION"));
-  Serial.print(RowName);
-  Serial.print('|');
-  Serial.print(Description);
+  m_rDestination.print(RowName);
+  m_rDestination.print('|');
+  m_rDestination.print(Description);
   SendDataTail();
 }
 
 void Table::SetDescription(const __FlashStringHelper *RowName, const __FlashStringHelper *Description)
 {
   SendDataHeader(F("DESCRIPTION"));
-  Serial.print(RowName);
-  Serial.print('|');
-  Serial.print(Description);
+  m_rDestination.print(RowName);
+  m_rDestination.print('|');
+  m_rDestination.print(Description);
   SendDataTail();
 }
 
@@ -43,27 +43,27 @@ void Table::ClearAllRows()
 void Table::ClearRow(const char *Name)
 {
   SendDataHeader(F("CLEAR"));
-  Serial.print(Name);
+  m_rDestination.print(Name);
   SendDataTail();
 }
 
 void Table::ClearRow(const __FlashStringHelper *Name)
 {
   SendDataHeader(F("CLEAR"));
-  Serial.print(Name);
+  m_rDestination.print(Name);
   SendDataTail();
 }
 
 void Table::GetData(const char *Name)
 {
   SendDataHeader(F("GET"));
-  Serial.print(Name);
+  m_rDestination.print(Name);
   SendDataTail();
 }
 
 void Table::GetData(const __FlashStringHelper *Name)
 {
   SendDataHeader(F("GET"));
-  Serial.print(Name);
+  m_rDestination.print(Name);
   SendDataTail();
 }

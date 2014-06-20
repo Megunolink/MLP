@@ -4,8 +4,8 @@
 class Message : protected MegunoLinkProtocol
 {
 public:
-  Message(const char *channelName = NULL);
-  Message(const __FlashStringHelper *channelName);
+  Message(const char *channelName = NULL, Print &rDestination = Serial);
+  Message(const __FlashStringHelper *channelName, Print &rDestination = Serial);
 
   void Begin();
   void End();
@@ -16,25 +16,25 @@ public:
   template<class TValue> void Send(TValue Value)
   {
     SendDataHeader(F("DATA"));
-    Serial.print(Value);
+    m_rDestination.print(Value);
     SendDataTail();
   }
 
   template<class TValue> void Send(const char *Label, TValue Value)
   {
     SendDataHeader(F("DATA"));
-    Serial.print(Label);
-    Serial.print(F(": "));
-    Serial.print(Value);
+    m_rDestination.print(Label);
+    m_rDestination.print(F(": "));
+    m_rDestination.print(Value);
     SendDataTail();
   }
 
   template<class TValue> void Send(const __FlashStringHelper *Label, TValue Value)
   {
     SendDataHeader(F("DATA"));
-    Serial.print(Label);
-    Serial.print(F(": "));
-    Serial.print(Value);
+    m_rDestination.print(Label);
+    m_rDestination.print(F(": "));
+    m_rDestination.print(Value);
     SendDataTail();
   }
 

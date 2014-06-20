@@ -1,14 +1,14 @@
 #include "xyplot.h"
 
 
-XYPlot::XYPlot( const char *channelName /*= NULL*/ )
-  : Plot(F("XYPLOT"), channelName)
+XYPlot::XYPlot( const char *channelName /*= NULL*/, Print &rDestination )
+  : Plot(F("XYPLOT"), channelName, rDestination)
 {
 
 }
 
-XYPlot::XYPlot( const __FlashStringHelper *channelName )
-  : Plot(F("XYPLOT"), channelName)
+XYPlot::XYPlot( const __FlashStringHelper *channelName, Print &rDestination )
+  : Plot(F("XYPLOT"), channelName, rDestination)
 {
 
 }

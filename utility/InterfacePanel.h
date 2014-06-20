@@ -5,8 +5,8 @@
 class InterfacePanel : public MegunoLinkProtocol
 {
 public:
-  InterfacePanel(const char *channelName = NULL);
-  InterfacePanel(const __FlashStringHelper *channelName);
+  InterfacePanel(const char *channelName = NULL, Print &rDestination = Serial);
+  InterfacePanel(const __FlashStringHelper *channelName, Print &rDestination = Serial);
 
   void SetText(const char * ControlName, const char * Value);
   void SetText(const __FlashStringHelper * ControlName, const char * Value);

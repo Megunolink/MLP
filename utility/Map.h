@@ -4,7 +4,7 @@
 class Map : protected MegunoLinkProtocol
 {
 public:
-  Map();
+  Map(Print &rDestination = Serial);
 
   void SendData(const char *Placename, const char *Latitude, const char *Longitude);
   void SendData(const __FlashStringHelper *Placename, const char *Latitude, const char *Longitude);

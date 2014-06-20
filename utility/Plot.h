@@ -55,9 +55,9 @@ public:
   void SetSeriesProperties(const __FlashStringHelper *SeriesName, const __FlashStringHelper *SeriesProperties);
 
 protected:
-  Plot(const __FlashStringHelper *Context);
-  Plot(const __FlashStringHelper *Context, const char *Channel);
-  Plot(const __FlashStringHelper *Context, const __FlashStringHelper *Channel);
+  Plot(const __FlashStringHelper *Context, Print &rDestination = Serial);
+  Plot(const __FlashStringHelper *Context, const char *Channel, Print &rDestination = Serial);
+  Plot(const __FlashStringHelper *Context, const __FlashStringHelper *Channel, Print &rDestination = Serial);
 
   void SetParameter(const __FlashStringHelper *pfstrParameter, const char * Value);
   void SetParameter(const __FlashStringHelper *pfstrParameter, const __FlashStringHelper * Value);

@@ -1,13 +1,13 @@
 #include "InterfacePanel.h"
 
-InterfacePanel::InterfacePanel( const char *channelName /*= NULL*/ )
-  : MegunoLinkProtocol(F("UI"), channelName)
+InterfacePanel::InterfacePanel( const char *channelName /*= NULL*/, Print &rDestination  )
+  : MegunoLinkProtocol(F("UI"), channelName, rDestination)
 {
 
 }
 
-InterfacePanel::InterfacePanel(const __FlashStringHelper *channelName)
-  : MegunoLinkProtocol(F("UI"), channelName)
+InterfacePanel::InterfacePanel(const __FlashStringHelper *channelName, Print &rDestination )
+  : MegunoLinkProtocol(F("UI"), channelName, rDestination)
 {
 
 }
@@ -15,7 +15,7 @@ InterfacePanel::InterfacePanel(const __FlashStringHelper *channelName)
 void InterfacePanel::SetText(const char * ControlName, const char * Value)
 {
   SendControlHeader(ControlName, F("Text"));
-  Serial.print(Value);
+  m_rDestination.print(Value);
   SendDataTail();
 }
 
@@ -27,21 +27,21 @@ void InterfacePanel::SetProgress(const char * ControlName, int nValue)
 void InterfacePanel::SetNumber(const char * ControlName, int nValue)
 {
   SendControlHeader(ControlName, F("Value"));
-  Serial.print(nValue);
+  m_rDestination.print(nValue);
   SendDataTail();
 }
 
 void InterfacePanel::SetListIndex(const char * ControlName, int nIndex)
 {
   SendControlHeader(ControlName, F("SelectedIndex"));
-  Serial.print(nIndex);
+  m_rDestination.print(nIndex);
   SendDataTail();
 }
 
 void InterfacePanel::SetListIndex(const __FlashStringHelper * ControlName, int nIndex)
 {
   SendControlHeader(ControlName, F("SelectedIndex"));
-  Serial.print(nIndex);
+  m_rDestination.print(nIndex);
   SendDataTail();
 }
 
@@ -58,21 +58,21 @@ void InterfacePanel::SetListValue(const __FlashStringHelper * ControlName, int n
 void InterfacePanel::SetCheck(const char * ControlName, bool bChecked)
 {
   SendControlHeader(ControlName, F("Checked"));
-  Serial.print(bChecked ? F("True") : F("False"));
+  m_rDestination.print(bChecked ? F("True") : F("False"));
   SendDataTail();
 }
 
 void InterfacePanel::ClearCheck(const char * ControlName)
 {
   SendControlHeader(ControlName, F("Checked"));
-  Serial.print(F("False"));
+  m_rDestination.print(F("False"));
   SendDataTail();
 }
 
 void InterfacePanel::SetText(const __FlashStringHelper * ControlName, const char * Value)
 {
   SendControlHeader(ControlName, F("Text"));
-  Serial.print(Value);
+  m_rDestination.print(Value);
   SendDataTail();
 }
 
@@ -84,78 +84,78 @@ void InterfacePanel::SetProgress(const __FlashStringHelper * ControlName, int nV
 void InterfacePanel::SetNumber(const __FlashStringHelper * ControlName, int nValue)
 {
   SendControlHeader(ControlName, F("Value"));
-  Serial.print(nValue);
+  m_rDestination.print(nValue);
   SendDataTail();
 }
 
 void InterfacePanel::SetCheck(const __FlashStringHelper * ControlName, bool bChecked)
 {
   SendControlHeader(ControlName, F("Checked"));
-  Serial.print(bChecked ? F("True") : F("False"));
+  m_rDestination.print(bChecked ? F("True") : F("False"));
   SendDataTail();
 }
 
 void InterfacePanel::ClearCheck(const __FlashStringHelper * ControlName)
 {
   SendControlHeader(ControlName, F("Checked"));
-  Serial.print(F("False"));
+  m_rDestination.print(F("False"));
   SendDataTail();
 }
 
 void InterfacePanel::SetText(const __FlashStringHelper * ControlName, const __FlashStringHelper * Value)
 {
   SendControlHeader(ControlName, F("Text"));
-  Serial.print(Value);
+  m_rDestination.print(Value);
   SendDataTail();
 }
 
 void InterfacePanel::CallCommand( const char* CommandName )
 {
   SendDataHeader(F("CMD"));
-  Serial.print(CommandName);
+  m_rDestination.print(CommandName);
   SendDataTail();
 }
 
 void InterfacePanel::CallCommand( const __FlashStringHelper* CommandName )
 {
   SendDataHeader(F("CMD"));
-  Serial.print(CommandName);
+  m_rDestination.print(CommandName);
   SendDataTail();
 }
 
 void InterfacePanel::GetValue( const char* ControlName, const char* PropertyName )
 {
   SendDataHeader(F("GET"));
-  Serial.print(ControlName);
-  Serial.print('.');
-  Serial.print(PropertyName);
+  m_rDestination.print(ControlName);
+  m_rDestination.print('.');
+  m_rDestination.print(PropertyName);
   SendDataTail();
 }
 
 void InterfacePanel::GetValue( const __FlashStringHelper* ControlName, const __FlashStringHelper* PropertyName )
 {
   SendDataHeader(F("GET"));
-  Serial.print(ControlName);
-  Serial.print('.');
-  Serial.print(PropertyName);
+  m_rDestination.print(ControlName);
+  m_rDestination.print('.');
+  m_rDestination.print(PropertyName);
   SendDataTail();
 }
 
 void InterfacePanel::SendControlHeader(const char *ControlName, const __FlashStringHelper *PropertyName)
 {
   SendDataHeader(F("SET"));
-  Serial.print(ControlName);
-  Serial.print('.');
-  Serial.print(PropertyName);
-  Serial.print('=');
+  m_rDestination.print(ControlName);
+  m_rDestination.print('.');
+  m_rDestination.print(PropertyName);
+  m_rDestination.print('=');
 }
 
 void InterfacePanel::SendControlHeader(const __FlashStringHelper *ControlName, const __FlashStringHelper *PropertyName)
 {
   SendDataHeader(F("SET"));
-  Serial.print(ControlName);
-  Serial.print('.');
-  Serial.print(PropertyName);
-  Serial.print('=');
+  m_rDestination.print(ControlName);
+  m_rDestination.print('.');
+  m_rDestination.print(PropertyName);
+  m_rDestination.print('=');
 }
 

@@ -1,13 +1,13 @@
 #include "message.h"
 
-Message::Message( const char *channelName /*= NULL*/ )
-  : MegunoLinkProtocol(F("MESSAGE"), channelName)
+Message::Message( const char *channelName /*= NULL*/, Print &rDestination  )
+  : MegunoLinkProtocol(F("MESSAGE"), channelName, rDestination)
 {
 
 }
 
-Message::Message( const __FlashStringHelper *channelName )
-  : MegunoLinkProtocol(F("MESSAGE"), channelName)
+Message::Message( const __FlashStringHelper *channelName, Print &rDestination )
+  : MegunoLinkProtocol(F("MESSAGE"), channelName, rDestination)
 {
 
 }
@@ -25,14 +25,14 @@ void Message::End()
 void Message::Send( const char *Message )
 {
   SendDataHeader(F("DATA"));
-  Serial.print(Message);
+  m_rDestination.print(Message);
   SendDataTail();
 }
 
 void Message::Send( const __FlashStringHelper *Message )
 {
   SendDataHeader(F("DATA"));
-  Serial.print(Message);
+  m_rDestination.print(Message);
   SendDataTail();
 }
 

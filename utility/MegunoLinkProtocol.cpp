@@ -3,43 +3,59 @@
 
 
 MegunoLinkProtocol::MegunoLinkProtocol( const __FlashStringHelper *Context )
-  : m_pfchContext((const prog_char*)Context), m_bFlashString(false), m_ChannelName(NULL)
+  : m_pfchContext((const prog_char*)Context), m_bFlashString(false), m_ChannelName(NULL), m_rDestination(Serial)
 {
 }
 
 MegunoLinkProtocol::MegunoLinkProtocol( const __FlashStringHelper *Context, const char *Channel )
-  : m_pfchContext((const prog_char*)Context), m_bFlashString(false), m_ChannelName(Channel)
+  : m_pfchContext((const prog_char*)Context), m_bFlashString(false), m_ChannelName(Channel), m_rDestination(Serial)
 {
 
 }
 
 MegunoLinkProtocol::MegunoLinkProtocol( const __FlashStringHelper *Context, const __FlashStringHelper *Channel )
-  : m_pfchContext((const prog_char*)Context), m_bFlashString(true), m_ChannelName((const prog_char*)Channel)
+  : m_pfchContext((const prog_char*)Context), m_bFlashString(true), m_ChannelName((const prog_char*)Channel), m_rDestination(Serial)
+{
+}
+
+MegunoLinkProtocol::MegunoLinkProtocol( const __FlashStringHelper *Context, Print &rDestination )
+  : m_pfchContext((const prog_char*)Context), m_bFlashString(false), m_rDestination(rDestination)
+{
+}
+
+MegunoLinkProtocol::MegunoLinkProtocol( const __FlashStringHelper *Context, const char *Channel, Print &rDestination )
+  : m_pfchContext((const prog_char*)Context), m_bFlashString(false), m_ChannelName(Channel), m_rDestination(rDestination)
+{
+
+}
+
+MegunoLinkProtocol::MegunoLinkProtocol( const __FlashStringHelper *Context, const __FlashStringHelper *Channel, Print &rDestination )
+  : m_pfchContext((const prog_char*)Context), m_bFlashString(true), m_ChannelName((const prog_char*)Channel), m_rDestination(rDestination)
 {
 }
 
 void MegunoLinkProtocol::SendDataHeader(const __FlashStringHelper *pfstrCommand)
 {
-  Serial.print('{');
-  Serial.print((const __FlashStringHelper *) m_pfchContext);
+  m_rDestination.print('{');
+  m_rDestination.print((const __FlashStringHelper *) m_pfchContext);
   if (m_ChannelName != NULL)
   {
-    Serial.print(':');
+    m_rDestination.print(':');
     if (m_bFlashString)
     {
-      Serial.print((const __FlashStringHelper *)m_ChannelName);
+      m_rDestination.print((const __FlashStringHelper *)m_ChannelName);
     }
     else
     {
-      Serial.print((const char *)m_ChannelName);
+      m_rDestination.print((const char *)m_ChannelName);
     }
   }
-  Serial.print('|');
-  Serial.print(pfstrCommand);
-  Serial.print('|');
+  m_rDestination.print('|');
+  m_rDestination.print(pfstrCommand);
+  m_rDestination.print('|');
 }
 
 void MegunoLinkProtocol::SendDataTail()
 {
-  Serial.println('}');
+  m_rDestination.println('}');
 }

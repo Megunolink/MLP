@@ -4,18 +4,18 @@
 class Table : protected MegunoLinkProtocol
 {
 public:
-  Table();
+  Table(Print &rDestination = Serial);
 
   template<class TValue> void SendData(const char *RowName, TValue Value, const char *Description = NULL)
   {
     SendDataHeader(F("SET"));
-    Serial.print(RowName);
-    Serial.print('|');
-    Serial.print(Value);
+    m_rDestination.print(RowName);
+    m_rDestination.print('|');
+    m_rDestination.print(Value);
     if (Description != NULL)
     {
-      Serial.print('|');
-      Serial.print(Description);
+      m_rDestination.print('|');
+      m_rDestination.print(Description);
     }
     SendDataTail();
   }
@@ -23,13 +23,13 @@ public:
   template<class TValue> void SendData(const __FlashStringHelper *RowName, TValue Value, const char *Description = NULL)
   {
     SendDataHeader(F("SET"));
-    Serial.print(RowName);
-    Serial.print('|');
-    Serial.print(Value);
+    m_rDestination.print(RowName);
+    m_rDestination.print('|');
+    m_rDestination.print(Value);
     if (Description != NULL)
     {
-      Serial.print('|');
-      Serial.print(Description);
+      m_rDestination.print('|');
+      m_rDestination.print(Description);
     }
     SendDataTail();
   }
@@ -37,13 +37,13 @@ public:
   template<class TValue> void SendData(const __FlashStringHelper *RowName, TValue Value, const __FlashStringHelper *Description)
   {
     SendDataHeader(F("SET"));
-    Serial.print(RowName);
-    Serial.print('|');
-    Serial.print(Value);
+    m_rDestination.print(RowName);
+    m_rDestination.print('|');
+    m_rDestination.print(Value);
     if (Description != NULL)
     {
-      Serial.print('|');
-      Serial.print(Description);
+      m_rDestination.print('|');
+      m_rDestination.print(Description);
     }
     SendDataTail();
   }

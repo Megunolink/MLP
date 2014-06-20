@@ -9,9 +9,16 @@ class MegunoLinkProtocol
   const prog_char * const m_pfchContext;
 
 protected:
+  Print &m_rDestination;
+
+protected:
   MegunoLinkProtocol(const __FlashStringHelper *Context);
   MegunoLinkProtocol(const __FlashStringHelper *Context, const char *Channel);
   MegunoLinkProtocol(const __FlashStringHelper *Context, const __FlashStringHelper *Channel);
+
+  MegunoLinkProtocol(const __FlashStringHelper *Context, Print &rDestination);
+  MegunoLinkProtocol(const __FlashStringHelper *Context, const char *Channel, Print &rDestination);
+  MegunoLinkProtocol(const __FlashStringHelper *Context, const __FlashStringHelper *Channel, Print &rDestination);
 
   void SendDataHeader(const __FlashStringHelper *pfstrCommand);
   void SendDataTail();

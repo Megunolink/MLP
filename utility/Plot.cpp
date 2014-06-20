@@ -1,19 +1,19 @@
 #include "Plot.h"
 
-Plot::Plot( const __FlashStringHelper *Context )
-  : MegunoLinkProtocol(Context)
+Plot::Plot( const __FlashStringHelper *Context, Print &rDestination )
+  : MegunoLinkProtocol(Context, rDestination)
 {
 
 }
 
-Plot::Plot( const __FlashStringHelper *Context, const char *Channel )
-  : MegunoLinkProtocol(Context, Channel)
+Plot::Plot( const __FlashStringHelper *Context, const char *Channel, Print &rDestination  )
+  : MegunoLinkProtocol(Context, Channel, rDestination)
 {
 
 }
 
-Plot::Plot( const __FlashStringHelper *Context, const __FlashStringHelper *Channel )
-  : MegunoLinkProtocol(Context, Channel)
+Plot::Plot( const __FlashStringHelper *Context, const __FlashStringHelper *Channel, Print &rDestination )
+  : MegunoLinkProtocol(Context, Channel, rDestination)
 {
 
 }
@@ -53,9 +53,9 @@ void Plot::SetSeriesProperties(const char *SeriesName, Colors Color, LineStyle L
   char Data[5] = {':', Color, Marker, Line, '\0'};
 
   SendDataHeader(F("STYLE"));
-  Serial.print(SeriesName);
-  Serial.print(Data);
-  Serial.print(uLineWidth);
+  m_rDestination.print(SeriesName);
+  m_rDestination.print(Data);
+  m_rDestination.print(uLineWidth);
   SendDataTail();
 }
 
@@ -64,54 +64,54 @@ void Plot::SetSeriesProperties(const __FlashStringHelper *SeriesName, Colors Col
   char Data[5] = {':', Color, Marker, Line, '\0'};
 
   SendDataHeader(F("STYLE"));
-  Serial.print(SeriesName);
-  Serial.print(Data);
-  Serial.print(uLineWidth);
+  m_rDestination.print(SeriesName);
+  m_rDestination.print(Data);
+  m_rDestination.print(uLineWidth);
   SendDataTail();
 }
 
 void Plot::SetSeriesProperties(const char *SeriesName, const char *SeriesProperties )
 {
   SendDataHeader(F("STYLE"));
-  Serial.print(SeriesName);
-  Serial.print(':');
-  Serial.print(SeriesProperties);
+  m_rDestination.print(SeriesName);
+  m_rDestination.print(':');
+  m_rDestination.print(SeriesProperties);
   SendDataTail();
 }
 
 void Plot::SetSeriesProperties(const __FlashStringHelper *SeriesName, const char *SeriesProperties )
 {
   SendDataHeader(F("STYLE"));
-  Serial.print(SeriesName);
-  Serial.print(':');
-  Serial.print(SeriesProperties);
+  m_rDestination.print(SeriesName);
+  m_rDestination.print(':');
+  m_rDestination.print(SeriesProperties);
   SendDataTail();
 }
 
 void Plot::SetSeriesProperties(const __FlashStringHelper *SeriesName, const __FlashStringHelper *SeriesProperties )
 {
   SendDataHeader(F("STYLE"));
-  Serial.print(SeriesName);
-  Serial.print(':');
-  Serial.print(SeriesProperties);
+  m_rDestination.print(SeriesName);
+  m_rDestination.print(':');
+  m_rDestination.print(SeriesProperties);
   SendDataTail();
 }
 
 void Plot::SetParameter(const __FlashStringHelper *pfstrParameter, const char * Value )
 {
   SendDataHeader(F("SET"));
-  Serial.print(pfstrParameter);
-  Serial.print('=');
-  Serial.print(Value);
+  m_rDestination.print(pfstrParameter);
+  m_rDestination.print('=');
+  m_rDestination.print(Value);
   SendDataTail();
 }
 
 void Plot::SetParameter( const __FlashStringHelper *pfstrParameter, const __FlashStringHelper * Value )
 {
   SendDataHeader(F("SET"));
-  Serial.print(pfstrParameter);
-  Serial.print('=');
-  Serial.print(Value);
+  m_rDestination.print(pfstrParameter);
+  m_rDestination.print('=');
+  m_rDestination.print(Value);
   SendDataTail();
 }
 
@@ -119,29 +119,29 @@ void Plot::SendSeriesProperties( const char *SeriesProperties )
 {
   if (SeriesProperties != NULL)
   {
-    Serial.print(':');
-    Serial.print(SeriesProperties);
+    m_rDestination.print(':');
+    m_rDestination.print(SeriesProperties);
   }
-  Serial.print('|');
+  m_rDestination.print('|');
 }
 
 void Plot::SendSeriesProperties( const __FlashStringHelper *SeriesProperties )
 {
   if (SeriesProperties != NULL)
   {
-    Serial.print(':');
-    Serial.print(SeriesProperties);
+    m_rDestination.print(':');
+    m_rDestination.print(SeriesProperties);
   }
-  Serial.print('|');
+  m_rDestination.print('|');
 }
 
 void Plot::SendSeriesProperties( Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker )
 {
   char Data[5] = {':', Color, Marker, Line, '\0'};
 
-  Serial.print(Data);
+  m_rDestination.print(Data);
   if (Line != NoLine)
-    Serial.print(uLineWidth);
-  Serial.print('|');
+    m_rDestination.print(uLineWidth);
+  m_rDestination.print('|');
 }
 
