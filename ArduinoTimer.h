@@ -19,6 +19,12 @@ class ArduinoTimer
   uint32_t m_uStartTime;
 public:
   ArduinoTimer();
+  
+  inline ArduinoTimer(bool bReset)  __attribute__((always_inline))
+  {
+    if (bReset)
+      Reset();
+  }
 
   inline void Reset() __attribute__((always_inline))
   {
