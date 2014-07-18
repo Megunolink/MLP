@@ -43,6 +43,8 @@ public:
 
   bool TimePassed_Milliseconds(uint32_t uPeriod, bool bAtuoReset = true);
   bool TimePassed_Seconds(uint16_t uPeriod, bool bAtuoReset = true);
+  bool TimePassed_Minutes(uint16_t uPeriod, bool bAtuoReset = true);
+  bool TimePassed_Hours(uint16_t uPeriod, bool bAtuoReset = true);
 
   inline uint32_t StartTime() const __attribute__((always_inline))
   {
