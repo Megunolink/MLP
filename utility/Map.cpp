@@ -34,9 +34,9 @@ void Map::SendData(const char *Placename, float Latitude, float Longitude)
   SendDataHeader(F("SET"));
   m_rDestination.print(Placename);
   m_rDestination.print('|');
-  m_rDestination.print(Latitude);
+  m_rDestination.print(Latitude, 7);
   m_rDestination.print('|');
-  m_rDestination.print(Longitude);
+  m_rDestination.print(Longitude, 7);
   SendDataTail();
 }
 
@@ -45,9 +45,9 @@ void Map::SendData(const __FlashStringHelper *Placename, float Latitude, float L
   SendDataHeader(F("SET"));
   m_rDestination.print(Placename);
   m_rDestination.print('|');
-  m_rDestination.print(Latitude);
+  m_rDestination.print(Latitude, 7);
   m_rDestination.print('|');
-  m_rDestination.print(Longitude);
+  m_rDestination.print(Longitude, 7);
   SendDataTail();
 }
 
