@@ -30,6 +30,12 @@ void InterfacePanel::SetNumber(const char * ControlName, int nValue)
   m_rDestination.print(nValue);
   SendDataTail();
 }
+void InterfacePanel::SetNumber(const char * ControlName, float fValue, int nDecimal = 3)
+{
+  SendControlHeader(ControlName, F("Value"));
+  m_rDestination.print(fValue,nDecimal);
+  SendDataTail();
+}
 
 void InterfacePanel::SetListIndex(const char * ControlName, int nIndex)
 {
@@ -85,6 +91,13 @@ void InterfacePanel::SetNumber(const __FlashStringHelper * ControlName, int nVal
 {
   SendControlHeader(ControlName, F("Value"));
   m_rDestination.print(nValue);
+  SendDataTail();
+}
+
+void InterfacePanel::SetNumber(const __FlashStringHelper * ControlName, float fValue, int nDecimal = 3)
+{
+  SendControlHeader(ControlName, F("Value"));
+  m_rDestination.print(fValue,nDecimal);
   SendDataTail();
 }
 
