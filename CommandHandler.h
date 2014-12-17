@@ -1,4 +1,5 @@
 #pragma once
+#define __PROG_TYPES_COMPAT__
 #include <Arduino.h>
 #include <Stream.h>
 

@@ -1,3 +1,4 @@
+#define __PROG_TYPES_COMPAT__
 #include <avr/eeprom.h>
 #include <avr/crc16.h>
 
