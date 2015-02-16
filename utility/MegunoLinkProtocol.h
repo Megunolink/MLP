@@ -7,7 +7,7 @@ class MegunoLinkProtocol
   const void *m_ChannelName;
   const bool m_bFlashString;
 
-  const prog_char * const m_pfchContext;
+  const char * const m_pfchContext;
 
 protected:
   Print &m_rDestination;
