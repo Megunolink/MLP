@@ -7,8 +7,10 @@
 
 
 
+// Uncomment if you would like to use plotting channels
+// TimePlot MyPlot("Waveforms"); //"Waveforms" = the taget plotting channel (remember to select this in megunolink)
 
-TimePlot MyPlot("Waveforms"); //"Waveforms" = the taget plotting channel (remember to select this in megunolink)
+TimePlot MyPlot; //no channel selected
 
 void setup()
 {
