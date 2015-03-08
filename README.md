@@ -3,6 +3,7 @@ MLP
 
 An [Arduino library](http://www.megunolink.com/documentation/arduino-libraries/) for sending MegunoLink Pro packets to the various visualisers.
 Currently supports sending data to:
+
 * [XY-Plots](http://www.megunolink.com/documentation/plotting/)
 * [Time plots](http://www.megunolink.com/documentation/plotting/)
 * [Tables](http://www.megunolink.com/documentation/table/)
@@ -11,6 +12,7 @@ Currently supports sending data to:
 * [Message stream](http://www.megunolink.com/documentation/monitoring-data/)
 
 The library also supports:
+
 * A template for [storing data in the eeprom](http://www.megunolink.com/documentation/arduino-libraries/eepromstore/)
 * An exponential filter
 * A [command handler for serial commands](http://www.megunolink.com/documentation/arduino-libraries/serial-command-handler/)
@@ -31,7 +33,7 @@ use the library in your Arduino program, open the Property Manager (View&rarr;Ot
 
 1. Select the Arduino program's project in the Property Manager
 1. Click the "Add existing property sheet" on the Property Manager toolbar. 
-1. Browse to the library project and select the file named <library-project>.props
+1. Browse to the library project and select the file named MLPLib.props
 
 Now building the Arduino Program will also build the referenced libraries. The libraries will pick up the hardware settings (CPU, clock frequency etc) from the Arduino Program. This means if you have one 
 program targeting a Mega and another targeting the Uno, both can use the same Arduino Library project
