@@ -1,7 +1,7 @@
 MLP
 ===
 
-An Arduino library for sending MegunoLink Pro packets to the various visualisers.
+An [Arduino library](http://www.megunolink.com/documentation/arduino-libraries/) for sending MegunoLink Pro packets to the various visualisers.
 Currently supports sending data to:
 * [XY-Plots](http://www.megunolink.com/documentation/plotting/)
 * [Time plots](http://www.megunolink.com/documentation/plotting/)
@@ -10,4 +10,28 @@ Currently supports sending data to:
 * [Interface panel](http://www.megunolink.com/documentation/interface-panel/)
 * [Message stream](http://www.megunolink.com/documentation/monitoring-data/)
 
+The library also supports:
+* A template for storing data in the eeprom
+* An exponential filter
+* A [command handler for serial commands](http://www.megunolink.com/documentation/arduino-libraries/serial-command-handler/)
+* A command processor for dispatching commands
+* A circular buffer template
+* A class to make it easier to use the Arduino millis() timer
+
 Visit www.MegunoLink.com to download a free trial of [MegunoLink Pro](http://www.MegunoLink.com). 
+
+Arduino Installation
+--------------------
+Install the library into the `libraries` folder of your Arduino installation. 
+
+Visual Studio Installation
+--------------------------
+The library can also be used with our [Arduino Build Tool for Microsoft Visual Studio](http://www.megunolink.com/building-arduino-programs-with-microsoft-visual-studio/). To
+use the library in your Arduino program, open the Property Manager (View&rarr;Other Windows&rarr;Property Manager) then:
+1. Select the Arduino program's project in the Property Manager
+2. Click the "Add existing property sheet" on the Property Manager toolbar. 
+3. Browse to the library project and select the file named <library-project>.props
+
+Now building the Arduino Program will also build the referenced libraries. The libraries will pick up the hardware settings (CPU, clock frequency etc) from the Arduino Program. This means if you have one 
+program targeting a Mega and another targeting the Uno, both can use the same Arduino Library project
+for common code. 
