@@ -28,10 +28,11 @@ Visual Studio Installation
 --------------------------
 The library can also be used with our [Arduino Build Tool for Microsoft Visual Studio](http://www.megunolink.com/building-arduino-programs-with-microsoft-visual-studio/). To
 use the library in your Arduino program, open the Property Manager (View&rarr;Other Windows&rarr;Property Manager) then:
+
 1. Select the Arduino program's project in the Property Manager
-2. Click the "Add existing property sheet" on the Property Manager toolbar. 
-3. Browse to the library project and select the file named <library-project>.props
+1. Click the "Add existing property sheet" on the Property Manager toolbar. 
+1. Browse to the library project and select the file named <library-project>.props
 
 Now building the Arduino Program will also build the referenced libraries. The libraries will pick up the hardware settings (CPU, clock frequency etc) from the Arduino Program. This means if you have one 
 program targeting a Mega and another targeting the Uno, both can use the same Arduino Library project
-for common code. 
+for common code.
