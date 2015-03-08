@@ -11,12 +11,12 @@ Currently supports sending data to:
 * [Message stream](http://www.megunolink.com/documentation/monitoring-data/)
 
 The library also supports:
-* A template for storing data in the eeprom
+* A template for [storing data in the eeprom](http://www.megunolink.com/documentation/arduino-libraries/eepromstore/)
 * An exponential filter
 * A [command handler for serial commands](http://www.megunolink.com/documentation/arduino-libraries/serial-command-handler/)
 * A command processor for dispatching commands
 * A circular buffer template
-* A class to make it easier to use the Arduino millis() timer
+* A class to make it easier to write [timer driven code](http://www.megunolink.com/documentation/arduino-libraries/arduino-timer/) with Arduino millis() timer
 
 Visit www.MegunoLink.com to download a free trial of [MegunoLink Pro](http://www.MegunoLink.com). 
 

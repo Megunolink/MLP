@@ -5,14 +5,14 @@ ArduinoTimer::ArduinoTimer()
   m_uStartTime = 0;
 }
 
-bool ArduinoTimer::TimePassed_Milliseconds(uint32_t uPeriod, bool bAtuoReset)
+bool ArduinoTimer::TimePassed_Milliseconds(uint32_t uPeriod, bool bAutoReset)
 {
   uint32_t uNow;
 
   uNow = millis();
   if (uNow - m_uStartTime >= uPeriod)
   {
-    if (bAtuoReset)
+    if (bAutoReset)
       m_uStartTime = uNow;
     return true;
   }
@@ -20,14 +20,14 @@ bool ArduinoTimer::TimePassed_Milliseconds(uint32_t uPeriod, bool bAtuoReset)
   return false;
 }
 
-bool ArduinoTimer::TimePassed_Seconds(uint16_t uPeriod, bool bAtuoReset)
+bool ArduinoTimer::TimePassed_Seconds(uint16_t uPeriod, bool bAutoReset)
 {
   uint32_t uNow;
 
   uNow = millis();
   if ((uNow - m_uStartTime)/1000 >= uPeriod)
   {
-    if (bAtuoReset)
+    if (bAutoReset)
       m_uStartTime = uNow;
     return true;
   }
