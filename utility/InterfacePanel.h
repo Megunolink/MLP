@@ -30,6 +30,12 @@ public:
   void SetCheck(const char * ControlName, bool bChecked = true);
   void SetCheck(const __FlashStringHelper * ControlName, bool bChecked = true);
 
+  void ShowControl(const char * ControlName);
+  void HideControl(const char * ControlName);
+
+  void ShowControl(const __FlashStringHelper * ControlName);
+  void HideControl(const __FlashStringHelper * ControlName);
+
   void ClearCheck(const char * ControlName);
   void ClearCheck(const __FlashStringHelper * ControlName);
 

@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<meguno-link-project version="1.0">
+  <culture>en-NZ</culture>
+  <policies>
+    <enable>false</enable>
+    <protect>false</protect>
+    <application>
+      <allow-tool-setup>true</allow-tool-setup>
+      <allow-reporting>true</allow-reporting>
+      <title-text />
+    </application>
+    <visualizers>
+      <allow-creation>true</allow-creation>
+      <allow-close>true</allow-close>
+      <allow-source-selection>true</allow-source-selection>
+      <allow-channel-selection>true</allow-channel-selection>
+      <show-source-selector>true</show-source-selector>
+      <show-examples-button>true</show-examples-button>
+      <show-help-button>true</show-help-button>
+      <custom>
+        <policy id="DataTable">
+          <allow-source-selection>Inherit</allow-source-selection>
+          <allow-channel-selection>Inherit</allow-channel-selection>
+          <allow-send>true</allow-send>
+        </policy>
+        <policy id="FileWriter">
+          <allow-source-selection>Inherit</allow-source-selection>
+          <allow-channel-selection>Inherit</allow-channel-selection>
+          <allow-path-change>true</allow-path-change>
+          <allow-edit-timestamp>true</allow-edit-timestamp>
+        </policy>
+        <policy id="LogToFile">
+          <allow-source-selection>Inherit</allow-source-selection>
+          <allow-channel-selection>Inherit</allow-channel-selection>
+          <allow-path-change>true</allow-path-change>
+          <allow-edit-timestamp>true</allow-edit-timestamp>
+        </policy>
+        <policy id="MessageStreamViewer">
+          <allow-source-selection>Inherit</allow-source-selection>
+          <allow-channel-selection>Inherit</allow-channel-selection>
+          <allow-send>true</allow-send>
+          <allow-edit-wordwrap>true</allow-edit-wordwrap>
+          <allow-edit-timestamp>true</allow-edit-timestamp>
+        </policy>
+        <policy id="SerialMonitor">
+          <allow-source-selection>Inherit</allow-source-selection>
+          <allow-channel-selection>Inherit</allow-channel-selection>
+          <allow-send>true</allow-send>
+          <allow-edit-wordwrap>true</allow-edit-wordwrap>
+          <allow-edit-timestamp>true</allow-edit-timestamp>
+        </policy>
+        <policy id="SourceManager">
+          <allow-source-selection>Inherit</allow-source-selection>
+          <allow-channel-selection>Inherit</allow-channel-selection>
+          <allow-edit-baud>true</allow-edit-baud>
+          <allow-edit-advanced>true</allow-edit-advanced>
+          <allow-delete>true</allow-delete>
+          <allow-edit-autoconnect>true</allow-edit-autoconnect>
+          <allow-new-source>true</allow-new-source>
+          <allow-edit-name>true</allow-edit-name>
+          <allow-reset>true</allow-reset>
+          <allow-udp-port-change>true</allow-udp-port-change>
+        </policy>
+        <policy id="InterfacePanel">
+          <allow-source-selection>Inherit</allow-source-selection>
+          <allow-channel-selection>Inherit</allow-channel-selection>
+          <allow-designer>true</allow-designer>
+        </policy>
+        <policy id="mlpChart">
+          <allow-source-selection>Inherit</allow-source-selection>
+          <allow-channel-selection>Inherit</allow-channel-selection>
+          <allow-edit-properties>true</allow-edit-properties>
+          <allow-edit-series-properties>true</allow-edit-series-properties>
+        </policy>
+        <policy id="ScatterPlotter">
+          <allow-source-selection>Inherit</allow-source-selection>
+          <allow-channel-selection>Inherit</allow-channel-selection>
+          <allow-edit-properties>true</allow-edit-properties>
+          <allow-edit-series-properties>true</allow-edit-series-properties>
+        </policy>
+      </custom>
+    </visualizers>
+  </policies>
+  <data>
+    <properties>
+      <title />
+      <description />
+      <image-48 />
+    </properties>
+    <shared-visualizer-data>
+      <data id="SerialMonitorData">
+        <send-cr-default>true</send-cr-default>
+        <send-lf-default>true</send-lf-default>
+        <word-wrap-default>true</word-wrap-default>
+        <include-date>false</include-date>
+        <include-time>false</include-time>
+        <include-custom>false</include-custom>
+        <custom-time-stamp />
+        <clear-on-send>false</clear-on-send>
+        <message-history />
+      </data>
+      <data id="UploadManagerData">
+        <verify>true</verify>
+        <uploads />
+      </data>
+    </shared-visualizer-data>
+  </data>
+  <serial-sources>
+    <default>1</default>
+    <sources>
+      <source type="SharedRS232Port">
+        <id>1</id>
+        <is-programmer>true</is-programmer>
+        <display-name>Serial Connection</display-name>
+        <auto-connect>false</auto-connect>
+        <port-name>
+          <type>Fixed</type>
+          <port>COM60</port>
+        </port-name>
+        <baud-rate>9600</baud-rate>
+        <data-bits>8</data-bits>
+        <handshaking>None</handshaking>
+        <parity>None</parity>
+        <stop-bits>One</stop-bits>
+      </source>
+    </sources>
+  </serial-sources>
+  <windows>
+    <window>
+      <position left="1912" top="-8" width="1936" height="1216" state="Maximized" />
+      <DockPanel FormatVersion="1.0" DockLeftPortion="0.15" DockRightPortion="0.0970031545741325" DockTopPortion="0.25" DockBottomPortion="0.25" ActiveDocumentPane="2" ActivePane="2">
+        <Contents Count="5">
+          <Content ID="0" PersistString="VisualizerToolbox" AutoHidePortion="0.0970031545741325" IsHidden="False" IsFloat="False" />
+          <Content ID="1" PersistString="Startup" AutoHidePortion="0.25" IsHidden="False" IsFloat="False">
+            <ShowSourceInTitle>true</ShowSourceInTitle>
+            <ShowPortInTitle>false</ShowPortInTitle>
+            <SourceId>1</SourceId>
+            <TabTitle>Startup</TabTitle>
+          </Content>
+          <Content ID="2" PersistString="SourceManager" AutoHidePortion="0.25" IsHidden="False" IsFloat="False">
+            <ShowSourceInTitle>false</ShowSourceInTitle>
+            <ShowPortInTitle>true</ShowPortInTitle>
+            <SourceId>1</SourceId>
+            <TabTitle>Connection Manager</TabTitle>
+          </Content>
+          <Content ID="3" PersistString="SerialMonitor" AutoHidePortion="0.25" IsHidden="False" IsFloat="False">
+            <ShowSourceInTitle>true</ShowSourceInTitle>
+            <ShowPortInTitle>false</ShowPortInTitle>
+            <InsertTimestamp>false</InsertTimestamp>
+            <WordWrap>true</WordWrap>
+            <IncludeDate>false</IncludeDate>
+            <IncludeTime>false</IncludeTime>
+            <IncludeCustom>false</IncludeCustom>
+            <CustomTimeStamp />
+            <SourceId>1</SourceId>
+            <TabTitle>Monitor</TabTitle>
+          </Content>
+          <Content ID="4" PersistString="InterfacePanel" AutoHidePortion="0.25" IsHidden="False" IsFloat="False">
+            <ShowSourceInTitle>true</ShowSourceInTitle>
+            <ShowPortInTitle>false</ShowPortInTitle>
+            <design type="InterfacePanel">
+              <children child-list="Controls">
+                <component type="System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="Label3">
+                  <properties>
+                    <property name="AutoSize">True</property>
+                    <property name="Text">Send {UI|SET|pbRed.Visible=False} to hide the red picture box.</property>
+                    <property name="Font">Courier New, 9.75pt</property>
+                    <property name="Location">3, 125</property>
+                    <property name="Name">Label3</property>
+                    <property name="Size">503, 16</property>
+                    <property name="TabIndex">2</property>
+                  </properties>
+                </component>
+                <component type="System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="Label2">
+                  <properties>
+                    <property name="AutoSize">True</property>
+                    <property name="Text">Send {UI|SET|pbRed.Visible=True} to show the red picture box.</property>
+                    <property name="Font">Courier New, 9.75pt</property>
+                    <property name="Location">3, 109</property>
+                    <property name="Name">Label2</property>
+                    <property name="Size">495, 16</property>
+                    <property name="TabIndex">2</property>
+                  </properties>
+                </component>
+                <component type="System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="Label1">
+                  <properties>
+                    <property name="Text">Picture Box Visibility</property>
+                    <property name="Font">Microsoft Sans Serif, 14.25pt, style=Bold</property>
+                    <property name="ForeColor">Blue</property>
+                    <property name="Location">0, 0</property>
+                    <property name="Name">Label1</property>
+                    <property name="Size">277, 30</property>
+                    <property name="TabIndex">1</property>
+                  </properties>
+                </component>
+                <component type="IPControlLibrary.Controls.IPPictureBox, IPControlLibrary, Version=1.2.1505.1005, Culture=neutral, PublicKeyToken=null" name="pbGreen">
+                  <properties>
+                    <property name="TabStop">False</property>
+                    <property name="TabIndex">0</property>
+                    <property name="BackColor">0, 192, 0</property>
+                    <property name="Location">109, 33</property>
+                    <property name="Name">pbGreen</property>
+                    <property name="Size">100, 64</property>
+                  </properties>
+                </component>
+                <component type="IPControlLibrary.Controls.IPPictureBox, IPControlLibrary, Version=1.2.1505.1005, Culture=neutral, PublicKeyToken=null" name="pbRed">
+                  <properties>
+                    <property name="TabStop">False</property>
+                    <property name="TabIndex">0</property>
+                    <property name="BackColor">Red</property>
+                    <property name="Location">3, 33</property>
+                    <property name="Name">pbRed</property>
+                    <property name="Size">100, 64</property>
+                  </properties>
+                </component>
+              </children>
+              <properties>
+                <property name="Name">UserControl1</property>
+                <property name="Size">700, 476</property>
+              </properties>
+              <components>
+                <component type="IPControlLibrary.Protocols.MLPMessageProcessor.MLPUIMessageProcessor, IPControlLibrary, Version=1.2.1505.1005, Culture=neutral, PublicKeyToken=null" name="MLPUIMessageProcessor1">
+                  <properties />
+                </component>
+              </components>
+            </design>
+            <values>
+              <value name="pbGreen">
+                <property name="Visible"><![CDATA[True]]></property>
+              </value>
+              <value name="pbRed">
+                <property name="Visible"><![CDATA[False]]></property>
+              </value>
+            </values>
+            <SourceId>1</SourceId>
+            <TabTitle>Interface Panel</TabTitle>
+          </Content>
+        </Contents>
+        <Panes Count="4">
+          <Pane ID="0" DockState="DockRightAutoHide" ActiveContent="0">
+            <Contents Count="1">
+              <Content ID="0" RefID="0" />
+            </Contents>
+          </Pane>
+          <Pane ID="1" DockState="Document" ActiveContent="4">
+            <Contents Count="2">
+              <Content ID="0" RefID="4" />
+              <Content ID="1" RefID="1" />
+            </Contents>
+          </Pane>
+          <Pane ID="2" DockState="Document" ActiveContent="3">
+            <Contents Count="1">
+              <Content ID="0" RefID="3" />
+            </Contents>
+          </Pane>
+          <Pane ID="3" DockState="Document" ActiveContent="2">
+            <Contents Count="1">
+              <Content ID="0" RefID="2" />
+            </Contents>
+          </Pane>
+        </Panes>
+        <DockWindows>
+          <DockWindow ID="0" DockState="Document" ZOrderIndex="0">
+            <NestedPanes Count="3">
+              <Pane ID="0" RefID="1" PrevPane="-1" Alignment="Right" Proportion="0.5" />
+              <Pane ID="1" RefID="2" PrevPane="1" Alignment="Right" Proportion="0.465736990958013" />
+              <Pane ID="2" RefID="3" PrevPane="2" Alignment="Top" Proportion="0.190582959641256" />
+            </NestedPanes>
+          </DockWindow>
+          <DockWindow ID="1" DockState="DockLeft" ZOrderIndex="1">
+            <NestedPanes Count="0" />
+          </DockWindow>
+          <DockWindow ID="2" DockState="DockRight" ZOrderIndex="2">
+            <NestedPanes Count="1">
+              <Pane ID="0" RefID="0" PrevPane="-1" Alignment="Bottom" Proportion="0.5" />
+            </NestedPanes>
+          </DockWindow>
+          <DockWindow ID="3" DockState="DockTop" ZOrderIndex="3">
+            <NestedPanes Count="0" />
+          </DockWindow>
+          <DockWindow ID="4" DockState="DockBottom" ZOrderIndex="4">
+            <NestedPanes Count="0" />
+          </DockWindow>
+        </DockWindows>
+        <FloatWindows Count="0" />
+      </DockPanel>
+    </window>
+  </windows>
+  <reporting>
+    <generate-scheduled-reports>false</generate-scheduled-reports>
+    <destinations>
+      <report-to-folder>
+        <last-report-number>0</last-report-number>
+        <folder-path />
+        <use-sub-folder>true</use-sub-folder>
+        <sub-folder-pattern>Report {Seq}</sub-folder-pattern>
+        <enabled>true</enabled>
+        <period>PT1H</period>
+        <last-sent>0001-01-01T00:00:00</last-sent>
+      </report-to-folder>
+    </destinations>
+  </reporting>
+</meguno-link-project>

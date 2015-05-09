@@ -172,3 +172,31 @@ void InterfacePanel::SendControlHeader(const __FlashStringHelper *ControlName, c
   m_rDestination.print('=');
 }
 
+void InterfacePanel::ShowControl( const char * ControlName )
+{
+  SendControlHeader(ControlName, F("Visible"));
+  m_rDestination.print(F("True"));
+  SendDataTail();
+}
+
+void InterfacePanel::ShowControl( const __FlashStringHelper * ControlName )
+{
+  SendControlHeader(ControlName, F("Visible"));
+  m_rDestination.print(F("True"));
+  SendDataTail();
+}
+
+void InterfacePanel::HideControl( const char * ControlName )
+{
+  SendControlHeader(ControlName, F("Visible"));
+  m_rDestination.print(F("False"));
+  SendDataTail();
+}
+
+void InterfacePanel::HideControl( const __FlashStringHelper * ControlName )
+{
+  SendControlHeader(ControlName, F("Visible"));
+  m_rDestination.print(F("False"));
+  SendDataTail();
+}
+
