@@ -23,7 +23,10 @@ public:
 
   int NextParameterAsInteger(int nDefault = -1);
   long NextParameterAsLong(long nDefault = -1);
-  unsigned long NextParameterAsUnsignedLong(unsigned long nDefault = -1);
   double NextParameterAsDouble(double fDefault = 0.0);
+  // strtoul, used by NextParameterAsUnsignedLong, isn't supported on the ESP8266 currently
+#if !defined(ARDUINO_ARCH_ESP8266)
+  unsigned long NextParameterAsUnsignedLong(unsigned long nDefault = -1);
+#endif
 };
 

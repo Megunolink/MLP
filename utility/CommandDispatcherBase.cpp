@@ -1,5 +1,9 @@
 #include "CommandDispatcherBase.h"
+#if defined(ARDUINO_ARCH_ESP8266)
+#include <pgmspace.h>
+#else
 #include <avr/pgmspace.h>
+#endif
 
 using namespace MLP;
 

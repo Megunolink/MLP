@@ -1,6 +1,46 @@
 #define __PROG_TYPES_COMPAT__
+
+#if defined(ARDUINO_ARCH_ESP8266)
+
+// Create wrapper for ESP8266 eeprom access to model AVR functions
+#include <EEPROM.h> // Arduino EEPROM library
+void eeprom_write_word(int address, uint16_t uValue)
+{
+  EEPROM.put(address, uValue);
+  EEPROM.commit();
+}
+
+void eeprom_write_block(int address, void const * pData, size_t szData)
+{
+  uint8_t const *pSource = (uint8_t const *)pData;
+  while (szData--)
+  {
+    EEPROM.write(address++, *pSource++);
+  }
+  EEPROM.commit();
+}
+
+void eeprom_read_block(int address, void * pData, size_t szData)
+{
+  uint8_t *pSource = (uint8_t *)pData;
+  while (szData--)
+  {
+    *pSource++ = EEPROM.read(address++);
+  }
+}
+
+// #include <crc16.h> Not present for ESP8266
+uint16_t _crc16_update(uint16_t uChecksum, uint8_t uValue)
+{
+  return uChecksum + uValue;
+}
+#define EEMEM 
+
+
+#else
 #include <avr/eeprom.h>
 #include <avr/crc16.h>
+#endif
 
 template <class TData> class EEPROMStore
 {

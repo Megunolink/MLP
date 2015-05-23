@@ -53,6 +53,8 @@ long CommandParameter::NextParameterAsLong( long nDefault /*= -1*/ )
   return atol(pchParameter);
 }
 
+// strtoul isn't supported on the ESP8266 currently
+#if !defined(ARDUINO_ARCH_ESP8266)
 unsigned long CommandParameter::NextParameterAsUnsignedLong( unsigned long nDefault /*= -1*/ )
 {
   const char *pchParameter = NextParameter();
@@ -61,6 +63,7 @@ unsigned long CommandParameter::NextParameterAsUnsignedLong( unsigned long nDefa
 
   return strtoul(pchParameter, NULL, 10);
 }
+#endif
 
 double CommandParameter::NextParameterAsDouble( double fDefault /*= 0.0*/ )
 {
