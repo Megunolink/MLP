@@ -7,7 +7,7 @@ namespace MLP
 {
   struct CommandCallback 
   {
-    const prog_char *m_strCommand;
+    const char *m_strCommand PROGMEM;
     void (*m_Callback)(CommandParameter &rParameters);
   };
 
@@ -33,6 +33,6 @@ namespace MLP
 
   protected:
     enum EConstants { NO_MATCH = 0 };
-    uint8_t MatchCommand(const prog_char *pchCommand, const char *pchTest) const;
+    uint8_t MatchCommand(PROGMEM const char *pchCommand, const char *pchTest) const;
   };
 }

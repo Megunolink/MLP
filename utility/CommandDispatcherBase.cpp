@@ -1,9 +1,5 @@
 #include "CommandDispatcherBase.h"
-#if defined(ARDUINO_ARCH_ESP8266)
-#include <pgmspace.h>
-#else
 #include <avr/pgmspace.h>
-#endif
 
 using namespace MLP;
 
@@ -20,7 +16,7 @@ bool CommandDispatcherBase::AddCommand( const __FlashStringHelper *pCommand, voi
   if (m_uLastCommand < m_uMaxCommands)
   {
     m_pCommands[m_uLastCommand].m_Callback = CallbackFunction;
-    m_pCommands[m_uLastCommand].m_strCommand = (const prog_char*)pCommand;
+    m_pCommands[m_uLastCommand].m_strCommand = (PROGMEM const char* )pCommand;
     ++m_uLastCommand;
     return true;
   }
@@ -68,7 +64,7 @@ void CommandDispatcherBase::DispatchCommand( char *pchMessage, Print &rSource ) 
     (*m_fnDefaultHandler)();
 }
 
-uint8_t CommandDispatcherBase::MatchCommand( const prog_char *pchCommand, const char *pchTest ) const
+uint8_t CommandDispatcherBase::MatchCommand( PROGMEM const char *pchCommand, const char *pchTest ) const
 {
   char chCommand, chTest;
   uint8_t uParameterStart = 0;
