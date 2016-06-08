@@ -19,8 +19,12 @@
         Turns an led off.
 
    The program folder also contains a MegunoLink project, with an Interface
-   Panel to control the turtle counter. Visit www.MegunoLink.com to
-   download MegunoLink.
+   Panel to control the turtle counter. 
+   
+   
+   Visit www.MegunoLink.com to download MegunoLink.
+   Visit http://www.megunolink.com/documentation/arduino-libraries/serial-command-handler/
+   for documentation on the serial command handler. 
    ************************************************************************ */
 
 #include "CommandHandler.h" // The serial command handler is defined in here. 

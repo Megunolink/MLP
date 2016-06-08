@@ -23,9 +23,7 @@ bool CommandDispatcherBase::AddCommand( const __FlashStringHelper *pCommand, voi
     return true;
   }
 
-#if defined(DEBUG)
-  Serial.println(F("CommandDispatcherBase::AddCommand: No space for command"));
-#endif
+  Serial.println(F("AddCommand: full"));
 
   return false; // too many commands stored already. 
 }
@@ -146,7 +144,13 @@ void CommandDispatcherBase::DispatchCommand( char *pchMessage, Print &rSource ) 
 
   // No command matched. 
   if (m_fnDefaultHandler != NULL)
+  {
     (*m_fnDefaultHandler)();
+  }
+  else
+  {
+    Serial.println(F("Unknown command"));
+  }
 }
 
 uint8_t CommandDispatcherBase::MatchCommand( PROGMEM const char *pchCommand, const char *pchTest ) const
