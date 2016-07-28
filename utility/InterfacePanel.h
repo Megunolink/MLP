@@ -10,6 +10,8 @@ public:
   InterfacePanel(const __FlashStringHelper *channelName, Print &rDestination = Serial);
 
   void SetText(const char * ControlName, const char * Value);
+  void SetText(const char * ControlName, unsigned long Value);
+  void SetText(const char * ControlName, int Value);
   void SetText(const __FlashStringHelper * ControlName, const char * Value);
   void SetText(const __FlashStringHelper * ControlName, const __FlashStringHelper * Value);
 

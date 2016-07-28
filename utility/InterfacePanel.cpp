@@ -1,18 +1,32 @@
 #include "InterfacePanel.h"
 
-InterfacePanel::InterfacePanel( const char *channelName /*= NULL*/, Print &rDestination  )
+InterfacePanel::InterfacePanel(const char *channelName /*= NULL*/, Print &rDestination)
   : MegunoLinkProtocol(F("UI"), channelName, rDestination)
 {
 
 }
 
-InterfacePanel::InterfacePanel(const __FlashStringHelper *channelName, Print &rDestination )
+InterfacePanel::InterfacePanel(const __FlashStringHelper *channelName, Print &rDestination)
   : MegunoLinkProtocol(F("UI"), channelName, rDestination)
 {
 
 }
 
 void InterfacePanel::SetText(const char * ControlName, const char * Value)
+{
+  SendControlHeader(ControlName, F("Text"));
+  m_rDestination.print(Value);
+  SendDataTail();
+}
+
+void InterfacePanel::SetText(const char * ControlName, unsigned long Value)
+{
+  SendControlHeader(ControlName, F("Text"));
+  m_rDestination.print(Value);
+  SendDataTail();
+}
+
+void InterfacePanel::SetText(const char * ControlName, int Value)
 {
   SendControlHeader(ControlName, F("Text"));
   m_rDestination.print(Value);
@@ -33,7 +47,7 @@ void InterfacePanel::SetNumber(const char * ControlName, int nValue)
 void InterfacePanel::SetNumber(const char * ControlName, float fValue, int nDecimal)
 {
   SendControlHeader(ControlName, F("Value"));
-  m_rDestination.print(fValue,nDecimal);
+  m_rDestination.print(fValue, nDecimal);
   SendDataTail();
 }
 
@@ -97,7 +111,7 @@ void InterfacePanel::SetNumber(const __FlashStringHelper * ControlName, int nVal
 void InterfacePanel::SetNumber(const __FlashStringHelper * ControlName, float fValue, int nDecimal)
 {
   SendControlHeader(ControlName, F("Value"));
-  m_rDestination.print(fValue,nDecimal);
+  m_rDestination.print(fValue, nDecimal);
   SendDataTail();
 }
 
@@ -122,21 +136,21 @@ void InterfacePanel::SetText(const __FlashStringHelper * ControlName, const __Fl
   SendDataTail();
 }
 
-void InterfacePanel::CallCommand( const char* CommandName )
+void InterfacePanel::CallCommand(const char* CommandName)
 {
   SendDataHeader(F("CMD"));
   m_rDestination.print(CommandName);
   SendDataTail();
 }
 
-void InterfacePanel::CallCommand( const __FlashStringHelper* CommandName )
+void InterfacePanel::CallCommand(const __FlashStringHelper* CommandName)
 {
   SendDataHeader(F("CMD"));
   m_rDestination.print(CommandName);
   SendDataTail();
 }
 
-void InterfacePanel::GetValue( const char* ControlName, const char* PropertyName )
+void InterfacePanel::GetValue(const char* ControlName, const char* PropertyName)
 {
   SendDataHeader(F("GET"));
   m_rDestination.print(ControlName);
@@ -145,7 +159,7 @@ void InterfacePanel::GetValue( const char* ControlName, const char* PropertyName
   SendDataTail();
 }
 
-void InterfacePanel::GetValue( const __FlashStringHelper* ControlName, const __FlashStringHelper* PropertyName )
+void InterfacePanel::GetValue(const __FlashStringHelper* ControlName, const __FlashStringHelper* PropertyName)
 {
   SendDataHeader(F("GET"));
   m_rDestination.print(ControlName);
@@ -172,28 +186,28 @@ void InterfacePanel::SendControlHeader(const __FlashStringHelper *ControlName, c
   m_rDestination.print('=');
 }
 
-void InterfacePanel::ShowControl( const char * ControlName )
+void InterfacePanel::ShowControl(const char * ControlName)
 {
   SendControlHeader(ControlName, F("Visible"));
   m_rDestination.print(F("True"));
   SendDataTail();
 }
 
-void InterfacePanel::ShowControl( const __FlashStringHelper * ControlName )
+void InterfacePanel::ShowControl(const __FlashStringHelper * ControlName)
 {
   SendControlHeader(ControlName, F("Visible"));
   m_rDestination.print(F("True"));
   SendDataTail();
 }
 
-void InterfacePanel::HideControl( const char * ControlName )
+void InterfacePanel::HideControl(const char * ControlName)
 {
   SendControlHeader(ControlName, F("Visible"));
   m_rDestination.print(F("False"));
   SendDataTail();
 }
 
-void InterfacePanel::HideControl( const __FlashStringHelper * ControlName )
+void InterfacePanel::HideControl(const __FlashStringHelper * ControlName)
 {
   SendControlHeader(ControlName, F("Visible"));
   m_rDestination.print(F("False"));
