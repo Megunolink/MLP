@@ -1,5 +1,7 @@
 #include <Arduino.h>
 #include "DeviceAddress.h"
+
+#if defined(__AVR__) // Only AVR devices implement EEPROMs for Arduino. 
 #include <avr/eeprom.h>
 
 uint32_t GetDeviceAddress(uint8_t const * pLocation /*= DEFAULT_DEVICE_ID_ADDRESS*/)
@@ -8,6 +10,7 @@ uint32_t GetDeviceAddress(uint8_t const * pLocation /*= DEFAULT_DEVICE_ID_ADDRES
   eeprom_read_block(&uId, pLocation, sizeof(uId));
   return uId;
 }
+#endif
 
 
 

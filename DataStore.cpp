@@ -1,5 +1,5 @@
 #include "DataStore.h"
-#include <avr\crc16.h>
+#include "utility\CRC.h"
 
 uint8_t DataStore::s_uNextId = 0;
 

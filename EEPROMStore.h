@@ -1,4 +1,9 @@
 #define __PROG_TYPES_COMPAT__
+
+// Only supported for AVR micros because we use the special EEMEM directive
+// to automatically allocated memory in the eeprom. 
+#if defined(__AVR__)
+
 #include <avr/eeprom.h>
 #include <avr/crc16.h>
 
@@ -78,3 +83,5 @@ private:
     return uChecksum;
   }
 };
+
+#endif
