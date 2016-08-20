@@ -21,12 +21,13 @@ CountStored	KEYWORD2
 MaxSize	KEYWORD2
 GetTailIndex	KEYWORD2
 Dump	KEYWORD2
-CForwardIterator	KEYWORD1
+ForwardIterator	KEYWORD1
 CurrentValue	KEYWORD2
 CurrentIndex	KEYWORD2
 Next	KEYWORD2
 AtEnd	KEYWORD2
 Previous	KEYWORD2
+ReverseIterator KEYWORD1
 CommandHandler	KEYWORD1
 Process	KEYWORD2
 AddCommand	KEYWORD2

@@ -1,5 +1,5 @@
 /* *****************************************************************************
-*  A templated circular buffer. 
+*  A templated circular buffer.
 *  ***************************************************************************** */
 
 #pragma once
@@ -32,7 +32,7 @@ public:
   }
 
   bool IsEmpty()
-    /* Returns true if no data has been stored in the buffer, 
+    /* Returns true if no data has been stored in the buffer,
     and false if at least one value has been stored. */
   {
     return m_nStored == 0;
@@ -70,18 +70,18 @@ public:
     memcpy(&m_aBuffer[m_nHead], pData, sizeof(T));
   }
 
-  T *Head()
-    /* A pointer to the last value stored in the buffer. 
+  T &Head()
+    /* A pointer to the last value stored in the buffer.
     Only valid if the buffer is not empty. */
   {
-    return m_aBuffer + m_nHead;
+    return *(m_aBuffer + m_nHead);
   }
 
-  T *Tail()
-    /* A pointer to the first value stored in the buffer. Only 
+  T &Tail()
+    /* A pointer to the first value stored in the buffer. Only
     valid if the buffer is not empty. */
   {
-    return m_aBuffer + (m_nHead + MAX_ENTRIES - (m_nStored-1)) % MAX_ENTRIES;
+    return *(m_aBuffer + (m_nHead + MAX_ENTRIES - (m_nStored - 1)) % MAX_ENTRIES);
   }
 
   void PopTail()
@@ -98,8 +98,8 @@ public:
 
 
   void Clear()
-    /* Empties the circular buffer. The old data is 
-    still present, but iterators and count will 
+    /* Empties the circular buffer. The old data is
+    still present, but iterators and count will
     ignore it. */
   {
     m_nStored = 0;
@@ -121,12 +121,12 @@ public:
 
   uint16_t GetTailIndex() const
   {
-    return  (m_nHead + MAX_ENTRIES - (m_nStored-1)) % MAX_ENTRIES;
+    return  (m_nHead + MAX_ENTRIES - (m_nStored - 1)) % MAX_ENTRIES;
   }
 
   void Dump(Print &rDestination)
     /* Writes the current content of the serial buffer to a
-    serial stream. The values from teh buffer are written 
+    serial stream. The values from teh buffer are written
     in the order stored. */
   {
     for (int i = 0; i < MAX_ENTRIES; ++i)
@@ -142,12 +142,13 @@ public:
     rDestination.println(m_nStored);
   }
 
-  class CForwardIterator
+
+  class ForwardIterator
     /* Class to iterate through the circular buffer starting at the tail
     and ending at the head. */
   {
     // The buffer we iterate through. 
-    const CircularBuffer *m_pBuffer;
+    const CircularBuffer &m_rBuffer;
 
     // Buffer index at the current position. 
     int m_nCurrent;
@@ -157,19 +158,19 @@ public:
     int m_nRead;
 
   public:
-    CForwardIterator(const CircularBuffer *pBuffer) : m_pBuffer(pBuffer)
+    ForwardIterator(const CircularBuffer &rBuffer) : m_rBuffer(rBuffer)
     {
-      m_nCurrent = (pBuffer->m_nHead + pBuffer->MaxSize() - (pBuffer->CountStored()-1)) % pBuffer->MaxSize();
+      m_nCurrent = (rBuffer.m_nHead + rBuffer.MaxSize() - (rBuffer.CountStored() - 1)) % rBuffer.MaxSize();
       m_nRead = 0;
     }
 
-    const T *CurrentValue()
-      /* Returns pointer to the current value. The value cannot
-      be modified. Cast away the const iff the function you're 
+    const T &CurrentValue()
+      /* Returns the current value. The value cannot
+      be modified. Cast away the const iff the function you're
       using doesn't modify the value, but hasn't been declared
       correctly! */
     {
-      return m_pBuffer->m_aBuffer + m_nCurrent;
+      return *(m_rBuffer.m_aBuffer + m_nCurrent);
     }
 
     int CurrentIndex()
@@ -178,8 +179,13 @@ public:
       return m_nCurrent;
     }
 
+    int ItemNumber()
+    {
+      return m_nRead;
+    }
+
     void Next()
-      /* Moves the iterator to the next position in the buffer. 
+      /* Moves the iterator to the next position in the buffer.
       If all the values have been read out, the iterator doesn't
       move. If there are no values in the buffer, the iterator
       doesn't move. */
@@ -196,13 +202,13 @@ public:
       stepped through by the iterator. This won't work if values
       have been added to the buffer since the iterator was created. */
     {
-      return m_nRead == m_pBuffer->m_nStored;
+      return m_nRead == m_rBuffer.m_nStored;
     }
   };
 
-  class CReverseIterator
+  class ReverseIterator
     /* Class to iterate through the circular buffer starting at the head
-    and ending at the tail. 
+    and ending at the tail.
     Note that the iterator does not track changes to the buffer. So
     if the buffer is modified after the iterator is created,
     bad things will happen. This includes not returning the
@@ -219,21 +225,21 @@ public:
     int m_nRead;
 
   public:
-    CReverseIterator(CircularBuffer *pBuffer) : m_pBuffer(pBuffer)
+    ReverseIterator(const CircularBuffer &rBuffer) : m_pBuffer(&rBuffer)
       /* Initializes the iterator to begin at the current head
       position in buffer. */
     {
-      m_nCurrent = pBuffer->m_nHead;
+      m_nCurrent = m_pBuffer->m_nHead;
       m_nRead = 0;
     }
 
-    const T *CurrentValue()
+    const T &CurrentValue()
       /* Returns pointer to the current value. The value cannot
-      be modified. Cast away the const iff the function you're 
+      be modified. Cast away the const iff the function you're
       using doesn't modify the value, but hasn't been declared
       correctly! */
     {
-      return m_pBuffer->m_aBuffer + m_nCurrent;
+      return *(m_pBuffer->m_aBuffer + m_nCurrent);
     }
 
     int CurrentIndex()
@@ -242,8 +248,13 @@ public:
       return m_nCurrent;
     }
 
+    int ItemNumber()
+    {
+      return m_nRead;
+    }
+
     void Previous()
-      /* Moves the iterator to the previous position in the buffer. 
+      /* Moves the iterator to the previous position in the buffer.
       If all the values have been read out, the iterator doesn't
       move. If there are no values in the buffer, the iterator
       doesn't move. */
@@ -263,5 +274,5 @@ public:
       return m_nRead == m_pBuffer->m_nStored;
     }
   };
-};
 
+};

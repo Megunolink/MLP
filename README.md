@@ -13,14 +13,14 @@ Currently supports sending data to:
 
 The library also supports:
 
-* A template for [storing data in the eeprom](http://www.megunolink.com/documentation/arduino-libraries/eepromstore/)
-* An exponential filter
 * A [command handler for serial commands](http://www.megunolink.com/documentation/arduino-libraries/serial-command-handler/)
-* A command processor for dispatching commands
-* A circular buffer template
 * A class to make it easier to write [timer driven code](http://www.megunolink.com/documentation/arduino-libraries/arduino-timer/) with Arduino millis() timer
+* A template for [storing data in the eeprom](http://www.megunolink.com/documentation/arduino-libraries/eepromstore/)
+* An [exponential filter](http://www.megunolink.com/documentation/arduino-libraries/exponential-filter/)
+* A [circular buffer template](http://www.megunolink.com/documentation/arduino-libraries/circular-buffer/)
+* A command processor for dispatching commands
 
-Visit www.MegunoLink.com to download a free trial of [MegunoLink Pro](http://www.MegunoLink.com). 
+Visit www.MegunoLink.com to download [MegunoLink Pro](http://www.MegunoLink.com). 
 
 Arduino Installation
 --------------------
