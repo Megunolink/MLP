@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<meguno-link-project version="1.0">
+  <culture>en-NZ</culture>
+  <data>
+    <shared-visualizer-data>
+      <data id="DefaultPlotConfigurationData" name="" instance-id="9cd71ad0-0097-475e-af20-8cc814fd6a2e">
+        <show-summary-table>false</show-summary-table>
+        <show-legend>true</show-legend>
+        <default-symbol-size>4</default-symbol-size>
+        <default-line-width>1</default-line-width>
+        <default-dash-style>Solid</default-dash-style>
+        <default-visibility>true</default-visibility>
+        <next-color>2</next-color>
+        <next-symbol>2</next-symbol>
+        <series-styles>
+          <style name="Sine">
+            <SeriesStyle xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+              <LineStyle>Solid</LineStyle>
+              <LineColor>Blue</LineColor>
+              <LineWidth>1</LineWidth>
+              <SymbolType>Circle</SymbolType>
+              <SymbolColor>Blue</SymbolColor>
+              <SymbolSize>4</SymbolSize>
+              <Visible>true</Visible>
+            </SeriesStyle>
+          </style>
+          <style name="Cosine">
+            <SeriesStyle xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+              <LineStyle>Solid</LineStyle>
+              <LineColor>Red</LineColor>
+              <LineWidth>1</LineWidth>
+              <SymbolType>Diamond</SymbolType>
+              <SymbolColor>Red</SymbolColor>
+              <SymbolSize>4</SymbolSize>
+              <Visible>true</Visible>
+            </SeriesStyle>
+          </style>
+        </series-styles>
+      </data>
+    </shared-visualizer-data>
+  </data>
+  <reporting>
+    <generate-scheduled-reports>false</generate-scheduled-reports>
+    <destinations>
+      <report-to-folder>
+        <last-report-number>0</last-report-number>
+        <folder-path>d:\Users\Paul\Documents</folder-path>
+        <use-sub-folder>true</use-sub-folder>
+        <sub-folder-pattern>Report {Seq}</sub-folder-pattern>
+        <enabled>true</enabled>
+        <period>PT1H</period>
+        <last-sent>0001-01-01T00:00:00</last-sent>
+      </report-to-folder>
+    </destinations>
+  </reporting>
+  <serial-sources>
+    <default>0</default>
+    <sources>
+      <source type="SharedRS232Port">
+        <id>0</id>
+        <display-name>Arduino</display-name>
+        <port-name>
+          <type>Fixed</type>
+          <port>COM5</port>
+        </port-name>
+        <baud-rate>9600</baud-rate>
+        <data-bits>8</data-bits>
+        <handshaking>None</handshaking>
+        <parity>None</parity>
+        <stop-bits>One</stop-bits>
+        <disable-dtr>true</disable-dtr>
+      </source>
+    </sources>
+    <connect-sources />
+  </serial-sources>
+  <windows>
+    <window>
+      <DockPanel FormatVersion="1.0" DockLeftPortion="0.25" DockRightPortion="220" DockTopPortion="0.25" DockBottomPortion="0.25" ActiveDocumentPane="1" ActivePane="1">
+        <Contents Count="4">
+          <Content ID="0" PersistString="VisualizerToolbox" AutoHidePortion="220" IsHidden="False" IsFloat="False" />
+          <Content ID="1" PersistString="mlpChart" AutoHidePortion="0.25" IsHidden="False" IsFloat="False">
+            <ShowSourceInTitle>false</ShowSourceInTitle>
+            <ShowPortInTitle>false</ShowPortInTitle>
+            <SourceId>0</SourceId>
+            <TabTitle>Time Plot</TabTitle>
+            <reporting-enabled>false</reporting-enabled>
+            <show-summary>false</show-summary>
+            <Channels>
+              <auto>false</auto>
+              <default>false</default>
+              <selected>Sin</selected>
+            </Channels>
+            <reporting>
+              <width>640</width>
+              <height>480</height>
+              <dpi>96</dpi>
+              <anti-alias>true</anti-alias>
+              <filename-pattern>Graph {Seq}</filename-pattern>
+              <format>b96b3caf-0728-11d3-9d7b-0000f81ef32e</format>
+            </reporting>
+            <title>
+              <text>Chart</text>
+              <visible>true</visible>
+              <font>
+                <color>-16777216</color>
+                <family>Microsoft Sans Serif</family>
+                <bold>true</bold>
+                <italic>false</italic>
+                <size>16</size>
+              </font>
+            </title>
+            <x-axis>
+              <minimum>42614.414155092556</minimum>
+              <maximum>42614.414479166735</maximum>
+              <major-step>5</major-step>
+              <minor-step>1</minor-step>
+              <major-unit>Second</major-unit>
+              <minor-unit>Second</minor-unit>
+              <minimum-auto>true</minimum-auto>
+              <maximum-auto>true</maximum-auto>
+              <major-step-auto>true</major-step-auto>
+              <minor-step-auto>true</minor-step-auto>
+              <text>Time</text>
+              <visible>true</visible>
+              <font>
+                <color>-16777216</color>
+                <family>Microsoft Sans Serif</family>
+                <bold>true</bold>
+                <italic>false</italic>
+                <size>14</size>
+              </font>
+            </x-axis>
+            <y-axis>
+              <minimum>-1.5</minimum>
+              <maximum>1.5</maximum>
+              <major-step>0.5</major-step>
+              <minor-step>0.1</minor-step>
+              <major-unit>Day</major-unit>
+              <minor-unit>Day</minor-unit>
+              <minimum-auto>true</minimum-auto>
+              <maximum-auto>true</maximum-auto>
+              <major-step-auto>true</major-step-auto>
+              <minor-step-auto>true</minor-step-auto>
+              <text>y</text>
+              <visible>true</visible>
+              <font>
+                <color>-16777216</color>
+                <family>Microsoft Sans Serif</family>
+                <bold>true</bold>
+                <italic>false</italic>
+                <size>14</size>
+              </font>
+            </y-axis>
+            <background-fill>
+              <color-1>-1</color-1>
+              <color-2>-46</color-2>
+              <angle>-45</angle>
+            </background-fill>
+            <run>false</run>
+          </Content>
+          <Content ID="2" PersistString="mlpChart" AutoHidePortion="0.25" IsHidden="False" IsFloat="False">
+            <ShowSourceInTitle>false</ShowSourceInTitle>
+            <ShowPortInTitle>false</ShowPortInTitle>
+            <SourceId>0</SourceId>
+            <TabTitle>Time Plot</TabTitle>
+            <reporting-enabled>false</reporting-enabled>
+            <show-summary>false</show-summary>
+            <Channels>
+              <auto>false</auto>
+              <default>false</default>
+              <selected>Cos</selected>
+            </Channels>
+            <reporting>
+              <width>640</width>
+              <height>480</height>
+              <dpi>96</dpi>
+              <anti-alias>true</anti-alias>
+              <filename-pattern>Graph {Seq}</filename-pattern>
+              <format>b96b3caf-0728-11d3-9d7b-0000f81ef32e</format>
+            </reporting>
+            <title>
+              <text>Chart</text>
+              <visible>true</visible>
+              <font>
+                <color>-16777216</color>
+                <family>Microsoft Sans Serif</family>
+                <bold>true</bold>
+                <italic>false</italic>
+                <size>16</size>
+              </font>
+            </title>
+            <x-axis>
+              <minimum>42614.414155092556</minimum>
+              <maximum>42614.414479166735</maximum>
+              <major-step>5</major-step>
+              <minor-step>1</minor-step>
+              <major-unit>Second</major-unit>
+              <minor-unit>Second</minor-unit>
+              <minimum-auto>true</minimum-auto>
+              <maximum-auto>true</maximum-auto>
+              <major-step-auto>true</major-step-auto>
+              <minor-step-auto>true</minor-step-auto>
+              <text>Time</text>
+              <visible>true</visible>
+              <font>
+                <color>-16777216</color>
+                <family>Microsoft Sans Serif</family>
+                <bold>true</bold>
+                <italic>false</italic>
+                <size>14</size>
+              </font>
+            </x-axis>
+            <y-axis>
+              <minimum>-1.5</minimum>
+              <maximum>1.5</maximum>
+              <major-step>0.5</major-step>
+              <minor-step>0.1</minor-step>
+              <major-unit>Day</major-unit>
+              <minor-unit>Day</minor-unit>
+              <minimum-auto>true</minimum-auto>
+              <maximum-auto>true</maximum-auto>
+              <major-step-auto>true</major-step-auto>
+              <minor-step-auto>true</minor-step-auto>
+              <text>y</text>
+              <visible>true</visible>
+              <font>
+                <color>-16777216</color>
+                <family>Microsoft Sans Serif</family>
+                <bold>true</bold>
+                <italic>false</italic>
+                <size>14</size>
+              </font>
+            </y-axis>
+            <background-fill>
+              <color-1>-1</color-1>
+              <color-2>-46</color-2>
+              <angle>-45</angle>
+            </background-fill>
+            <run>false</run>
+          </Content>
+          <Content ID="3" PersistString="SourceManager" AutoHidePortion="0.25" IsHidden="False" IsFloat="False">
+            <ShowSourceInTitle>false</ShowSourceInTitle>
+            <ShowPortInTitle>false</ShowPortInTitle>
+            <SourceId>-1</SourceId>
+            <TabTitle>Connection Manager</TabTitle>
+          </Content>
+        </Contents>
+        <Panes Count="3">
+          <Pane ID="0" DockState="DockRightAutoHide" ActiveContent="0">
+            <Contents Count="1">
+              <Content ID="0" RefID="0" />
+            </Contents>
+          </Pane>
+          <Pane ID="1" DockState="Document" ActiveContent="1">
+            <Contents Count="2">
+              <Content ID="0" RefID="1" />
+              <Content ID="1" RefID="3" />
+            </Contents>
+          </Pane>
+          <Pane ID="2" DockState="Document" ActiveContent="2">
+            <Contents Count="1">
+              <Content ID="0" RefID="2" />
+            </Contents>
+          </Pane>
+        </Panes>
+        <DockWindows>
+          <DockWindow ID="0" DockState="Document" ZOrderIndex="0">
+            <NestedPanes Count="2">
+              <Pane ID="0" RefID="1" PrevPane="-1" Alignment="Right" Proportion="0.5" />
+              <Pane ID="1" RefID="2" PrevPane="1" Alignment="Bottom" Proportion="0.5" />
+            </NestedPanes>
+          </DockWindow>
+          <DockWindow ID="1" DockState="DockLeft" ZOrderIndex="2">
+            <NestedPanes Count="0" />
+          </DockWindow>
+          <DockWindow ID="2" DockState="DockRight" ZOrderIndex="3">
+            <NestedPanes Count="1">
+              <Pane ID="0" RefID="0" PrevPane="-1" Alignment="Bottom" Proportion="0.5" />
+            </NestedPanes>
+          </DockWindow>
+          <DockWindow ID="3" DockState="DockTop" ZOrderIndex="4">
+            <NestedPanes Count="0" />
+          </DockWindow>
+          <DockWindow ID="4" DockState="DockBottom" ZOrderIndex="5">
+            <NestedPanes Count="0" />
+          </DockWindow>
+        </DockWindows>
+        <FloatWindows Count="0" />
+      </DockPanel>
+    </window>
+  </windows>
+</meguno-link-project>
