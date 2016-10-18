@@ -38,3 +38,9 @@ use the library in your Arduino program, open the Property Manager (View&rarr;Ot
 Now building the Arduino Program will also build the referenced libraries. The libraries will pick up the hardware settings (CPU, clock frequency etc) from the Arduino Program. This means if you have one 
 program targeting a Mega and another targeting the Uno, both can use the same Arduino Library project
 for common code.
+
+License Information
+--------------------------
+The hardware is released under the GNU Lesser General Public License (LGPL)
+
+Distributed as-is; no warranty is given.
