@@ -1,4 +1,4 @@
-#include "xyplot.h"
+#include "XYPlot.h"
 
 
 XYPlot::XYPlot( const char *channelName /*= NULL*/, Print &rDestination )

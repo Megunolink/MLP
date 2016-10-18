@@ -1,4 +1,4 @@
-#include "message.h"
+#include "Message.h"
 
 Message::Message( const char *channelName /*= NULL*/, Print &rDestination  )
   : MegunoLinkProtocol(F("MESSAGE"), channelName, rDestination)
