@@ -1,5 +1,5 @@
 #include "CommandDispatcherBase.h"
-#include <avr/pgmspace.h>
+//#include <avr/pgmspace.h>
 
 using namespace MLP;
 
@@ -18,7 +18,7 @@ bool CommandDispatcherBase::AddCommand( const __FlashStringHelper *pCommand, voi
   if (m_uLastCommand < m_uMaxCommands)
   {
     m_pCommands[m_uLastCommand].m_Callback = CallbackFunction;
-    m_pCommands[m_uLastCommand].m_strCommand = (PROGMEM const char* )pCommand;
+    m_pCommands[m_uLastCommand].m_strCommand = (PGM_P )pCommand;
     ++m_uLastCommand;
     return true;
   }
@@ -82,7 +82,7 @@ bool CommandDispatcherBase::AddVariable(const __FlashStringHelper *pName, char *
 {
   if (m_uLastVariable < m_uMaxVariables)
   {
-    m_pVariableMap[m_uLastVariable].m_strName = (const prog_char*)pName;
+    m_pVariableMap[m_uLastVariable].m_strName = (PGM_P )pName;
     m_pVariableMap[m_uLastVariable].m_pVariable = pchBuffer;
     m_pVariableMap[m_uLastVariable].m_uMaxBufferSize = uMaxBufferSize;
     m_pVariableMap[m_uLastVariable].m_Callback = ProcessVariable_string;
@@ -97,7 +97,7 @@ bool CommandDispatcherBase::AddVariable(const __FlashStringHelper *pName, void *
 {
   if (m_uLastVariable < m_uMaxVariables)
   {
-    m_pVariableMap[m_uLastVariable].m_strName = (const prog_char*)pName;
+    m_pVariableMap[m_uLastVariable].m_strName = (PGM_P )pName;
     m_pVariableMap[m_uLastVariable].m_pVariable = pVariable;
     m_pVariableMap[m_uLastVariable].m_Callback = ProcessFunction;
     ++m_uLastVariable;
@@ -153,7 +153,7 @@ void CommandDispatcherBase::DispatchCommand( char *pchMessage, Print &rSource ) 
   }
 }
 
-uint8_t CommandDispatcherBase::MatchCommand( PROGMEM const char *pchCommand, const char *pchTest ) const
+uint8_t CommandDispatcherBase::MatchCommand( PGM_P pchCommand, const char *pchTest ) const
 {
   char chCommand, chTest;
   uint8_t uParameterStart = 0;

@@ -1,5 +1,5 @@
 #pragma once
-#define __PROG_TYPES_COMPAT__
+//#define __PROG_TYPES_COMPAT__
 #include <Arduino.h>
 #include "CommandParameter.h"
 
@@ -7,13 +7,13 @@ namespace MLP
 {
   struct CommandCallback 
   {
-    const char *m_strCommand PROGMEM;
+    PGM_P m_strCommand;
     void (*m_Callback)(CommandParameter &rParameters);
   };
 
   struct VariableMap
   {
-    const char *m_strName PROGMEM;
+    PGM_P m_strName;
     void *m_pVariable;
     uint8_t m_uMaxBufferSize; // for strings. 
     bool(*m_Callback)(VariableMap &rVariableInfo, CommandParameter &rParameters, bool bPrintOnSet);
@@ -55,7 +55,7 @@ namespace MLP
 
   protected:
     enum EConstants { NO_MATCH = 0 };
-    uint8_t MatchCommand(PROGMEM const char *pchCommand, const char *pchTest) const;
+    uint8_t MatchCommand(PGM_P pchCommand, const char *pchTest) const;
 
     static bool ProcessVariable_uint8(VariableMap &rVariableInfo, CommandParameter &rParameters, bool bPrintOnSet);
     static bool ProcessVariable_uint16(VariableMap &rVariableInfo, CommandParameter &rParameters, bool bPrintOnSet);
