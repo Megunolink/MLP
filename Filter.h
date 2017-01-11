@@ -29,6 +29,11 @@ public:
   T GetWeight() const { return m_WeightNew; }
 
   T Current() const { return m_Current; }
+
+  void SetCurrent(T NewValue)
+  {
+    m_Current = NewValue;
+  }
 };
 
 // Specialization for floating point math. 
@@ -56,5 +61,10 @@ public:
   float GetWeight() const { return m_fWeightNew*100.0; }
 
   float Current() const { return m_fCurrent; }
+
+  void SetCurrent(float fNewValue) 
+  {
+    m_fCurrent = fNewValue;
+  }
 };
 
