@@ -214,3 +214,58 @@ void InterfacePanel::HideControl(const __FlashStringHelper * ControlName)
   SendDataTail();
 }
 
+void InterfacePanel::EnableControl(const char * ControlName)
+{
+  SendControlHeader(ControlName, F("Enable"));
+  m_rDestination.print(F("True"));
+  SendDataTail();
+}
+
+void InterfacePanel::EnableControl(const __FlashStringHelper * ControlName)
+{
+  SendControlHeader(ControlName, F("Enable"));
+  m_rDestination.print(F("True"));
+  SendDataTail();
+}
+
+void InterfacePanel::DisableControl(const char * ControlName)
+{
+  SendControlHeader(ControlName, F("Enable"));
+  m_rDestination.print(F("False"));
+  SendDataTail();
+}
+
+void InterfacePanel::DisableControl(const __FlashStringHelper * ControlName)
+{
+  SendControlHeader(ControlName, F("Enable"));
+  m_rDestination.print(F("False"));
+  SendDataTail();
+}
+
+void InterfacePanel::SetForeColor(const char *ControlName, const char *Color)
+{
+  SendControlHeader(ControlName, F("ForeColor"));
+  m_rDestination.print(Color);
+  SendDataTail();
+}
+
+void InterfacePanel::SetForeColor(const __FlashStringHelper *ControlName, const __FlashStringHelper *Color)
+{
+  SendControlHeader(ControlName, F("ForeColor"));
+  m_rDestination.print(Color);
+  SendDataTail();
+}
+
+void InterfacePanel::SetBackColor(const char *ControlName, const char *Color)
+{
+  SendControlHeader(ControlName, F("BackColor"));
+  m_rDestination.print(Color);
+  SendDataTail();
+}
+
+void InterfacePanel::SetBackColor(const __FlashStringHelper *ControlName, const __FlashStringHelper *Color)
+{
+  SendControlHeader(ControlName, F("BackColor"));
+  m_rDestination.print(Color);
+  SendDataTail();
+}

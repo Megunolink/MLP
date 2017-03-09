@@ -38,6 +38,18 @@ public:
   void ShowControl(const __FlashStringHelper * ControlName);
   void HideControl(const __FlashStringHelper * ControlName);
 
+  void EnableControl(const char * ControlName);
+  void DisableControl(const char * ControlName);
+
+  void EnableControl(const __FlashStringHelper * ControlName);
+  void DisableControl(const __FlashStringHelper * ControlName);
+
+  void SetForeColor(const char *ControlName, const char *Color);
+  void SetForeColor(const __FlashStringHelper *ControlName, const __FlashStringHelper *Color);
+
+  void SetBackColor(const char *ControlName, const char *Color);
+  void SetBackColor(const __FlashStringHelper *ControlName, const __FlashStringHelper *Color);
+
   void ClearCheck(const char * ControlName);
   void ClearCheck(const __FlashStringHelper * ControlName);
 

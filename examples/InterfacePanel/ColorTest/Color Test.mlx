@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<meguno-link-project version="1.0">
+  <culture>en-NZ</culture>
+  <data>
+    <shared-visualizer-data>
+      <data id="SerialMonitorData" name="" instance-id="2e1a2848-944c-4a00-8afd-ae586e163fd5">
+        <send-cr-default>true</send-cr-default>
+        <send-lf-default>true</send-lf-default>
+        <word-wrap-default>true</word-wrap-default>
+        <include-date>false</include-date>
+        <include-time>true</include-time>
+        <include-custom>false</include-custom>
+        <custom-time-stamp />
+        <clear-on-send>false</clear-on-send>
+        <message-history />
+      </data>
+    </shared-visualizer-data>
+  </data>
+  <reporting>
+    <generate-scheduled-reports>false</generate-scheduled-reports>
+    <destinations>
+      <report-to-folder>
+        <last-report-number>0</last-report-number>
+        <folder-path>d:\Users\Paul\Documents</folder-path>
+        <use-sub-folder>true</use-sub-folder>
+        <sub-folder-pattern>Report {Seq}</sub-folder-pattern>
+        <enabled>true</enabled>
+        <period>PT1H</period>
+        <last-sent>0001-01-01T00:00:00</last-sent>
+      </report-to-folder>
+    </destinations>
+  </reporting>
+  <serial-sources>
+    <default>0</default>
+    <sources>
+      <source type="SharedRS232Port">
+        <id>0</id>
+        <display-name>My Serial Device 0</display-name>
+        <port-name>
+          <type>Fixed</type>
+          <port>COM4</port>
+        </port-name>
+        <baud-rate>9600</baud-rate>
+        <data-bits>8</data-bits>
+        <handshaking>None</handshaking>
+        <parity>None</parity>
+        <stop-bits>One</stop-bits>
+        <disable-dtr>true</disable-dtr>
+        <disable-rts>false</disable-rts>
+      </source>
+    </sources>
+    <connect-sources />
+  </serial-sources>
+  <windows>
+    <window>
+      <DockPanel FormatVersion="1.0" DockLeftPortion="0.25" DockRightPortion="220" DockTopPortion="0.114220183486239" DockBottomPortion="0.25" ActiveDocumentPane="0" ActivePane="0">
+        <Contents Count="4">
+          <Content ID="0" PersistString="VisualizerToolbox" AutoHidePortion="220" IsHidden="False" IsFloat="False" />
+          <Content ID="1" PersistString="InterfacePanel" AutoHidePortion="0.25" IsHidden="False" IsFloat="False">
+            <design type="InterfacePanel">
+              <children child-list="Controls">
+                <component type="IPControlLibrary.Controls.IPButton, IPControlLibrary, Version=1.10.17056.225, Culture=neutral, PublicKeyToken=null" name="bttB">
+                  <properties>
+                    <property name="OnClickSend" />
+                    <property name="Text">bttB</property>
+                    <property name="Location">166, 50</property>
+                    <property name="Name">bttB</property>
+                    <property name="Size">75, 23</property>
+                    <property name="TabIndex">0</property>
+                  </properties>
+                </component>
+                <component type="IPControlLibrary.Controls.IPButton, IPControlLibrary, Version=1.10.17056.225, Culture=neutral, PublicKeyToken=null" name="bttA">
+                  <properties>
+                    <property name="OnClickSend" />
+                    <property name="Text">bttA</property>
+                    <property name="Location">55, 50</property>
+                    <property name="Name">bttA</property>
+                    <property name="Size">75, 23</property>
+                    <property name="TabIndex">0</property>
+                  </properties>
+                </component>
+              </children>
+              <properties>
+                <property name="Name">UserControl1</property>
+                <property name="Size">632, 759</property>
+              </properties>
+              <components>
+                <component type="IPControlLibrary.Protocols.MLPMessageProcessor.MLPUIMessageProcessor, IPControlLibrary, Version=1.10.17056.225, Culture=neutral, PublicKeyToken=null" name="MLPUIMessageProcessor1">
+                  <properties>
+                    <property name="ChannelName" />
+                  </properties>
+                </component>
+              </components>
+            </design>
+            <values>
+              <value name="bttB">
+                <property name="ForeColor"><![CDATA[000000]]></property>
+                <property name="BackColor"><![CDATA[00FF00]]></property>
+                <property name="Visible"><![CDATA[True]]></property>
+                <property name="Enabled"><![CDATA[True]]></property>
+              </value>
+              <value name="bttA">
+                <property name="ForeColor"><![CDATA[000000]]></property>
+                <property name="BackColor"><![CDATA[FF0000]]></property>
+                <property name="Visible"><![CDATA[True]]></property>
+                <property name="Enabled"><![CDATA[True]]></property>
+              </value>
+            </values>
+            <ShowSourceInTitle>false</ShowSourceInTitle>
+            <ShowPortInTitle>false</ShowPortInTitle>
+            <SourceId>0</SourceId>
+            <TabTitle>Interface Panel</TabTitle>
+          </Content>
+          <Content ID="2" PersistString="SourceManager" AutoHidePortion="0.25" IsHidden="False" IsFloat="False">
+            <ShowSourceInTitle>false</ShowSourceInTitle>
+            <ShowPortInTitle>false</ShowPortInTitle>
+            <SourceId>-1</SourceId>
+            <TabTitle>Connection Manager</TabTitle>
+          </Content>
+          <Content ID="3" PersistString="SerialMonitor" AutoHidePortion="0.25" IsHidden="False" IsFloat="False">
+            <InsertTimestamp>false</InsertTimestamp>
+            <WordWrap>true</WordWrap>
+            <IncludeDate>false</IncludeDate>
+            <IncludeTime>true</IncludeTime>
+            <IncludeCustom>false</IncludeCustom>
+            <CustomTimeStamp />
+            <AutoScroll>false</AutoScroll>
+            <ShowEOLMarkers>false</ShowEOLMarkers>
+            <ShowLineTime>false</ShowLineTime>
+            <ShowLineDate>false</ShowLineDate>
+            <ShowSourceInTitle>false</ShowSourceInTitle>
+            <ShowPortInTitle>false</ShowPortInTitle>
+            <SourceId>0</SourceId>
+            <TabTitle>Monitor</TabTitle>
+          </Content>
+        </Contents>
+        <Panes Count="4">
+          <Pane ID="0" DockState="Document" ActiveContent="1">
+            <Contents Count="1">
+              <Content ID="0" RefID="1" />
+            </Contents>
+          </Pane>
+          <Pane ID="1" DockState="DockRight" ActiveContent="0">
+            <Contents Count="1">
+              <Content ID="0" RefID="0" />
+            </Contents>
+          </Pane>
+          <Pane ID="2" DockState="Document" ActiveContent="2">
+            <Contents Count="1">
+              <Content ID="0" RefID="2" />
+            </Contents>
+          </Pane>
+          <Pane ID="3" DockState="Document" ActiveContent="3">
+            <Contents Count="1">
+              <Content ID="0" RefID="3" />
+            </Contents>
+          </Pane>
+        </Panes>
+        <DockWindows>
+          <DockWindow ID="0" DockState="Document" ZOrderIndex="0">
+            <NestedPanes Count="3">
+              <Pane ID="0" RefID="0" PrevPane="-1" Alignment="Right" Proportion="0.5" />
+              <Pane ID="1" RefID="3" PrevPane="0" Alignment="Right" Proportion="0.585983510011779" />
+              <Pane ID="2" RefID="2" PrevPane="0" Alignment="Top" Proportion="0.132352941176471" />
+            </NestedPanes>
+          </DockWindow>
+          <DockWindow ID="1" DockState="DockLeft" ZOrderIndex="3">
+            <NestedPanes Count="0" />
+          </DockWindow>
+          <DockWindow ID="2" DockState="DockRight" ZOrderIndex="4">
+            <NestedPanes Count="1">
+              <Pane ID="0" RefID="1" PrevPane="-1" Alignment="Bottom" Proportion="0.5" />
+            </NestedPanes>
+          </DockWindow>
+          <DockWindow ID="3" DockState="DockTop" ZOrderIndex="1">
+            <NestedPanes Count="0" />
+          </DockWindow>
+          <DockWindow ID="4" DockState="DockBottom" ZOrderIndex="5">
+            <NestedPanes Count="0" />
+          </DockWindow>
+        </DockWindows>
+        <FloatWindows Count="0" />
+      </DockPanel>
+    </window>
+  </windows>
+</meguno-link-project>
