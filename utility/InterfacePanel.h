@@ -28,6 +28,8 @@ public:
   void SetListIndex(const __FlashStringHelper * ControlName, int nIndex);
   void SetListValue(const char * ControlName, int nIndex);
   void SetListValue(const __FlashStringHelper * ControlName, int nIndex);
+  void SetListName(const char * ControlName, const char *ValueName);
+  void SetListName(const __FlashStringHelper * ControlName, const __FlashStringHelper *ValueName);
 
   void SetCheck(const char * ControlName, bool bChecked = true);
   void SetCheck(const __FlashStringHelper * ControlName, bool bChecked = true);
@@ -58,6 +60,15 @@ public:
 
   void GetValue(const char* ControlName, const char* PropertyName);
   void GetValue(const __FlashStringHelper* ControlName, const __FlashStringHelper* PropertyName);
+
+  void SetReadOnly(const char *ControlName, bool ReadOnly);
+  void SetReadOnly(const __FlashStringHelper *ControlName, bool ReadOnly);
+
+  void SetMinimum(const char *ControlName, int Value);
+  void SetMaximum(const char *ControlName, int Value);
+
+  void SetMinimum(const __FlashStringHelper *ControlName, int Value);
+  void SetMaximum(const __FlashStringHelper *ControlName, int Value);
 
 protected:
   void SendControlHeader(const char *ControlName, const __FlashStringHelper *PropertyName);

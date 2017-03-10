@@ -75,6 +75,20 @@ void InterfacePanel::SetListValue(const __FlashStringHelper * ControlName, int n
   SetNumber(ControlName, nValue);
 }
 
+void InterfacePanel::SetListName(const char * ControlName, const char *ValueName)
+{
+  SendControlHeader(ControlName, F("SelectedName"));
+  m_rDestination.print(ValueName);
+  SendDataTail();
+}
+
+void InterfacePanel::SetListName(const __FlashStringHelper * ControlName, const __FlashStringHelper *ValueName)
+{
+  SendControlHeader(ControlName, F("SelectedName"));
+  m_rDestination.print(ValueName);
+  SendDataTail();
+}
+
 void InterfacePanel::SetCheck(const char * ControlName, bool bChecked)
 {
   SendControlHeader(ControlName, F("Checked"));
@@ -269,3 +283,46 @@ void InterfacePanel::SetBackColor(const __FlashStringHelper *ControlName, const 
   m_rDestination.print(Color);
   SendDataTail();
 }
+
+void InterfacePanel::SetReadOnly(const char *ControlName, bool ReadOnly)
+{
+  SendControlHeader(ControlName, F("ReadOnly"));
+  m_rDestination.print(ReadOnly ? F("True") : F("False"));
+  SendDataTail();
+}
+
+void InterfacePanel::SetReadOnly(const __FlashStringHelper *ControlName, bool ReadOnly)
+{
+  SendControlHeader(ControlName, F("ReadOnly"));
+  m_rDestination.print(ReadOnly ? F("True") : F("False"));
+  SendDataTail();
+}
+
+void InterfacePanel::SetMinimum(const char *ControlName, int Value)
+{
+  SendControlHeader(ControlName, F("Minimum"));
+  m_rDestination.print(Value);
+  SendDataTail();
+}
+
+void InterfacePanel::SetMaximum(const char *ControlName, int Value)
+{
+  SendControlHeader(ControlName, F("Maximum"));
+  m_rDestination.print(Value);
+  SendDataTail();
+}
+
+void InterfacePanel::SetMinimum(const __FlashStringHelper *ControlName, int Value)
+{
+  SendControlHeader(ControlName, F("Minimum"));
+  m_rDestination.print(Value);
+  SendDataTail();
+}
+
+void InterfacePanel::SetMaximum(const __FlashStringHelper *ControlName, int Value)
+{
+  SendControlHeader(ControlName, F("Maximum"));
+  m_rDestination.print(Value);
+  SendDataTail();
+}
+
