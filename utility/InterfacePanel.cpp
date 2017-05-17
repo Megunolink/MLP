@@ -230,28 +230,28 @@ void InterfacePanel::HideControl(const __FlashStringHelper * ControlName)
 
 void InterfacePanel::EnableControl(const char * ControlName)
 {
-  SendControlHeader(ControlName, F("Enable"));
+  SendControlHeader(ControlName, F("Enabled"));
   m_rDestination.print(F("True"));
   SendDataTail();
 }
 
 void InterfacePanel::EnableControl(const __FlashStringHelper * ControlName)
 {
-  SendControlHeader(ControlName, F("Enable"));
+  SendControlHeader(ControlName, F("Enabled"));
   m_rDestination.print(F("True"));
   SendDataTail();
 }
 
 void InterfacePanel::DisableControl(const char * ControlName)
 {
-  SendControlHeader(ControlName, F("Enable"));
+  SendControlHeader(ControlName, F("Enabled"));
   m_rDestination.print(F("False"));
   SendDataTail();
 }
 
 void InterfacePanel::DisableControl(const __FlashStringHelper * ControlName)
 {
-  SendControlHeader(ControlName, F("Enable"));
+  SendControlHeader(ControlName, F("Enabled"));
   m_rDestination.print(F("False"));
   SendDataTail();
 }
