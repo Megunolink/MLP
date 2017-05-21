@@ -16,11 +16,16 @@
         Returns the amount of time the LED remains off [milliseconds]
 
    The program folder also contains a MegunoLink project, with an Interface
-   Panel to control the parameters. Visit www.MegunoLink.com to
-   download MegunoLink.
+   Panel to control the parameters. 
+   Visit:
+   * http://www.MegunoLink.com to download MegunoLink.
+   * http://www.megunolink.com/documentation/build-arduino-interface/ 
+     for more information on this example.
    ************************************************************************ */
 
-#include "CommandHandler.h" // The serial command handler is defined in here. 
+// Import the serial command handler. If this fails, install the MegunoLink library. 
+// See: http://www.megunolink.com/documentation/arduino-library/
+#include "CommandHandler.h" 
 
 CommandHandler<> SerialCommandHandler;
 
@@ -36,16 +41,21 @@ void setup()
   Serial.println(F("Blink 2.0"));
   Serial.println(F("=========="));
 
+  // Setup the serial commands we can repond to
   SerialCommandHandler.AddVariable(F("OnTime"), OnTime);
   SerialCommandHandler.AddVariable(F("OffTime"), OffTime);
+  SerialCommandHandler.AddCommand(F("ListAll"), Cmd_ListAll);
+  SerialCommandHandler.SetDefaultHandler(Cmd_Unknown);
 
   pinMode(LEDPin, OUTPUT);
 }
 
 void loop() 
 {
+  // Check for serial commands and dispatch them.
   SerialCommandHandler.Process();
 
+  // Update the LED
   uint32_t uNow = millis();
   if (uNow - LastBlink < OnTime)
     digitalWrite(LEDPin, HIGH);
@@ -54,4 +64,17 @@ void loop()
 
   if (uNow - LastBlink > OnTime + OffTime)
     LastBlink = uNow;
+}
+
+void Cmd_ListAll(CommandParameter &parameters)
+{
+  Serial.print(F("OnTime [ms]="));
+  Serial.println(OnTime);
+  Serial.print(F("OffTime [ms]="));
+  Serial.println(OffTime);
+}
+
+void Cmd_Unknown()
+{
+  Serial.println(F("I don't understand"));
 }
