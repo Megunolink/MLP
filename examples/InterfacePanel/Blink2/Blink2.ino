@@ -23,6 +23,14 @@
      for more information on this example.
    ************************************************************************ */
 
+// For more information on installing the MegunoLink Arduino library check out our documentation
+// http://www.megunolink.com/documentation/arduino-integration/
+
+// You can download the MegunoLink Interface (.mlx) that goes with this example here
+// http://www.megunolink.com/examples/arduino/InterfacePanel/Blink2/Blink2.mlx
+
+   
+
 // Import the serial command handler. If this fails, install the MegunoLink library. 
 // See: http://www.megunolink.com/documentation/arduino-library/
 #include "CommandHandler.h" 

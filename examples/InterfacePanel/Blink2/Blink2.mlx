@@ -18,6 +18,10 @@
           <item>!Owner Terry the great</item>
         </message-history>
       </data>
+      <data id="UploadManagerData" name="" instance-id="19a09178-ac86-448f-8413-d90bcb56de48">
+        <verify>true</verify>
+        <uploads />
+      </data>
     </shared-visualizer-data>
   </data>
   <reporting>
@@ -25,7 +29,7 @@
     <destinations>
       <report-to-folder>
         <last-report-number>0</last-report-number>
-        <folder-path>d:\Users\Paul\Documents</folder-path>
+        <folder-path />
         <use-sub-folder>true</use-sub-folder>
         <sub-folder-pattern>Report {Seq}</sub-folder-pattern>
         <enabled>true</enabled>

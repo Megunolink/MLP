@@ -2,38 +2,23 @@
 <meguno-link-project version="1.0">
   <culture>en-NZ</culture>
   <data>
-    <properties>
-      <title />
-      <description />
-      <image-48 />
-    </properties>
     <shared-visualizer-data>
-      <data id="UploadManagerData">
+      <data id="UploadManagerData" name="" instance-id="f519b1c9-6a30-4c03-90e4-aef2248516e1">
         <verify>true</verify>
-        <uploads>
-          <upload>
-            <display-name>Data receiver demo</display-name>
-            <path>M:\Projects\BLS\Arduino\MLP Library\MLP Library\bin\Debug\MLP Library.hex</path>
-            <relative-path>false</relative-path>
-            <device-template-id>Uno</device-template-id>
-            <programmer-id>serial</programmer-id>
-            <port-name>COM30</port-name>
-            <last-upload>2014-01-17T15:18:58.3076241+13:00</last-upload>
-            <auto-program>true</auto-program>
-            <verify>true</verify>
-          </upload>
-        </uploads>
+        <uploads />
       </data>
-      <data id="SerialMonitorData">
+      <data id="SerialMonitorData" name="" instance-id="ff637bd3-26ec-44c2-91bc-05a95d25c0cb">
         <send-cr-default>true</send-cr-default>
         <send-lf-default>true</send-lf-default>
         <word-wrap-default>true</word-wrap-default>
         <include-date>false</include-date>
         <include-time>false</include-time>
+        <include-custom>false</include-custom>
+        <custom-time-stamp />
         <clear-on-send>false</clear-on-send>
         <message-history />
       </data>
-      <data id="DefaultPlotConfigurationData">
+      <data id="DefaultPlotConfigurationData" name="" instance-id="8018edc1-1383-4d26-a61c-efc7e973aadd">
         <show-summary-table>false</show-summary-table>
         <show-legend>true</show-legend>
         <default-symbol-size>4</default-symbol-size>
@@ -80,14 +65,27 @@
       </data>
     </shared-visualizer-data>
   </data>
+  <reporting>
+    <generate-scheduled-reports>false</generate-scheduled-reports>
+    <destinations>
+      <report-to-folder>
+        <last-report-number>0</last-report-number>
+        <folder-path />
+        <use-sub-folder>true</use-sub-folder>
+        <sub-folder-pattern>Report {Seq}</sub-folder-pattern>
+        <enabled>true</enabled>
+        <period>PT1H</period>
+        <last-sent>0001-01-01T00:00:00</last-sent>
+      </report-to-folder>
+    </destinations>
+  </reporting>
   <serial-sources>
     <default>1</default>
     <sources>
       <source type="SharedRS232Port">
         <id>1</id>
-        <is-programmer>true</is-programmer>
         <display-name>RS232 1</display-name>
-        <auto-connect>false</auto-connect>
+        <sort-order>0</sort-order>
         <port-name>
           <type>Fixed</type>
           <port>COM47</port>
@@ -97,39 +95,49 @@
         <handshaking>None</handshaking>
         <parity>None</parity>
         <stop-bits>One</stop-bits>
+        <disable-dtr>false</disable-dtr>
+        <disable-rts>false</disable-rts>
       </source>
     </sources>
+    <connect-sources />
   </serial-sources>
   <windows>
     <window>
-      <position left="2552" top="152" width="1040" height="1256" state="Maximized" />
       <DockPanel FormatVersion="1.0" DockLeftPortion="0.25" DockRightPortion="220" DockTopPortion="0.25" DockBottomPortion="0.25" ActiveDocumentPane="1" ActivePane="1">
-        <Contents Count="4">
-          <Content ID="0" PersistString="VisualizerToolbox" AutoHidePortion="220" IsHidden="False" IsFloat="False" />
-          <Content ID="1" PersistString="SourceManager" AutoHidePortion="0.25" IsHidden="False" IsFloat="False">
+        <Contents Count="3">
+          <Content ID="0" PersistString="SourceManager" AutoHidePortion="0.25" IsHidden="False" IsFloat="False">
             <ShowSourceInTitle>true</ShowSourceInTitle>
             <ShowPortInTitle>false</ShowPortInTitle>
             <SourceId>1</SourceId>
             <TabTitle>Connection Manager</TabTitle>
           </Content>
-          <Content ID="2" PersistString="SerialMonitor" AutoHidePortion="0.25" IsHidden="False" IsFloat="False">
-            <ShowSourceInTitle>true</ShowSourceInTitle>
-            <ShowPortInTitle>false</ShowPortInTitle>
+          <Content ID="1" PersistString="SerialMonitor" AutoHidePortion="0.25" IsHidden="False" IsFloat="False">
+            <InsertTimestamp>false</InsertTimestamp>
             <WordWrap>true</WordWrap>
             <IncludeDate>false</IncludeDate>
             <IncludeTime>false</IncludeTime>
-            <InsertTimestamp>false</InsertTimestamp>
+            <IncludeCustom>false</IncludeCustom>
+            <CustomTimeStamp />
+            <AutoScroll>false</AutoScroll>
+            <ShowEOLMarkers>false</ShowEOLMarkers>
+            <ShowLineTime>false</ShowLineTime>
+            <ShowLineDate>false</ShowLineDate>
+            <ShowSourceInTitle>true</ShowSourceInTitle>
+            <ShowPortInTitle>false</ShowPortInTitle>
             <SourceId>1</SourceId>
             <TabTitle>Monitor</TabTitle>
           </Content>
-          <Content ID="3" PersistString="mlpChart" AutoHidePortion="0.25" IsHidden="False" IsFloat="False">
+          <Content ID="2" PersistString="mlpChart" AutoHidePortion="0.25" IsHidden="False" IsFloat="False">
             <ShowSourceInTitle>true</ShowSourceInTitle>
             <ShowPortInTitle>false</ShowPortInTitle>
             <SourceId>1</SourceId>
             <TabTitle>Time Plot</TabTitle>
             <reporting-enabled>false</reporting-enabled>
             <show-summary>false</show-summary>
-            <active-channels>Waveforms</active-channels>
+            <Channels>
+              <auto>true</auto>
+              <default>true</default>
+            </Channels>
             <reporting>
               <width>640</width>
               <height>480</height>
@@ -150,8 +158,8 @@
               </font>
             </title>
             <x-axis>
-              <minimum>41658.539542234037</minimum>
-              <maximum>41658.539703205694</maximum>
+              <minimum>42879.7602057755</minimum>
+              <maximum>42879.760366747156</maximum>
               <major-step>5</major-step>
               <minor-step>1</minor-step>
               <major-unit>Second</major-unit>
@@ -191,18 +199,23 @@
                 <size>14</size>
               </font>
             </y-axis>
+            <background-fill>
+              <color-1>-1</color-1>
+              <color-2>-46</color-2>
+              <angle>-45</angle>
+            </background-fill>
             <run>true</run>
           </Content>
         </Contents>
-        <Panes Count="4">
-          <Pane ID="0" DockState="DockRight" ActiveContent="0">
+        <Panes Count="3">
+          <Pane ID="0" DockState="Document" ActiveContent="2">
             <Contents Count="1">
-              <Content ID="0" RefID="0" />
+              <Content ID="0" RefID="2" />
             </Contents>
           </Pane>
-          <Pane ID="1" DockState="Document" ActiveContent="3">
+          <Pane ID="1" DockState="Document" ActiveContent="0">
             <Contents Count="1">
-              <Content ID="0" RefID="3" />
+              <Content ID="0" RefID="0" />
             </Contents>
           </Pane>
           <Pane ID="2" DockState="Document" ActiveContent="1">
@@ -210,27 +223,20 @@
               <Content ID="0" RefID="1" />
             </Contents>
           </Pane>
-          <Pane ID="3" DockState="Document" ActiveContent="2">
-            <Contents Count="1">
-              <Content ID="0" RefID="2" />
-            </Contents>
-          </Pane>
         </Panes>
         <DockWindows>
           <DockWindow ID="0" DockState="Document" ZOrderIndex="0">
             <NestedPanes Count="3">
-              <Pane ID="0" RefID="1" PrevPane="-1" Alignment="Right" Proportion="0.5" />
-              <Pane ID="1" RefID="2" PrevPane="1" Alignment="Top" Proportion="0.518150418105225" />
-              <Pane ID="2" RefID="3" PrevPane="2" Alignment="Bottom" Proportion="0.5" />
+              <Pane ID="0" RefID="0" PrevPane="-1" Alignment="Right" Proportion="0.5" />
+              <Pane ID="1" RefID="1" PrevPane="0" Alignment="Top" Proportion="0.518150418105225" />
+              <Pane ID="2" RefID="2" PrevPane="1" Alignment="Bottom" Proportion="0.5" />
             </NestedPanes>
           </DockWindow>
-          <DockWindow ID="1" DockState="DockLeft" ZOrderIndex="1">
+          <DockWindow ID="1" DockState="DockLeft" ZOrderIndex="2">
             <NestedPanes Count="0" />
           </DockWindow>
-          <DockWindow ID="2" DockState="DockRight" ZOrderIndex="2">
-            <NestedPanes Count="1">
-              <Pane ID="0" RefID="0" PrevPane="-1" Alignment="Bottom" Proportion="0.5" />
-            </NestedPanes>
+          <DockWindow ID="2" DockState="DockRight" ZOrderIndex="1">
+            <NestedPanes Count="0" />
           </DockWindow>
           <DockWindow ID="3" DockState="DockTop" ZOrderIndex="3">
             <NestedPanes Count="0" />
@@ -243,18 +249,4 @@
       </DockPanel>
     </window>
   </windows>
-  <reporting>
-    <generate-scheduled-reports>false</generate-scheduled-reports>
-    <destinations>
-      <report-to-folder>
-        <last-report-number>0</last-report-number>
-        <folder-path>d:\Users\Paul\Documents</folder-path>
-        <use-sub-folder>true</use-sub-folder>
-        <sub-folder-pattern>Report {Seq}</sub-folder-pattern>
-        <enabled>true</enabled>
-        <period>PT1H</period>
-        <last-sent>0001-01-01T00:00:00</last-sent>
-      </report-to-folder>
-    </destinations>
-  </reporting>
 </meguno-link-project>

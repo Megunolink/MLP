@@ -5,6 +5,13 @@
 *  ********************************************************************************************** */
 #include "MegunoLink.h"
 
+// For more information on installing the MegunoLink Arduino library check out our documentation
+// http://www.megunolink.com/documentation/arduino-integration/
+
+// You can download the MegunoLink Interface (.mlx) that goes with this example here
+// http://www.megunolink.com/examples/arduino/TimePlot/Sinewave/Sinewave.mlx
+
+
 
 
 // Uncomment if you would like to use plotting channels
