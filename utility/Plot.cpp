@@ -145,3 +145,22 @@ void Plot::SendSeriesProperties( Colors Color, LineStyle Line, uint8_t uLineWidt
   m_rDestination.print('|');
 }
 
+void Plot::Clear()
+{
+  SendDataHeader(F("CLEAR"));
+  SendDataTail();
+}
+
+void Plot::Clear(const char *SeriesName)
+{
+  SendDataHeader(F("CLEAR"));
+  m_rDestination.print(SeriesName);
+  SendDataTail();
+}
+
+void Plot::Clear(const __FlashStringHelper *SeriesName)
+{
+  SendDataHeader(F("CLEAR"));
+  m_rDestination.print(SeriesName);
+  SendDataTail();
+}
