@@ -44,6 +44,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)DeviceAddress.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)utility\CommandDispatcherBase.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)utility\CommandParameter.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)utility\CRC.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)utility\InterfacePanel.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)utility\Map.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)utility\MegunoLinkProtocol.cpp" />
