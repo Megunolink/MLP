@@ -68,6 +68,13 @@ bool CommandDispatcherBase::AddVariable(const __FlashStringHelper *pName, int32_
   return AddVariable(pName, &rVariable, ProcessVariable_int32);
 }
 
+#if defined(ARDUINO_ARCH_SAMD) || defined(ARDUINO_ARCH_SAM)
+bool CommandDispatcherBase::AddVariable(const __FlashStringHelper *pName, int &rVariable)
+{
+  return AddVariable(pName, &rVariable, ProcessVariable_int32);
+}
+#endif
+
 bool CommandDispatcherBase::AddVariable(const __FlashStringHelper *pName, float &rVariable)
 {
   return AddVariable(pName, &rVariable, ProcessVariable_float);
