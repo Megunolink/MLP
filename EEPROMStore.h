@@ -5,7 +5,7 @@
 #if defined(__AVR__)
 
 #include <avr/eeprom.h>
-#include <avr/crc16.h>
+#include <util/crc16.h>
 
 template <class TData> class EEPROMStore
 {
