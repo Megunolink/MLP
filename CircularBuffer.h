@@ -136,7 +136,7 @@ public:
       rDestination.println(m_aBuffer[i]);
     }
 
-    rDestination.print("H: "));
+    rDestination.print("H: ");
     rDestination.print(m_nHead);
     rDestination.print(", ");
     rDestination.println(m_nStored);
