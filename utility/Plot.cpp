@@ -164,3 +164,13 @@ void Plot::Clear(const __FlashStringHelper *SeriesName)
   m_rDestination.print(SeriesName);
   SendDataTail();
 }
+
+void Plot::SendHeader_Data()
+{
+  SendDataHeader(F("DATA"));
+}
+
+void Plot::SendTimeSeparator()
+{
+  m_rDestination.print(F("T|"));
+}

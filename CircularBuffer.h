@@ -136,9 +136,9 @@ public:
       rDestination.println(m_aBuffer[i]);
     }
 
-    rDestination.print(F("Head: "));
+    rDestination.print("H: "));
     rDestination.print(m_nHead);
-    rDestination.print(F(", "));
+    rDestination.print(", ");
     rDestination.println(m_nStored);
   }
 

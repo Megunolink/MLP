@@ -68,5 +68,8 @@ protected:
   void SendSeriesProperties(const char *SeriesProperties);
   void SendSeriesProperties(const __FlashStringHelper *SeriesProperties);
   void SendSeriesProperties(Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker);
+
+  void SendHeader_Data();
+  void SendTimeSeparator();
 };
 

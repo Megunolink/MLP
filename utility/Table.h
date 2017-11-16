@@ -8,7 +8,7 @@ public:
 
   template<class TValue> void SendData(const char *RowName, TValue Value, const char *Description = NULL)
   {
-    SendDataHeader(F("SET"));
+    SendHeader_Set();
     m_rDestination.print(RowName);
     m_rDestination.print('|');
     m_rDestination.print(Value);
@@ -22,7 +22,7 @@ public:
 
   template<class TValue> void SendData(const __FlashStringHelper *RowName, TValue Value, const char *Description = NULL)
   {
-    SendDataHeader(F("SET"));
+    SendHeader_Set();
     m_rDestination.print(RowName);
     m_rDestination.print('|');
     m_rDestination.print(Value);
@@ -36,7 +36,7 @@ public:
 
   template<class TValue> void SendData(const __FlashStringHelper *RowName, TValue Value, const __FlashStringHelper *Description)
   {
-    SendDataHeader(F("SET"));
+    SendHeader_Set();
     m_rDestination.print(RowName);
     m_rDestination.print('|');
     m_rDestination.print(Value);
@@ -58,5 +58,9 @@ public:
 
   void GetData(const char *RowName);
   void GetData(const __FlashStringHelper *RowName);
+
+private:
+  void SendHeader_Set();
+
 };
 

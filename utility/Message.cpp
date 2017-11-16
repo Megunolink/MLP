@@ -69,6 +69,9 @@ void Message::Clear()
   SendDataTail();
 }
 
-
+void Message::SendSeparator()
+{
+  m_rDestination.print(F(": "));
+}
 
 

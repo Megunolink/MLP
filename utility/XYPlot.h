@@ -12,7 +12,7 @@ public:
 
   template<class TXData, class TYData> void SendData(const char * seriesName, TXData xValue, TYData yValue, const char * seriesProperties=NULL)
   {
-    SendDataHeader(F("DATA"));
+    SendHeader_Data();
     m_rDestination.print(seriesName);
     SendSeriesProperties(seriesProperties);
     m_rDestination.print(xValue);
@@ -23,7 +23,7 @@ public:
 
   template<class TXData, class TYData> void SendData(const char * seriesName, TXData xValue, TYData yValue, Colors Color, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle)
   {
-    SendDataHeader(F("DATA"));
+    SendHeader_Data();
     m_rDestination.print(seriesName);
     SendSeriesProperties(Color, Line, uLineWidth, Marker);
     m_rDestination.print(xValue);
@@ -34,7 +34,7 @@ public:
 
   template<class TXData> void SendData(const char * seriesName, TXData xValue, float yValue, int nDecimalPlaces, const char * seriesProperties=NULL)
   {
-    SendDataHeader(F("DATA"));
+    SendHeader_Data();
     m_rDestination.print(seriesName);
     SendSeriesProperties(seriesProperties);
     m_rDestination.print(xValue);
@@ -45,7 +45,7 @@ public:
 
   template<class TXData> void SendData(const char * seriesName, TXData xValue, float yValue, int nDecimalPlaces, Colors Color, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle)
   {
-    SendDataHeader(F("DATA"));
+    SendHeader_Data();
     m_rDestination.print(seriesName);
     SendSeriesProperties(Color, Line, uLineWidth, Marker);
     m_rDestination.print(xValue);
@@ -56,7 +56,7 @@ public:
 
   template<class TXData, class TYData> void SendData(const __FlashStringHelper * seriesName, TXData xValue, TYData yValue, const char * seriesProperties=NULL)
   {
-    SendDataHeader(F("DATA"));
+    SendHeader_Data();
     m_rDestination.print(seriesName);
     SendSeriesProperties(seriesProperties);
     m_rDestination.print(xValue);
@@ -67,7 +67,7 @@ public:
 
   template<class TXData, class TYData> void SendData(const __FlashStringHelper * seriesName, TXData xValue, TYData yValue, Colors Color, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle)
   {
-    SendDataHeader(F("DATA"));
+    SendHeader_Data();
     m_rDestination.print(seriesName);
     SendSeriesProperties(Color, Line, uLineWidth, Marker);
     m_rDestination.print(xValue);
@@ -78,7 +78,7 @@ public:
 
   template<class TXData> void SendData(const __FlashStringHelper * seriesName, TXData xValue, float yValue, int nDecimalPlaces, const char * seriesProperties=NULL)
   {
-    SendDataHeader(F("DATA"));
+    SendHeader_Data();
     m_rDestination.print(seriesName);
     SendSeriesProperties(seriesProperties);
     m_rDestination.print(xValue);
@@ -89,7 +89,7 @@ public:
 
   template<class TXData> void SendData(const __FlashStringHelper * seriesName, TXData xValue, float yValue, int nDecimalPlaces, Colors Color, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle)
   {
-    SendDataHeader(F("DATA"));
+    SendHeader_Data();
     m_rDestination.print(seriesName);
     SendSeriesProperties(Color, Line, uLineWidth, Marker);
     m_rDestination.print(xValue);

@@ -41,7 +41,7 @@ public:
   {
     Begin();
     m_rDestination.print(Label);
-    m_rDestination.print(F(": "));
+    SendSeparator();
     m_rDestination.print(Value);
     SendDataTail();
   }
@@ -50,11 +50,14 @@ public:
   {
     Begin();
     m_rDestination.print(Label);
-    m_rDestination.print(F(": "));
+    SendSeparator();
     m_rDestination.print(Value);
     SendDataTail();
   }
 
   void Clear();
+
+private:
+  void SendSeparator();
 };
 

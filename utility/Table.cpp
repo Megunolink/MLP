@@ -67,3 +67,8 @@ void Table::GetData(const __FlashStringHelper *Name)
   m_rDestination.print(Name);
   SendDataTail();
 }
+
+void Table::SendHeader_Set()
+{
+  SendDataHeader(F("SET"));
+}
