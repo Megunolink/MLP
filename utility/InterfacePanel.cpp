@@ -19,6 +19,20 @@ void InterfacePanel::SetText(const char * ControlName, const char * Value)
   SendDataTail();
 }
 
+void InterfacePanel::SetText(const char * ControlName, int Value)
+{
+  SendControlHeader(ControlName, F("Text"));
+  m_rDestination.print(Value);
+  SendDataTail();
+}
+
+void InterfacePanel::SetText(const char * ControlName, long Value)
+{
+  SendControlHeader(ControlName, F("Text"));
+  m_rDestination.print(Value);
+  SendDataTail();
+}
+
 void InterfacePanel::SetText(const char * ControlName, unsigned long Value)
 {
   SendControlHeader(ControlName, F("Text"));
@@ -26,7 +40,7 @@ void InterfacePanel::SetText(const char * ControlName, unsigned long Value)
   SendDataTail();
 }
 
-void InterfacePanel::SetText(const char * ControlName, int Value)
+void InterfacePanel::SetText(const char * ControlName, float Value)
 {
   SendControlHeader(ControlName, F("Text"));
   m_rDestination.print(Value);
@@ -44,6 +58,21 @@ void InterfacePanel::SetNumber(const char * ControlName, int nValue)
   m_rDestination.print(nValue);
   SendDataTail();
 }
+
+void InterfacePanel::SetNumber(const char * ControlName, int32_t nValue)
+{
+  SendControlHeader(ControlName, F("Value"));
+  m_rDestination.print(nValue);
+  SendDataTail();
+}
+
+void InterfacePanel::SetNumber(const char * ControlName, uint32_t nValue)
+{
+  SendControlHeader(ControlName, F("Value"));
+  m_rDestination.print(nValue);
+  SendDataTail();
+}
+
 void InterfacePanel::SetNumber(const char * ControlName, float fValue, int nDecimal)
 {
   SendControlHeader(ControlName, F("Value"));
