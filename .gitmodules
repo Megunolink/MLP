@@ -1,0 +1,3 @@
+[submodule "examples/InterfacePanel/SendCheckboxState"]
+	path = examples/InterfacePanel/SendCheckboxState
+	url = https://gist.github.com/Megunolink/557b38e3ccd715b60afba4e52c3c51e9.git
