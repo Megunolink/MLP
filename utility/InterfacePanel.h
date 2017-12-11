@@ -20,8 +20,8 @@ public:
   void SetProgress(const char * ControlName, int nValue);
   void SetProgress(const __FlashStringHelper * ControlName, int nValue);
 
-  void SetNumber(const char * ControlName, int nValue);
-  void SetNumber(const __FlashStringHelper * ControlName, int nValue);
+  void SetNumber(const char * ControlName, int16_t nValue);
+  void SetNumber(const __FlashStringHelper * ControlName, int16_t nValue);
   
   void SetNumber(const char * ControlName, int32_t nValue);
   void SetNumber(const __FlashStringHelper * ControlName, int32_t nValue);

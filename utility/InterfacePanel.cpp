@@ -52,7 +52,7 @@ void InterfacePanel::SetProgress(const char * ControlName, int nValue)
   SetNumber(ControlName, nValue);
 }
 
-void InterfacePanel::SetNumber(const char * ControlName, int nValue)
+void InterfacePanel::SetNumber(const char * ControlName, int16_t nValue)
 {
   SendControlHeader(ControlName, F("Value"));
   m_rDestination.print(nValue);
@@ -144,7 +144,7 @@ void InterfacePanel::SetProgress(const __FlashStringHelper * ControlName, int nV
   SetNumber(ControlName, nValue);
 }
 
-void InterfacePanel::SetNumber(const __FlashStringHelper * ControlName, int nValue)
+void InterfacePanel::SetNumber(const __FlashStringHelper * ControlName, int16_t nValue)
 {
   SendControlHeader(ControlName, F("Value"));
   m_rDestination.print(nValue);
