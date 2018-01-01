@@ -35,6 +35,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\Plot.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\StreamParser.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\Table.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\TestReport.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\TimePlot.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\XYPlot.h" />
   </ItemGroup>
@@ -52,6 +53,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)utility\Plot.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)utility\StreamParser.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)utility\Table.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)utility\TestReport.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)utility\TimePlot.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)utility\XYPlot.cpp" />
   </ItemGroup>

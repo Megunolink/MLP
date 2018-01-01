@@ -5,3 +5,4 @@
 #include "utility/Table.h"
 #include "utility/TimePlot.h"
 #include "utility/XYPlot.h" 
+#include "utility/TestReport.h"
