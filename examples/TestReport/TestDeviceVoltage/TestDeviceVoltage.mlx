@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<meguno-link-project version="1.0">
+  <culture>en-NZ</culture>
+  <data>
+    <shared-visualizer-data>
+      <data id="UploadManagerData" name="6901880e-d574-4144-8880-d1775c7df6b9" instance-id="cbb16178-0597-4a39-bf2a-c4fd518a35d6">
+        <verify>true</verify>
+        <uploads>
+          <upload type="N8I.Programming.ExtProg">
+            <display-name>External Program</display-name>
+            <sort-order>0</sort-order>
+            <time-out>10</time-out>
+            <wait-for-close>false</wait-for-close>
+            <check-result-success>false</check-result-success>
+            <success-result>0</success-result>
+            <close-ports>false</close-ports>
+            <ports-to-close />
+            <program-path>
+              <path />
+              <relative>false</relative>
+            </program-path>
+          </upload>
+        </uploads>
+      </data>
+      <data id="UploadManagerData" name="dad61db9-e8a1-4d5e-961f-608c483ad15a" instance-id="ee06b44b-b970-4ba3-9985-01e0ff4d9621">
+        <verify>true</verify>
+        <uploads>
+          <upload type="N8I.AVRDude.UploadData">
+            <display-name>Upload 1</display-name>
+            <device-template-id>Uno</device-template-id>
+            <programmer-id>serial</programmer-id>
+            <port-name>COM1</port-name>
+            <last-upload>0001-01-01T00:00:00</last-upload>
+            <verify>true</verify>
+            <sort-order>0</sort-order>
+            <path />
+            <relative-path>false</relative-path>
+            <auto-program>false</auto-program>
+          </upload>
+          <upload type="N8I.Programming.ExtProg">
+            <display-name>External Program</display-name>
+            <sort-order>1</sort-order>
+            <time-out>10</time-out>
+            <wait-for-close>false</wait-for-close>
+            <check-result-success>false</check-result-success>
+            <success-result>0</success-result>
+            <close-ports>false</close-ports>
+            <ports-to-close />
+            <program-path>
+              <path />
+              <relative>false</relative>
+            </program-path>
+          </upload>
+        </uploads>
+      </data>
+      <data id="UploadManagerData" name="7185a951-621f-4a7e-8d01-a0714bae538f" instance-id="00afb7ba-7500-4bec-a2f0-d83b058c6f70">
+        <verify>true</verify>
+        <uploads>
+          <upload type="N8I.Programming.Test">
+            <display-name>Tests</display-name>
+            <sort-order>1</sort-order>
+            <time-out>10</time-out>
+            <source-id>0</source-id>
+            <send-message-to-start-test>true</send-message-to-start-test>
+            <message-to-start-test>!Test\r\n</message-to-start-test>
+            <tests>
+              <test id="0" order="0" name="Power Supply" />
+            </tests>
+          </upload>
+        </uploads>
+      </data>
+      <data id="UploadManagerData" name="bb0bc521-5f9e-4564-a86c-e029cdece227" instance-id="fd1832b2-eb3e-4358-9e39-44c670006966">
+        <verify>true</verify>
+        <uploads />
+      </data>
+      <data id="UploadManagerData" name="3f2d36d1-371d-4954-8192-823a4422e9d4" instance-id="6619f828-6332-45e7-acec-49abb39ac17e">
+        <verify>true</verify>
+        <uploads>
+          <upload type="N8I.AVRDude.UploadData">
+            <display-name>Upload 2</display-name>
+            <device-template-id>Uno</device-template-id>
+            <programmer-id>serial</programmer-id>
+            <port-name>COM28</port-name>
+            <last-upload>2018-01-01T14:02:39.5339545+13:00</last-upload>
+            <verify>false</verify>
+            <sort-order>0</sort-order>
+            <path>Release\TestProgrammingPanel.hex</path>
+            <relative-path>true</relative-path>
+            <auto-program>true</auto-program>
+          </upload>
+        </uploads>
+      </data>
+      <data id="SerialMonitorData" name="" instance-id="7b9199fb-e11e-4051-9c8a-9168b7a9b19f">
+        <send-cr-default>true</send-cr-default>
+        <send-lf-default>true</send-lf-default>
+        <word-wrap-default>true</word-wrap-default>
+        <include-date>false</include-date>
+        <include-time>true</include-time>
+        <include-custom>false</include-custom>
+        <custom-time-stamp />
+        <clear-on-send>false</clear-on-send>
+        <message-history />
+      </data>
+    </shared-visualizer-data>
+  </data>
+  <reporting>
+    <generate-scheduled-reports>false</generate-scheduled-reports>
+    <destinations>
+      <report-to-folder>
+        <last-report-number>0</last-report-number>
+        <folder-path>d:\Users\Paul\Documents</folder-path>
+        <use-sub-folder>true</use-sub-folder>
+        <sub-folder-pattern>Report {Seq}</sub-folder-pattern>
+        <enabled>true</enabled>
+        <period>PT1H</period>
+        <last-sent>0001-01-01T00:00:00</last-sent>
+      </report-to-folder>
+    </destinations>
+  </reporting>
+  <serial-sources>
+    <default>0</default>
+    <sources>
+      <source type="SharedRS232Port">
+        <id>0</id>
+        <display-name>Device under test</display-name>
+        <sort-order>0</sort-order>
+        <port-name>
+          <type>Fixed</type>
+          <port>COM28</port>
+        </port-name>
+        <baud-rate>9600</baud-rate>
+        <data-bits>8</data-bits>
+        <handshaking>None</handshaking>
+        <parity>None</parity>
+        <stop-bits>One</stop-bits>
+        <disable-dtr>true</disable-dtr>
+        <disable-rts>false</disable-rts>
+      </source>
+    </sources>
+    <connect-sources />
+  </serial-sources>
+  <windows>
+    <window>
+      <DockPanel FormatVersion="1.0" DockLeftPortion="0.25" DockRightPortion="220" DockTopPortion="0.25" DockBottomPortion="0.25" ActiveDocumentPane="4" ActivePane="4">
+        <Contents Count="5">
+          <Content ID="0" PersistString="VisualizerToolbox" AutoHidePortion="220" IsHidden="False" IsFloat="False" />
+          <Content ID="1" PersistString="UploadManager2" AutoHidePortion="0.25" IsHidden="False" IsFloat="False">
+            <instance-id>7185a951-621f-4a7e-8d01-a0714bae538f</instance-id>
+            <ShowSourceInTitle>false</ShowSourceInTitle>
+            <ShowPortInTitle>false</ShowPortInTitle>
+            <SourceId>-1</SourceId>
+            <TabTitle>Program Devices</TabTitle>
+            <hide-details>true</hide-details>
+            <program-all-mode>ProgramInParallel</program-all-mode>
+          </Content>
+          <Content ID="2" PersistString="SourceManager" AutoHidePortion="0.25" IsHidden="False" IsFloat="False">
+            <instance-id>aa7fe3dc-ea1a-4364-abfb-37217e3d3a24</instance-id>
+            <ShowSourceInTitle>false</ShowSourceInTitle>
+            <ShowPortInTitle>false</ShowPortInTitle>
+            <SourceId>-1</SourceId>
+            <TabTitle>Connection Manager</TabTitle>
+          </Content>
+          <Content ID="3" PersistString="SerialMonitor" AutoHidePortion="0.25" IsHidden="False" IsFloat="False">
+            <InsertTimestamp>false</InsertTimestamp>
+            <WordWrap>true</WordWrap>
+            <IncludeDate>false</IncludeDate>
+            <IncludeTime>true</IncludeTime>
+            <IncludeCustom>false</IncludeCustom>
+            <CustomTimeStamp />
+            <AutoScroll>false</AutoScroll>
+            <ShowEOLMarkers>false</ShowEOLMarkers>
+            <ShowLineTime>false</ShowLineTime>
+            <ShowLineDate>false</ShowLineDate>
+            <instance-id>1c2cfca2-963d-4616-91ff-5efdafa0bf7c</instance-id>
+            <ShowSourceInTitle>false</ShowSourceInTitle>
+            <ShowPortInTitle>false</ShowPortInTitle>
+            <SourceId>0</SourceId>
+            <TabTitle>Monitor</TabTitle>
+          </Content>
+          <Content ID="4" PersistString="InterfacePanel" AutoHidePortion="0.25" IsHidden="False" IsFloat="False">
+            <design type="InterfacePanel">
+              <children child-list="Controls">
+                <component type="IPControlLibrary.Controls.IPButton, IPControlLibrary, Version=1.19.17355.1221, Culture=neutral, PublicKeyToken=null" name="bttnRunTest">
+                  <properties>
+                    <property name="OnClickSend">!Test\r\n</property>
+                    <property name="Text">Run Test</property>
+                    <property name="Location">24, 27</property>
+                    <property name="Name">bttnRunTest</property>
+                    <property name="Size">75, 23</property>
+                    <property name="TabIndex">0</property>
+                  </properties>
+                </component>
+              </children>
+              <properties>
+                <property name="Name">UserControl1</property>
+                <property name="Size">584, 842</property>
+              </properties>
+              <components />
+            </design>
+            <values>
+              <value name="bttnRunTest">
+                <property name="Enabled"><![CDATA[True]]></property>
+              </value>
+            </values>
+            <instance-id>ea33f85f-39a5-47a3-8030-20490c29b363</instance-id>
+            <ShowSourceInTitle>false</ShowSourceInTitle>
+            <ShowPortInTitle>false</ShowPortInTitle>
+            <SourceId>0</SourceId>
+            <TabTitle>Interface Panel</TabTitle>
+          </Content>
+        </Contents>
+        <Panes Count="5">
+          <Pane ID="0" DockState="Document" ActiveContent="4">
+            <Contents Count="1">
+              <Content ID="0" RefID="4" />
+            </Contents>
+          </Pane>
+          <Pane ID="1" DockState="DockRightAutoHide" ActiveContent="0">
+            <Contents Count="1">
+              <Content ID="0" RefID="0" />
+            </Contents>
+          </Pane>
+          <Pane ID="2" DockState="Document" ActiveContent="3">
+            <Contents Count="1">
+              <Content ID="0" RefID="3" />
+            </Contents>
+          </Pane>
+          <Pane ID="3" DockState="Document" ActiveContent="1">
+            <Contents Count="1">
+              <Content ID="0" RefID="1" />
+            </Contents>
+          </Pane>
+          <Pane ID="4" DockState="Document" ActiveContent="2">
+            <Contents Count="1">
+              <Content ID="0" RefID="2" />
+            </Contents>
+          </Pane>
+        </Panes>
+        <DockWindows>
+          <DockWindow ID="0" DockState="Document" ZOrderIndex="0">
+            <NestedPanes Count="4">
+              <Pane ID="0" RefID="0" PrevPane="-1" Alignment="Right" Proportion="0.5" />
+              <Pane ID="1" RefID="2" PrevPane="0" Alignment="Bottom" Proportion="0.5" />
+              <Pane ID="2" RefID="3" PrevPane="0" Alignment="Top" Proportion="0.642066420664207" />
+              <Pane ID="3" RefID="4" PrevPane="3" Alignment="Top" Proportion="0.414969205457113" />
+            </NestedPanes>
+          </DockWindow>
+          <DockWindow ID="1" DockState="DockLeft" ZOrderIndex="1">
+            <NestedPanes Count="0" />
+          </DockWindow>
+          <DockWindow ID="2" DockState="DockRight" ZOrderIndex="2">
+            <NestedPanes Count="1">
+              <Pane ID="0" RefID="1" PrevPane="-1" Alignment="Bottom" Proportion="0.5" />
+            </NestedPanes>
+          </DockWindow>
+          <DockWindow ID="3" DockState="DockTop" ZOrderIndex="3">
+            <NestedPanes Count="0" />
+          </DockWindow>
+          <DockWindow ID="4" DockState="DockBottom" ZOrderIndex="4">
+            <NestedPanes Count="0" />
+          </DockWindow>
+        </DockWindows>
+        <FloatWindows Count="0" />
+      </DockPanel>
+    </window>
+  </windows>
+</meguno-link-project>
