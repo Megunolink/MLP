@@ -4,7 +4,7 @@
 *  it is within an acceptable range or fail if not. 
 *  Use the companion MegunoLink project file: TestDeviceVoltage.mlx (in the same 
 *  folder as this file) to view the result in MegunoLink. 
-*  Visit https://www.megunolink.com/documentation/program-device/device-test-panel/
+*  Visit https://www.megunolink.com/documentation/program-device/test-monitor-panel/
 *  for more information. 
 *  *****************************************************************************/
 
