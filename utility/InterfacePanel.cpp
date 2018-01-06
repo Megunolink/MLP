@@ -49,7 +49,7 @@ void InterfacePanel::SetText(const char * ControlName, float Value)
 
 void InterfacePanel::SetProgress(const char * ControlName, int nValue)
 {
-  SetNumber(ControlName, nValue);
+  SetNumber(ControlName, (int32_t) nValue);
 }
 
 void InterfacePanel::SetNumber(const char * ControlName, int16_t nValue)
@@ -96,12 +96,12 @@ void InterfacePanel::SetListIndex(const __FlashStringHelper * ControlName, int n
 
 void InterfacePanel::SetListValue(const char * ControlName, int nValue)
 {
-  SetNumber(ControlName, nValue);
+  SetNumber(ControlName, (int32_t) nValue);
 }
 
 void InterfacePanel::SetListValue(const __FlashStringHelper * ControlName, int nValue)
 {
-  SetNumber(ControlName, nValue);
+  SetNumber(ControlName, (int32_t) nValue);
 }
 
 void InterfacePanel::SetListName(const char * ControlName, const char *ValueName)
@@ -141,7 +141,7 @@ void InterfacePanel::SetText(const __FlashStringHelper * ControlName, const char
 
 void InterfacePanel::SetProgress(const __FlashStringHelper * ControlName, int nValue)
 {
-  SetNumber(ControlName, nValue);
+  SetNumber(ControlName, (int32_t) nValue);
 }
 
 void InterfacePanel::SetNumber(const __FlashStringHelper * ControlName, int16_t nValue)
