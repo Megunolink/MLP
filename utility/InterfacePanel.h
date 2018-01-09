@@ -14,6 +14,7 @@ public:
   void SetText(const char * ControlName, long Value);  
   void SetText(const char * ControlName, unsigned long Value);
   void SetText(const char * ControlName, float Value);
+  void SetText(const char * ControlName, float Value, int DecimalPlaces);
   void SetText(const __FlashStringHelper * ControlName, const char * Value);
   void SetText(const __FlashStringHelper * ControlName, const __FlashStringHelper * Value);
 

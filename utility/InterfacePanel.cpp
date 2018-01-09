@@ -47,6 +47,13 @@ void InterfacePanel::SetText(const char * ControlName, float Value)
   SendDataTail();
 }
 
+void InterfacePanel::SetText(const char * ControlName, float Value, int DecimalPlaces)
+{
+  SendControlHeader(ControlName, F("Text"));
+  m_rDestination.print(Value, DecimalPlaces);
+  SendDataTail();
+}
+
 void InterfacePanel::SetProgress(const char * ControlName, int nValue)
 {
   SetNumber(ControlName, (int32_t) nValue);
