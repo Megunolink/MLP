@@ -46,7 +46,7 @@
         <sort-order>0</sort-order>
         <port-name>
           <type>Fixed</type>
-          <port>COM17</port>
+          <port>COM4</port>
         </port-name>
         <baud-rate>9600</baud-rate>
         <data-bits>8</data-bits>
@@ -61,17 +61,17 @@
   </serial-sources>
   <windows>
     <window>
-      <DockPanel FormatVersion="1.0" DockLeftPortion="0.15" DockRightPortion="0.0970031545741325" DockTopPortion="0.25" DockBottomPortion="0.25" ActiveDocumentPane="3" ActivePane="3">
+      <DockPanel FormatVersion="1.0" DockLeftPortion="0.15" DockRightPortion="0.5991308141486" DockTopPortion="0.25" DockBottomPortion="0.25" ActiveDocumentPane="1" ActivePane="1">
         <Contents Count="4">
           <Content ID="0" PersistString="VisualizerToolbox" AutoHidePortion="0.25" IsHidden="False" IsFloat="False" />
-          <Content ID="1" PersistString="SourceManager" AutoHidePortion="0.25" IsHidden="False" IsFloat="False">
+          <Content ID="1" PersistString="SourceManager" AutoHidePortion="0.0970031545741325" IsHidden="False" IsFloat="False">
             <instance-id>e0727d12-02ab-441c-acc7-39e25e8b1618</instance-id>
             <ShowSourceInTitle>false</ShowSourceInTitle>
             <ShowPortInTitle>true</ShowPortInTitle>
             <SourceId>1</SourceId>
             <TabTitle>Connection Manager</TabTitle>
           </Content>
-          <Content ID="2" PersistString="SerialMonitor" AutoHidePortion="0.25" IsHidden="False" IsFloat="False">
+          <Content ID="2" PersistString="SerialMonitor" AutoHidePortion="0.0970031545741325" IsHidden="False" IsFloat="False">
             <InsertTimestamp>false</InsertTimestamp>
             <WordWrap>true</WordWrap>
             <IncludeDate>false</IncludeDate>
@@ -124,7 +124,7 @@
                 <property name="Enabled"><![CDATA[True]]></property>
               </value>
               <value name="IOPinNumericUpDown">
-                <property name="Value"><![CDATA[9]]></property>
+                <property name="Value"><![CDATA[8]]></property>
                 <property name="Minimum"><![CDATA[0]]></property>
                 <property name="Maximum"><![CDATA[100]]></property>
                 <property name="Enabled"><![CDATA[True]]></property>
@@ -143,9 +143,9 @@
               <Content ID="0" RefID="0" />
             </Contents>
           </Pane>
-          <Pane ID="1" DockState="Document" ActiveContent="2">
+          <Pane ID="1" DockState="Document" ActiveContent="3">
             <Contents Count="1">
-              <Content ID="0" RefID="2" />
+              <Content ID="0" RefID="3" />
             </Contents>
           </Pane>
           <Pane ID="2" DockState="Document" ActiveContent="1">
@@ -153,9 +153,9 @@
               <Content ID="0" RefID="1" />
             </Contents>
           </Pane>
-          <Pane ID="3" DockState="Document" ActiveContent="3">
+          <Pane ID="3" DockState="Document" ActiveContent="2">
             <Contents Count="1">
-              <Content ID="0" RefID="3" />
+              <Content ID="0" RefID="2" />
             </Contents>
           </Pane>
         </Panes>
@@ -163,14 +163,14 @@
           <DockWindow ID="0" DockState="Document" ZOrderIndex="0">
             <NestedPanes Count="3">
               <Pane ID="0" RefID="1" PrevPane="-1" Alignment="Right" Proportion="0.5" />
-              <Pane ID="1" RefID="2" PrevPane="1" Alignment="Top" Proportion="0.190582959641256" />
-              <Pane ID="2" RefID="3" PrevPane="1" Alignment="Bottom" Proportion="0.5" />
+              <Pane ID="1" RefID="2" PrevPane="1" Alignment="Right" Proportion="0.529871977240398" />
+              <Pane ID="2" RefID="3" PrevPane="2" Alignment="Top" Proportion="0.625" />
             </NestedPanes>
           </DockWindow>
-          <DockWindow ID="1" DockState="DockLeft" ZOrderIndex="1">
+          <DockWindow ID="1" DockState="DockLeft" ZOrderIndex="2">
             <NestedPanes Count="0" />
           </DockWindow>
-          <DockWindow ID="2" DockState="DockRight" ZOrderIndex="2">
+          <DockWindow ID="2" DockState="DockRight" ZOrderIndex="1">
             <NestedPanes Count="1">
               <Pane ID="0" RefID="0" PrevPane="-1" Alignment="Bottom" Proportion="0.5" />
             </NestedPanes>
