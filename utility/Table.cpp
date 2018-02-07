@@ -72,3 +72,19 @@ void Table::SendHeader_Set()
 {
   SendDataHeader(F("SET"));
 }
+
+void Table::ShowCurrentTime(const char *RowName)
+{
+  SendHeader_Set();
+  m_rDestination.print(RowName);
+  m_rDestination.print(F("|[Now()]"));
+  SendDataTail();
+}
+
+void Table::ShowCurrentTime(const __FlashStringHelper *RowName)
+{
+  SendHeader_Set();
+  m_rDestination.print(RowName);
+  m_rDestination.print(F("|[Now()]"));
+  SendDataTail();
+}

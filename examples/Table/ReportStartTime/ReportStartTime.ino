@@ -16,7 +16,7 @@ void setup()
   delay(2000);
 
   // Tell MegunoLink to display the current time.
-  MyTable.SendData("Last Start", "[Now()]");
+  MyTable.ShowCurrentTime("Last Start");
 }
 
 void loop()

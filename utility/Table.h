@@ -48,6 +48,9 @@ public:
     SendDataTail();
   }
 
+  void ShowCurrentTime(const char *RowName);
+  void ShowCurrentTime(const __FlashStringHelper *RowName);
+
   void SetDescription(const char *RowName, const char *Description);
   void SetDescription(const __FlashStringHelper *RowName, const char *Description);
   void SetDescription(const __FlashStringHelper *RowName, const __FlashStringHelper *Description);
