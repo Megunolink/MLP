@@ -15,7 +15,7 @@ TimePlot MyPlot; //no channel selected
 CommandHandler<> Cmds;
 
 float frequency = 0.5; //Hz
-float phase = 3.141/2;
+float phase = 0;
 float amplitude = 1;
 
 void Cmd_SetAmplitude(CommandParameter &p)
@@ -35,13 +35,13 @@ void Cmd_SetPhase(CommandParameter &p)
 void Cmd_SetFrequency(CommandParameter &p)
 {
   frequency = (float)p.NextParameterAsDouble(0);
-  Message m;
+  Message m(Message::Speak);
   m.Send(F("Frequency"), frequency);
 }
 
 void Cmd_Unknown()
 {
-  Message m;
+  Message m(Message::Speak);
   m.Send(F("Unknown command"));
 }
 
@@ -81,7 +81,7 @@ void loop()
   static long LastTime = 0;
 
   long Now = millis();
-  if (Now - LastTime > 10)
+  if (Now - LastTime > 5)
   {
     seconds = (float)Now/1000;
   
