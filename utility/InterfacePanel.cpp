@@ -148,7 +148,9 @@ void InterfacePanel::SetText(const __FlashStringHelper * ControlName, const char
 
 void InterfacePanel::SetProgress(const __FlashStringHelper * ControlName, int nValue)
 {
-  SetNumber(ControlName, (int32_t) nValue);
+  SendControlHeader(ControlName, F("Value"));
+  m_rDestination.print((int32_t)nValue);
+  SendDataTail();
 }
 
 void InterfacePanel::SetNumber(const __FlashStringHelper * ControlName, int16_t nValue)
