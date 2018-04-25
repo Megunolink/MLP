@@ -59,6 +59,27 @@ void InterfacePanel::SetProgress(const char * ControlName, int nValue)
   SetNumber(ControlName, (int32_t) nValue);
 }
 
+void InterfacePanel::SetGaugeLabel(const char *ControlName, int LabelNumber, const char *Value)
+{
+  SendGaugeControlHeader(ControlName, LabelNumber);
+  m_rDestination.print(Value);
+  SendDataTail();
+}
+
+void InterfacePanel::SetGaugeLabel(const __FlashStringHelper *ControlName, int LabelNumber, const char *Value)
+{
+  SendGaugeControlHeader(ControlName, LabelNumber);
+  m_rDestination.print(Value);
+  SendDataTail();
+}
+
+void InterfacePanel::SetGaugeLabel(const __FlashStringHelper *ControlName, int LabelNumber, const __FlashStringHelper *Value)
+{
+  SendGaugeControlHeader(ControlName, LabelNumber);
+  m_rDestination.print(Value);
+  SendDataTail();
+}
+
 void InterfacePanel::SetNumber(const char * ControlName, int16_t nValue)
 {
   SendControlHeader(ControlName, F("Value"));
@@ -235,6 +256,26 @@ void InterfacePanel::SendControlHeader(const __FlashStringHelper *ControlName, c
   m_rDestination.print(ControlName);
   m_rDestination.print('.');
   m_rDestination.print(PropertyName);
+  m_rDestination.print('=');
+}
+
+void InterfacePanel::SendGaugeControlHeader(const char *ControlName, int nLabelNumber)
+{
+  SendDataHeader(F("SET"));
+  m_rDestination.print(ControlName);
+  m_rDestination.print('.');
+  m_rDestination.print(F("Label"));
+  m_rDestination.print(nLabelNumber);
+  m_rDestination.print('=');
+}
+
+void InterfacePanel::SendGaugeControlHeader(const __FlashStringHelper *ControlName, int nLabelNumber)
+{
+  SendDataHeader(F("SET"));
+  m_rDestination.print(ControlName);
+  m_rDestination.print('.');
+  m_rDestination.print(F("Label"));
+  m_rDestination.print(nLabelNumber);
   m_rDestination.print('=');
 }
 

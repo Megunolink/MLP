@@ -18,6 +18,10 @@ public:
   void SetText(const __FlashStringHelper * ControlName, const char * Value);
   void SetText(const __FlashStringHelper * ControlName, const __FlashStringHelper * Value);
 
+  void SetGaugeLabel(const char *ControlName, int LabelNumber, const char *Value);
+  void SetGaugeLabel(const __FlashStringHelper *ControlName, int LabelNumber, const char *Value);
+  void SetGaugeLabel(const __FlashStringHelper *ControlName, int LabelNumber, const __FlashStringHelper *Value);
+
   void SetProgress(const char * ControlName, int nValue);
   void SetProgress(const __FlashStringHelper * ControlName, int nValue);
 
@@ -82,4 +86,6 @@ public:
 protected:
   void SendControlHeader(const char *ControlName, const __FlashStringHelper *PropertyName);
   void SendControlHeader(const __FlashStringHelper *ControlName, const __FlashStringHelper *PropertyName);
+  void SendGaugeControlHeader(const char *ControlName, int nLabelNumber);
+  void SendGaugeControlHeader(const __FlashStringHelper *ControlName, int nLabelNumber);
 };
