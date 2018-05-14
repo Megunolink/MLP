@@ -50,7 +50,7 @@ namespace MLP
     bool AddVariable(const __FlashStringHelper *pName, float &rVariable);
     bool AddVariable(const __FlashStringHelper *pName, double &rVariable);
     bool AddVariable(const __FlashStringHelper *pName, char *pchBuffer, uint8_t uMaxBufferSize);
-#if defined(ARDUINO_ARCH_SAMD) || defined(ARDUINO_ARCH_SAM)
+#if defined(ARDUINO_ARCH_SAMD) || defined(ARDUINO_ARCH_SAM) || defined(CORE_TEENSY)
     bool AddVariable(const __FlashStringHelper *pName, int &rVariable);
 #endif
 
