@@ -1,7 +1,7 @@
 #pragma once
 #define __PROG_TYPES_COMPAT__
 #include <Arduino.h>
-#include "utility/CommandDispatcher.h"
+#include "CommandDispatcher.h"
 #include "utility/StreamParser.h"
 
 template <int CP_SERIAL_BUFFER_SIZE = 30> class CommandProcessor : public MLP::StreamParser
