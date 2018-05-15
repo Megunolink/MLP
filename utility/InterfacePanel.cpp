@@ -80,27 +80,6 @@ void InterfacePanel::SetGaugeLabel(const __FlashStringHelper *ControlName, int L
   SendDataTail();
 }
 
-void InterfacePanel::SetNumber(const char * ControlName, int16_t nValue)
-{
-  SendControlHeader(ControlName, F("Value"));
-  m_rDestination.print(nValue);
-  SendDataTail();
-}
-
-void InterfacePanel::SetNumber(const char * ControlName, int32_t nValue)
-{
-  SendControlHeader(ControlName, F("Value"));
-  m_rDestination.print(nValue);
-  SendDataTail();
-}
-
-void InterfacePanel::SetNumber(const char * ControlName, uint32_t nValue)
-{
-  SendControlHeader(ControlName, F("Value"));
-  m_rDestination.print(nValue);
-  SendDataTail();
-}
-
 void InterfacePanel::SetNumber(const char * ControlName, float fValue, int nDecimal)
 {
   SendControlHeader(ControlName, F("Value"));
@@ -171,13 +150,6 @@ void InterfacePanel::SetProgress(const __FlashStringHelper * ControlName, int nV
 {
   SendControlHeader(ControlName, F("Value"));
   m_rDestination.print((int32_t)nValue);
-  SendDataTail();
-}
-
-void InterfacePanel::SetNumber(const __FlashStringHelper * ControlName, int16_t nValue)
-{
-  SendControlHeader(ControlName, F("Value"));
-  m_rDestination.print(nValue);
   SendDataTail();
 }
 
@@ -405,3 +377,12 @@ void InterfacePanel::SetMaximum(const __FlashStringHelper *ControlName, int Valu
   SendDataTail();
 }
 
+void InterfacePanel::SendValueHeader(const char *ControlName)
+{
+  SendControlHeader(ControlName, F("Value"));
+}
+
+void InterfacePanel::SendValueHeader(const __FlashStringHelper *ControlName)
+{
+  SendControlHeader(ControlName, F("Value"));
+}

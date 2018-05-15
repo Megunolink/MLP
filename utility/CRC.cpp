@@ -1,4 +1,3 @@
-#pragma once
 #include <stdint.h>
 
 #if defined(__AVR__)

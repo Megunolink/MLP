@@ -25,15 +25,22 @@ public:
   void SetProgress(const char * ControlName, int nValue);
   void SetProgress(const __FlashStringHelper * ControlName, int nValue);
 
-  void SetNumber(const char * ControlName, int16_t nValue);
-  void SetNumber(const __FlashStringHelper * ControlName, int16_t nValue);
-  
-  void SetNumber(const char * ControlName, int32_t nValue);
-  void SetNumber(const __FlashStringHelper * ControlName, int32_t nValue);
-  
-  void SetNumber(const char * ControlName, uint32_t nValue);
-  void SetNumber(const __FlashStringHelper * ControlName, uint32_t nValue);
-  
+  template<class T>
+  void SetNumber(const char *ControlName, T Value)
+  {
+    SendValueHeader(ControlName);
+    m_rDestination.print(Value);
+    SendDataTail();
+  }
+
+  template<class T>
+  void SetNumber(const __FlashStringHelper *ControlName, T Value)
+  {
+    SendValueHeader(ControlName);
+    m_rDestination.print(Value);
+    SendDataTail();
+  }
+
   void SetNumber(const char * ControlName, float fValue, int decimal = 3);
   void SetNumber(const __FlashStringHelper * ControlName, float fValue, int decimal = 3);
 
@@ -88,4 +95,8 @@ protected:
   void SendControlHeader(const __FlashStringHelper *ControlName, const __FlashStringHelper *PropertyName);
   void SendGaugeControlHeader(const char *ControlName, int nLabelNumber);
   void SendGaugeControlHeader(const __FlashStringHelper *ControlName, int nLabelNumber);
+
+  void SendValueHeader(const char *ControlName);
+  void SendValueHeader(const __FlashStringHelper *ControlName);
+
 };
