@@ -81,8 +81,39 @@ void loop()
   delay(500);
 
 
+  //Gauges
+  MyPanel.SetText(F("Item"), F("including buttons, textboxes, gauges"));
+  delay(500);
+  MyPanel.SetGaugeLabel(F("MyGauge"),0, F("you"));
+  delay(500);
+  MyPanel.SetGaugeLabel(F("MyGauge"),0, F("can"));
+  delay(500);
+  MyPanel.SetGaugeLabel(F("MyGauge"),0, F("edit"));
+  delay(500);
+  MyPanel.SetGaugeLabel(F("MyGauge"),0, F("gauge"));
+  delay(500);
+  MyPanel.SetGaugeLabel(F("MyGauge"),0, F("labels"));
+  delay(500);
+  MyPanel.SetGaugeLabel(F("MyGauge"),0, F("from"));
+  delay(500);
+  MyPanel.SetGaugeLabel(F("MyGauge"),0, F("your"));
+  delay(500);
+  MyPanel.SetGaugeLabel(F("MyGauge"),0, F("arduino"));
+  delay(500);
+  MyPanel.SetNumber(F("MyGauge"), 100);
+  delay(500);
+  MyPanel.SetNumber(F("MyGauge"), 200);
+  delay(500);
+  MyPanel.SetNumber(F("MyGauge"), 300);
+  delay(500);
+  MyPanel.SetNumber(F("MyGauge"), 400);
+  delay(500);
+  MyPanel.SetNumber(F("MyGauge"), 500);
+  delay(500);
+  
+
   //Checkboxes
-  MyPanel.SetText(F("Item"), F("including buttons, textboxes, checkboxes"));
+  MyPanel.SetText(F("Item"), F("including buttons, textboxes, gauges, checkboxes"));
   delay(500);
   MyPanel.SetCheck(F("MyCheckbox"));
   delay(500);
