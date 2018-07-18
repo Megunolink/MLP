@@ -27,7 +27,7 @@ CurrentIndex	KEYWORD2
 Next	KEYWORD2
 AtEnd	KEYWORD2
 Previous	KEYWORD2
-ReverseIterator KEYWORD1
+ReverseIterator	KEYWORD1
 CommandHandler	KEYWORD1
 Process	KEYWORD2
 AddCommand	KEYWORD2
