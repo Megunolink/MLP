@@ -50,8 +50,8 @@ void setup()
   Serial.println(F("=========="));
 
   // Setup the serial commands we can repond to
-  SerialCommandHandler.AddVariable(F("OnTime"), OnTime);
-  SerialCommandHandler.AddVariable(F("OffTime"), OffTime);
+  SerialCommandHandler.AddCommand(F("OnTime"), Cmd_SetOnTime);
+  SerialCommandHandler.AddCommand(F("OffTime"), Cmd_SetOffTime);
   SerialCommandHandler.AddCommand(F("ListAll"), Cmd_ListAll);
   SerialCommandHandler.SetDefaultHandler(Cmd_Unknown);
 
@@ -74,12 +74,22 @@ void loop()
     LastBlink = uNow;
 }
 
-void Cmd_ListAll(CommandParameter &parameters)
+void Cmd_ListAll(CommandParameter &Parameters)
 {
   Serial.print(F("OnTime [ms]="));
   Serial.println(OnTime);
   Serial.print(F("OffTime [ms]="));
   Serial.println(OffTime);
+}
+
+void Cmd_SetOnTime(CommandParameter &Parameters)
+{
+	OnTime = Parameters.NextParameterAsInteger();
+}
+
+void Cmd_SetOffTime(CommandParameter &Parameters)
+{
+	OffTime = Parameters.NextParameterAsInteger();
 }
 
 void Cmd_Unknown()
