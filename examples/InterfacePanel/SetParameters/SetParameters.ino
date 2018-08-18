@@ -14,7 +14,7 @@ void Cmd_GetTurtleCount(CommandParameter &Parameters)
 
 void Cmd_SetTurtleCount(CommandParameter &Parameters)
 {
-  NumberOfTurtles=Parameters.NextParameterAsInteger();
+  NumberOfTurtles=Parameters.NextParameterAsInteger(NumberOfTurtles);
 }
 
 void setup()

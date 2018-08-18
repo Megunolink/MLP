@@ -84,12 +84,12 @@ void Cmd_ListAll(CommandParameter &Parameters)
 
 void Cmd_SetOnTime(CommandParameter &Parameters)
 {
-	OnTime = Parameters.NextParameterAsInteger();
+	OnTime = Parameters.NextParameterAsInteger(OnTime);
 }
 
 void Cmd_SetOffTime(CommandParameter &Parameters)
 {
-	OffTime = Parameters.NextParameterAsInteger();
+	OffTime = Parameters.NextParameterAsInteger(OffTime);
 }
 
 void Cmd_Unknown()
