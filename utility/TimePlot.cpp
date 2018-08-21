@@ -12,6 +12,18 @@ TimePlot::TimePlot( const __FlashStringHelper *channelName, Print &rDestination 
 
 }
 
+void TimePlot::Run(bool bEnable)
+{
+  SendDataHeader(F("RUN"));
+  m_rDestination.print(bEnable ? '1' : '0');
+  SendDataTail();
+}
+
+void TimePlot::Stop()
+{
+  Run(false);
+}
+
 void TimePlot::SendFloatData(const char * seriesName, float yValue, int nDecimalPlaces, const char * seriesProperties/*=NULL*/)
 {
   SendDataHeader(F("DATA"));

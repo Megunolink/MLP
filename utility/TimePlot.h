@@ -10,6 +10,9 @@ public:
   TimePlot(const char *channelName = NULL, Print &rDestination = Serial);
   TimePlot(const __FlashStringHelper *channelName, Print &rDestination = Serial);
 
+  void Run(bool bEnable);
+  void Stop();
+
   template<class TYData> void SendData(const char * seriesName, TYData yValue, const char * seriesProperties=NULL)
   {
     SendHeader_Data();
