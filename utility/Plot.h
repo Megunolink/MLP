@@ -58,6 +58,8 @@ public:
   void Clear(const char *SeriesName);
   void Clear(const __FlashStringHelper *SeriesName);
 
+  void SetYRange(float fYLimLower, float fYLimUpper);
+
 protected:
   Plot(const __FlashStringHelper *Context, Print &rDestination = Serial);
   Plot(const __FlashStringHelper *Context, const char *Channel, Print &rDestination = Serial);

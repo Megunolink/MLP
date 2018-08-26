@@ -9,6 +9,7 @@ class XYPlot : public Plot
 public:
   XYPlot(const char *channelName = NULL, Print &rDestination = Serial);
   XYPlot(const __FlashStringHelper *channelName, Print &rDestination = Serial);
+  void SetXRange(float fXLimMin, float fXlimMax);
 
   template<class TXData, class TYData> void SendData(const char * seriesName, TXData xValue, TYData yValue, const char * seriesProperties = NULL)
   {

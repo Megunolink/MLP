@@ -174,3 +174,12 @@ void Plot::SendTimeSeparator()
 {
   m_rDestination.print(F("T|"));
 }
+
+void Plot::SetYRange(float fYLimLower, float fYLimUpper)
+{
+	SendDataHeader(F("yrange"));
+	m_rDestination.print(fYLimLower, 5);
+	m_rDestination.print("|");
+	m_rDestination.print(fYLimUpper, 5);
+	SendDataTail();
+}

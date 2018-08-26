@@ -42,3 +42,12 @@ void XYPlot::SendData(float *xValues, float *yValues, unsigned NumberOfValues, i
   }
   SendDataTail();
 }
+
+void XYPlot::SetXRange(float fXLimMin, float fXlimMax)
+{
+	SendDataHeader(F("xrange"));
+	m_rDestination.print(fXLimMin, 5);
+	m_rDestination.print("|");
+	m_rDestination.print(fXlimMax, 5);
+	SendDataTail();
+}

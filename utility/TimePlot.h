@@ -12,6 +12,7 @@ public:
 
   void Run(bool bEnable);
   void Stop();
+  void SetXRange(float fTimespanHours);
 
   template<class TYData> void SendData(const char * seriesName, TYData yValue, const char * seriesProperties=NULL)
   {

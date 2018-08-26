@@ -19,6 +19,14 @@ void TimePlot::Run(bool bEnable)
   SendDataTail();
 }
 
+void TimePlot::SetXRange(float fTimespanHours)
+{
+	SendDataHeader(F("xrange"));
+	m_rDestination.print("T|");
+	m_rDestination.print(fTimespanHours,5);
+	SendDataTail();
+}
+
 void TimePlot::Stop()
 {
   Run(false);
