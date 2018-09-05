@@ -32,7 +32,7 @@ public:
 
   void SetCurrent(T NewValue)
   {
-    m_Current = NewValue;
+    m_Current = NewValue*100;
   }
 };
 
