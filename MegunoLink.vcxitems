@@ -24,6 +24,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Filter.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MegunoLink.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MessageHeaders.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TCPCommandHandler.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\CommandDispatcher.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\CommandDispatcherBase.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\CommandParameter.h" />
