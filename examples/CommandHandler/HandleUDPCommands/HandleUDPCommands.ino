@@ -23,8 +23,8 @@ WiFiUDP UdpConnection;
 
 // -------------------------------------------------------------------------------
 // Connection settings for the WiFi network to use:
-const char *WiFiSSID = "NETGEAR18";
-const char *WiFiPassword = "melodicbanana728";
+const char *WiFiSSID = "Your SSID";
+const char *WiFiPassword = "Your Password";
 
 // -------------------------------------------------------------------------------
 // Handling commands
