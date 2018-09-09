@@ -36,6 +36,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\Plot.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\StreamParser.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\Table.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\TCPConnection.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\TestReport.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\TimePlot.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\XYPlot.h" />

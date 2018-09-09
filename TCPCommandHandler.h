@@ -1,7 +1,8 @@
 #pragma once
+#if defined(ARDUINO_ARCH_ESP32) || defined(ARDUINO_ARCH_ESP8266)
+
 #include <Arduino.h>
 #include <Stream.h>
-#include <WiFi.h>
 
 #include "utility/CommandDispatcherBase.h"
 #include "utility/TCPConnection.h"
@@ -106,3 +107,5 @@ public:
   }
 
 };
+
+#endif
