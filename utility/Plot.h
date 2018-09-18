@@ -37,6 +37,9 @@ public:
     Star = '*',
     DownwardTriangle = 'v',
     NoMarker = 'n',
+    FilledSquare = 'S',
+    FilledDiamond = 'D',
+    FilledCircle = 'O',
   };
 
   void SetTitle(const char *title);
