@@ -106,14 +106,23 @@ void AdvertiseServices()
   }
 }
 
-String MakeMine(const char *Template)
+/* Returns a semi-unique id for the device. The id is based
+*  on part of a MAC address or chip ID so it won't be 
+*  globally unique. */
+uint16_t GetDeviceId()
 {
 #if defined(ARDUINO_ARCH_ESP32)
-  uint16_t uChipId = ESP.getEfuseMac();
+  return ESP.getEfuseMac();
 #else
-  uint16_t uChipId = ESP.getChipId();
+  return ESP.getChipId();
 #endif
-  String Result = String(Template) + String(uChipId, HEX);
+}
+
+/* Append a semi-unique id to the name template */
+String MakeMine(const char *NameTemplate)
+{
+  uint16_t uChipId = GetDeviceId();
+  String Result = String(NameTemplate) + String(uChipId, HEX);
   return Result;
 }
 
