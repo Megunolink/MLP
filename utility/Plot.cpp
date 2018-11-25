@@ -33,6 +33,11 @@ void Plot::SetYlabel(const char *ylabel)
   SetParameter(F("y-label"), ylabel);
 }
 
+void Plot::SetY2label(const char *ylabel)
+{
+  SetParameter(F("y2-label"), ylabel);
+}
+
 void Plot::SetTitle(const __FlashStringHelper *title)
 {
   SetParameter(F("title"), title);
@@ -48,9 +53,24 @@ void Plot::SetYlabel(const __FlashStringHelper *ylabel)
   SetParameter(F("y-label"), ylabel);
 }
 
-void Plot::SetSeriesProperties(const char *SeriesName, Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker )
+void Plot::SetY2label(const __FlashStringHelper *ylabel)
 {
-  char Data[5] = {':', Color, Marker, Line, '\0'};
+  SetParameter(F("y2-label"), ylabel);
+}
+
+void Plot::SetYVisible(bool bVisible)
+{
+  SetParameter(F("y-visible"), bVisible ? "1" : "0");
+}
+
+void Plot::SetY2Visible(bool bVisible)
+{
+  SetParameter(F("y2-visible"), bVisible ? "1" : "0");
+}
+
+void Plot::SetSeriesProperties(const char *SeriesName, Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax /*= DefaultAxis */)
+{
+  char Data[6] = {':', Color, Marker, ax, Line, '\0'}; // Line must be last as it is followed by the line-width. 
 
   SendDataHeader(F("STYLE"));
   m_rDestination.print(SeriesName);
@@ -59,9 +79,9 @@ void Plot::SetSeriesProperties(const char *SeriesName, Colors Color, LineStyle L
   SendDataTail();
 }
 
-void Plot::SetSeriesProperties(const __FlashStringHelper *SeriesName, Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker )
+void Plot::SetSeriesProperties(const __FlashStringHelper *SeriesName, Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax /*= DefaultAxis */)
 {
-  char Data[5] = {':', Color, Marker, Line, '\0'};
+  char Data[6] = {':', Color, Marker, ax, Line, '\0'}; // Line must be last as it is followed by the line-width. 
 
   SendDataHeader(F("STYLE"));
   m_rDestination.print(SeriesName);
@@ -135,9 +155,9 @@ void Plot::SendSeriesProperties( const __FlashStringHelper *SeriesProperties )
   m_rDestination.print('|');
 }
 
-void Plot::SendSeriesProperties( Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker )
+void Plot::SendSeriesProperties( Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
 {
-  char Data[5] = {':', Color, Marker, Line, '\0'};
+  char Data[6] = {':', Color, Marker, ax, Line, '\0'};
 
   m_rDestination.print(Data);
   if (Line != NoLine)
@@ -178,8 +198,19 @@ void Plot::SendTimeSeparator()
 void Plot::SetYRange(float fYLimLower, float fYLimUpper)
 {
 	SendDataHeader(F("yrange"));
-	m_rDestination.print(fYLimLower, 5);
-	m_rDestination.print("|");
-	m_rDestination.print(fYLimUpper, 5);
-	SendDataTail();
+  SendRangeDetail(fYLimLower, fYLimUpper);
+}
+
+void Plot::SetY2Range(float fYLimLower, float fYLimUpper)
+{
+  SendDataHeader(F("y2range"));
+  SendRangeDetail(fYLimLower, fYLimUpper);
+}
+
+void Plot::SendRangeDetail(float fYLimLower, float fYLimUpper)
+{
+  m_rDestination.print(fYLimLower, 5);
+  m_rDestination.print("|");
+  m_rDestination.print(fYLimUpper, 5);
+  SendDataTail();
 }

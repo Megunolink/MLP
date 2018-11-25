@@ -42,16 +42,25 @@ public:
     FilledCircle = 'O',
   };
 
+  enum Axis
+  {
+    DefaultAxis = ' ',
+    LeftAxis = '<',
+    RightAxis = '>',
+  };
+
   void SetTitle(const char *title);
   void SetXlabel(const char *xlabel);
   void SetYlabel(const char *ylabel);
+  void SetY2label(const char *ylabel);
 
   void SetTitle(const __FlashStringHelper *title);
   void SetXlabel(const __FlashStringHelper *xlabel);
   void SetYlabel(const __FlashStringHelper *ylabel);
+  void SetY2label(const __FlashStringHelper *ylabel);
 
-  void SetSeriesProperties(const char *SeriesName, Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker);
-  void SetSeriesProperties(const __FlashStringHelper *SeriesName, Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker);
+  void SetSeriesProperties(const char *SeriesName, Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax = DefaultAxis);
+  void SetSeriesProperties(const __FlashStringHelper *SeriesName, Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax = DefaultAxis);
 
   void SetSeriesProperties(const char *SeriesName, const char *SeriesProperties);
   void SetSeriesProperties(const __FlashStringHelper *SeriesName, const char *SeriesProperties);
@@ -62,6 +71,10 @@ public:
   void Clear(const __FlashStringHelper *SeriesName);
 
   void SetYRange(float fYLimLower, float fYLimUpper);
+  void SetY2Range(float fYLimLower, float fYLimUpper);
+
+  void SetYVisible(bool bVisible = true);
+  void SetY2Visible(bool bVisible = true);
 
 protected:
   Plot(const __FlashStringHelper *Context, Print &rDestination = Serial);
@@ -72,9 +85,12 @@ protected:
   void SetParameter(const __FlashStringHelper *pfstrParameter, const __FlashStringHelper * Value);
   void SendSeriesProperties(const char *SeriesProperties);
   void SendSeriesProperties(const __FlashStringHelper *SeriesProperties);
-  void SendSeriesProperties(Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker);
+  void SendSeriesProperties(Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax);
 
   void SendHeader_Data();
   void SendTimeSeparator();
+
+private:
+  void SendRangeDetail(float fYLimLower, float fYLimUpper);
 };
 
