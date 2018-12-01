@@ -1,9 +1,10 @@
 /* **********************************************************************************************
-*  Example program to plot sine wave data on MegunoLink's Time Plot visualiser
-*  Visit http://www.megunolink.com/documentation/plotting/
-*  for more information. 
+   Example program to plot sine wave data on MegunoLink's Time Plot visualiser
+   Visit http://www.megunolink.com/documentation/plotting/
+   for more information.
 *  ********************************************************************************************** */
 #include "MegunoLink.h"
+#include "ArduinoTimer.h"
 
 // For more information on installing the MegunoLink Arduino library check out our documentation
 // http://www.megunolink.com/documentation/arduino-integration/
@@ -19,6 +20,9 @@
 
 TimePlot MyPlot; //no channel selected
 
+ArduinoTimer PlotPropertiesTimer;
+ArduinoTimer PlotSendTimer;
+
 void setup()
 {
   Serial.begin(9600);
@@ -30,7 +34,7 @@ void setup()
   MyPlot.SetYRange(-1.5, 5);
   MyPlot.SetY2Range(-5, 1.5);
   MyPlot.SetY2Visible();
-  
+
   // Set the plotting parameters. "Sinewave" = series name, Plot::Blue = line colour
   // 2 = line width, Plot::Square = marker style
   MyPlot.SetSeriesProperties("Sinewave", Plot::Blue, Plot::Solid, 2, Plot::Square, Plot::LeftAxis);
@@ -38,10 +42,10 @@ void setup()
 
   // Colours include
   // Red, Green, Blue, Yellow, Black, Magenta, Cyan, White
-  
+
   // Markers include
   // Square, Diamond, Triangle, Circle, Cross, Plus, Star, DownwardTriangle, NoMarker
-  
+
   // Line style
   // Solid, Dashed, Dotted, DashDot, DashDotDot
 
@@ -55,18 +59,25 @@ void loop()
   double dY, dY2;
   float seconds;
   float frequency = 0.5; //Hz
-  float phase = 3.141/2;
+  float phase = 3.141 / 2;
 
-  seconds = (float)millis()/1000;
+  //Send plotting data every 10mS
+  if (PlotSendTimer.TimePassed_Milliseconds(10))
+  {
+    seconds = (float)millis() / 1000;
 
-  dY = sin(2 * 3.141 * frequency * seconds);
-  dY2 = cos(2 * 3.141 * frequency * seconds + phase);
+    dY = sin(2 * 3.141 * frequency * seconds);
+    dY2 = cos(2 * 3.141 * frequency * seconds + phase);
 
-  //Send Data To MegunoLink Pro
-  MyPlot.SendData(F("Sinewave"),dY); // Sinewave = series name, dY = data to plot
-  MyPlot.SendData(F("Cosinewave"),dY2); // By wrapping strings in F("") we can save ram by storing strings in program memory
+    //Send Data To MegunoLink Pro
+    MyPlot.SendData(F("Sinewave"), dY); // Sinewave = series name, dY = data to plot
+    MyPlot.SendData(F("Cosinewave"), dY2); // By wrapping strings in F("") we can save ram by storing strings in program memory
+  }
 
-
-  delay(10);
+  //Send plotting style message every 5000mS
+  if (PlotPropertiesTimer.TimePassed_Milliseconds(5000))
+  {
+    MyPlot.SetSeriesProperties("Sinewave", Plot::Blue, Plot::Solid, 2, Plot::Square, Plot::LeftAxis);
+    MyPlot.SetSeriesProperties("Cosinewave", Plot::Red, Plot::Solid, 2, Plot::Square, Plot::RightAxis);
+  }
 }
-
