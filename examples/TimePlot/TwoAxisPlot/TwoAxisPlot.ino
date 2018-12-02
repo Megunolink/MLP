@@ -25,32 +25,8 @@ ArduinoTimer PlotSendTimer;
 
 void setup()
 {
-  Serial.begin(9600);
-
-  MyPlot.SetTitle("Sine and Cosine Function Waveforms");
-  MyPlot.SetXlabel("Time");
-  MyPlot.SetYlabel("Amplitude");
-  MyPlot.SetY2label("Amplitude 2");
-  MyPlot.SetYRange(-1.5, 5);
-  MyPlot.SetY2Range(-5, 1.5);
-  MyPlot.SetY2Visible();
-
-  // Set the plotting parameters. "Sinewave" = series name, Plot::Blue = line colour
-  // 2 = line width, Plot::Square = marker style
-  MyPlot.SetSeriesProperties("Sinewave", Plot::Blue, Plot::Solid, 2, Plot::Square, Plot::LeftAxis);
-  MyPlot.SetSeriesProperties("Cosinewave", Plot::Red, Plot::Solid, 2, Plot::Square, Plot::RightAxis);
-
-  // Colours include
-  // Red, Green, Blue, Yellow, Black, Magenta, Cyan, White
-
-  // Markers include
-  // Square, Diamond, Triangle, Circle, Cross, Plus, Star, DownwardTriangle, NoMarker
-
-  // Line style
-  // Solid, Dashed, Dotted, DashDot, DashDotDot
-
-  // Axis options
-  // LeftAxis, RightAxis, DefaultAxis
+  Serial.begin(115200);
+  SendPlotProperties();
 }
 
 
@@ -61,8 +37,8 @@ void loop()
   float frequency = 0.5; //Hz
   float phase = 3.141 / 2;
 
-  //Send plotting data every 10mS
-  if (PlotSendTimer.TimePassed_Milliseconds(10))
+  //Send plotting data every 100mS
+  if (PlotSendTimer.TimePassed_Milliseconds(100))
   {
     seconds = (float)millis() / 1000;
 
@@ -70,14 +46,39 @@ void loop()
     dY2 = cos(2 * 3.141 * frequency * seconds + phase);
 
     //Send Data To MegunoLink Pro
-    MyPlot.SendData(F("Sinewave"), dY); // Sinewave = series name, dY = data to plot
-    MyPlot.SendData(F("Cosinewave"), dY2); // By wrapping strings in F("") we can save ram by storing strings in program memory
+    //"Sinewave" = series name, Plot::Blue = line colour, 2 = line width, Plot::Square = marker style
+    MyPlot.SendData(F("Sinewave"), dY, Plot::Blue, Plot::Solid, 2, Plot::Square, Plot::LeftAxis); // Sinewave = series name, dY = data to plot
+    MyPlot.SendData(F("Cosinewave"), dY2, Plot::Red, Plot::Solid, 2, Plot::Square, Plot::RightAxis); // By wrapping strings in F("") we can save ram by storing strings in program memory
+
+    // Colours include
+    // Red, Green, Blue, Yellow, Black, Magenta, Cyan, White
+
+    // Markers include
+    // Square, Diamond, Triangle, Circle, Cross, Plus, Star, DownwardTriangle, NoMarker
+
+    // Line style
+    // Solid, Dashed, Dotted, DashDot, DashDotDot
+
+    // Axis options
+    // LeftAxis, RightAxis, DefaultAxis
+
   }
 
-  //Send plotting style message every 5000mS
-  if (PlotPropertiesTimer.TimePassed_Milliseconds(5000))
+  //Send plotting style message every 10000mS
+  if (PlotPropertiesTimer.TimePassed_Milliseconds(10000))
   {
-    MyPlot.SetSeriesProperties("Sinewave", Plot::Blue, Plot::Solid, 2, Plot::Square, Plot::LeftAxis);
-    MyPlot.SetSeriesProperties("Cosinewave", Plot::Red, Plot::Solid, 2, Plot::Square, Plot::RightAxis);
+    SendPlotProperties();
   }
+}
+
+
+void SendPlotProperties()
+{
+  MyPlot.SetTitle("Sine and Cosine Function Waveforms");
+  MyPlot.SetXlabel("Time");
+  MyPlot.SetYlabel("Amplitude");
+  MyPlot.SetY2label("Amplitude 2");
+  MyPlot.SetYRange(-1.5, 5);
+  MyPlot.SetY2Range(-5, 1.5);
+  MyPlot.SetY2Visible();
 }
