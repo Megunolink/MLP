@@ -10,7 +10,7 @@
 // http://www.megunolink.com/documentation/arduino-integration/
 
 // You can download the MegunoLink Interface (.mlx) that goes with this example here
-// http://www.megunolink.com/examples/arduino/TimePlot/Sinewave/Sinewave.mlx
+// http://www.megunolink.com/examples/arduino/TimePlot/TwoAxisPlot/TwoAxisPlot.mlpz
 
 
 
