@@ -55,6 +55,7 @@ void TestReport::SendFirstPart(bool bPass, const char * pchName)
 
 void TestReport::SendFirstPart(bool bPass, const __FlashStringHelper * pchName)
 {
+  SendFirstPart(bPass);
   m_rDestination.print(pchName);
 }
 
