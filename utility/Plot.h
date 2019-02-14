@@ -50,14 +50,14 @@ public:
   };
 
   void SetTitle(const char *title);
-  void SetXlabel(const char *xlabel);
-  void SetYlabel(const char *ylabel);
-  void SetY2label(const char *ylabel);
+  void SetXLabel(const char *xlabel);
+  void SetYLabel(const char *ylabel);
+  void SetY2Label(const char *ylabel);
 
   void SetTitle(const __FlashStringHelper *title);
-  void SetXlabel(const __FlashStringHelper *xlabel);
-  void SetYlabel(const __FlashStringHelper *ylabel);
-  void SetY2label(const __FlashStringHelper *ylabel);
+  void SetXLabel(const __FlashStringHelper *xlabel);
+  void SetYLabel(const __FlashStringHelper *ylabel);
+  void SetY2Label(const __FlashStringHelper *ylabel);
 
   void SetSeriesProperties(const char *SeriesName, Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax = DefaultAxis);
   void SetSeriesProperties(const __FlashStringHelper *SeriesName, Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax = DefaultAxis);

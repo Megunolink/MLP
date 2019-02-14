@@ -24,8 +24,8 @@ void setup()
   Serial.begin(9600);
 
   MyPlot.SetTitle("Sine and Cosine Function Waveforms");
-  MyPlot.SetXlabel("Time");
-  MyPlot.SetYlabel("Amplitude");
+  MyPlot.SetXLabel("Time");
+  MyPlot.SetYLabel("Amplitude");
   
   // Set the plotting parameters. "Sinewave" = series name, Plot::Blue = line colour
   // 2 = line width, Plot::Square = marker style

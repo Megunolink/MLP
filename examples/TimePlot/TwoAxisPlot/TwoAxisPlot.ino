@@ -75,9 +75,9 @@ void loop()
 void SendPlotProperties()
 {
   MyPlot.SetTitle("Sine and Cosine Function Waveforms");
-  MyPlot.SetXlabel("Time");
-  MyPlot.SetYlabel("Amplitude");
-  MyPlot.SetY2label("Amplitude 2");
+  MyPlot.SetXLabel("Time");
+  MyPlot.SetYLabel("Amplitude");
+  MyPlot.SetY2Label("Amplitude 2");
   MyPlot.SetYRange(-1.5, 5);
   MyPlot.SetY2Range(-5, 1.5);
   MyPlot.SetY2Visible();

@@ -23,17 +23,17 @@ void Plot::SetTitle(const char *title)
   SetParameter(F("title"), title);
 }
 
-void Plot::SetXlabel(const char *xlabel)
+void Plot::SetXLabel(const char *xlabel)
 {
   SetParameter(F("x-label"), xlabel);
 }
 
-void Plot::SetYlabel(const char *ylabel)
+void Plot::SetYLabel(const char *ylabel)
 {
   SetParameter(F("y-label"), ylabel);
 }
 
-void Plot::SetY2label(const char *ylabel)
+void Plot::SetY2Label(const char *ylabel)
 {
   SetParameter(F("y2-label"), ylabel);
 }
@@ -43,17 +43,17 @@ void Plot::SetTitle(const __FlashStringHelper *title)
   SetParameter(F("title"), title);
 }
 
-void Plot::SetXlabel(const __FlashStringHelper *xlabel)
+void Plot::SetXLabel(const __FlashStringHelper *xlabel)
 {
   SetParameter(F("x-label"), xlabel);
 }
 
-void Plot::SetYlabel(const __FlashStringHelper *ylabel)
+void Plot::SetYLabel(const __FlashStringHelper *ylabel)
 {
   SetParameter(F("y-label"), ylabel);
 }
 
-void Plot::SetY2label(const __FlashStringHelper *ylabel)
+void Plot::SetY2Label(const __FlashStringHelper *ylabel)
 {
   SetParameter(F("y2-label"), ylabel);
 }

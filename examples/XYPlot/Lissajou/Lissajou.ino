@@ -21,8 +21,8 @@ void setup()
 
   //Send Plot Title And Axis Labels To MegunoLink Pro
   MyPlot.SetTitle("Lissajou Plot");
-  MyPlot.SetXlabel("Xaxis Value");
-  MyPlot.SetYlabel("Yaxis Value");
+  MyPlot.SetXLabel("Xaxis Value");
+  MyPlot.SetYLabel("Yaxis Value");
 
   // Set the plotting parameters. "Sinewave" = series name, Plot::Blue = line colour
   // 2 = line width, Plot::Square = marker style
