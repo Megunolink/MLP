@@ -9,21 +9,28 @@ public:
   InterfacePanel(const char *channelName = NULL, Print &rDestination = Serial);
   InterfacePanel(const __FlashStringHelper *channelName, Print &rDestination = Serial);
 
-  void SetText(const char * ControlName, const char * Value);
-  void SetText(const char * ControlName, int Value);  
-  void SetText(const char * ControlName, long Value);  
-  void SetText(const char * ControlName, unsigned long Value);
-  void SetText(const char * ControlName, float Value);
-  void SetText(const char * ControlName, float Value, int DecimalPlaces);
-  void SetText(const __FlashStringHelper * ControlName, const char * Value);
-  void SetText(const __FlashStringHelper * ControlName, const __FlashStringHelper * Value);
-
   void SetGaugeLabel(const char *ControlName, int LabelNumber, const char *Value);
   void SetGaugeLabel(const __FlashStringHelper *ControlName, int LabelNumber, const char *Value);
   void SetGaugeLabel(const __FlashStringHelper *ControlName, int LabelNumber, const __FlashStringHelper *Value);
 
   void SetProgress(const char * ControlName, int nValue);
   void SetProgress(const __FlashStringHelper * ControlName, int nValue);
+
+  template<class T>
+  void SetText(const char *ControlName, T Value)
+  {
+    SendTextHeader(ControlName);
+    m_rDestination.print(Value);
+    SendDataTail();
+  }
+
+  template<class T>
+  void SetText(const __FlashStringHelper *ControlName, T Value)
+  {
+    SendTextHeader(ControlName);
+    m_rDestination.print(Value);
+    SendDataTail();
+  }
 
   template<class T>
   void SetNumber(const char *ControlName, T Value)
@@ -98,5 +105,7 @@ protected:
 
   void SendValueHeader(const char *ControlName);
   void SendValueHeader(const __FlashStringHelper *ControlName);
+  void SendTextHeader(const char *ControlName);
+  void SendTextHeader(const __FlashStringHelper *ControlName);
 
 };

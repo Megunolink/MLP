@@ -12,48 +12,6 @@ InterfacePanel::InterfacePanel(const __FlashStringHelper *channelName, Print &rD
 
 }
 
-void InterfacePanel::SetText(const char * ControlName, const char * Value)
-{
-  SendControlHeader(ControlName, F("Text"));
-  m_rDestination.print(Value);
-  SendDataTail();
-}
-
-void InterfacePanel::SetText(const char * ControlName, int Value)
-{
-  SendControlHeader(ControlName, F("Text"));
-  m_rDestination.print(Value);
-  SendDataTail();
-}
-
-void InterfacePanel::SetText(const char * ControlName, long Value)
-{
-  SendControlHeader(ControlName, F("Text"));
-  m_rDestination.print(Value);
-  SendDataTail();
-}
-
-void InterfacePanel::SetText(const char * ControlName, unsigned long Value)
-{
-  SendControlHeader(ControlName, F("Text"));
-  m_rDestination.print(Value);
-  SendDataTail();
-}
-
-void InterfacePanel::SetText(const char * ControlName, float Value)
-{
-  SendControlHeader(ControlName, F("Text"));
-  m_rDestination.print(Value);
-  SendDataTail();
-}
-
-void InterfacePanel::SetText(const char * ControlName, float Value, int DecimalPlaces)
-{
-  SendControlHeader(ControlName, F("Text"));
-  m_rDestination.print(Value, DecimalPlaces);
-  SendDataTail();
-}
-
 void InterfacePanel::SetProgress(const char * ControlName, int nValue)
 {
   SetNumber(ControlName, (int32_t) nValue);
@@ -139,13 +97,6 @@ void InterfacePanel::ClearCheck(const char * ControlName)
   SendDataTail();
 }
 
-void InterfacePanel::SetText(const __FlashStringHelper * ControlName, const char * Value)
-{
-  SendControlHeader(ControlName, F("Text"));
-  m_rDestination.print(Value);
-  SendDataTail();
-}
-
 void InterfacePanel::SetProgress(const __FlashStringHelper * ControlName, int nValue)
 {
   SendControlHeader(ControlName, F("Value"));
@@ -171,13 +122,6 @@ void InterfacePanel::ClearCheck(const __FlashStringHelper * ControlName)
 {
   SendControlHeader(ControlName, F("Checked"));
   m_rDestination.print(F("False"));
-  SendDataTail();
-}
-
-void InterfacePanel::SetText(const __FlashStringHelper * ControlName, const __FlashStringHelper * Value)
-{
-  SendControlHeader(ControlName, F("Text"));
-  m_rDestination.print(Value);
   SendDataTail();
 }
 
@@ -385,4 +329,14 @@ void InterfacePanel::SendValueHeader(const char *ControlName)
 void InterfacePanel::SendValueHeader(const __FlashStringHelper *ControlName)
 {
   SendControlHeader(ControlName, F("Value"));
+}
+
+void InterfacePanel::SendTextHeader(const char *ControlName)
+{
+  SendControlHeader(ControlName, F("Text"));
+}
+
+void InterfacePanel::SendTextHeader(const __FlashStringHelper *ControlName)
+{
+  SendControlHeader(ControlName, F("Text"));
 }
