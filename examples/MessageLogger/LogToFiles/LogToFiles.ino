@@ -32,8 +32,8 @@ void StoreMeasurement()
 void Cmd_StartExperiment(CommandParameter &p)
 {
   ExperimentRunning = true;
-  FileNumber = 1;
-  StartNewLogFile(FileNumber);
+  FileNumber = 0;
+  StartNewLogFile(++FileNumber);
 }
 
 void Cmd_StopExperiment(CommandParameter &p)
@@ -60,16 +60,20 @@ void loop()
       StoreMeasurement();
     }
 
-    if (FileNumber == NumberOfRuns)
+    if (MeasurementsSaved == MeasurementsPerFile)
     {
-      ExperimentRunning = false; // Stop the experiment automatically. 
-      Msg.StopLogging();
+      ++FileNumber;
+      if (FileNumber <= NumberOfRuns)
+      { 
+        // Start a new experiment run.
+        StartNewLogFile(FileNumber);
+      }
+      else
+      {
+        // Stop the experiment when all runs have been completed
+        ExperimentRunning = false; 
+        Msg.StopLogging();
+      }
     }
-    
-    if (ExperimentRunning && MeasurementsSaved == MeasurementsPerFile)
-    {
-      StartNewLogFile(++FileNumber);
-    }
-
   }
 }
