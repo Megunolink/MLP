@@ -1,8 +1,29 @@
-/* ************************************************************************
-   Blink 2.0
-   This program is a demonstration of the MegunoLink library for Arduino
-   serial communication. All commands start with a ! character and end
-   with \r (carrige return). It responds to the following serial commands:
+/************************************************************************************************
+Example Description
+This example is a demonstration of MegunoLink's Interface Panel and Command Handler. It builds on
+the classic Blink example where the Arduino flashes and LED but adds the ability to control the
+on and off time of the flashing.
+ 
+More Information
+*  https://www.megunolink.com/documentation/interface-panel/example-blink2-interface-panel/
+*  https://www.megunolink.com/documentation/build-arduino-interface/
+*  https://www.megunolink.com/documentation/interface-panel/
+*  https://www.megunolink.com/documentation/arduino-libraries/serial-command-handler/
+ 
+This Example Requires:
+*  The MegunoLink arduino library https://www.megunolink.com/documentation/arduino-integration/
+ 
+MegunoLink Interface
+You can download a pre-made interface from here:
+https://github.com/Megunolink/MLP/raw/master/examples/InterfacePanel/Blink2/Blink2.mlpz
+ 
+You can find out more about MegunoLink and download a free trial from here
+https://www.megunolink.com/
+https://www.megunolink.com/download/
+************************************************************************************************/
+
+/*
+ The following serial commands are supported:
       !OnTime n\r\n
         Sets the amount of time the LED remains on to n [milliseconds]
 
@@ -14,25 +35,8 @@
 
       !OffTime ?\r\n
         Returns the amount of time the LED remains off [milliseconds]
+*/
 
-   The program folder also contains a MegunoLink project, with an Interface
-   Panel to control the parameters. 
-   Visit:
-   * http://www.MegunoLink.com to download MegunoLink.
-   * http://www.megunolink.com/documentation/build-arduino-interface/ 
-     for more information on this example.
-   ************************************************************************ */
-
-// For more information on installing the MegunoLink Arduino library check out our documentation
-// http://www.megunolink.com/documentation/arduino-integration/
-
-// You can download the MegunoLink Interface (.mlx) that goes with this example here
-// http://www.megunolink.com/examples/arduino/InterfacePanel/Blink2/Blink2.mlx
-
-   
-
-// Import the serial command handler. If this fails, install the MegunoLink library. 
-// See: http://www.megunolink.com/documentation/arduino-library/
 #include "CommandHandler.h" 
 
 CommandHandler<> SerialCommandHandler;
