@@ -14,7 +14,7 @@ MegunoLinkProtocol::MegunoLinkProtocol( const __FlashStringHelper *Context, cons
 }
 
 MegunoLinkProtocol::MegunoLinkProtocol( const __FlashStringHelper *Context, const __FlashStringHelper *Channel )
-  : m_pfchContext((PROGMEM const char*)Context), m_bFlashString(true), m_ChannelName((const prog_char*)Channel), m_rDestination(Serial)
+  : m_pfchContext((PROGMEM const char*)Context), m_bFlashString(true), m_ChannelName((PROGMEM const char*)Channel), m_rDestination(Serial)
 {
 }
 
