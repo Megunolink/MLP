@@ -1,16 +1,27 @@
-/* *****************************************************************************
-*  Demonstrate MegunoLink Device Test Panel
-*  Implements a Test command that checks the device voltage and reports pass if
-*  it is within an acceptable range or fail if not. 
-*  Use the companion MegunoLink project file: TestDeviceVoltage.mlx (in the same 
-*  folder as this file) to view the result in MegunoLink. 
-*  Visit https://www.megunolink.com/documentation/program-device/test-monitor-panel/
-*  for more information. 
-*  *****************************************************************************/
+/************************************************************************************************
+Example Description
+In this example we use MegunoLink's Device Test Panel to implement a test that checks the device
+voltage and reports pass if its within an acceptable range or fail if not.
+ 
+More Information
+*  https://www.megunolink.com/documentation/program-device/test-monitor-panel/
+
+This Example Requires:
+*  The MegunoLink arduino library https://www.megunolink.com/documentation/arduino-integration/
+
+MegunoLink Interface
+You can download a pre-made interface from here:
+https://github.com/Megunolink/MLP/raw/master/examples/TestReport/TestDeviceVoltage/TestDeviceVoltage.mlpz
+ 
+You can find out more about MegunoLink and download a free trial from here
+https://www.megunolink.com/
+https://www.megunolink.com/download/
+************************************************************************************************/
 
 #include "MegunoLink.h"
 #include "CommandHandler.h"
 
+ 
 CommandHandler<> Commands;
 
 // -----------------------------------------------------------------------------

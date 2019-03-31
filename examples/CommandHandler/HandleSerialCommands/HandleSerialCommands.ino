@@ -1,8 +1,29 @@
-/* ************************************************************************
-   The Mythical Arduino Turtle Counter
-   This program is a demonstration of the MegunoLink library for Arduino
-   serial communication. All commands start with a ! character and end
-   with \r (carrige return). It responds to the following serial commands:
+/************************************************************************************************
+Example Description
+This example is a demonstration of MegunoLink's Interface Panel and Command Handler. It allows us
+to adjust the values of variables inside our program and turn on and off and LED. See below for 
+the available commands.
+ 
+More Information
+*  https://www.megunolink.com/documentation/build-arduino-interface/
+*  https://www.megunolink.com/documentation/interface-panel/
+*  https://www.megunolink.com/documentation/arduino-libraries/serial-command-handler/
+ 
+This Example Requires:
+*  The MegunoLink arduino library https://www.megunolink.com/documentation/arduino-integration/
+ 
+MegunoLink Interface
+You can download a pre-made interface from here:
+https://github.com/Megunolink/MLP/raw/master/examples/CommandHandler/HandleSerialCommands/HandleSerialCommands.mlpz
+ 
+You can find out more about MegunoLink and download a free trial from here
+https://www.megunolink.com/
+https://www.megunolink.com/download/
+************************************************************************************************/
+
+/*
+	All commands start with a ! character and end
+    with \r (carrige return). It responds to the following serial commands:
       !SetTurtles n\r\n
         Sets the current turtle count to n (an integer)
 
@@ -18,14 +39,7 @@
       !LED off\r\n
         Turns an led off.
 
-   The program folder also contains a MegunoLink project, with an Interface
-   Panel to control the turtle counter. 
-   
-   
-   Visit www.MegunoLink.com to download MegunoLink.
-   Visit http://www.megunolink.com/documentation/arduino-libraries/serial-command-handler/
-   for documentation on the serial command handler. 
-   ************************************************************************ */
+*/
 
 #include "CommandHandler.h" // The serial command handler is defined in here. 
 

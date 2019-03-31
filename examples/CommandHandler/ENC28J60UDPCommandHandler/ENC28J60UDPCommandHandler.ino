@@ -1,15 +1,23 @@
-/* **********************************************************************************************
-*  Example program to process commands sent from MegunoLinks Interface Panel using the UDP connection.
-*
-*  Data is sent using ENC28J60 network interface
-*
-*  This example requires the following to work
-*  - The MegunoLink arduino library http://www.megunolink.com/documentation/arduino-integration/
-*  - The Pstring Library http://arduiniana.org/libraries/pstring/
-*  - The EtherCard Library https://github.com/njh/EtherCard. 
-*
-*  This example is built upon the udpListener example contained in the EtherCard library.
-*  ********************************************************************************************** */
+/************************************************************************************************
+Example Description
+In this example we process commands sent from MegunoLink's Interface Panel using a UDP connection.
+ 
+More Information
+*  https://www.megunolink.com/documentation/interface-panel/
+ 
+This Example Requires:
+*  The MegunoLink arduino library https://www.megunolink.com/documentation/arduino-integration/
+*  The Pstring Library http://arduiniana.org/libraries/pstring/
+*  The EtherCard Library https://github.com/njh/EtherCard. 
+ 
+MegunoLink Interface
+You can download a pre-made interface from here:
+https://github.com/Megunolink/MLP/raw/master/examples/CommandHandler/ENC28J60UDPCommandHandler/ENC28J60UDPCommandHandler.mlpz
+ 
+You can find out more about MegunoLink and download a free trial from here
+https://www.megunolink.com/
+https://www.megunolink.com/download/
+************************************************************************************************/
 
 #include <EtherCard.h>
 #include <IPAddress.h>

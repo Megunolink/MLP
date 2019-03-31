@@ -1,18 +1,27 @@
-/* ************************************************************************
-IsMegunoLinkConnected
+/************************************************************************************************
+Example Description
+In this example we demonstrate how you can use MegunoLink's Interface Panel and our command handler
+library to identify when your device is connected to MegunoLink and when its not. This allows you
+to change the behaviour of your device dynamically. For example when its plugged in you might want
+to enter a configuration mode and when its unplugged it should run the program as usual.
+ 
+More Information
+*  https://www.megunolink.com/documentation/build-arduino-interface/
+*  https://www.megunolink.com/documentation/interface-panel/
+*  https://www.megunolink.com/documentation/arduino-libraries/serial-command-handler/
+ 
+This Example Requires:
+*  The MegunoLink arduino library https://www.megunolink.com/documentation/arduino-integration/
+*  The Pstring Library http://arduiniana.org/libraries/pstring/
 
-This program demonstrates how MegunoLink's Interface Panel and our command
-handler Arduino library can be used to identify when its connected to 
-MegunoLink and when its not. This allows you to change the behaviour dynamically.
-
-For example when its plugged in you might want to enter a config mode. When its 
-unplugged you might want it to run the program as usual.
-
-The example folder also contains a MegunoLink project, with an Interface
-Panel to update the variables.
-Visit:
-* http://www.MegunoLink.com to download MegunoLink.
-************************************************************************ */
+MegunoLink Interface
+You can download a pre-made interface from here:
+https://github.com/Megunolink/MLP/raw/master/examples/InterfacePanel/IsMegunoLinkConnected/IsMegunoLinkConnected.mlpz
+ 
+You can find out more about MegunoLink and download a free trial from here
+https://www.megunolink.com/
+https://www.megunolink.com/download/
+************************************************************************************************/
 
 #include "MegunoLink.h"
 #include "ArduinoTimer.h"

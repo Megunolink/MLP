@@ -1,19 +1,26 @@
-/* **********************************************************************************************
-   Example program to plot sine wave data on MegunoLink's Time Plot visualiser
-   Visit http://www.megunolink.com/documentation/plotting/
-   for more information.
-*  ********************************************************************************************** */
+/************************************************************************************************
+Example Description
+In this example we use MegunoLink's Time Plot visualiser to plot sinewave data using two different
+y-axes.
+ 
+More Information
+*  http://www.megunolink.com/documentation/plotting/
+
+This Example Requires:
+*  The MegunoLink arduino library https://www.megunolink.com/documentation/arduino-integration/
+
+MegunoLink Interface
+You can download a pre-made interface from here:
+https://github.com/Megunolink/MLP/raw/master/examples/TimePlot/TwoAxisPlot/TwoAxisPlot.mlpz
+ 
+You can find out more about MegunoLink and download a free trial from here
+https://www.megunolink.com/
+https://www.megunolink.com/download/
+************************************************************************************************/
+
+
 #include "MegunoLink.h"
 #include "ArduinoTimer.h"
-
-// For more information on installing the MegunoLink Arduino library check out our documentation
-// http://www.megunolink.com/documentation/arduino-integration/
-
-// You can download the MegunoLink Interface (.mlx) that goes with this example here
-// http://www.megunolink.com/examples/arduino/TimePlot/TwoAxisPlot/TwoAxisPlot.mlpz
-
-
-
 
 // Uncomment if you would like to use plotting channels
 // TimePlot MyPlot("Waveforms"); //"Waveforms" = the taget plotting channel (remember to select this in megunolink)

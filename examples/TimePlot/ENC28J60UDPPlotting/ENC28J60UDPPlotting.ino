@@ -1,16 +1,24 @@
-/* **********************************************************************************************
-*  Example program to plot sine wave data on MegunoLink's Time Plot visualiser
-*
-*  Data is sent via a ENC28J60 network interface using a UDP connection.
-*  Visit http://www.megunolink.com/documentation/plotting/
-*  for more information.
-*
-*  This example requires the following to work
-*  - The MegunoLink arduino library http://www.megunolink.com/documentation/arduino-integration/
-*  - The Pstring Library http://arduiniana.org/libraries/pstring/
-*  - The EtherCard Library https://github.com/njh/EtherCard
-*
-*  ********************************************************************************************** */
+/************************************************************************************************
+Example Description
+In this example we plot sinewave data on MegunoLink's Time Plot visualiser
+ 
+More Information
+*  http://www.megunolink.com/documentation/plotting/
+ 
+This Example Requires:
+*  The MegunoLink arduino library https://www.megunolink.com/documentation/arduino-integration/
+*  The Pstring Library http://arduiniana.org/libraries/pstring/
+*  The EtherCard Library https://github.com/njh/EtherCard. 
+ 
+MegunoLink Interface
+You can download a pre-made interface from here:
+https://github.com/Megunolink/MLP/raw/master/examples/TimePlot/ENC28J60UDPPlotting/ENC28J60UDPPlotting.mlpz
+ 
+You can find out more about MegunoLink and download a free trial from here
+https://www.megunolink.com/
+https://www.megunolink.com/download/
+************************************************************************************************/
+
 
 #include "MegunoLink.h"
 #include <EtherCard.h>
