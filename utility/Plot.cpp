@@ -40,17 +40,17 @@ void Plot::SetY2Label(const char *ylabel)
 
 void Plot::SetXlabel(const char *xlabel)
 {
-  SetParameter(F("x-label"), xlabel);
+  SetXLabel(xlabel);
 }
 
 void Plot::SetYlabel(const char *ylabel)
 {
-  SetParameter(F("y-label"), ylabel);
+  SetYLabel(ylabel);
 }
 
 void Plot::SetY2label(const char *ylabel)
 {
-  SetParameter(F("y2-label"), ylabel);
+  SetY2Label(ylabel);
 }
 
 void Plot::SetTitle(const __FlashStringHelper *title)
@@ -75,17 +75,17 @@ void Plot::SetY2Label(const __FlashStringHelper *ylabel)
 
 void Plot::SetXlabel(const __FlashStringHelper *xlabel)
 {
-  SetParameter(F("x-label"), xlabel);
+  SetXLabel(xlabel);
 }
 
 void Plot::SetYlabel(const __FlashStringHelper *ylabel)
 {
-  SetParameter(F("y-label"), ylabel);
+  SetYLabel(ylabel);
 }
 
 void Plot::SetY2label(const __FlashStringHelper *ylabel)
 {
-  SetParameter(F("y2-label"), ylabel);
+  SetY2Label(ylabel);
 }
 
 void Plot::SetYVisible(bool bVisible)
