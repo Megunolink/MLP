@@ -96,6 +96,12 @@ void Message::StopLogging()
   SendDataTail();
 }
 
+void Message::StopLogging()
+{
+  SendDataHeader(F("F"));
+  SendDataTail();
+}
+
 void Message::SendSeparator()
 {
   m_rDestination.print(F(": "));

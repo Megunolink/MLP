@@ -69,6 +69,7 @@ public:
   void LogTo(const __FlashStringHelper *Filename);
   void LogTo(String &Filename);
   void LogTo(const char *Filename);
+  void StartLogging();
   void StopLogging();
 
 private:
