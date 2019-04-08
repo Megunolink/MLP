@@ -1,10 +1,22 @@
-/* **********************************************************************************************
-*  Example program to plot data from the analoge to digital converter over a UDP channel.
-*  Visit http://www.megunolink.com/documentation/plotting/
-*  for more information. 
-*  
-*  This program requires an Arduino with Wiznet 5100 ethernet
-*  ********************************************************************************************** */
+/************************************************************************************************
+Example Description
+Data is sent from a Wiznet 5100 ethernet adapter over UDP to MegunoLink's Time Plot visualiser 
+where it is plotted in realtime.
+
+This example uses the raw plotting protocol. Detail about this procotol can be found here:
+https://www.megunolink.com/documentation/plotting/plotting-message-reference/
+ 
+More Information
+*  http://www.megunolink.com/documentation/plotting/
+ 
+MegunoLink Interface
+You can download a pre-made interface from here:
+https://github.com/Megunolink/MLP/raw/master/examples/TimePlot/EthernetUDPlotting/EthernetUDPPlotting.mlpz
+ 
+You can find out more about MegunoLink and download a free trial from here
+https://www.megunolink.com/
+https://www.megunolink.com/download/
+************************************************************************************************/
 
 
 #include <SPI.h>         // needed for Arduino versions later than 0018
