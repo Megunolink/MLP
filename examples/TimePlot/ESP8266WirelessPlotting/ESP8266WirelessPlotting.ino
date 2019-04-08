@@ -1,3 +1,25 @@
+/************************************************************************************************
+Example Description
+Data is sent from an ESP8266 wifi module over UDP to MegunoLink where it is plotted in real time
+
+More Information
+*  http://www.megunolink.com/documentation/plotting/
+
+This Example Requires:
+*  The MegunoLink arduino library https://www.megunolink.com/documentation/arduino-integration/
+*  The WiFi Manager library https://github.com/tzapu/WiFiManager
+*  The ESP8266 arduino library and files https://github.com/esp8266/Arduino
+
+
+MegunoLink Interface
+You can download a pre-made interface from here:
+https://github.com/Megunolink/MLP/raw/master/examples/TimePlot/ESP8266WirelessPlotting/ESP8266WirelessPlotting.mlpz
+
+You can find out more about MegunoLink and download a free trial from here
+https://www.megunolink.com/
+https://www.megunolink.com/download/
+************************************************************************************************/
+
 #include "DNSServer.h"
 #include "ESP8266WebServer.h"
 #include "WiFiManager.h"
@@ -13,7 +35,7 @@ const IPAddress DestinationIp(255, 255, 255, 255);
 WiFiManager ConnectionManager;
 WiFiUDP UdpConnection;
 
-void setup() 
+void setup()
 {
   Serial.begin(9600);
   Serial.println("WiFi Test");
@@ -21,11 +43,11 @@ void setup()
   Serial.println("Connecting");
   ConnectionManager.autoConnect();
   Serial.println("Connected");
-  
+
   UdpConnection.begin(SourcePort);
 }
 
-void loop() 
+void loop()
 {
   // Send a message
   UdpConnection.beginPacket(DestinationIp, DestinationPort);
