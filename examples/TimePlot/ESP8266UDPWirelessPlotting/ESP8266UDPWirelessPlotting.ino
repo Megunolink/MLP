@@ -13,7 +13,7 @@ This Example Requires:
 
 MegunoLink Interface
 You can download a pre-made interface from here:
-https://github.com/Megunolink/MLP/raw/master/examples/TimePlot/ESP8266WirelessPlotting/ESP8266WirelessPlotting.mlpz
+https://github.com/Megunolink/MLP/raw/master/examples/TimePlot/ESP8266UDPWirelessPlotting/ESP8266UDPWirelessPlotting.mlpz
 
 You can find out more about MegunoLink and download a free trial from here
 https://www.megunolink.com/
