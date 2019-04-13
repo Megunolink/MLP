@@ -96,7 +96,7 @@ void Message::StopLogging()
   SendDataTail();
 }
 
-void Message::StopLogging()
+void Message::StartLogging()
 {
   SendDataHeader(F("F"));
   SendDataTail();

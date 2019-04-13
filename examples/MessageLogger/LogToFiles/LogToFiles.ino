@@ -6,6 +6,7 @@ Message Msg;
 CommandHandler<> Cmds;
 ArduinoTimer ExperimentTimer;
 
+
 int FileNumber = 1;
 int MeasurementsSaved = 1;
 const int MeasurementsPerFile = 10;
@@ -46,7 +47,7 @@ void setup()
 {
   Serial.begin(9600);
   Cmds.AddCommand(F("Start"), Cmd_StartExperiment);
-  
+  Cmds.AddCommand(F("Stop"), Cmd_StopExperiment);
 }
 
 void loop()
