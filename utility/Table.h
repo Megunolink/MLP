@@ -49,7 +49,11 @@ public:
 		SendDataTail();
 	}
 
-	void ShowCurrentTime(const char *RowName);
+  void SendFloatData(const char *RowName, float Value, int DecimalPlaces, const char *Description = NULL);
+  void SendFloatData(const __FlashStringHelper *RowName, float Value, int DecimalPlaces, const char *Description = NULL);
+  void SendFloatData(const __FlashStringHelper *RowName, float Value, int DecimalPlaces, const __FlashStringHelper *Description);
+  
+  void ShowCurrentTime(const char *RowName);
 	void ShowCurrentTime(const __FlashStringHelper *RowName);
 
 	void SetDescription(const char *RowName, const char *Description);

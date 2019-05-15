@@ -92,3 +92,45 @@ void Table::ShowCurrentTime(const __FlashStringHelper *RowName)
   m_rDestination.print(F("|[Now()]"));
   SendDataTail();
 }
+
+void Table::SendFloatData(const char *RowName, float Value, int DecimalPlaces, const char *Description = NULL)
+{
+  SendHeader_Set();
+  m_rDestination.print(RowName);
+  m_rDestination.print('|');
+  m_rDestination.print(Value, DecimalPlaces);
+  if (Description != NULL)
+  {
+    m_rDestination.print('|');
+    m_rDestination.print(Description);
+  }
+  SendDataTail();
+}
+
+void Table::SendFloatData(const __FlashStringHelper *RowName, float Value, int DecimalPlaces, const char *Description = NULL)
+{
+  SendHeader_Set();
+  m_rDestination.print(RowName);
+  m_rDestination.print('|');
+  m_rDestination.print(Value, DecimalPlaces);
+  if (Description != NULL)
+  {
+    m_rDestination.print('|');
+    m_rDestination.print(Description);
+  }
+  SendDataTail();
+}
+
+void Table::SendFloatData(const __FlashStringHelper *RowName, float Value, int DecimalPlaces, const __FlashStringHelper *Description)
+{
+  SendHeader_Set();
+  m_rDestination.print(RowName);
+  m_rDestination.print('|');
+  m_rDestination.print(Value, DecimalPlaces);
+  if (Description != NULL)
+  {
+    m_rDestination.print('|');
+    m_rDestination.print(Description);
+  }
+  SendDataTail();
+}
