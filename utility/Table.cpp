@@ -93,7 +93,7 @@ void Table::ShowCurrentTime(const __FlashStringHelper *RowName)
   SendDataTail();
 }
 
-void Table::SendFloatData(const char *RowName, float Value, int DecimalPlaces, const char *Description = NULL)
+void Table::SendFloatData(const char *RowName, float Value, int DecimalPlaces, const char *Description /* = NULL */)
 {
   SendHeader_Set();
   m_rDestination.print(RowName);
@@ -107,7 +107,7 @@ void Table::SendFloatData(const char *RowName, float Value, int DecimalPlaces, c
   SendDataTail();
 }
 
-void Table::SendFloatData(const __FlashStringHelper *RowName, float Value, int DecimalPlaces, const char *Description = NULL)
+void Table::SendFloatData(const __FlashStringHelper *RowName, float Value, int DecimalPlaces, const char *Description /* = NULL */)
 {
   SendHeader_Set();
   m_rDestination.print(RowName);

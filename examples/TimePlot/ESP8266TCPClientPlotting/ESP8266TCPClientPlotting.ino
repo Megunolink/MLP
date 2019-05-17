@@ -22,6 +22,12 @@ const char *WiFiPassword = "Your Password";
 const char *Host = "192.168.15.117";
 const unsigned Port = 11000;
 
+// We'll use a single client and remain connected. The Arduino doesn't
+// inform the server that the client has disconnected which leaves a 
+// lot of dangling connections to manage if we use a new client
+// for each message. 
+WiFiClient Client;
+
 void ConnectToWiFi()
 {
  
@@ -45,15 +51,24 @@ void ConnectToWiFi()
   Serial.println(WiFi.localIP());
 }
 
+WiFiClient *GetClient()
+{
+  if (!Client.connected() && Client.connect(Host, Port))
+  {
+    return &Client;
+  }
+
+  return Client.connected() ? &Client : NULL;
+}
+
 void SendMeasurement(unsigned Value)
 {
-  WiFiClient Client;
+  WiFiClient *pClient = GetClient();
 
-  if (Client.connect(Host, Port))
+  if (pClient != NULL)
   {
-    TimePlot Plot("", Client);
+    TimePlot Plot("", *pClient);
     Plot.SendData("ADC Value", Value);
-    Client.stop();
   }
   else
   {
