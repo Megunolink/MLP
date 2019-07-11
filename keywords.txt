@@ -89,3 +89,7 @@ SendFloatData	KEYWORD2
 
 XYPlot	KEYWORD1
 SendData	KEYWORD2
+
+Report	KEYWORD1
+EnablePeriodicReports	KEYWORD2
+GenerateNow	KEYWORD2
