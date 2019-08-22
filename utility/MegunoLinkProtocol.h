@@ -24,5 +24,8 @@ protected:
   void SendDataHeader(const __FlashStringHelper *pfstrCommand);
   void SendDataTail();
 
+public:
+  void Attach(Print& rDestination);
+
 };
 

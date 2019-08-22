@@ -2,7 +2,7 @@
 #define __PROG_TYPES_COMPAT__
 #include "MegunoLinkProtocol.h"
 
-class Map : protected MegunoLinkProtocol
+class Map : public MegunoLinkProtocol
 {
 public:
   Map(Print &rDestination = Serial);

@@ -1,7 +1,7 @@
 #pragma once
 #include "MegunoLinkProtocol.h"
 
-class Table : protected MegunoLinkProtocol
+class Table : public MegunoLinkProtocol
 {
 public:
 	Table(const char *Channel = NULL, Print &rDestination = Serial);

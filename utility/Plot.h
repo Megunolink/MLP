@@ -1,7 +1,7 @@
 #pragma once
 #include "MegunoLinkProtocol.h"
 
-class Plot : protected MegunoLinkProtocol
+class Plot : public MegunoLinkProtocol
 {
 public:
   enum Colors 

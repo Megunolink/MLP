@@ -59,3 +59,8 @@ void MegunoLinkProtocol::SendDataTail()
 {
   m_rDestination.println('}');
 }
+
+void MegunoLinkProtocol::Attach(Print& rDestination)
+{
+  m_rDestination = rDestination;
+}

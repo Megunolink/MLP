@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "MegunoLinkProtocol.h"
 
-class Report : protected MegunoLinkProtocol
+class Report : public MegunoLinkProtocol
 {
 
 public:

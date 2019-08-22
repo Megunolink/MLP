@@ -1,7 +1,7 @@
 #pragma once
 #include "MegunoLinkProtocol.h"
 
-class TestReport : protected MegunoLinkProtocol
+class TestReport : public MegunoLinkProtocol
 {
 public:
   TestReport(Print &rDestination = Serial);

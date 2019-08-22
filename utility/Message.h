@@ -1,7 +1,7 @@
 #pragma once
 #include "MegunoLinkProtocol.h"
 
-class Message : protected MegunoLinkProtocol
+class Message : public MegunoLinkProtocol
 {
 public:
   // Flags to select destination for messages
