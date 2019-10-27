@@ -3,34 +3,34 @@
 
 
 MegunoLinkProtocol::MegunoLinkProtocol( const __FlashStringHelper *Context )
-  : m_pfchContext((PROGMEM const char*)Context), m_bFlashString(false), m_ChannelName(NULL), m_rDestination(Serial)
+  : m_pfchContext((PROGMEM const char*)Context), m_ChannelName(NULL), m_bFlashString(false), m_rDestination(Serial)
 {
 }
 
 MegunoLinkProtocol::MegunoLinkProtocol( const __FlashStringHelper *Context, const char *Channel )
-  : m_pfchContext((PROGMEM const char*)Context), m_bFlashString(false), m_ChannelName(Channel), m_rDestination(Serial)
+  : m_pfchContext((PROGMEM const char*)Context), m_ChannelName(NULL), m_bFlashString(false), m_rDestination(Serial)
 {
 
 }
 
 MegunoLinkProtocol::MegunoLinkProtocol( const __FlashStringHelper *Context, const __FlashStringHelper *Channel )
-  : m_pfchContext((PROGMEM const char*)Context), m_bFlashString(true), m_ChannelName((PROGMEM const char*)Channel), m_rDestination(Serial)
+  : m_pfchContext((PROGMEM const char*)Context), m_ChannelName(Channel), m_bFlashString(true), m_rDestination(Serial)
 {
 }
 
 MegunoLinkProtocol::MegunoLinkProtocol( const __FlashStringHelper *Context, Print &rDestination )
-  : m_pfchContext((PROGMEM const char*)Context), m_bFlashString(false), m_ChannelName(NULL), m_rDestination(rDestination)
+  : m_pfchContext((PROGMEM const char*)Context), m_ChannelName(NULL), m_bFlashString(false), m_rDestination(rDestination)
 {
 }
 
 MegunoLinkProtocol::MegunoLinkProtocol( const __FlashStringHelper *Context, const char *Channel, Print &rDestination )
-  : m_pfchContext((PROGMEM const char*)Context), m_bFlashString(false), m_ChannelName(Channel), m_rDestination(rDestination)
+  : m_pfchContext((PROGMEM const char*)Context), m_ChannelName(Channel), m_bFlashString(false), m_rDestination(rDestination)
 {
 
 }
 
 MegunoLinkProtocol::MegunoLinkProtocol( const __FlashStringHelper *Context, const __FlashStringHelper *Channel, Print &rDestination )
-  : m_pfchContext((PROGMEM const char*)Context), m_bFlashString(true), m_ChannelName((PROGMEM const char*)Channel), m_rDestination(rDestination)
+  : m_pfchContext((PROGMEM const char*)Context), m_ChannelName((PROGMEM const char*)Channel), m_bFlashString(true), m_rDestination(rDestination)
 {
 }
 

@@ -8,6 +8,8 @@ namespace MLP
   class StreamParser
   {
   protected:
+    MLP::CommandDispatcherBase *m_pCommandHandler;
+
     // The stream that we are parsing for commands. 
     // Protected so that network command handlers (such as TCPCommandHandler)
     // can update with connection. If null, commands are not parsed. 
@@ -18,8 +20,6 @@ namespace MLP
     // The buffer is reset when a start character is received. Commands
     // are dispatched when the end character is received. 
     char m_chStartOfMessage, m_chEndOfMessage;
-
-    MLP::CommandDispatcherBase *m_pCommandHandler;
 
   private:
     // A buffer to collect commands. Buffer, and size, is provided. 

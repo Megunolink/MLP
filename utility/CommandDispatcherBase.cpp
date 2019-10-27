@@ -5,8 +5,8 @@ using namespace MLP;
 
 
 CommandDispatcherBase::CommandDispatcherBase( CommandCallback *pCallbackBuffer, uint8_t uCallbackBufferLength, VariableMap *pVariableMapBuffer, uint8_t uVariableMapLength)
-  : m_uMaxCommands(uCallbackBufferLength), m_pCommands(pCallbackBuffer)
-  , m_uMaxVariables(uVariableMapLength), m_pVariableMap(pVariableMapBuffer)
+  : m_pCommands(pCallbackBuffer), m_uMaxCommands(uCallbackBufferLength)
+  , m_pVariableMap(pVariableMapBuffer), m_uMaxVariables(uVariableMapLength)
 {
   m_uLastCommand = 0;
   m_uLastVariable = 0;

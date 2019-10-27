@@ -4,10 +4,10 @@
 
 class MegunoLinkProtocol
 {
+  const char * const m_pfchContext;
+
   const void *m_ChannelName;
   const bool m_bFlashString;
-
-  const char * const m_pfchContext;
 
 protected:
   Print &m_rDestination;
