@@ -9,18 +9,18 @@ StreamParser::StreamParser( MLP::CommandDispatcherBase &rCommandHandler,
                            char chStartOfMessage /*= '!'*/, 
                            char chEndOfMessage /*= '\r'*/ )
                            : m_pCommandHandler(&rCommandHandler)
+                           , m_pSource(&rSourceStream)
                            , m_chStartOfMessage(chStartOfMessage)
                            , m_chEndOfMessage(chEndOfMessage)
-                           , m_uMaxBufferSize(uBufferSize)
                            , m_pchBuffer(pchReceiveBuffer)
-                           , m_pSource(&rSourceStream)
+                           , m_uMaxBufferSize(uBufferSize)
 {
   Reset();
 }
 
 StreamParser::StreamParser(char *pchReceiveBuffer, unsigned uBufferSize)
-  : m_uMaxBufferSize(uBufferSize)
-  , m_pchBuffer(pchReceiveBuffer)
+  : m_pchBuffer(pchReceiveBuffer)
+  , m_uMaxBufferSize(uBufferSize)
 {
   Reset();
 }
