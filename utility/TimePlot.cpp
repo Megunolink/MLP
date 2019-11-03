@@ -52,6 +52,16 @@ void TimePlot::SendFloatData(const char * seriesName, float yValue, int nDecimal
   SendDataTail();
 }
 
+void TimePlot::SendFloatData(const char * seriesName, float yValue, int nDecimalPlaces, int32_t nColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
+{
+  SendDataHeader(F("DATA"));
+  m_rDestination.print(seriesName);
+  SendSeriesProperties(nColor, Line, uLineWidth, Marker, ax);
+  m_rDestination.print(F("T|"));
+  m_rDestination.print(yValue, nDecimalPlaces);
+  SendDataTail();
+}
+
 void TimePlot::SendFloatData(const __FlashStringHelper * seriesName, float yValue, int nDecimalPlaces, const char * seriesProperties/*=NULL*/)
 {
   SendDataHeader(F("DATA"));
@@ -67,6 +77,16 @@ void TimePlot::SendFloatData(const __FlashStringHelper * seriesName, float yValu
   SendDataHeader(F("DATA"));
   m_rDestination.print(seriesName);
   SendSeriesProperties(Color, Line, uLineWidth, Marker, ax);
+  m_rDestination.print(F("T|"));
+  m_rDestination.print(yValue, nDecimalPlaces);
+  SendDataTail();
+}
+
+void TimePlot::SendFloatData(const __FlashStringHelper * seriesName, float yValue, int nDecimalPlaces, int32_t nColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
+{
+  SendDataHeader(F("DATA"));
+  m_rDestination.print(seriesName);
+  SendSeriesProperties(nColor, Line, uLineWidth, Marker, ax);
   m_rDestination.print(F("T|"));
   m_rDestination.print(yValue, nDecimalPlaces);
   SendDataTail();

@@ -68,6 +68,9 @@ public:
   void SetSeriesProperties(const char *SeriesName, Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax = DefaultAxis);
   void SetSeriesProperties(const __FlashStringHelper *SeriesName, Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax = DefaultAxis);
 
+  void SetSeriesProperties(const char* SeriesName, int32_t nColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax = DefaultAxis);
+  void SetSeriesProperties(const __FlashStringHelper* SeriesName, int32_t nColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax = DefaultAxis);
+
   void SetSeriesProperties(const char *SeriesName, const char *SeriesProperties);
   void SetSeriesProperties(const __FlashStringHelper *SeriesName, const char *SeriesProperties);
   void SetSeriesProperties(const __FlashStringHelper *SeriesName, const __FlashStringHelper *SeriesProperties);
@@ -92,9 +95,11 @@ protected:
   void SendSeriesProperties(const char *SeriesProperties);
   void SendSeriesProperties(const __FlashStringHelper *SeriesProperties);
   void SendSeriesProperties(Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax);
+  void SendSeriesProperties(int32_t nColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax);
 
   void SendHeader_Data();
   void SendTimeSeparator();
+  void SendColorValue(int32_t nColor);
 
 private:
   void SendRangeDetail(float fYLimLower, float fYLimUpper);

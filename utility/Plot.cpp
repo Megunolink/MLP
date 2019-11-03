@@ -120,6 +120,30 @@ void Plot::SetSeriesProperties(const __FlashStringHelper *SeriesName, Colors Col
   SendDataTail();
 }
 
+void Plot::SetSeriesProperties(const char* SeriesName, int32_t nColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax /*= DefaultAxis */)
+{
+  char Data[6] = { ':', Marker, ax, Line, '\0' }; // Line must be last as it is followed by the line-width. 
+
+  SendDataHeader(F("STYLE"));
+  m_rDestination.print(SeriesName);
+  m_rDestination.print(Data);
+  m_rDestination.print(uLineWidth);
+  SendColorValue(nColor);
+  SendDataTail();
+}
+
+void Plot::SetSeriesProperties(const __FlashStringHelper* SeriesName, int32_t nColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax /*= DefaultAxis */)
+{
+  char Data[5] = { ':', Marker, ax, Line, '\0' }; // Line must be last as it is followed by the line-width. 
+
+  SendDataHeader(F("STYLE"));
+  m_rDestination.print(SeriesName);
+  m_rDestination.print(Data);
+  m_rDestination.print(uLineWidth);
+  SendColorValue(nColor);
+  SendDataTail();
+}
+
 void Plot::SetSeriesProperties(const char *SeriesName, const char *SeriesProperties )
 {
   SendDataHeader(F("STYLE"));
@@ -185,13 +209,24 @@ void Plot::SendSeriesProperties( const __FlashStringHelper *SeriesProperties )
   m_rDestination.print('|');
 }
 
-void Plot::SendSeriesProperties( Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
+void Plot::SendSeriesProperties(Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
 {
-  char Data[6] = {':', Color, Marker, ax, Line, '\0'};
+  char Data[6] = { ':', Color, Marker, ax, Line, '\0' };
 
   m_rDestination.print(Data);
   if (Line != NoLine)
     m_rDestination.print(uLineWidth);
+  m_rDestination.print('|');
+}
+
+void Plot::SendSeriesProperties(int32_t nColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
+{
+  char Data[5] = { ':', Marker, ax, Line, '\0' };
+
+  m_rDestination.print(Data);
+  if (Line != NoLine)
+    m_rDestination.print(uLineWidth);
+  SendColorValue(nColor);
   m_rDestination.print('|');
 }
 
@@ -243,4 +278,30 @@ void Plot::SendRangeDetail(float fYLimLower, float fYLimUpper)
   m_rDestination.print("|");
   m_rDestination.print(fYLimUpper, 5);
   SendDataTail();
+}
+
+void Plot::SendColorValue(int32_t nColor)
+{
+  char achBuffer[8];
+  achBuffer[0] = '&';
+  achBuffer[7] = 0;
+  char* pchBuffer = achBuffer + 6;
+  for (int i = 0; i < 6; ++i)
+  {
+    char chTemp = nColor & 0x0f;
+    if (chTemp < 10)
+    {
+      chTemp += '0';
+    }
+    else
+    {
+      chTemp += 'A' - 10;
+    }
+    *pchBuffer = chTemp;
+    --pchBuffer;
+    nColor = nColor >> 4;
+  }
+
+  m_rDestination.print(achBuffer);
+
 }
