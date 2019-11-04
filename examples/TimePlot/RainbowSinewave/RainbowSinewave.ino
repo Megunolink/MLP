@@ -71,13 +71,12 @@ void loop()
   Colors[ColorIndex] = (Colors[ColorIndex] + 4) & 0xff;
   if (Colors[ColorIndex] == 0)
   {
-    Serial.println(ColorIndex);
     ColorIndex = (ColorIndex + 1) % 3;
   }
   
   //Send Data To MegunoLink Pro
   MyPlot.SendData(F("Sinewave"),dY, Color1); // Sinewave = series name, dY = data to plot
-  //MyPlot.SendData(F("Cosinewave"),dY2, Color2); // By wrapping strings in F("") we can save ram by storing strings in program memory
+  MyPlot.SendData(F("Cosinewave"),dY2, Color2); // By wrapping strings in F("") we can save ram by storing strings in program memory
 
 
   delay(10);
