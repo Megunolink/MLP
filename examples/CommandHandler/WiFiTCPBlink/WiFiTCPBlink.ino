@@ -41,13 +41,16 @@
 #include "TCPCommandHandler.h"
 #include "CommandProcessor.h"
 
-// Load WiFi configuration. Define the configuration for your own network
-// in a separate file. It should contain:
-/*
+#define USEWIFICONFIGFILE
+#ifdef USEWIFICONFIGFILE
+// Include SSID and password from a library file. For more information see:
+// https://www.megunolink.com/articles/wireless/how-do-i-connect-to-a-wireless-network-with-the-esp32/
+#include "WiFiConfig.h"
+#else
+// Option 2
 const char *SSID = "Your SSID";
 const char *WiFiPassword = "Your Password";
-*/
-#include "WiFiConfig.h"
+#endif
 
 const uint8_t ServerPort = 23;
 WiFiServer Server(ServerPort);
@@ -185,6 +188,8 @@ void setup()
 // the loop function runs over and over again until power down or reset
 void loop() 
 {
+  MDNS.update();
+  
   // Check for serial commands and dispatch them.
   Cmds.Process();
   SerialCmds.Process();

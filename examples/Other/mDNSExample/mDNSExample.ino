@@ -32,9 +32,16 @@
 #error Not compatible
 #endif
 
-// Fill in your network information
-const char* ssid = "ENTER SSID";
-const char* password = "ENTER PASSWORD";
+#define USEWIFICONFIGFILE
+#ifdef USEWIFICONFIGFILE
+// Include SSID and password from a library file. For more information see:
+// https://www.megunolink.com/articles/wireless/how-do-i-connect-to-a-wireless-network-with-the-esp32/
+#include "WiFiConfig.h"
+#else
+// Option 2
+const char *SSID = "Your SSID";
+const char *WiFiPassword = "Your Password";
+#endif
 
 // Maximum number of clients that can connect to this device
 #define MAX_SRV_CLIENTS 1
@@ -64,9 +71,9 @@ String MakeMine(const char *NameTemplate)
 void ConnectToWiFi()
 {
   WiFi.mode(WIFI_STA);
-  WiFi.begin(ssid, password);
+  WiFi.begin(SSID, WiFiPassword);
 
-  Serial.print("Connecting to "); Serial.println(ssid);
+  Serial.print("Connecting to "); Serial.println(SSID);
 
   uint8_t i = 0;
   while (WiFi.status() != WL_CONNECTED) 
@@ -166,7 +173,7 @@ void ProcessClientData(WiFiClient &Client, char Data)
 
 void setup()
 {
-  Serial.begin(115200);
+  Serial.begin(9600);
   Serial.println(F("mDNS Test"));
   Serial.println(F("---------"));
 
@@ -184,6 +191,7 @@ void setup()
 
 void loop() 
 {
+  MDNS.update();
 
   CheckForNewClients();
 
