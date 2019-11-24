@@ -27,7 +27,7 @@ https://www.megunolink.com/download/
 #include "ArduinoTimer.h"
 
 
-//#define USEWIFICONFIGFILE
+#define USEWIFICONFIGFILE
 #ifdef USEWIFICONFIGFILE
 // Option 1
 // Include SSID and password. For more information see:
