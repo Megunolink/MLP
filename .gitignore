@@ -178,3 +178,4 @@ FakesAssemblies/
 *.sln
 *.vcxproj
 *.filters
+WiFiConfig.h
