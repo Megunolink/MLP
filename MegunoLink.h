@@ -7,3 +7,4 @@
 #include "utility/XYPlot.h" 
 #include "utility/TestReport.h"
 #include "utility/Report.h"
+#include "utility/RecordTable.h"
