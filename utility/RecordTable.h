@@ -87,10 +87,6 @@ public:
     SendDataTail();
   }
 
-  void SendFloatData(const char *RowName, float Value, int DecimalPlaces, const char *Description = NULL);
-  void SendFloatData(const __FlashStringHelper *RowName, float Value, int DecimalPlaces, const char *Description = NULL);
-  void SendFloatData(const __FlashStringHelper *RowName, float Value, int DecimalPlaces, const __FlashStringHelper *Description);
-  
 	void ClearAllRows();
 	void ClearRow(int RowNumber);
 
