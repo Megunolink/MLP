@@ -76,6 +76,16 @@ public:
     SendDataTail();
   }
 
+  template<typename TValue> void SetValue(int nRow, int nColumn, TValue Value)
+  {
+    SendHeader_SetValue();
+    m_rDestination.print(nRow);
+    m_rDestination.print('|');
+    m_rDestination.print(nColumn);
+    m_rDestination.print('|');
+    m_rDestination.print(Value);
+    SendDataTail();
+  }
 
   void SendFloatData(const char *RowName, float Value, int DecimalPlaces, const char *Description = NULL);
   void SendFloatData(const __FlashStringHelper *RowName, float Value, int DecimalPlaces, const char *Description = NULL);
@@ -89,6 +99,7 @@ private:
   void SendHeader_AddWithIds();
   void SendHeader_Update();
   void SendHeader_UpdateWithIds();
+  void SendHeader_SetValue();
   void SendColumnIds(int NumberOfIds, const uint8_t* pColumnIds);
 
   template<class TValue> void SendValues(int NumberOfValues, TValue* pValue)

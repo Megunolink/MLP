@@ -50,6 +50,11 @@ void RecordTable::SendHeader_UpdateWithIds()
   SendDataHeader(F("STI"));
 }
 
+void RecordTable::SendHeader_SetValue()
+{
+  SendDataHeader(F("STC"));
+}
+
 void RecordTable::SendColumnIds(int NumberOfIds, const uint8_t* pColumnIds)
 {
   while (NumberOfIds--)
