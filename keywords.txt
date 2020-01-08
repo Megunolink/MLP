@@ -93,3 +93,16 @@ SendData	KEYWORD2
 Report	KEYWORD1
 EnablePeriodicReports	KEYWORD2
 GenerateNow	KEYWORD2
+
+RecordTable	KEYWORD1
+AddRow	KEYWORD2
+AddRowFromArray	KEYWORD2
+AddRowWithIds	KEYWORD2
+AddRowFromArrayWithIds	KEYWORD2
+UpdateRow	KEYWORD2
+UpdateRowFromArray	KEYWORD2
+UpdateRowFromArrayWithIds	KEYWORD2
+SetValue	KEYWORD2
+ClearAllRows	KEYWORD2
+ClearRow	KEYWORD2
+
