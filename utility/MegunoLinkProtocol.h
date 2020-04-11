@@ -21,7 +21,17 @@ protected:
   MegunoLinkProtocol(const __FlashStringHelper *Context, const char *Channel, Print &rDestination);
   MegunoLinkProtocol(const __FlashStringHelper *Context, const __FlashStringHelper *Channel, Print &rDestination);
 
-  void SendDataHeader(const __FlashStringHelper *pfstrCommand);
+  MegunoLinkProtocol(const char* Context);
+  MegunoLinkProtocol(const char* Context, const char* Channel);
+  MegunoLinkProtocol(const char* Context, const __FlashStringHelper* Channel);
+
+  MegunoLinkProtocol(const char* Context, Print& rDestination);
+  MegunoLinkProtocol(const char* Context, const char* Channel, Print& rDestination);
+  MegunoLinkProtocol(const char* Context, const __FlashStringHelper* Channel, Print& rDestination);
+
+
+  void SendDataHeader(const __FlashStringHelper* pfstrCommand);
+  void SendDataHeader(const char *pfstrCommand);
   void SendDataTail();
 
 public:

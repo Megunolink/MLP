@@ -101,8 +101,11 @@ public:
   void SetMaximum(const __FlashStringHelper *ControlName, int Value);
 
 protected:
+  void SendControlHeader(const char* ControlName, const char* PropertyName);
   void SendControlHeader(const char *ControlName, const __FlashStringHelper *PropertyName);
-  void SendControlHeader(const __FlashStringHelper *ControlName, const __FlashStringHelper *PropertyName);
+  void SendControlHeader(const __FlashStringHelper* ControlName, const __FlashStringHelper* PropertyName);
+  void SendControlHeader(const __FlashStringHelper *ControlName, const char*PropertyName);
+
   void SendGaugeControlHeader(const char *ControlName, int nLabelNumber);
   void SendGaugeControlHeader(const __FlashStringHelper *ControlName, int nLabelNumber);
 

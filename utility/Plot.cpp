@@ -18,6 +18,25 @@ Plot::Plot( const __FlashStringHelper *Context, const __FlashStringHelper *Chann
 
 }
 
+Plot::Plot(const char* Context, Print& rDestination)
+  : MegunoLinkProtocol(Context, rDestination)
+{
+
+}
+
+Plot::Plot(const char* Context, const char* Channel, Print& rDestination)
+  : MegunoLinkProtocol(Context, Channel, rDestination)
+{
+
+}
+
+Plot::Plot(const char* Context, const __FlashStringHelper* Channel, Print& rDestination)
+  : MegunoLinkProtocol(Context, Channel, rDestination)
+{
+
+}
+
+
 void Plot::SetTitle(const char *title)
 {
   SetParameter(F("title"), title);
@@ -181,6 +200,24 @@ void Plot::SetParameter(const __FlashStringHelper *pfstrParameter, const char * 
 }
 
 void Plot::SetParameter( const __FlashStringHelper *pfstrParameter, const __FlashStringHelper * Value )
+{
+  SendDataHeader(F("SET"));
+  m_rDestination.print(pfstrParameter);
+  m_rDestination.print('=');
+  m_rDestination.print(Value);
+  SendDataTail();
+}
+
+void Plot::SetParameter(const char* pfstrParameter, const char* Value)
+{
+  SendDataHeader(F("SET"));
+  m_rDestination.print(pfstrParameter);
+  m_rDestination.print('=');
+  m_rDestination.print(Value);
+  SendDataTail();
+}
+
+void Plot::SetParameter(const char* pfstrParameter, const __FlashStringHelper* Value)
 {
   SendDataHeader(F("SET"));
   m_rDestination.print(pfstrParameter);

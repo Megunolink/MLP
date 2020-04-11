@@ -90,8 +90,16 @@ protected:
   Plot(const __FlashStringHelper *Context, const char *Channel, Print &rDestination = Serial);
   Plot(const __FlashStringHelper *Context, const __FlashStringHelper *Channel, Print &rDestination = Serial);
 
+  Plot(const char* Context, Print& rDestination = Serial);
+  Plot(const char* Context, const char* Channel, Print& rDestination = Serial);
+  Plot(const char* Context, const __FlashStringHelper* Channel, Print& rDestination = Serial);
+
   void SetParameter(const __FlashStringHelper *pfstrParameter, const char * Value);
   void SetParameter(const __FlashStringHelper *pfstrParameter, const __FlashStringHelper * Value);
+
+  void SetParameter(const char* pfstrParameter, const char* Value);
+  void SetParameter(const char* pfstrParameter, const __FlashStringHelper* Value);
+
   void SendSeriesProperties(const char *SeriesProperties);
   void SendSeriesProperties(const __FlashStringHelper *SeriesProperties);
   void SendSeriesProperties(Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax);

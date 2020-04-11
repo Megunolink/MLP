@@ -171,6 +171,15 @@ void InterfacePanel::GetValue(const __FlashStringHelper* ControlName, const __Fl
   SendDataTail();
 }
 
+void InterfacePanel::SendControlHeader(const char* ControlName, const char* PropertyName)
+{
+  SendDataHeader(F("SET"));
+  m_rDestination.print(ControlName);
+  m_rDestination.print('.');
+  m_rDestination.print(PropertyName);
+  m_rDestination.print('=');
+}
+
 void InterfacePanel::SendControlHeader(const char *ControlName, const __FlashStringHelper *PropertyName)
 {
   SendDataHeader(F("SET"));
@@ -181,6 +190,15 @@ void InterfacePanel::SendControlHeader(const char *ControlName, const __FlashStr
 }
 
 void InterfacePanel::SendControlHeader(const __FlashStringHelper *ControlName, const __FlashStringHelper *PropertyName)
+{
+  SendDataHeader(F("SET"));
+  m_rDestination.print(ControlName);
+  m_rDestination.print('.');
+  m_rDestination.print(PropertyName);
+  m_rDestination.print('=');
+}
+
+void InterfacePanel::SendControlHeader(const __FlashStringHelper* ControlName, const char* PropertyName)
 {
   SendDataHeader(F("SET"));
   m_rDestination.print(ControlName);
