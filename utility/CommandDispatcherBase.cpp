@@ -28,6 +28,22 @@ bool CommandDispatcherBase::AddCommand( const __FlashStringHelper *pCommand, voi
   return false; // too many commands stored already. 
 }
 
+bool CommandDispatcherBase::AddCommand(PGM_P pCommand, void(*CallbackFunction)(CommandParameter& rParameters))
+{
+  if (m_uLastCommand < m_uMaxCommands)
+  {
+    m_pCommands[m_uLastCommand].m_Callback = CallbackFunction;
+    m_pCommands[m_uLastCommand].m_strCommand = pCommand;
+    ++m_uLastCommand;
+    return true;
+  }
+
+  Serial.println(F("AddCommand: full"));
+
+  return false; // too many commands stored already. 
+}
+
+
 void CommandDispatcherBase::SetDefaultHandler( void(*CallbackFunction)() )
 {
   m_fnDefaultHandler = CallbackFunction;

@@ -37,7 +37,9 @@ namespace MLP
     CommandDispatcherBase(CommandCallback *pCallbackBuffer, uint8_t uCallbackBufferLength, VariableMap *pVariableMapBuffer, uint8_t uVariableMapLength);
 
   public:
-    bool AddCommand(const __FlashStringHelper *pCommand, void(*CallbackFunction)(CommandParameter &rParameters));
+    bool AddCommand(const __FlashStringHelper* pCommand, void(*CallbackFunction)(CommandParameter& rParameters));
+    bool AddCommand(PGM_P pCommand, void(*CallbackFunction)(CommandParameter &rParameters));
+
     void SetDefaultHandler(void(*CallbackFunction)());
     void ClearCommands();
 
