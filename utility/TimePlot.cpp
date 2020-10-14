@@ -12,6 +12,12 @@ TimePlot::TimePlot( const __FlashStringHelper *channelName, Print &rDestination 
 
 }
 
+TimePlot::TimePlot(Print& rDestination)
+  : Plot(F("TIMEPLOT"), null, rDestination)
+{
+}
+
+
 void TimePlot::Run(bool bEnable)
 {
   SendDataHeader(F("RUN"));

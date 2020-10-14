@@ -3,10 +3,10 @@ Example Description
 In this example we use MegunoLink's Time Plot visualizer to plot Sinewave data in real time.
  
 More Information
-*  http://www.megunolink.com/documentation/plotting/
+*  https://www.megunolink.com/documentation/getting-started/plotting-data/
 
 This Example Requires:
-*  The MegunoLink arduino library https://www.megunolink.com/documentation/arduino-integration/
+*  The MegunoLink arduino library https://www.megunolink.com/documentation/getting-started/arduino-integration/
 
 MegunoLink Interface
 You can download a pre-made interface from here:
