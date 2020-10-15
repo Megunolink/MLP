@@ -71,6 +71,7 @@ public:
   void LogTo(const char *Filename);
   void StartLogging();
   void StopLogging();
+  void Flush();
 
 private:
   void SendSeparator();

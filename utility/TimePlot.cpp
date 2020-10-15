@@ -13,7 +13,7 @@ TimePlot::TimePlot( const __FlashStringHelper *channelName, Print &rDestination 
 }
 
 TimePlot::TimePlot(Print& rDestination)
-  : Plot(F("TIMEPLOT"), null, rDestination)
+  : Plot(F("TIMEPLOT"), (const char*) NULL, rDestination)
 {
 }
 

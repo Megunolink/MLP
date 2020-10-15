@@ -102,6 +102,12 @@ void Message::StartLogging()
   SendDataTail();
 }
 
+void Message::Flush()
+{
+  SendDataHeader(F("W"));
+  SendDataTail();
+}
+
 void Message::SendSeparator()
 {
   m_rDestination.print(F(": "));
