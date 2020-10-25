@@ -97,3 +97,60 @@ void TimePlot::SendFloatData(const __FlashStringHelper * seriesName, float yValu
   m_rDestination.print(yValue, nDecimalPlaces);
   SendDataTail();
 }
+
+void TimePlot::SetCursorPositionToNow(const char* SeriesName)
+{
+  SendDataHeader(F("C-POSD"));
+  m_rDestination.print(SeriesName);
+  m_rDestination.print(F("|T"));
+  SendDataTail();
+}
+
+void TimePlot::SetCursorPositionToNow(const __FlashStringHelper* SeriesName)
+{
+  SendDataHeader(F("C-POSD"));
+  m_rDestination.print(SeriesName);
+  m_rDestination.print(F("|T"));
+  SendDataTail();
+}
+
+void TimePlot::SetCursorPosition(const char* SeriesName, tm& Time)
+{
+  SendDataHeader(F("C-POSD"));
+  m_rDestination.print(SeriesName);
+  m_rDestination.print(F("|"));
+  m_rDestination.print(1900 + Time.tm_year);
+  m_rDestination.print('-');
+  m_rDestination.print(Time.tm_mon);
+  m_rDestination.print('-');
+  m_rDestination.print(Time.tm_mday);
+  m_rDestination.print(' ');
+  m_rDestination.print(Time.tm_hour);
+  m_rDestination.print(':');
+  m_rDestination.print(Time.tm_min);
+  m_rDestination.print(':');
+  m_rDestination.print(Time.tm_sec);
+
+  SendDataTail();
+}
+
+void TimePlot::SetCursorPosition(const __FlashStringHelper* SeriesName, tm& Time)
+{
+  SendDataHeader(F("C-POSD"));
+  m_rDestination.print(SeriesName);
+  m_rDestination.print(F("|"));
+  m_rDestination.print(1900 + Time.tm_year);
+  m_rDestination.print('-');
+  m_rDestination.print(Time.tm_mon);
+  m_rDestination.print('-');
+  m_rDestination.print(Time.tm_mday);
+  m_rDestination.print(' ');
+  m_rDestination.print(Time.tm_hour);
+  m_rDestination.print(':');
+  m_rDestination.print(Time.tm_min);
+  m_rDestination.print(':');
+  m_rDestination.print(Time.tm_sec);
+
+  SendDataTail();
+}
+

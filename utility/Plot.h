@@ -85,6 +85,15 @@ public:
   void SetYVisible(bool bVisible = true);
   void SetY2Visible(bool bVisible = true);
 
+  void ShowCursor(const char* SeriesName, bool bVisible = true);
+  void HideCursor(const char* SeriesName);
+
+  void ShowCursor(const __FlashStringHelper* SeriesName, bool bVisible = true);
+  void HideCursor(const __FlashStringHelper* SeriesName);
+
+  void SetCursorPosition(const char* SeriesName, double dPosition, uint8_t nPrecision = 5);
+  void SetCursorPosition(const __FlashStringHelper* SeriesName, double dPosition, uint8_t nPrecision = 5);
+
 protected:
   Plot(const __FlashStringHelper *Context, Print &rDestination = Serial);
   Plot(const __FlashStringHelper *Context, const char *Channel, Print &rDestination = Serial);

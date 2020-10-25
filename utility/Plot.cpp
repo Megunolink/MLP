@@ -117,6 +117,52 @@ void Plot::SetY2Visible(bool bVisible)
   SetParameter(F("y2-visible"), bVisible ? "1" : "0");
 }
 
+void Plot::ShowCursor(const char* SeriesName, bool bVisible)
+{
+  SendDataHeader(F("C-VIS"));
+  m_rDestination.print(SeriesName);
+  m_rDestination.print('|');
+  m_rDestination.print(bVisible ? '1' : '0');
+  SendDataTail();
+}
+
+void Plot::HideCursor(const char* SeriesName)
+{
+  ShowCursor(SeriesName, false);
+}
+
+void Plot::ShowCursor(const __FlashStringHelper* SeriesName, bool bVisible)
+{
+  SendDataHeader(F("C-VIS"));
+  m_rDestination.print(SeriesName);
+  m_rDestination.print('|');
+  m_rDestination.print(bVisible ? '1' : '0');
+  SendDataTail();
+}
+
+void Plot::HideCursor(const __FlashStringHelper* SeriesName)
+{
+  ShowCursor(SeriesName, false);
+}
+
+void Plot::SetCursorPosition(const char* SeriesName, double dPosition, uint8_t nPrecision)
+{
+  SendDataHeader(F("C-POS"));
+  m_rDestination.print(SeriesName);
+  m_rDestination.print('|');
+  m_rDestination.print(dPosition, nPrecision);
+  SendDataTail();
+}
+
+void Plot::SetCursorPosition(const __FlashStringHelper* SeriesName, double dPosition, uint8_t nPrecision)
+{
+  SendDataHeader(F("C-POS"));
+  m_rDestination.print(SeriesName);
+  m_rDestination.print('|');
+  m_rDestination.print(dPosition, nPrecision);
+  SendDataTail();
+}
+
 void Plot::SetSeriesProperties(const char *SeriesName, Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax /*= DefaultAxis */)
 {
   char Data[6] = {':', Color, Marker, ax, Line, '\0'}; // Line must be last as it is followed by the line-width. 

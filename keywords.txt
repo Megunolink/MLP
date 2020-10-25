@@ -91,6 +91,9 @@ GetData	KEYWORD2
 TimePlot	KEYWORD1
 SendData	KEYWORD2
 SendFloatData	KEYWORD2
+SetCursorVisibility	KEYWORD2
+SetCursorPosition	KEYWORD2
+SetCursorPositionToNow	KEYWORD2
 
 XYPlot	KEYWORD1
 SendData	KEYWORD2

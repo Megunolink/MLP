@@ -1,6 +1,7 @@
 #pragma once
 #define __PROG_TYPES_COMPAT__
 #include <Arduino.h>
+#include <time.h>
 #include "Plot.h"
 
 class TimePlot : public Plot
@@ -9,7 +10,7 @@ class TimePlot : public Plot
 public:
   TimePlot(const char *channelName = NULL, Print &rDestination = Serial);
   TimePlot(const __FlashStringHelper* channelName, Print& rDestination = Serial);
-  TimePlot(Print &rDestination = Serial);
+  TimePlot(Print &rDestination);
 
   void Run(bool bEnable);
   void Stop();
@@ -82,4 +83,23 @@ public:
   void SendFloatData(const __FlashStringHelper * seriesName, float yValue, int nDecimalPlaces, const char * seriesProperties=NULL);
   void SendFloatData(const __FlashStringHelper * seriesName, float yValue, int nDecimalPlaces, Colors Color, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle, Axis ax = DefaultAxis);
   void SendFloatData(const __FlashStringHelper * seriesName, float yValue, int nDecimalPlaces, int32_t nColor, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle, Axis ax = DefaultAxis);
+
+  void SetCursorPositionToNow(const char* SeriesName);
+  void SetCursorPositionToNow(const __FlashStringHelper* SeriesName);
+
+  void SetCursorPosition(const char* SeriesName, tm &Time);
+  void SetCursorPosition(const __FlashStringHelper* SeriesName, tm& Time);
+
+  void SetCursorPosition(const char* SeriesName, double dPosition, uint8_t nPrecision = 5) 
+  {
+    Plot::SetCursorPosition(SeriesName, dPosition, nPrecision);
+  }
+
+  void SetCursorPosition(const __FlashStringHelper* SeriesName, double dPosition, uint8_t nPrecision = 5)
+  {
+    Plot::SetCursorPosition(SeriesName, dPosition, nPrecision);
+  }
+
+
+
 };
