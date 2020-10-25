@@ -1,14 +1,23 @@
-/* ************************************************************************
-Configurable Output Pin
+/************************************************************************************************
+Example Description
 This program demonstrates how MegunoLink's Interface Panel and our command
 handler Arduino library can be used to reconfigure which IO pin your device
 is using at runtime.
-
-The example folder also contains a MegunoLink project, with an Interface
-Panel to control the IO Pin.
-Visit:
-* http://www.MegunoLink.com to download MegunoLink.
-************************************************************************ */
+ 
+More Information
+*  https://www.megunolink.com/documentation/interface-panel/
+ 
+This Example Requires:
+*  The MegunoLink arduino library https://www.megunolink.com/documentation/arduino-integration/
+ 
+MegunoLink Interface
+You can download a pre-made interface from here:
+https://github.com/Megunolink/MLP/raw/master/examples/InterfacePanel/ConfigurableOutputPin/ConfigurableOutputPin.mlpz
+ 
+You can find out more about MegunoLink and download a free trial from here
+https://www.megunolink.com/
+https://www.megunolink.com/download/
+************************************************************************************************/
 
 #include "MegunoLink.h"
 #include "CommandHandler.h"

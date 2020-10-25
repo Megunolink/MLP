@@ -37,7 +37,9 @@ namespace MLP
     CommandDispatcherBase(CommandCallback *pCallbackBuffer, uint8_t uCallbackBufferLength, VariableMap *pVariableMapBuffer, uint8_t uVariableMapLength);
 
   public:
-    bool AddCommand(const __FlashStringHelper *pCommand, void(*CallbackFunction)(CommandParameter &rParameters));
+    bool AddCommand(const __FlashStringHelper* pCommand, void(*CallbackFunction)(CommandParameter& rParameters));
+    bool AddCommand(PGM_P pCommand, void(*CallbackFunction)(CommandParameter &rParameters));
+
     void SetDefaultHandler(void(*CallbackFunction)());
     void ClearCommands();
 
@@ -50,7 +52,7 @@ namespace MLP
     bool AddVariable(const __FlashStringHelper *pName, float &rVariable);
     bool AddVariable(const __FlashStringHelper *pName, double &rVariable);
     bool AddVariable(const __FlashStringHelper *pName, char *pchBuffer, uint8_t uMaxBufferSize);
-#if defined(ARDUINO_ARCH_SAMD) || defined(ARDUINO_ARCH_SAM)
+#if defined(ARDUINO_ARCH_SAMD) || defined(ARDUINO_ARCH_SAM) || defined(CORE_TEENSY)
     bool AddVariable(const __FlashStringHelper *pName, int &rVariable);
 #endif
 

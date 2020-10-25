@@ -1,18 +1,23 @@
-/* **********************************************************************************************
-*  Example program to plot sine wave data on MegunoLink's Time Plot visualiser
-*  Visit http://www.megunolink.com/documentation/plotting/
-*  for more information. 
-*  ********************************************************************************************** */
+/************************************************************************************************
+Example Description
+In this example we use MegunoLink's Time Plot visualizer to plot Sinewave data in real time.
+ 
+More Information
+*  https://www.megunolink.com/documentation/getting-started/plotting-data/
+
+This Example Requires:
+*  The MegunoLink arduino library https://www.megunolink.com/documentation/getting-started/arduino-integration/
+
+MegunoLink Interface
+You can download a pre-made interface from here:
+https://github.com/Megunolink/MLP/raw/master/examples/TimePlot/Sinewave/Sinewave.mlpz
+ 
+You can find out more about MegunoLink and download a free trial from here
+https://www.megunolink.com/
+https://www.megunolink.com/download/
+************************************************************************************************/
+
 #include "MegunoLink.h"
-
-// For more information on installing the MegunoLink Arduino library check out our documentation
-// http://www.megunolink.com/documentation/arduino-integration/
-
-// You can download the MegunoLink Interface (.mlx) that goes with this example here
-// http://www.megunolink.com/examples/arduino/TimePlot/Sinewave/Sinewave.mlx
-
-
-
 
 // Uncomment if you would like to use plotting channels
 // TimePlot MyPlot("Waveforms"); //"Waveforms" = the taget plotting channel (remember to select this in megunolink)
@@ -24,8 +29,8 @@ void setup()
   Serial.begin(9600);
 
   MyPlot.SetTitle("Sine and Cosine Function Waveforms");
-  MyPlot.SetXlabel("Time");
-  MyPlot.SetYlabel("Amplitude");
+  MyPlot.SetXLabel("Time");
+  MyPlot.SetYLabel("Amplitude");
   
   // Set the plotting parameters. "Sinewave" = series name, Plot::Blue = line colour
   // 2 = line width, Plot::Square = marker style

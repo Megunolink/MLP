@@ -8,27 +8,29 @@ StreamParser::StreamParser( MLP::CommandDispatcherBase &rCommandHandler,
                            Stream &rSourceStream /*= Serial*/, 
                            char chStartOfMessage /*= '!'*/, 
                            char chEndOfMessage /*= '\r'*/ )
-                           : m_rCommandHandler(rCommandHandler)
+                           : m_pCommandHandler(&rCommandHandler)
+                           , m_pSource(&rSourceStream)
                            , m_chStartOfMessage(chStartOfMessage)
                            , m_chEndOfMessage(chEndOfMessage)
-                           , m_uMaxBufferSize(uBufferSize)
                            , m_pchBuffer(pchReceiveBuffer)
-                           , m_rSource(rSourceStream)
+                           , m_uMaxBufferSize(uBufferSize)
 {
-  Init();
+  Reset();
 }
 
-void StreamParser::Init()
+StreamParser::StreamParser(char *pchReceiveBuffer, unsigned uBufferSize)
+  : m_pchBuffer(pchReceiveBuffer)
+  , m_uMaxBufferSize(uBufferSize)
 {
-  m_bOverflow = false;
-  m_uNextCharacter = 0;
+  Reset();
 }
+
 
 void StreamParser::Process()
 {
-  while (m_rSource.available() > 0)
+  while (m_pSource != NULL && m_pSource->available() > 0)
   {
-    char chNext = m_rSource.read();
+    char chNext = m_pSource->read();
 
     if (chNext == m_chStartOfMessage)
     {
@@ -61,7 +63,7 @@ void StreamParser::Process()
 
 void StreamParser::DispatchMessage()
 {
-  m_rCommandHandler.DispatchCommand(m_pchBuffer + 1, m_rSource); // First character is start of message signal. 
+  m_pCommandHandler->DispatchCommand(m_pchBuffer + 1, *m_pSource); // First character is start of message signal. 
 } 
 
 void StreamParser::Reset()

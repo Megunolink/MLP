@@ -22,8 +22,8 @@ void setup()
   LastSent = millis();
 
   MyPlot.SetTitle("My Analog Measurement");
-  MyPlot.SetXlabel("Time");
-  MyPlot.SetYlabel("Value");
+  MyPlot.SetXLabel("Time");
+  MyPlot.SetYLabel("Value");
   MyPlot.SetSeriesProperties("ADCValue", Plot::Magenta, Plot::Solid, 2, Plot::Square);
 }
 

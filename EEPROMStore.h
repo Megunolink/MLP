@@ -83,5 +83,6 @@ private:
     return uChecksum;
   }
 };
-
+#else
+#error EEPROMStore is only supported on AVR micros.
 #endif

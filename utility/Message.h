@@ -1,7 +1,7 @@
 #pragma once
 #include "MegunoLinkProtocol.h"
 
-class Message : protected MegunoLinkProtocol
+class Message : public MegunoLinkProtocol
 {
 public:
   // Flags to select destination for messages
@@ -37,6 +37,15 @@ public:
     SendDataTail();
   }
 
+  template<class TValue> void Send(long Time, TValue Value)
+  {
+    Begin();
+    m_rDestination.print(Time);
+    SendSeparator();
+    m_rDestination.print(Value);
+    SendDataTail();
+  }
+
   template<class TValue> void Send(const char *Label, TValue Value)
   {
     Begin();
@@ -56,6 +65,13 @@ public:
   }
 
   void Clear();
+
+  void LogTo(const __FlashStringHelper *Filename);
+  void LogTo(String &Filename);
+  void LogTo(const char *Filename);
+  void StartLogging();
+  void StopLogging();
+  void Flush();
 
 private:
   void SendSeparator();

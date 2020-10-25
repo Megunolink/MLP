@@ -12,44 +12,16 @@ InterfacePanel::InterfacePanel(const __FlashStringHelper *channelName, Print &rD
 
 }
 
-void InterfacePanel::SetText(const char * ControlName, const char * Value)
+void InterfacePanel::SetText(const __FlashStringHelper *ControlName, float Value, uint8_t DecimalPlaces)
 {
-  SendControlHeader(ControlName, F("Text"));
-  m_rDestination.print(Value);
+  SendTextHeader(ControlName);
+  m_rDestination.print(Value, DecimalPlaces);
   SendDataTail();
 }
 
-void InterfacePanel::SetText(const char * ControlName, int Value)
+void InterfacePanel::SetText(const char *ControlName, float Value, uint8_t DecimalPlaces)
 {
-  SendControlHeader(ControlName, F("Text"));
-  m_rDestination.print(Value);
-  SendDataTail();
-}
-
-void InterfacePanel::SetText(const char * ControlName, long Value)
-{
-  SendControlHeader(ControlName, F("Text"));
-  m_rDestination.print(Value);
-  SendDataTail();
-}
-
-void InterfacePanel::SetText(const char * ControlName, unsigned long Value)
-{
-  SendControlHeader(ControlName, F("Text"));
-  m_rDestination.print(Value);
-  SendDataTail();
-}
-
-void InterfacePanel::SetText(const char * ControlName, float Value)
-{
-  SendControlHeader(ControlName, F("Text"));
-  m_rDestination.print(Value);
-  SendDataTail();
-}
-
-void InterfacePanel::SetText(const char * ControlName, float Value, int DecimalPlaces)
-{
-  SendControlHeader(ControlName, F("Text"));
+  SendTextHeader(ControlName);
   m_rDestination.print(Value, DecimalPlaces);
   SendDataTail();
 }
@@ -59,24 +31,24 @@ void InterfacePanel::SetProgress(const char * ControlName, int nValue)
   SetNumber(ControlName, (int32_t) nValue);
 }
 
-void InterfacePanel::SetNumber(const char * ControlName, int16_t nValue)
+void InterfacePanel::SetGaugeLabel(const char *ControlName, int LabelNumber, const char *Value)
 {
-  SendControlHeader(ControlName, F("Value"));
-  m_rDestination.print(nValue);
+  SendGaugeControlHeader(ControlName, LabelNumber);
+  m_rDestination.print(Value);
   SendDataTail();
 }
 
-void InterfacePanel::SetNumber(const char * ControlName, int32_t nValue)
+void InterfacePanel::SetGaugeLabel(const __FlashStringHelper *ControlName, int LabelNumber, const char *Value)
 {
-  SendControlHeader(ControlName, F("Value"));
-  m_rDestination.print(nValue);
+  SendGaugeControlHeader(ControlName, LabelNumber);
+  m_rDestination.print(Value);
   SendDataTail();
 }
 
-void InterfacePanel::SetNumber(const char * ControlName, uint32_t nValue)
+void InterfacePanel::SetGaugeLabel(const __FlashStringHelper *ControlName, int LabelNumber, const __FlashStringHelper *Value)
 {
-  SendControlHeader(ControlName, F("Value"));
-  m_rDestination.print(nValue);
+  SendGaugeControlHeader(ControlName, LabelNumber);
+  m_rDestination.print(Value);
   SendDataTail();
 }
 
@@ -139,24 +111,10 @@ void InterfacePanel::ClearCheck(const char * ControlName)
   SendDataTail();
 }
 
-void InterfacePanel::SetText(const __FlashStringHelper * ControlName, const char * Value)
-{
-  SendControlHeader(ControlName, F("Text"));
-  m_rDestination.print(Value);
-  SendDataTail();
-}
-
 void InterfacePanel::SetProgress(const __FlashStringHelper * ControlName, int nValue)
 {
   SendControlHeader(ControlName, F("Value"));
   m_rDestination.print((int32_t)nValue);
-  SendDataTail();
-}
-
-void InterfacePanel::SetNumber(const __FlashStringHelper * ControlName, int16_t nValue)
-{
-  SendControlHeader(ControlName, F("Value"));
-  m_rDestination.print(nValue);
   SendDataTail();
 }
 
@@ -178,13 +136,6 @@ void InterfacePanel::ClearCheck(const __FlashStringHelper * ControlName)
 {
   SendControlHeader(ControlName, F("Checked"));
   m_rDestination.print(F("False"));
-  SendDataTail();
-}
-
-void InterfacePanel::SetText(const __FlashStringHelper * ControlName, const __FlashStringHelper * Value)
-{
-  SendControlHeader(ControlName, F("Text"));
-  m_rDestination.print(Value);
   SendDataTail();
 }
 
@@ -220,6 +171,15 @@ void InterfacePanel::GetValue(const __FlashStringHelper* ControlName, const __Fl
   SendDataTail();
 }
 
+void InterfacePanel::SendControlHeader(const char* ControlName, const char* PropertyName)
+{
+  SendDataHeader(F("SET"));
+  m_rDestination.print(ControlName);
+  m_rDestination.print('.');
+  m_rDestination.print(PropertyName);
+  m_rDestination.print('=');
+}
+
 void InterfacePanel::SendControlHeader(const char *ControlName, const __FlashStringHelper *PropertyName)
 {
   SendDataHeader(F("SET"));
@@ -235,6 +195,35 @@ void InterfacePanel::SendControlHeader(const __FlashStringHelper *ControlName, c
   m_rDestination.print(ControlName);
   m_rDestination.print('.');
   m_rDestination.print(PropertyName);
+  m_rDestination.print('=');
+}
+
+void InterfacePanel::SendControlHeader(const __FlashStringHelper* ControlName, const char* PropertyName)
+{
+  SendDataHeader(F("SET"));
+  m_rDestination.print(ControlName);
+  m_rDestination.print('.');
+  m_rDestination.print(PropertyName);
+  m_rDestination.print('=');
+}
+
+void InterfacePanel::SendGaugeControlHeader(const char *ControlName, int nLabelNumber)
+{
+  SendDataHeader(F("SET"));
+  m_rDestination.print(ControlName);
+  m_rDestination.print('.');
+  m_rDestination.print(F("Label"));
+  m_rDestination.print(nLabelNumber);
+  m_rDestination.print('=');
+}
+
+void InterfacePanel::SendGaugeControlHeader(const __FlashStringHelper *ControlName, int nLabelNumber)
+{
+  SendDataHeader(F("SET"));
+  m_rDestination.print(ControlName);
+  m_rDestination.print('.');
+  m_rDestination.print(F("Label"));
+  m_rDestination.print(nLabelNumber);
   m_rDestination.print('=');
 }
 
@@ -364,3 +353,22 @@ void InterfacePanel::SetMaximum(const __FlashStringHelper *ControlName, int Valu
   SendDataTail();
 }
 
+void InterfacePanel::SendValueHeader(const char *ControlName)
+{
+  SendControlHeader(ControlName, F("Value"));
+}
+
+void InterfacePanel::SendValueHeader(const __FlashStringHelper *ControlName)
+{
+  SendControlHeader(ControlName, F("Value"));
+}
+
+void InterfacePanel::SendTextHeader(const char *ControlName)
+{
+  SendControlHeader(ControlName, F("Text"));
+}
+
+void InterfacePanel::SendTextHeader(const __FlashStringHelper *ControlName)
+{
+  SendControlHeader(ControlName, F("Text"));
+}

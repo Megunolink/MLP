@@ -1,8 +1,27 @@
-/* **********************************************************************************************
-*  Example program to plot sine wave data on MegunoLink's Time Plot visualiser
-*  Visit http://www.megunolink.com/documentation/plotting/
-*  for more information. 
-*  ********************************************************************************************** */
+/************************************************************************************************
+Example Description
+This example demonstrates Megunolink's Time Plot, Interface Panel, and Message Monitor visualisers.
+You can adjust the phase, amplitude and frequency of the sine wave. The message monitor will use
+text to speach to read out adjustments to the phase and frequency.
+ 
+More Information
+*  http://www.megunolink.com/documentation/plotting/
+*  https://www.megunolink.com/documentation/serial-monitors/message-monitor-visualizer/
+*  https://www.megunolink.com/documentation/serial-monitors/message-monitor-library-reference/
+ 
+This Example Requires:
+*  The MegunoLink arduino library https://www.megunolink.com/documentation/arduino-integration/
+ 
+MegunoLink Interface
+You can download a pre-made interface from here:
+https://github.com/Megunolink/MLP/raw/master/examples/MessageMonitor/AdjustableSinewave/AdjustableSinewave.mlpz
+ 
+You can find out more about MegunoLink and download a free trial from here
+https://www.megunolink.com/
+https://www.megunolink.com/download/
+************************************************************************************************/
+
+
 #include "MegunoLink.h"
 #include "CommandHandler.h"
 
@@ -50,8 +69,8 @@ void setup()
   Serial.begin(9600);
 
   MyPlot.SetTitle("Sine and Cosine Function Waveforms");
-  MyPlot.SetXlabel("Time");
-  MyPlot.SetYlabel("Amplitude");
+  MyPlot.SetXLabel("Time");
+  MyPlot.SetYLabel("Amplitude");
   
   // Set the plotting parameters. "Sinewave" = series name, Plot::Blue = line colour
   // 2 = line width, Plot::Square = marker style

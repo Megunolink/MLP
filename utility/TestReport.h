@@ -1,7 +1,7 @@
 #pragma once
 #include "MegunoLinkProtocol.h"
 
-class TestReport : protected MegunoLinkProtocol
+class TestReport : public MegunoLinkProtocol
 {
 public:
   TestReport(Print &rDestination = Serial);
@@ -24,6 +24,9 @@ public:
   void Fail(const __FlashStringHelper *pchName);
   template <class TData>  void Fail(const char *pchName, TData Data);
   template <class TData>  void Fail(const __FlashStringHelper *pchName, TData Data);
+
+  void StartingTest();
+  void TestComplete();
 
 private:
   void SendFirstPart(bool bPass, const char * pchName);

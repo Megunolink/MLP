@@ -24,7 +24,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Filter.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MegunoLink.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MessageHeaders.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)utility\CommandDispatcher.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TCPCommandHandler.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\CommandDispatcherBase.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\CommandParameter.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\CRC.h" />
@@ -35,6 +35,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\Plot.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\StreamParser.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\Table.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\TCPConnection.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\TestReport.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\TimePlot.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\XYPlot.h" />

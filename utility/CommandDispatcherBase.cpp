@@ -5,8 +5,8 @@ using namespace MLP;
 
 
 CommandDispatcherBase::CommandDispatcherBase( CommandCallback *pCallbackBuffer, uint8_t uCallbackBufferLength, VariableMap *pVariableMapBuffer, uint8_t uVariableMapLength)
-  : m_uMaxCommands(uCallbackBufferLength), m_pCommands(pCallbackBuffer)
-  , m_uMaxVariables(uVariableMapLength), m_pVariableMap(pVariableMapBuffer)
+  : m_pCommands(pCallbackBuffer), m_uMaxCommands(uCallbackBufferLength)
+  , m_pVariableMap(pVariableMapBuffer), m_uMaxVariables(uVariableMapLength)
 {
   m_uLastCommand = 0;
   m_uLastVariable = 0;
@@ -27,6 +27,22 @@ bool CommandDispatcherBase::AddCommand( const __FlashStringHelper *pCommand, voi
 
   return false; // too many commands stored already. 
 }
+
+bool CommandDispatcherBase::AddCommand(PGM_P pCommand, void(*CallbackFunction)(CommandParameter& rParameters))
+{
+  if (m_uLastCommand < m_uMaxCommands)
+  {
+    m_pCommands[m_uLastCommand].m_Callback = CallbackFunction;
+    m_pCommands[m_uLastCommand].m_strCommand = pCommand;
+    ++m_uLastCommand;
+    return true;
+  }
+
+  Serial.println(F("AddCommand: full"));
+
+  return false; // too many commands stored already. 
+}
+
 
 void CommandDispatcherBase::SetDefaultHandler( void(*CallbackFunction)() )
 {
@@ -68,7 +84,7 @@ bool CommandDispatcherBase::AddVariable(const __FlashStringHelper *pName, int32_
   return AddVariable(pName, &rVariable, ProcessVariable_int32);
 }
 
-#if defined(ARDUINO_ARCH_SAMD) || defined(ARDUINO_ARCH_SAM)
+#if defined(ARDUINO_ARCH_SAMD) || defined(ARDUINO_ARCH_SAM) || defined(CORE_TEENSY)
 bool CommandDispatcherBase::AddVariable(const __FlashStringHelper *pName, int &rVariable)
 {
   return AddVariable(pName, &rVariable, ProcessVariable_int32);

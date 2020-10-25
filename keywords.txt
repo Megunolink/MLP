@@ -27,7 +27,7 @@ CurrentIndex	KEYWORD2
 Next	KEYWORD2
 AtEnd	KEYWORD2
 Previous	KEYWORD2
-ReverseIterator KEYWORD1
+ReverseIterator	KEYWORD1
 CommandHandler	KEYWORD1
 Process	KEYWORD2
 AddCommand	KEYWORD2
@@ -75,6 +75,11 @@ Message	KEYWORD1
 Begin	KEYWORD2
 End	KEYWORD2
 Send	KEYWORD2
+Clear	KEYWORD2
+Flush	KEYWORD2
+StartLogging	KEYWORD2
+LogTo	KEYWORD2
+StopLogging	KEYWORD2
 
 Table	KEYWORD1
 SendData	KEYWORD2
@@ -86,6 +91,26 @@ GetData	KEYWORD2
 TimePlot	KEYWORD1
 SendData	KEYWORD2
 SendFloatData	KEYWORD2
+SetCursorVisibility	KEYWORD2
+SetCursorPosition	KEYWORD2
+SetCursorPositionToNow	KEYWORD2
 
 XYPlot	KEYWORD1
 SendData	KEYWORD2
+
+Report	KEYWORD1
+EnablePeriodicReports	KEYWORD2
+GenerateNow	KEYWORD2
+
+RecordTable	KEYWORD1
+AddRow	KEYWORD2
+AddRowFromArray	KEYWORD2
+AddRowWithIds	KEYWORD2
+AddRowFromArrayWithIds	KEYWORD2
+UpdateRow	KEYWORD2
+UpdateRowFromArray	KEYWORD2
+UpdateRowFromArrayWithIds	KEYWORD2
+SetValue	KEYWORD2
+ClearAllRows	KEYWORD2
+ClearRow	KEYWORD2
+

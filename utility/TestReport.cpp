@@ -47,6 +47,18 @@ void TestReport::Fail(const __FlashStringHelper * pchName)
   SendDataTail();
 }
 
+void TestReport::StartingTest()
+{
+  SendDataHeader(F("START"));
+  SendDataTail();
+}
+
+void TestReport::TestComplete()
+{
+  SendDataHeader(F("DONE"));
+  SendDataTail();
+}
+
 void TestReport::SendFirstPart(bool bPass, const char * pchName)
 {
   SendFirstPart(bPass);
@@ -55,6 +67,7 @@ void TestReport::SendFirstPart(bool bPass, const char * pchName)
 
 void TestReport::SendFirstPart(bool bPass, const __FlashStringHelper * pchName)
 {
+  SendFirstPart(bPass);
   m_rDestination.print(pchName);
 }
 

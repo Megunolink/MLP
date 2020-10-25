@@ -5,6 +5,8 @@
  *  Download a free trial of MegunoLink from www.MegunoLink.com
  *  Check out: https://www.megunolink.com/documentation/connecting/udp-connections/
  *  for more information on UDP connections. 
+ *  
+ *  Check out this video for a demo of the example in action  https://youtu.be/nvmuvDnGFjU
  */
 
 #include "DNSServer.h"
@@ -21,10 +23,16 @@ const IPAddress DestinationIp(255, 255, 255, 255);
 
 WiFiUDP UdpConnection;
 
-// -------------------------------------------------------------------------------
-// Connection settings for the WiFi network to use:
-const char *WiFiSSID = "NETGEAR18";
-const char *WiFiPassword = "melodicbanana728";
+#define USEWIFICONFIGFILE
+#ifdef USEWIFICONFIGFILE
+// Include SSID and password from a library file. For more information see:
+// https://www.megunolink.com/articles/wireless/how-do-i-connect-to-a-wireless-network-with-the-esp32/
+#include "WiFiConfig.h"
+#else
+// Option 2
+const char *SSID = "Your SSID";
+const char *WiFiPassword = "Your Password";
+#endif
 
 // -------------------------------------------------------------------------------
 // Handling commands
@@ -36,7 +44,7 @@ void Cmd_GetADCValue(CommandParameter &p)
   uint16_t ADCValue = analogRead(0);
 
   UdpConnection.beginPacket(DestinationIp, DestinationPort);
-  Table MLPTable(UdpConnection);
+  Table MLPTable("", UdpConnection); //"" is an empty channel. Needed when specifying a port other than standard serial.
   MLPTable.SendData("A0", ADCValue);  
   UdpConnection.endPacket();
 }
@@ -69,7 +77,7 @@ void setup()
   Serial.println("WiFi Receive Test");
 
   Serial.println("Connecting");
-  WiFi.begin(WiFiSSID, WiFiPassword);
+  WiFi.begin(SSID, WiFiPassword);
   Serial.println("Connected");
   
   UdpConnection.begin(SourcePort);

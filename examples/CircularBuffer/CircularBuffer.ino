@@ -1,8 +1,18 @@
-/* *****************************************************************************
-*  Demo for circular buffer. 
-*  Records the time-stamp for button pushes in a circular buffer and 
-*  periodically writes them to the serial port. 
-*  ***************************************************************************** */
+/************************************************************************************************
+Example Description
+This example demonstrates our Circular Buffer library. Button push timestamps are recorded in a
+circular buffer and periodically written out the serial port.
+
+More Information
+*  https://www.megunolink.com/documentation/arduino-libraries/circular-buffer/
+ 
+This Example Requires:
+*  The MegunoLink arduino library https://www.megunolink.com/documentation/arduino-integration/
+ 
+You can find out more about MegunoLink and download a free trial from here
+https://www.megunolink.com/
+https://www.megunolink.com/download/
+************************************************************************************************/
 
 #include "CircularBuffer.h"
 #include "ArduinoTimer.h"

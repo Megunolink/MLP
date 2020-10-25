@@ -7,9 +7,21 @@ namespace MLP
 {
   class StreamParser
   {
-    // The stream that we are parsing for commands. 
-    Stream &m_rSource;
+  protected:
+    MLP::CommandDispatcherBase *m_pCommandHandler;
 
+    // The stream that we are parsing for commands. 
+    // Protected so that network command handlers (such as TCPCommandHandler)
+    // can update with connection. If null, commands are not parsed. 
+    // Be sure to reset the parser whenever the source is changed. 
+    Stream *m_pSource;
+
+    // Characters that signal start and end of message. 
+    // The buffer is reset when a start character is received. Commands
+    // are dispatched when the end character is received. 
+    char m_chStartOfMessage, m_chEndOfMessage;
+
+  private:
     // A buffer to collect commands. Buffer, and size, is provided. 
     char * const m_pchBuffer;
     const unsigned m_uMaxBufferSize;
@@ -21,18 +33,11 @@ namespace MLP
     // be dispatched from buffers that overflow. 
     bool m_bOverflow;
 
-    // Characters that signal start and end of message. 
-    // The buffer is reset when a start character is received. Commands
-    // are dispatched when the end character is received. 
-    const char m_chStartOfMessage, m_chEndOfMessage;
-
-    MLP::CommandDispatcherBase &m_rCommandHandler;
-
   protected:
     StreamParser(MLP::CommandDispatcherBase &rCommandHandler, char *pchReceiveBuffer, unsigned uBufferSize, 
       Stream &rSourceStream = Serial, char chStartOfMessage = '!', char chEndOfMessage = '\r');
+    StreamParser(char *pchReceiveBuffer, unsigned uBufferSize);
 
-    void Init();  
     void DispatchMessage();
 
   public:

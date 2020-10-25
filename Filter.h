@@ -18,7 +18,7 @@ public:
 
   void Filter(T New)
   {
-    m_Current = (m_WeightNew * New + (100 - m_WeightNew) * m_Current) / 100;
+    m_Current = (100 * m_WeightNew * New + (100 - m_WeightNew) * m_Current + 50)/100;
   }
 
   void SetWeight(T NewWeight)
@@ -28,11 +28,11 @@ public:
 
   T GetWeight() const { return m_WeightNew; }
 
-  T Current() const { return m_Current; }
+  T Current() const { return (m_Current + 50)/100; }
 
   void SetCurrent(T NewValue)
   {
-    m_Current = NewValue;
+    m_Current = NewValue*100;
   }
 };
 

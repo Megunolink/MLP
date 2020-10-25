@@ -1,8 +1,12 @@
 #include "Table.h"
 
+Table::Table(const char *Channel /*= NULL*/, Print &rDestination /*= Serial*/)
+  : MegunoLinkProtocol(F("TABLE"), Channel, rDestination)
+{
 
-Table::Table(Print &rDestination)
-  : MegunoLinkProtocol(F("TABLE"), rDestination)
+}
+Table::Table(const __FlashStringHelper *Channel, Print &rDestination /*= Serial*/)
+  : MegunoLinkProtocol(F("TABLE"), Channel, rDestination)
 {
 
 }
@@ -86,5 +90,47 @@ void Table::ShowCurrentTime(const __FlashStringHelper *RowName)
   SendHeader_Set();
   m_rDestination.print(RowName);
   m_rDestination.print(F("|[Now()]"));
+  SendDataTail();
+}
+
+void Table::SendFloatData(const char *RowName, float Value, int DecimalPlaces, const char *Description /* = NULL */)
+{
+  SendHeader_Set();
+  m_rDestination.print(RowName);
+  m_rDestination.print('|');
+  m_rDestination.print(Value, DecimalPlaces);
+  if (Description != NULL)
+  {
+    m_rDestination.print('|');
+    m_rDestination.print(Description);
+  }
+  SendDataTail();
+}
+
+void Table::SendFloatData(const __FlashStringHelper *RowName, float Value, int DecimalPlaces, const char *Description /* = NULL */)
+{
+  SendHeader_Set();
+  m_rDestination.print(RowName);
+  m_rDestination.print('|');
+  m_rDestination.print(Value, DecimalPlaces);
+  if (Description != NULL)
+  {
+    m_rDestination.print('|');
+    m_rDestination.print(Description);
+  }
+  SendDataTail();
+}
+
+void Table::SendFloatData(const __FlashStringHelper *RowName, float Value, int DecimalPlaces, const __FlashStringHelper *Description)
+{
+  SendHeader_Set();
+  m_rDestination.print(RowName);
+  m_rDestination.print('|');
+  m_rDestination.print(Value, DecimalPlaces);
+  if (Description != NULL)
+  {
+    m_rDestination.print('|');
+    m_rDestination.print(Description);
+  }
   SendDataTail();
 }

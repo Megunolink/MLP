@@ -69,6 +69,45 @@ void Message::Clear()
   SendDataTail();
 }
 
+void Message::LogTo(const __FlashStringHelper * Filename)
+{
+  SendDataHeader(F("F"));
+  m_rDestination.print(Filename);
+  SendDataTail();
+}
+
+void Message::LogTo(const char * Filename)
+{
+  SendDataHeader(F("F"));
+  m_rDestination.print(Filename);
+  SendDataTail();
+}
+
+void Message::LogTo(String &Filename)
+{
+  SendDataHeader(F("F"));
+  m_rDestination.print(Filename.c_str());
+  SendDataTail();
+}
+
+void Message::StopLogging()
+{
+  SendDataHeader(F("X"));
+  SendDataTail();
+}
+
+void Message::StartLogging()
+{
+  SendDataHeader(F("F"));
+  SendDataTail();
+}
+
+void Message::Flush()
+{
+  SendDataHeader(F("W"));
+  SendDataTail();
+}
+
 void Message::SendSeparator()
 {
   m_rDestination.print(F(": "));

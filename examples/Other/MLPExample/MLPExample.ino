@@ -11,7 +11,7 @@ void setup()
   Serial.begin(9600);
 
   timeplot.SetTitle("hello");
-  timeplot.SetXlabel("test");
+  timeplot.SetXLabel("test");
 
 }
 

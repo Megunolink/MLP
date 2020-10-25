@@ -1,14 +1,23 @@
-/* ****************************************************
- *  Exponential Filter example. 
- *  Uses the exponential filter class in the MegunoLink
- *  library to smooth measurements from an ADC. The amount
- *  of filtering applied can be controlled by MegunoLink
- *  by sending a serial command !SetFilter value\r\n.
- *  The raw and smoothed data are sent to MegunoLink for 
- *  plotting to demonstrate the effect of smoothing. 
- *  See: http://www.MegunoLink.com/documentation/arduino-libraries/exponential-filter/
- *  for more information. 
- */
+/************************************************************************************************
+Example Description
+In this example we demonstrate our Filter library. MegunoLink's Interface Panel is used to allow
+adjustment of the filter time constant. This allows you to tune the amount of smoothing applied.
+
+More Information
+*  http://www.MegunoLink.com/documentation/arduino-libraries/exponential-filter/
+*  http://www.megunolink.com/documentation/plotting/
+
+This Example Requires:
+*  The MegunoLink arduino library https://www.megunolink.com/documentation/arduino-integration/
+ 
+MegunoLink Interface
+You can download a pre-made interface from here:
+https://github.com/Megunolink/MLP/raw/master/examples/ExponentialFilterExplorer/ExponentialFilterExplorer.mlpz
+ 
+You can find out more about MegunoLink and download a free trial from here
+https://www.megunolink.com/
+https://www.megunolink.com/download/
+************************************************************************************************/
 
 #include "MegunoLink.h"
 #include "Filter.h"

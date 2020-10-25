@@ -9,27 +9,48 @@ public:
   InterfacePanel(const char *channelName = NULL, Print &rDestination = Serial);
   InterfacePanel(const __FlashStringHelper *channelName, Print &rDestination = Serial);
 
-  void SetText(const char * ControlName, const char * Value);
-  void SetText(const char * ControlName, int Value);  
-  void SetText(const char * ControlName, long Value);  
-  void SetText(const char * ControlName, unsigned long Value);
-  void SetText(const char * ControlName, float Value);
-  void SetText(const char * ControlName, float Value, int DecimalPlaces);
-  void SetText(const __FlashStringHelper * ControlName, const char * Value);
-  void SetText(const __FlashStringHelper * ControlName, const __FlashStringHelper * Value);
+  void SetGaugeLabel(const char *ControlName, int LabelNumber, const char *Value);
+  void SetGaugeLabel(const __FlashStringHelper *ControlName, int LabelNumber, const char *Value);
+  void SetGaugeLabel(const __FlashStringHelper *ControlName, int LabelNumber, const __FlashStringHelper *Value);
 
   void SetProgress(const char * ControlName, int nValue);
   void SetProgress(const __FlashStringHelper * ControlName, int nValue);
 
-  void SetNumber(const char * ControlName, int16_t nValue);
-  void SetNumber(const __FlashStringHelper * ControlName, int16_t nValue);
-  
-  void SetNumber(const char * ControlName, int32_t nValue);
-  void SetNumber(const __FlashStringHelper * ControlName, int32_t nValue);
-  
-  void SetNumber(const char * ControlName, uint32_t nValue);
-  void SetNumber(const __FlashStringHelper * ControlName, uint32_t nValue);
-  
+  template<class T>
+  void SetText(const char *ControlName, T Value)
+  {
+    SendTextHeader(ControlName);
+    m_rDestination.print(Value);
+    SendDataTail();
+  }
+
+  template<class T>
+  void SetText(const __FlashStringHelper *ControlName, T Value)
+  {
+    SendTextHeader(ControlName);
+    m_rDestination.print(Value);
+    SendDataTail();
+  }
+
+  void SetText(const __FlashStringHelper *ControlName, float Value, uint8_t DecimalPlaces);
+  void SetText(const char *ControlName, float Value, uint8_t DecimalPlaces);
+
+  template<class T>
+  void SetNumber(const char *ControlName, T Value)
+  {
+    SendValueHeader(ControlName);
+    m_rDestination.print(Value);
+    SendDataTail();
+  }
+
+  template<class T>
+  void SetNumber(const __FlashStringHelper *ControlName, T Value)
+  {
+    SendValueHeader(ControlName);
+    m_rDestination.print(Value);
+    SendDataTail();
+  }
+
   void SetNumber(const char * ControlName, float fValue, int decimal = 3);
   void SetNumber(const __FlashStringHelper * ControlName, float fValue, int decimal = 3);
 
@@ -80,6 +101,17 @@ public:
   void SetMaximum(const __FlashStringHelper *ControlName, int Value);
 
 protected:
+  void SendControlHeader(const char* ControlName, const char* PropertyName);
   void SendControlHeader(const char *ControlName, const __FlashStringHelper *PropertyName);
-  void SendControlHeader(const __FlashStringHelper *ControlName, const __FlashStringHelper *PropertyName);
+  void SendControlHeader(const __FlashStringHelper* ControlName, const __FlashStringHelper* PropertyName);
+  void SendControlHeader(const __FlashStringHelper *ControlName, const char*PropertyName);
+
+  void SendGaugeControlHeader(const char *ControlName, int nLabelNumber);
+  void SendGaugeControlHeader(const __FlashStringHelper *ControlName, int nLabelNumber);
+
+  void SendValueHeader(const char *ControlName);
+  void SendValueHeader(const __FlashStringHelper *ControlName);
+  void SendTextHeader(const char *ControlName);
+  void SendTextHeader(const __FlashStringHelper *ControlName);
+
 };
