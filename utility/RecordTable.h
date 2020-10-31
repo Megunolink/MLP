@@ -1,9 +1,17 @@
 #pragma once
 #include "MegunoLinkProtocol.h"
 
+enum class SpecialParameters
+{
+  CurrentTime
+};
+
 class RecordTable : public MegunoLinkProtocol
 {
 public:
+
+
+
   RecordTable(const char *Channel = NULL, Print &rDestination = Serial);
   RecordTable(const __FlashStringHelper *Channel, Print &rDestination = Serial);
   RecordTable(Print& rDestination);
@@ -110,9 +118,28 @@ private:
     }
   }
 
+  void SendValue(SpecialParameters Param)
+  {
+    switch (Param)
+    {
+    case SpecialParameters::CurrentTime:
+      m_rDestination.print(F("[Now()]"));
+      break;
+    default:
+      break;
+    }
+  }
+
   template<typename T> void SendValue(const T Value)
   {
     m_rDestination.print(Value);
+  }
+
+  template<typename... Types> void SendValue(SpecialParameters Param, const Types... Values)
+  {
+    SendValue(Param);
+    m_rDestination.print(',');
+    SendValue(Values...);
   }
 
   template<typename T, typename... Types> void SendValue(const T Value1, const Types... Values)
@@ -121,5 +148,6 @@ private:
     m_rDestination.print(',');
     SendValue(Values...);
   }
+
 };
 

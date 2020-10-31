@@ -54,6 +54,8 @@ SetWeight	KEYWORD2
 GetWeight	KEYWORD2
 Current	KEYWORD2
 Filter	KEYWORD2
+SpecialParameters	KEYWORD1
+CurrentTime	KEYWORD2
 
 InterfacePanel	KEYWORD1
 SetText	KEYWORD2
