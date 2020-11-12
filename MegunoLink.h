@@ -8,3 +8,4 @@
 #include "utility/TestReport.h"
 #include "utility/Report.h"
 #include "utility/RecordTable.h"
+#include "utility/Audio.h"

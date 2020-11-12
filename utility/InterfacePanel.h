@@ -100,36 +100,6 @@ public:
   void SetMinimum(const __FlashStringHelper *ControlName, int Value);
   void SetMaximum(const __FlashStringHelper *ControlName, int Value);
 
-  template<typename TControlName, typename TContent> void Speak(const TControlName ControlName, const TContent Content)
-  {
-#if 0
-    static_assert(std::is_base_of(char*, TControlName)
-      || std::is_base_of(__FlashStringHelper*, TControlName)
-      || std::is_base_of(String, TControlName), "Control name should be a const char *, const __FlashStringHelper, or String");
-#endif
-
-    SendDataHeader(F("CALL"));
-    m_rDestination.print(ControlName);
-    m_rDestination.print('.');
-    m_rDestination.print(F("Speak(\""));
-    m_rDestination.print(Content);
-    m_rDestination.println(F("\")}"));
-  }
-
-  template<typename TControlName> void StopSpeaking(const TControlName ControlName)
-  {
-#if 0
-    static_assert(std::is_base_of(char*, TControlName)
-      || std::is_base_of(__FlashStringHelper*, TControlName)
-      || std::is_base_of(String, TControlName), "Control name should be a const char *, const __FlashStringHelper, or String");
-#endif
-
-    SendDataHeader(F("CALL"));
-    m_rDestination.print(ControlName);
-    m_rDestination.print('.');
-    m_rDestination.println(F("Stop()}"));
-  }
-
 protected:
   void SendControlHeader(const char* ControlName, const char* PropertyName);
   void SendControlHeader(const char *ControlName, const __FlashStringHelper *PropertyName);
