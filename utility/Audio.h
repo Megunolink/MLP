@@ -14,9 +14,32 @@ public:
     SendDataTail();
   }
 
+  void PlayAudioClip(const char* ClipId)
+  {
+    PlayClip(ClipId);
+  }
+
+  void PlayAudioClip(const __FlashStringHelper* ClipId)
+  {
+    PlayClip(ClipId);
+  }
+
+  void PlayAudioClip(const String& ClipId)
+  {
+    PlayClip(ClipId.c_str());
+  }
+
   void Stop()
   {
     SendDataHeader(F("STP"));
+    SendDataTail();
+  }
+
+private:
+  template<typename TId> void PlayClip(const TId &ClipId)
+  {
+    SendDataHeader(F("PLA"));
+    m_rDestination.print(ClipId);
     SendDataTail();
   }
 };
