@@ -111,6 +111,13 @@ void InterfacePanel::ClearCheck(const char * ControlName)
   SendDataTail();
 }
 
+void InterfacePanel::SetCheck(const char* ControlName, CheckState State)
+{
+  SendControlHeader(ControlName, F("CheckState"));
+  m_rDestination.print((uint8_t)State);
+  SendDataTail();
+}
+
 void InterfacePanel::SetProgress(const __FlashStringHelper * ControlName, int nValue)
 {
   SendControlHeader(ControlName, F("Value"));
@@ -129,6 +136,13 @@ void InterfacePanel::SetCheck(const __FlashStringHelper * ControlName, bool bChe
 {
   SendControlHeader(ControlName, F("Checked"));
   m_rDestination.print(bChecked ? F("True") : F("False"));
+  SendDataTail();
+}
+
+void InterfacePanel::SetCheck(const __FlashStringHelper* ControlName, CheckState State)
+{
+  SendControlHeader(ControlName, F("CheckState"));
+  m_rDestination.print((uint8_t)State);
   SendDataTail();
 }
 

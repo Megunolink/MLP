@@ -6,6 +6,16 @@
 class InterfacePanel : public MegunoLinkProtocol
 {
 public:
+  enum CheckState
+  {
+    Unchecked = 0,
+
+    Checked = 1,
+
+    Indeterminate = 2,
+  };
+
+public:
   InterfacePanel(const char *channelName = NULL, Print &rDestination = Serial);
   InterfacePanel(const __FlashStringHelper *channelName, Print &rDestination = Serial);
 
@@ -63,6 +73,8 @@ public:
 
   void SetCheck(const char * ControlName, bool bChecked = true);
   void SetCheck(const __FlashStringHelper * ControlName, bool bChecked = true);
+  void SetCheck(const char* ControlName, CheckState State);
+  void SetCheck(const __FlashStringHelper* ControlName, CheckState State);
 
   void ShowControl(const char * ControlName);
   void HideControl(const char * ControlName);
@@ -113,5 +125,4 @@ protected:
   void SendValueHeader(const __FlashStringHelper *ControlName);
   void SendTextHeader(const char *ControlName);
   void SendTextHeader(const __FlashStringHelper *ControlName);
-
 };
