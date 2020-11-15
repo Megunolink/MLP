@@ -386,3 +386,18 @@ void InterfacePanel::SendTextHeader(const __FlashStringHelper *ControlName)
 {
   SendControlHeader(ControlName, F("Text"));
 }
+
+void InterfacePanel::ShowPrompt(const char* ControlName, int Id = 0, const char* Prompt = nullptr)
+{
+  SendShowPrompt(ControlName, Id, Prompt);
+}
+
+void InterfacePanel::ShowPrompt(const __FlashStringHelper* ControlName, int Id = 0, const char* Prompt = nullptr)
+{
+  SendShowPrompt(ControlName, Id, Prompt);
+}
+
+void InterfacePanel::ShowPrompt(const __FlashStringHelper* ControlName, int Id = 0, const __FlashStringHelper* Prompt = nullptr)
+{
+  SendShowPrompt(ControlName, Id, Prompt);
+}

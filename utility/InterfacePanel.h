@@ -112,6 +112,10 @@ public:
   void SetMinimum(const __FlashStringHelper *ControlName, int Value);
   void SetMaximum(const __FlashStringHelper *ControlName, int Value);
 
+  void ShowPrompt(const char* ControlName, int Id = 0, const char* Prompt = nullptr);
+  void ShowPrompt(const __FlashStringHelper* ControlName, int Id = 0, const char* Prompt = nullptr);
+  void ShowPrompt(const __FlashStringHelper* ControlName, int Id = 0, const __FlashStringHelper* Prompt = nullptr);
+
 protected:
   void SendControlHeader(const char* ControlName, const char* PropertyName);
   void SendControlHeader(const char *ControlName, const __FlashStringHelper *PropertyName);
@@ -125,4 +129,22 @@ protected:
   void SendValueHeader(const __FlashStringHelper *ControlName);
   void SendTextHeader(const char *ControlName);
   void SendTextHeader(const __FlashStringHelper *ControlName);
+
+
+private:
+  template <typename TControlName, typename TPrompt> SendShowPrompt(const TControlName* ControlName, int nId, const TPrompt* Prompt)
+  {
+    SendDataHeader(F("CALL"));
+    m_rDestination.print(ControlName);
+    m_rDestination.print('.');
+    m_rDestination.print(F("Prompt("));
+    m_rDestination.print(nId);
+    if (Prompt != nullptr)
+    {
+      m_rDestination.print(F(",\""));
+      m_rDestination.print(Prompt);
+      m_rDestination.print('"');
+    }
+    m_rDestination.println(F(")}"));
+  }
 };
