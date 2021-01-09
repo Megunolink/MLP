@@ -115,6 +115,7 @@ UpdateRowFromArrayWithIds	KEYWORD2
 SetValue	KEYWORD2
 ClearAllRows	KEYWORD2
 ClearRow	KEYWORD2
+SetNumberOfDecimalPlaces	KEYWORD2
 
 Audio	KEYWORD1
 Speak	KEYWORD2
