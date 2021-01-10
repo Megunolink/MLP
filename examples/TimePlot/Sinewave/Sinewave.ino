@@ -19,7 +19,8 @@ https://www.megunolink.com/download/
 
 #include "MegunoLink.h"
 
-// Uncomment if you would like to use plotting channels
+// Uncomment if you would like to use plotting channels 
+// (see https://www.megunolink.com/documentation/message-channels/)
 // TimePlot MyPlot("Waveforms"); //"Waveforms" = the taget plotting channel (remember to select this in megunolink)
 
 TimePlot MyPlot; //no channel selected
@@ -68,4 +69,3 @@ void loop()
 
   delay(10);
 }
-
