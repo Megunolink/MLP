@@ -77,16 +77,16 @@ public:
   void SetCheck(const char* ControlName, CheckState State);
   void SetCheck(const __FlashStringHelper* ControlName, CheckState State);
 
-  void ShowControl(const char * ControlName);
+  void ShowControl(const char * ControlName, bool bShow = true);
   void HideControl(const char * ControlName);
 
-  void ShowControl(const __FlashStringHelper * ControlName);
+  void ShowControl(const __FlashStringHelper * ControlName, bool bShow = true);
   void HideControl(const __FlashStringHelper * ControlName);
 
-  void EnableControl(const char * ControlName);
+  void EnableControl(const char * ControlName, bool bShow = true);
   void DisableControl(const char * ControlName);
 
-  void EnableControl(const __FlashStringHelper * ControlName);
+  void EnableControl(const __FlashStringHelper * ControlName, bool bShow = true);
   void DisableControl(const __FlashStringHelper * ControlName);
 
   void SetForeColor(const char *ControlName, const char *Color);
@@ -148,4 +148,6 @@ private:
     }
     m_rDestination.println(F(")}"));
   }
+
+  void PrintBoolean(bool bValue);
 };
