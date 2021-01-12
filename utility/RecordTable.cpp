@@ -5,6 +5,7 @@ RecordTable::RecordTable(const char *Channel /*= NULL*/, Print &rDestination /*=
 {
   m_uNumberOfDecimalPlaces = 3;
 }
+
 RecordTable::RecordTable(const __FlashStringHelper* Channel, Print& rDestination /*= Serial*/)
   : MegunoLinkProtocol(F("RECTBL"), Channel, rDestination)
 {

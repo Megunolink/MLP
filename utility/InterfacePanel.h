@@ -16,8 +16,9 @@ public:
   };
 
 public:
-  InterfacePanel(const char *channelName = NULL, Print &rDestination = Serial);
-  InterfacePanel(const __FlashStringHelper *channelName, Print &rDestination = Serial);
+  InterfacePanel(const char *channelName, Print &rDestination = Serial);
+  InterfacePanel(const __FlashStringHelper* channelName, Print& rDestination = Serial);
+  InterfacePanel(Print &rDestination = Serial);
 
   void SetGaugeLabel(const char *ControlName, int LabelNumber, const char *Value);
   void SetGaugeLabel(const __FlashStringHelper *ControlName, int LabelNumber, const char *Value);

@@ -11,9 +11,9 @@ class RecordTable : public MegunoLinkProtocol
   uint8_t m_uNumberOfDecimalPlaces;
 
 public:
-  RecordTable(const char *Channel = NULL, Print &rDestination = Serial);
+  RecordTable(Print& rDestination = Serial);
+  RecordTable(const char *Channel, Print &rDestination = Serial);
   RecordTable(const __FlashStringHelper *Channel, Print &rDestination = Serial);
-  RecordTable(Print& rDestination);
 
   void SetNumberOfDecimalPlaces(uint8_t uValue)
   {

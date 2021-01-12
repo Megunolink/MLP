@@ -1,6 +1,12 @@
 #include "InterfacePanel.h"
 
-InterfacePanel::InterfacePanel(const char *channelName /*= NULL*/, Print &rDestination)
+InterfacePanel::InterfacePanel(Print& rDestination)
+  : MegunoLinkProtocol(F("UI"), rDestination)
+{
+
+}
+
+InterfacePanel::InterfacePanel(const char *channelName, Print &rDestination)
   : MegunoLinkProtocol(F("UI"), channelName, rDestination)
 {
 

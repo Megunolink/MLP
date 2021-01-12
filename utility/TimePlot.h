@@ -8,9 +8,9 @@ class TimePlot : public Plot
 {
 
 public:
-  TimePlot(const char *channelName = NULL, Print &rDestination = Serial);
+  TimePlot(Print& rDestination = Serial);
+  TimePlot(const char *channelName, Print &rDestination = Serial);
   TimePlot(const __FlashStringHelper* channelName, Print& rDestination = Serial);
-  TimePlot(Print &rDestination);
 
   void Run(bool bEnable);
   void Stop();

@@ -1,6 +1,6 @@
 #include "TimePlot.h"
 
-TimePlot::TimePlot( const char *channelName /*= NULL*/, Print &rDestination )
+TimePlot::TimePlot( const char *channelName, Print &rDestination )
   : Plot(F("TIMEPLOT"), channelName, rDestination)
 {
 

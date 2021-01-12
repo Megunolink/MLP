@@ -1,8 +1,29 @@
 #include "Message.h"
 
+Message::Message(Print& rDestination)
+  : MegunoLinkProtocol(F("MESSAGE"), rDestination)
+  , m_Destination(Text)
+{
+
+}
+
 Message::Message(const char *channelName /*= NULL*/, Print &rDestination)
   : MegunoLinkProtocol(F("MESSAGE"), channelName, rDestination)
   , m_Destination(Text)
+{
+
+}
+
+Message::Message(const __FlashStringHelper* channelName, Print& rDestination)
+  : MegunoLinkProtocol(F("MESSAGE"), channelName, rDestination)
+  , m_Destination(Text)
+{
+
+}
+
+Message::Message(MessageDestination Destination, Print& rDestination)
+  : MegunoLinkProtocol(F("MESSAGE"), rDestination)
+  , m_Destination(Destination)
 {
 
 }
@@ -14,14 +35,7 @@ Message::Message(MessageDestination Destination, const char *channelName /*= NUL
 
 }
 
-Message::Message(const __FlashStringHelper *channelName, Print &rDestination)
-  : MegunoLinkProtocol(F("MESSAGE"), channelName, rDestination)
-  , m_Destination(Text)
-{
-
-}
-
-Message::Message(const __FlashStringHelper *channelName, MessageDestination Destination, Print &rDestination)
+Message::Message(MessageDestination Destination, const __FlashStringHelper *channelName, Print &rDestination)
   : MegunoLinkProtocol(F("MESSAGE"), channelName, rDestination)
   , m_Destination(Destination)
 {

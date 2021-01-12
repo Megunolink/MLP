@@ -19,10 +19,13 @@ private:
   const MessageDestination m_Destination;
 
 public:
-  Message(const char *channelName = NULL, Print &rDestination = Serial);
-  Message(MessageDestination Destination, const char *channelName = NULL, Print &rDestination = Serial);
+  Message(Print& rDestination = Serial);
+  Message(const char *channelName, Print &rDestination = Serial);
   Message(const __FlashStringHelper *channelName, Print &rDestination = Serial);
-  Message(const __FlashStringHelper *channelName, MessageDestination Destination, Print &rDestination = Serial);
+
+  Message(MessageDestination Destination, Print& rDestination = Serial);
+  Message(MessageDestination Destination, const char* channelName = NULL, Print& rDestination = Serial);
+  Message(MessageDestination Destination, const __FlashStringHelper *channelName, Print &rDestination = Serial);
 
   void Begin();
   void End();

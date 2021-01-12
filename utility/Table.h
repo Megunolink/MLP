@@ -4,7 +4,8 @@
 class Table : public MegunoLinkProtocol
 {
 public:
-	Table(const char *Channel = NULL, Print &rDestination = Serial);
+	Table(Print& rDestination = Serial);
+	Table(const char *Channel, Print &rDestination = Serial);
 	Table(const __FlashStringHelper *Channel, Print &rDestination = Serial);
 
 	template<class TValue> void SendData(const char *RowName, TValue Value, const char *Description = NULL)

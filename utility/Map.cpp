@@ -6,6 +6,17 @@ Map::Map(Print &rDestination )
 {
 }
 
+Map::Map(const char* channelName, Print& rDestination)
+  : MegunoLinkProtocol(F("MAP"), channelName, rDestination)
+{
+
+}
+
+Map::Map(const __FlashStringHelper* channelName, Print& rDestination)
+  : MegunoLinkProtocol(F("MAP"), channelName, rDestination)
+{
+
+}
 
 void Map::SendData(const char *Placename, const char *Latitude, const char *Longitude)
 {
