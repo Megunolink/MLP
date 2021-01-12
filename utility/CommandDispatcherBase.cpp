@@ -113,6 +113,7 @@ bool CommandDispatcherBase::AddVariable(const __FlashStringHelper *pName, char *
     return true;
   }
 
+  Serial.println(F("AddVariable: full"));
   return false; // too many variables stored already. 
 }
 
@@ -127,6 +128,7 @@ bool CommandDispatcherBase::AddVariable(const __FlashStringHelper *pName, void *
     return true;
   }
 
+  Serial.println(F("AddVariable: full"));
   return false; // too many variables stored already. 
 }
 
