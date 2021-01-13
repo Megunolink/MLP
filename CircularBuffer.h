@@ -3,7 +3,6 @@
 *  ***************************************************************************** */
 
 #pragma once
-#define __PROG_TYPES_COMPAT__
 #include <Arduino.h>
 
 template <class T, uint16_t MAX_ENTRIES> class CircularBuffer

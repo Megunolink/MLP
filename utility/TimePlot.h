@@ -1,5 +1,4 @@
 #pragma once
-#define __PROG_TYPES_COMPAT__
 #include <Arduino.h>
 #include <time.h>
 #include "Plot.h"
@@ -198,14 +197,14 @@ private:
   void SendTimeWithSeparator(const tm& Time);
   void SendTimeWithSeparator(const time_t& Time);
 
-  template<class TSeriesName> SendHeaderCore(TSeriesName SeriesName)
+  template<class TSeriesName> void SendHeaderCore(TSeriesName SeriesName)
   {
     SendHeader_Data();
     m_rDestination.print(SeriesName);
   }
 
 
-  template<class TYData> SendDataCore(const tm* pTime, const time_t *pEpoch, TYData YValue, const char* seriesProperties)
+  template<class TYData> void SendDataCore(const tm* pTime, const time_t *pEpoch, TYData YValue, const char* seriesProperties)
   {
     SendSeriesProperties(seriesProperties);
     if (pTime != NULL)
@@ -225,7 +224,7 @@ private:
 
   }
 
-  template<class TYData> SendDataCore(const tm* pTime, const time_t* pEpoch, TYData YValue, Colors Color, int32_t nColor, bool bUseIntColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
+  template<class TYData> void SendDataCore(const tm* pTime, const time_t* pEpoch, TYData YValue, Colors Color, int32_t nColor, bool bUseIntColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
   {
     if (bUseIntColor)
     {

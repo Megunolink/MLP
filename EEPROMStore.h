@@ -1,5 +1,3 @@
-#define __PROG_TYPES_COMPAT__
-
 // Only supported for AVR micros because we use the special EEMEM directive
 // to automatically allocated memory in the eeprom. 
 #if defined(__AVR__)

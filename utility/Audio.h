@@ -1,5 +1,4 @@
 #pragma once
-#define __PROG_TYPES_COMPAT__
 #include "MegunoLinkProtocol.h"
 
 class Audio : public MegunoLinkProtocol

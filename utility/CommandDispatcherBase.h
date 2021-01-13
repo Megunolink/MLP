@@ -1,5 +1,4 @@
 #pragma once
-//#define __PROG_TYPES_COMPAT__
 #include <Arduino.h>
 #include "CommandParameter.h"
 
@@ -38,7 +37,7 @@ namespace MLP
 
   public:
     bool AddCommand(const __FlashStringHelper* pCommand, void(*CallbackFunction)(CommandParameter& rParameters));
-    bool AddCommand(PGM_P pCommand, void(*CallbackFunction)(CommandParameter &rParameters));
+    //bool AddCommand(PGM_P pCommand, void(*CallbackFunction)(CommandParameter &rParameters));
 
     void SetDefaultHandler(void(*CallbackFunction)());
     void ClearCommands();

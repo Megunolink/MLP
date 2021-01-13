@@ -1,5 +1,4 @@
 #pragma once
-#define __PROG_TYPES_COMPAT__
 #include <Arduino.h>
 #include "MegunoLinkProtocol.h"
 
@@ -115,7 +114,7 @@ public:
 
   void ShowPrompt(const char* ControlName, int Id = 0, const char* Prompt = nullptr);
   void ShowPrompt(const __FlashStringHelper* ControlName, int Id = 0, const char* Prompt = nullptr);
-  void ShowPrompt(const __FlashStringHelper* ControlName, int Id = 0, const __FlashStringHelper* Prompt = nullptr);
+  void ShowPrompt(const __FlashStringHelper* ControlName, int Id, const __FlashStringHelper* Prompt);
 
 protected:
   void SendControlHeader(const char* ControlName, const char* PropertyName);
@@ -133,7 +132,7 @@ protected:
 
 
 private:
-  template <typename TControlName, typename TPrompt> SendShowPrompt(const TControlName* ControlName, int nId, const TPrompt* Prompt)
+  template <typename TControlName, typename TPrompt> void SendShowPrompt(const TControlName* ControlName, int nId, const TPrompt* Prompt)
   {
     SendDataHeader(F("CALL"));
     m_rDestination.print(ControlName);
