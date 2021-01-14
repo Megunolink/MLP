@@ -179,3 +179,5 @@ FakesAssemblies/
 *.vcxproj
 *.filters
 WiFiConfig.h
+*.hex
+*.elf
