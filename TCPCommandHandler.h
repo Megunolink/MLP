@@ -84,26 +84,34 @@ public:
 
   virtual size_t write(uint8_t uValue)
   {
+    bool bAnyWritten = false;  
     for (int iConnection = 0; iConnection < MAX_CONNECTIONS; ++iConnection)
     {
       MLP::TCPConnection<CP_SERIAL_BUFFER_SIZE> *pConnection = m_Connections + iConnection;
       if (pConnection->m_Client && pConnection->m_Client.connected())
       {
         m_Connections[iConnection].m_Client.write(uValue);
+        bAnyWritten = true;
       }
     }
+    return bAnyWritten ? sizeof(uValue) : 0;
   }
 
   virtual size_t write(const uint8_t *buffer, size_t size)
   {
+    bool bAnyWritten = false;  
+    
     for (int iConnection = 0; iConnection < MAX_CONNECTIONS; ++iConnection)
     {
       MLP::TCPConnection<CP_SERIAL_BUFFER_SIZE> *pConnection = m_Connections + iConnection;
       if (pConnection->m_Client && pConnection->m_Client.connected())
       {
         m_Connections[iConnection].m_Client.write(buffer, size);
+        bAnyWritten = true;
       }
     }
+    
+    return bAnyWritten ? size : 0;
   }
 
 };
