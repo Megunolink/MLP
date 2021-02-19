@@ -1,5 +1,4 @@
 #pragma once
-#define __PROG_TYPES_COMPAT__
 #include <Arduino.h>
 #include "Plot.h"
 
@@ -7,7 +6,8 @@ class XYPlot : public Plot
 {
 
 public:
-  XYPlot(const char *channelName = NULL, Print &rDestination = Serial);
+  XYPlot(Print& rDestination = Serial);
+  XYPlot(const char *channelName, Print &rDestination = Serial);
   XYPlot(const __FlashStringHelper *channelName, Print &rDestination = Serial);
   void SetXRange(float fXLimMin, float fXlimMax);
 

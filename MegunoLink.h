@@ -1,4 +1,3 @@
-#define __PROG_TYPES_COMPAT__
 #include "utility/InterfacePanel.h"
 #include "utility/Map.h"
 #include "utility/Message.h"
@@ -8,3 +7,5 @@
 #include "utility/TestReport.h"
 #include "utility/Report.h"
 #include "utility/RecordTable.h"
+#include "utility/Audio.h"
+#include "utility/Pushover.h"

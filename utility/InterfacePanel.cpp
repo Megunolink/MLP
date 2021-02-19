@@ -1,6 +1,12 @@
 #include "InterfacePanel.h"
 
-InterfacePanel::InterfacePanel(const char *channelName /*= NULL*/, Print &rDestination)
+InterfacePanel::InterfacePanel(Print& rDestination)
+  : MegunoLinkProtocol(F("UI"), rDestination)
+{
+
+}
+
+InterfacePanel::InterfacePanel(const char *channelName, Print &rDestination)
   : MegunoLinkProtocol(F("UI"), channelName, rDestination)
 {
 
@@ -111,6 +117,13 @@ void InterfacePanel::ClearCheck(const char * ControlName)
   SendDataTail();
 }
 
+void InterfacePanel::SetCheck(const char* ControlName, CheckState State)
+{
+  SendControlHeader(ControlName, F("CheckState"));
+  m_rDestination.print((uint8_t)State);
+  SendDataTail();
+}
+
 void InterfacePanel::SetProgress(const __FlashStringHelper * ControlName, int nValue)
 {
   SendControlHeader(ControlName, F("Value"));
@@ -129,6 +142,13 @@ void InterfacePanel::SetCheck(const __FlashStringHelper * ControlName, bool bChe
 {
   SendControlHeader(ControlName, F("Checked"));
   m_rDestination.print(bChecked ? F("True") : F("False"));
+  SendDataTail();
+}
+
+void InterfacePanel::SetCheck(const __FlashStringHelper* ControlName, CheckState State)
+{
+  SendControlHeader(ControlName, F("CheckState"));
+  m_rDestination.print((uint8_t)State);
   SendDataTail();
 }
 
@@ -227,60 +247,52 @@ void InterfacePanel::SendGaugeControlHeader(const __FlashStringHelper *ControlNa
   m_rDestination.print('=');
 }
 
-void InterfacePanel::ShowControl(const char * ControlName)
+void InterfacePanel::ShowControl(const char * ControlName, bool bShow)
 {
   SendControlHeader(ControlName, F("Visible"));
-  m_rDestination.print(F("True"));
+  PrintBoolean(bShow);
   SendDataTail();
 }
 
-void InterfacePanel::ShowControl(const __FlashStringHelper * ControlName)
+void InterfacePanel::ShowControl(const __FlashStringHelper * ControlName, bool bShow)
 {
   SendControlHeader(ControlName, F("Visible"));
-  m_rDestination.print(F("True"));
+  PrintBoolean(bShow);
   SendDataTail();
 }
 
 void InterfacePanel::HideControl(const char * ControlName)
 {
-  SendControlHeader(ControlName, F("Visible"));
-  m_rDestination.print(F("False"));
-  SendDataTail();
+  ShowControl(ControlName, false);
 }
 
 void InterfacePanel::HideControl(const __FlashStringHelper * ControlName)
 {
-  SendControlHeader(ControlName, F("Visible"));
-  m_rDestination.print(F("False"));
+  ShowControl(ControlName, false);
+}
+
+void InterfacePanel::EnableControl(const char * ControlName, bool bEnable)
+{
+  SendControlHeader(ControlName, F("Enabled"));
+  PrintBoolean(bEnable);
   SendDataTail();
 }
 
-void InterfacePanel::EnableControl(const char * ControlName)
+void InterfacePanel::EnableControl(const __FlashStringHelper * ControlName, bool bEnable)
 {
   SendControlHeader(ControlName, F("Enabled"));
-  m_rDestination.print(F("True"));
-  SendDataTail();
-}
-
-void InterfacePanel::EnableControl(const __FlashStringHelper * ControlName)
-{
-  SendControlHeader(ControlName, F("Enabled"));
-  m_rDestination.print(F("True"));
+  PrintBoolean(bEnable);
   SendDataTail();
 }
 
 void InterfacePanel::DisableControl(const char * ControlName)
 {
-  SendControlHeader(ControlName, F("Enabled"));
-  m_rDestination.print(F("False"));
-  SendDataTail();
+  EnableControl(ControlName, false);
 }
 
 void InterfacePanel::DisableControl(const __FlashStringHelper * ControlName)
 {
-  SendControlHeader(ControlName, F("Enabled"));
-  m_rDestination.print(F("False"));
-  SendDataTail();
+  EnableControl(ControlName, false);
 }
 
 void InterfacePanel::SetForeColor(const char *ControlName, const char *Color)
@@ -371,4 +383,31 @@ void InterfacePanel::SendTextHeader(const char *ControlName)
 void InterfacePanel::SendTextHeader(const __FlashStringHelper *ControlName)
 {
   SendControlHeader(ControlName, F("Text"));
+}
+
+void InterfacePanel::ShowPrompt(const char* ControlName, int Id /*= 0*/, const char* Prompt /*= nullptr*/)
+{
+  SendShowPrompt(ControlName, Id, Prompt);
+}
+
+void InterfacePanel::ShowPrompt(const __FlashStringHelper* ControlName, int Id /*= 0*/, const char* Prompt /*= nullptr*/)
+{
+  SendShowPrompt(ControlName, Id, Prompt);
+}
+
+void InterfacePanel::ShowPrompt(const __FlashStringHelper* ControlName, int Id, const __FlashStringHelper* Prompt)
+{
+  SendShowPrompt(ControlName, Id, Prompt);
+}
+
+void InterfacePanel::PrintBoolean(bool bValue)
+{
+  if (bValue)
+  {
+    m_rDestination.print(F("True"));
+  }
+  else
+  {
+    m_rDestination.print(F("False"));
+  }
 }

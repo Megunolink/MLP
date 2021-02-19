@@ -1,12 +1,24 @@
 #pragma once
 #include "MegunoLinkProtocol.h"
 
+enum class SpecialParameters
+{
+  CurrentTime
+};
+
 class RecordTable : public MegunoLinkProtocol
 {
+  uint8_t m_uNumberOfDecimalPlaces;
+
 public:
-  RecordTable(const char *Channel = NULL, Print &rDestination = Serial);
+  RecordTable(Print& rDestination = Serial);
+  RecordTable(const char *Channel, Print &rDestination = Serial);
   RecordTable(const __FlashStringHelper *Channel, Print &rDestination = Serial);
-  RecordTable(Print& rDestination);
+
+  void SetNumberOfDecimalPlaces(uint8_t uValue)
+  {
+    m_uNumberOfDecimalPlaces = uValue;
+  }
 
   template<typename... Types> void AddRow(Types... Values)
   {
@@ -83,7 +95,7 @@ public:
     m_rDestination.print('|');
     m_rDestination.print(nColumn);
     m_rDestination.print('|');
-    m_rDestination.print(Value);
+    SendValue(Value);
     SendDataTail();
   }
 
@@ -102,12 +114,34 @@ private:
   {
     while (NumberOfValues--)
     {
-      m_rDestination.print(*pValue++);
+      SendValue(*pValue++);
       if (NumberOfValues > 0)
       {
         m_rDestination.print(',');
       }
     }
+  }
+
+  void SendValue(SpecialParameters Param)
+  {
+    switch (Param)
+    {
+    case SpecialParameters::CurrentTime:
+      m_rDestination.print(F("[Now()]"));
+      break;
+    default:
+      break;
+    }
+  }
+
+  void SendValue(float Value)
+  {
+    m_rDestination.print(Value, m_uNumberOfDecimalPlaces);
+  }
+
+  void SendValue(double Value)
+  {
+    m_rDestination.print(Value, m_uNumberOfDecimalPlaces);
   }
 
   template<typename T> void SendValue(const T Value)
@@ -117,9 +151,10 @@ private:
 
   template<typename T, typename... Types> void SendValue(const T Value1, const Types... Values)
   {
-    m_rDestination.print(Value1);
+    SendValue(Value1);
     m_rDestination.print(',');
     SendValue(Values...);
   }
+
 };
 

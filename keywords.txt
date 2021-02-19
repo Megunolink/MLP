@@ -54,6 +54,8 @@ SetWeight	KEYWORD2
 GetWeight	KEYWORD2
 Current	KEYWORD2
 Filter	KEYWORD2
+SpecialParameters	KEYWORD1
+CurrentTime	KEYWORD2
 
 InterfacePanel	KEYWORD1
 SetText	KEYWORD2
@@ -113,4 +115,9 @@ UpdateRowFromArrayWithIds	KEYWORD2
 SetValue	KEYWORD2
 ClearAllRows	KEYWORD2
 ClearRow	KEYWORD2
+SetNumberOfDecimalPlaces	KEYWORD2
 
+Audio	KEYWORD1
+Speak	KEYWORD2
+PlayAudioClip	KEYWORD2
+Stop	KEYWORD2

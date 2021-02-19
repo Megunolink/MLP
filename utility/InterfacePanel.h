@@ -1,13 +1,23 @@
 #pragma once
-#define __PROG_TYPES_COMPAT__
 #include <Arduino.h>
 #include "MegunoLinkProtocol.h"
 
 class InterfacePanel : public MegunoLinkProtocol
 {
 public:
-  InterfacePanel(const char *channelName = NULL, Print &rDestination = Serial);
-  InterfacePanel(const __FlashStringHelper *channelName, Print &rDestination = Serial);
+  enum CheckState
+  {
+    Unchecked = 0,
+
+    Checked = 1,
+
+    Indeterminate = 2,
+  };
+
+public:
+  InterfacePanel(const char *channelName, Print &rDestination = Serial);
+  InterfacePanel(const __FlashStringHelper* channelName, Print& rDestination = Serial);
+  InterfacePanel(Print &rDestination = Serial);
 
   void SetGaugeLabel(const char *ControlName, int LabelNumber, const char *Value);
   void SetGaugeLabel(const __FlashStringHelper *ControlName, int LabelNumber, const char *Value);
@@ -63,17 +73,19 @@ public:
 
   void SetCheck(const char * ControlName, bool bChecked = true);
   void SetCheck(const __FlashStringHelper * ControlName, bool bChecked = true);
+  void SetCheck(const char* ControlName, CheckState State);
+  void SetCheck(const __FlashStringHelper* ControlName, CheckState State);
 
-  void ShowControl(const char * ControlName);
+  void ShowControl(const char * ControlName, bool bShow = true);
   void HideControl(const char * ControlName);
 
-  void ShowControl(const __FlashStringHelper * ControlName);
+  void ShowControl(const __FlashStringHelper * ControlName, bool bShow = true);
   void HideControl(const __FlashStringHelper * ControlName);
 
-  void EnableControl(const char * ControlName);
+  void EnableControl(const char * ControlName, bool bShow = true);
   void DisableControl(const char * ControlName);
 
-  void EnableControl(const __FlashStringHelper * ControlName);
+  void EnableControl(const __FlashStringHelper * ControlName, bool bShow = true);
   void DisableControl(const __FlashStringHelper * ControlName);
 
   void SetForeColor(const char *ControlName, const char *Color);
@@ -100,6 +112,10 @@ public:
   void SetMinimum(const __FlashStringHelper *ControlName, int Value);
   void SetMaximum(const __FlashStringHelper *ControlName, int Value);
 
+  void ShowPrompt(const char* ControlName, int Id = 0, const char* Prompt = nullptr);
+  void ShowPrompt(const __FlashStringHelper* ControlName, int Id = 0, const char* Prompt = nullptr);
+  void ShowPrompt(const __FlashStringHelper* ControlName, int Id, const __FlashStringHelper* Prompt);
+
 protected:
   void SendControlHeader(const char* ControlName, const char* PropertyName);
   void SendControlHeader(const char *ControlName, const __FlashStringHelper *PropertyName);
@@ -114,4 +130,23 @@ protected:
   void SendTextHeader(const char *ControlName);
   void SendTextHeader(const __FlashStringHelper *ControlName);
 
+
+private:
+  template <typename TControlName, typename TPrompt> void SendShowPrompt(const TControlName* ControlName, int nId, const TPrompt* Prompt)
+  {
+    SendDataHeader(F("CALL"));
+    m_rDestination.print(ControlName);
+    m_rDestination.print('.');
+    m_rDestination.print(F("Prompt("));
+    m_rDestination.print(nId);
+    if (Prompt != nullptr)
+    {
+      m_rDestination.print(F(",\""));
+      m_rDestination.print(Prompt);
+      m_rDestination.print('"');
+    }
+    m_rDestination.println(F(")}"));
+  }
+
+  void PrintBoolean(bool bValue);
 };

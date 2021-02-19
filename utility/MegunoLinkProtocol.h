@@ -1,10 +1,10 @@
 #pragma once
-#define __PROG_TYPES_COMPAT__
 #include <Arduino.h>
 
 class MegunoLinkProtocol
 {
-  const char * const m_pfchContext;
+  // A string in flash memory on boards that support this. 
+  PGM_P m_pfchContext;
 
   const void *m_ChannelName;
   const bool m_bFlashString;
@@ -21,6 +21,12 @@ protected:
   MegunoLinkProtocol(const __FlashStringHelper *Context, const char *Channel, Print &rDestination);
   MegunoLinkProtocol(const __FlashStringHelper *Context, const __FlashStringHelper *Channel, Print &rDestination);
 
+  void SendDataHeader(const __FlashStringHelper* pfstrCommand);
+  void SendDataTail();
+
+  // Some boards don't put strings into flash. They redefine F() macro
+  // as empty, which causes these overrides to be called. Here we assume
+  // if this override is called then the context is not a flash string either. 
   MegunoLinkProtocol(const char* Context);
   MegunoLinkProtocol(const char* Context, const char* Channel);
   MegunoLinkProtocol(const char* Context, const __FlashStringHelper* Channel);
@@ -30,9 +36,7 @@ protected:
   MegunoLinkProtocol(const char* Context, const __FlashStringHelper* Channel, Print& rDestination);
 
 
-  void SendDataHeader(const __FlashStringHelper* pfstrCommand);
   void SendDataHeader(const char *pfstrCommand);
-  void SendDataTail();
 
 public:
   void Attach(Print& rDestination);

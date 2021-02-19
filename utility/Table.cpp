@@ -1,10 +1,17 @@
 #include "Table.h"
 
-Table::Table(const char *Channel /*= NULL*/, Print &rDestination /*= Serial*/)
+Table::Table(Print& rDestination /*= Serial*/)
+  : MegunoLinkProtocol(F("TABLE"), rDestination)
+{
+
+}
+
+Table::Table(const char *Channel, Print &rDestination /*= Serial*/)
   : MegunoLinkProtocol(F("TABLE"), Channel, rDestination)
 {
 
 }
+
 Table::Table(const __FlashStringHelper *Channel, Print &rDestination /*= Serial*/)
   : MegunoLinkProtocol(F("TABLE"), Channel, rDestination)
 {

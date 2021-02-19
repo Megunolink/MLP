@@ -1,16 +1,19 @@
 #include "XYPlot.h"
 
 
-XYPlot::XYPlot( const char *channelName /*= NULL*/, Print &rDestination )
+XYPlot::XYPlot(Print& rDestination)
+  : Plot(F("XYPLOT"), rDestination)
+{
+}
+
+XYPlot::XYPlot(const char* channelName, Print& rDestination)
   : Plot(F("XYPLOT"), channelName, rDestination)
 {
-
 }
 
 XYPlot::XYPlot( const __FlashStringHelper *channelName, Print &rDestination )
   : Plot(F("XYPLOT"), channelName, rDestination)
 {
-
 }
 
 void XYPlot::SendData(const __FlashStringHelper * seriesName, float *xValues, float *yValues, unsigned NumberOfValues, int nDecimalPlaces, const char * seriesProperties /*= NULL*/)

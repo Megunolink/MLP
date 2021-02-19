@@ -1,5 +1,4 @@
 #include "CommandDispatcherBase.h"
-//#include <avr/pgmspace.h>
 
 using namespace MLP;
 
@@ -28,6 +27,7 @@ bool CommandDispatcherBase::AddCommand( const __FlashStringHelper *pCommand, voi
   return false; // too many commands stored already. 
 }
 
+#if 0
 bool CommandDispatcherBase::AddCommand(PGM_P pCommand, void(*CallbackFunction)(CommandParameter& rParameters))
 {
   if (m_uLastCommand < m_uMaxCommands)
@@ -42,6 +42,8 @@ bool CommandDispatcherBase::AddCommand(PGM_P pCommand, void(*CallbackFunction)(C
 
   return false; // too many commands stored already. 
 }
+#endif
+
 
 
 void CommandDispatcherBase::SetDefaultHandler( void(*CallbackFunction)() )
@@ -113,6 +115,7 @@ bool CommandDispatcherBase::AddVariable(const __FlashStringHelper *pName, char *
     return true;
   }
 
+  Serial.println(F("AddVariable: full"));
   return false; // too many variables stored already. 
 }
 
@@ -127,6 +130,7 @@ bool CommandDispatcherBase::AddVariable(const __FlashStringHelper *pName, void *
     return true;
   }
 
+  Serial.println(F("AddVariable: full"));
   return false; // too many variables stored already. 
 }
 
@@ -196,7 +200,7 @@ uint8_t CommandDispatcherBase::MatchCommand( PGM_P pchCommand, const char *pchTe
 Print & PrintVariableName(VariableMap &rVariableInfo, CommandParameter &rParameters)
 {
   Print &rOut = rParameters.GetSource();
-  rOut.print((const __FlashStringHelper *)rVariableInfo.m_strName);
+  rOut.print(reinterpret_cast<const __FlashStringHelper*>(rVariableInfo.m_strName));
   rOut.print('=');
 
   return rOut;
