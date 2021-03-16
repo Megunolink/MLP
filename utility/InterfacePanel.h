@@ -137,6 +137,25 @@ public:
   void ShowPrompt(const __FlashStringHelper* ControlName, int Id = 0, const char* Prompt = nullptr);
   void ShowPrompt(const __FlashStringHelper* ControlName, int Id, const __FlashStringHelper* Prompt);
 
+  template<class TControl> void StartProgram(const TControl ControlName)
+  {
+    SendDataHeader(F("CALL"));
+    m_rDestination.print(ControlName);
+    m_rDestination.print(F(".Run()"));
+    SendDataTail();
+  }
+
+  template<class TControl, class TArg> void StartProgram(const TControl ControlName, TArg Arguments)
+  {
+    SendDataHeader(F("CALL"));
+    m_rDestination.print(ControlName);
+    m_rDestination.print(F(".Run(\""));
+    m_rDestination.print(Arguments);
+    m_rDestination.print(F("\")"));
+    SendDataTail();
+  }
+
+
 protected:
   void SendControlHeader(const char* ControlName, const char* PropertyName);
   void SendControlHeader(const char *ControlName, const __FlashStringHelper *PropertyName);
