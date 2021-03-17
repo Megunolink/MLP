@@ -40,12 +40,19 @@ void StreamParser::Process()
     }
     else if (chNext == m_chEndOfMessage)
     {
-      if (m_uNextCharacter > 0 && m_pchBuffer[0] == m_chStartOfMessage && !m_bOverflow)
+      if (m_uNextCharacter > 0 && m_pchBuffer[0] == m_chStartOfMessage)
       {
-        // We have a valid message. Dispatch it. 
-        m_pchBuffer[m_uNextCharacter] = '\0';
-        DispatchMessage();
-        Reset();
+        if (!m_bOverflow)
+        {
+          // We have a valid message. Dispatch it. 
+          m_pchBuffer[m_uNextCharacter] = '\0';
+          DispatchMessage();
+          Reset();
+        }
+        else
+        {
+          Serial.println(F("Ovrflw"));
+        }
       }
     }
     else

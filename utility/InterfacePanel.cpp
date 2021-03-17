@@ -96,7 +96,14 @@ void InterfacePanel::SetListName(const char * ControlName, const char *ValueName
   SendDataTail();
 }
 
-void InterfacePanel::SetListName(const __FlashStringHelper * ControlName, const __FlashStringHelper *ValueName)
+void InterfacePanel::SetListName(const __FlashStringHelper* ControlName, const __FlashStringHelper* ValueName)
+{
+  SendControlHeader(ControlName, F("SelectedName"));
+  m_rDestination.print(ValueName);
+  SendDataTail();
+}
+
+void InterfacePanel::SetListName(const char* ControlName, const __FlashStringHelper* ValueName)
 {
   SendControlHeader(ControlName, F("SelectedName"));
   m_rDestination.print(ValueName);

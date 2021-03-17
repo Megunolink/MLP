@@ -69,7 +69,28 @@ public:
   void SetListValue(const char * ControlName, int nIndex);
   void SetListValue(const __FlashStringHelper * ControlName, int nIndex);
   void SetListName(const char * ControlName, const char *ValueName);
-  void SetListName(const __FlashStringHelper * ControlName, const __FlashStringHelper *ValueName);
+  void SetListName(const __FlashStringHelper* ControlName, const __FlashStringHelper* ValueName);
+  void SetListName(const char* ControlName, const __FlashStringHelper *ValueName);
+  
+  template<class TControl> void ClearListOptions(const TControl ControlName)
+  {
+    SendDataHeader(F("CALL"));
+    m_rDestination.print(ControlName);
+    m_rDestination.print(F(".ClearListOptions()"));
+    SendDataTail();
+  }
+
+  template<class TControl, class TDisplayValue> void SetListOption(const TControl ControlName, unsigned uValue, const TDisplayValue DisplayValue)
+  {
+    SendDataHeader(F("CALL"));
+    m_rDestination.print(ControlName);
+    m_rDestination.print(F(".SetListOption("));
+    m_rDestination.print(uValue);
+    m_rDestination.print(F(", \""));
+    m_rDestination.print(DisplayValue);
+    m_rDestination.print(F("\")"));
+    SendDataTail();
+  }
 
   void SetCheck(const char * ControlName, bool bChecked = true);
   void SetCheck(const __FlashStringHelper * ControlName, bool bChecked = true);
@@ -115,6 +136,25 @@ public:
   void ShowPrompt(const char* ControlName, int Id = 0, const char* Prompt = nullptr);
   void ShowPrompt(const __FlashStringHelper* ControlName, int Id = 0, const char* Prompt = nullptr);
   void ShowPrompt(const __FlashStringHelper* ControlName, int Id, const __FlashStringHelper* Prompt);
+
+  template<class TControl> void StartProgram(const TControl ControlName)
+  {
+    SendDataHeader(F("CALL"));
+    m_rDestination.print(ControlName);
+    m_rDestination.print(F(".Run()"));
+    SendDataTail();
+  }
+
+  template<class TControl, class TArg> void StartProgram(const TControl ControlName, TArg Arguments)
+  {
+    SendDataHeader(F("CALL"));
+    m_rDestination.print(ControlName);
+    m_rDestination.print(F(".Run(\""));
+    m_rDestination.print(Arguments);
+    m_rDestination.print(F("\")"));
+    SendDataTail();
+  }
+
 
 protected:
   void SendControlHeader(const char* ControlName, const char* PropertyName);
