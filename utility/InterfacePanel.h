@@ -155,6 +155,12 @@ public:
     SendDataTail();
   }
 
+  template<class TControl> void SetTab(const TControl ControlName, int Tab)
+  {
+    SendControlHeader(ControlName, F("ActiveTab"));
+    m_rDestination.print(Tab);
+    SendDataTail();
+  }
 
 protected:
   void SendControlHeader(const char* ControlName, const char* PropertyName);
