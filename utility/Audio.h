@@ -13,20 +13,9 @@ public:
     SendDataTail();
   }
 
-  void PlayAudioClip(const char* ClipId)
-  {
-    PlayClip(ClipId);
-  }
-
-  void PlayAudioClip(const __FlashStringHelper* ClipId)
-  {
-    PlayClip(ClipId);
-  }
-
-  void PlayAudioClip(const String& ClipId)
-  {
-    PlayClip(ClipId.c_str());
-  }
+  void PlayAudioClip(const char* ClipId);
+  void PlayAudioClip(const __FlashStringHelper* ClipId);
+  void PlayAudioClip(const String& ClipId);
 
   void Stop()
   {
