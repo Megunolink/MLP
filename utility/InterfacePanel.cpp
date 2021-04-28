@@ -110,6 +110,20 @@ void InterfacePanel::SetListName(const char* ControlName, const __FlashStringHel
   SendDataTail();
 }
 
+void InterfacePanel::SetIndicator(const char* ControlName, bool bOn)
+{
+  SendControlHeader(ControlName, F("On"));
+  m_rDestination.print(bOn ? F("True") : F("False"));
+  SendDataTail();
+}
+
+void InterfacePanel::SetIndicator(const __FlashStringHelper* ControlName, bool bOn)
+{
+  SendControlHeader(ControlName, F("On"));
+  m_rDestination.print(bOn ? F("True") : F("False"));
+  SendDataTail();
+}
+
 void InterfacePanel::SetCheck(const char * ControlName, bool bChecked)
 {
   SendControlHeader(ControlName, F("Checked"));
@@ -326,6 +340,20 @@ void InterfacePanel::SetBackColor(const char *ControlName, const char *Color)
 void InterfacePanel::SetBackColor(const __FlashStringHelper *ControlName, const __FlashStringHelper *Color)
 {
   SendControlHeader(ControlName, F("BackColor"));
+  m_rDestination.print(Color);
+  SendDataTail();
+}
+
+void InterfacePanel::SetIndicatorColor(const char* ControlName, const char* Color)
+{
+  SendControlHeader(ControlName, F("IndicatorColor"));
+  m_rDestination.print(Color);
+  SendDataTail();
+}
+
+void InterfacePanel::SetIndicatorColor(const __FlashStringHelper *ControlName, const __FlashStringHelper *Color)
+{
+  SendControlHeader(ControlName, F("IndicatorColor"));
   m_rDestination.print(Color);
   SendDataTail();
 }

@@ -93,6 +93,9 @@ public:
     SendDataTail();
   }
 
+  void SetIndicator(const char* ControlName, bool bChecked = true);
+  void SetIndicator(const __FlashStringHelper* ControlName, bool bChecked = true);
+
   void SetCheck(const char * ControlName, bool bChecked = true);
   void SetCheck(const __FlashStringHelper * ControlName, bool bChecked = true);
   void SetCheck(const char* ControlName, CheckState State);
@@ -115,6 +118,9 @@ public:
 
   void SetBackColor(const char *ControlName, const char *Color);
   void SetBackColor(const __FlashStringHelper *ControlName, const __FlashStringHelper *Color);
+
+  void SetIndicatorColor(const char* ControlName, const char* Color);
+  void SetIndicatorColor(const __FlashStringHelper* ControlName, const __FlashStringHelper* Color);
 
   void ClearCheck(const char * ControlName);
   void ClearCheck(const __FlashStringHelper * ControlName);
