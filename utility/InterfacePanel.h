@@ -72,7 +72,8 @@ public:
   void SetListName(const __FlashStringHelper* ControlName, const __FlashStringHelper* ValueName);
   void SetListName(const char* ControlName, const __FlashStringHelper *ValueName);
   
-  template<class TControl> void ClearListOptions(const TControl ControlName)
+
+  template<class TControl> void ClearListOptions(TControl ControlName)
   {
     SendDataHeader(F("CALL"));
     m_rDestination.print(ControlName);
@@ -80,7 +81,7 @@ public:
     SendDataTail();
   }
 
-  template<class TControl, class TDisplayValue> void SetListOption(const TControl ControlName, unsigned uValue, const TDisplayValue DisplayValue)
+  template<class TControl, class TDisplayValue> void SetListOption(TControl ControlName, unsigned uValue, const TDisplayValue DisplayValue)
   {
     SendDataHeader(F("CALL"));
     m_rDestination.print(ControlName);
@@ -91,6 +92,9 @@ public:
     m_rDestination.print(F("\")"));
     SendDataTail();
   }
+
+  void SetIndicator(const char* ControlName, bool bChecked = true);
+  void SetIndicator(const __FlashStringHelper* ControlName, bool bChecked = true);
 
   void SetCheck(const char * ControlName, bool bChecked = true);
   void SetCheck(const __FlashStringHelper * ControlName, bool bChecked = true);
@@ -115,6 +119,9 @@ public:
   void SetBackColor(const char *ControlName, const char *Color);
   void SetBackColor(const __FlashStringHelper *ControlName, const __FlashStringHelper *Color);
 
+  void SetIndicatorColor(const char* ControlName, const char* Color);
+  void SetIndicatorColor(const __FlashStringHelper* ControlName, const __FlashStringHelper* Color);
+
   void ClearCheck(const char * ControlName);
   void ClearCheck(const __FlashStringHelper * ControlName);
 
@@ -137,7 +144,7 @@ public:
   void ShowPrompt(const __FlashStringHelper* ControlName, int Id = 0, const char* Prompt = nullptr);
   void ShowPrompt(const __FlashStringHelper* ControlName, int Id, const __FlashStringHelper* Prompt);
 
-  template<class TControl> void StartProgram(const TControl ControlName)
+  template<class TControl> void StartProgram(TControl ControlName)
   {
     SendDataHeader(F("CALL"));
     m_rDestination.print(ControlName);
@@ -145,7 +152,7 @@ public:
     SendDataTail();
   }
 
-  template<class TControl, class TArg> void StartProgram(const TControl ControlName, TArg Arguments)
+  template<class TControl, class TArg> void StartProgram(TControl ControlName, TArg Arguments)
   {
     SendDataHeader(F("CALL"));
     m_rDestination.print(ControlName);
@@ -155,6 +162,12 @@ public:
     SendDataTail();
   }
 
+  template<class TControl> void SetTab(TControl ControlName, int Tab)
+  {
+    SendControlHeader(ControlName, F("ActiveTab"));
+    m_rDestination.print(Tab);
+    SendDataTail();
+  }
 
 protected:
   void SendControlHeader(const char* ControlName, const char* PropertyName);
