@@ -64,6 +64,9 @@ public:
   void SetNumber(const char * ControlName, float fValue, int decimal = 3);
   void SetNumber(const __FlashStringHelper * ControlName, float fValue, int decimal = 3);
 
+  void SetNumber(const char* ControlName, double dValue, int decimal = 3);
+  void SetNumber(const __FlashStringHelper* ControlName, double dValue, int decimal = 3);
+
   void SetListIndex(const char * ControlName, int nIndex);
   void SetListIndex(const __FlashStringHelper * ControlName, int nIndex);
   void SetListValue(const char * ControlName, int nIndex);
