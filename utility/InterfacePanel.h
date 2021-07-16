@@ -42,8 +42,8 @@ public:
     SendDataTail();
   }
 
-  void SetText(const __FlashStringHelper *ControlName, float Value, uint8_t DecimalPlaces);
-  void SetText(const char *ControlName, float Value, uint8_t DecimalPlaces);
+  void SetText(const __FlashStringHelper *ControlName, float Value, int DecimalPlaces);
+  void SetText(const char *ControlName, float Value, int DecimalPlaces);
 
   template<class T>
   void SetNumber(const char *ControlName, T Value)

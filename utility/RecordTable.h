@@ -8,7 +8,7 @@ enum class SpecialParameters
 
 class RecordTable : public MegunoLinkProtocol
 {
-  uint8_t m_uNumberOfDecimalPlaces;
+  int m_uNumberOfDecimalPlaces;
 
 public:
   RecordTable(Print& rDestination = Serial);
