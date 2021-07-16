@@ -91,8 +91,8 @@ public:
   void ShowCursor(const __FlashStringHelper* SeriesName, bool bVisible = true);
   void HideCursor(const __FlashStringHelper* SeriesName);
 
-  void SetCursorPosition(const char* SeriesName, double dPosition, uint8_t nPrecision = 5);
-  void SetCursorPosition(const __FlashStringHelper* SeriesName, double dPosition, uint8_t nPrecision = 5);
+  void SetCursorPosition(const char* SeriesName, double dPosition, int nPrecision = 5);
+  void SetCursorPosition(const __FlashStringHelper* SeriesName, double dPosition, int nPrecision = 5);
 
 protected:
   Plot(const __FlashStringHelper *Context, Print &rDestination = Serial);

@@ -18,14 +18,14 @@ InterfacePanel::InterfacePanel(const __FlashStringHelper *channelName, Print &rD
 
 }
 
-void InterfacePanel::SetText(const __FlashStringHelper *ControlName, float Value, uint8_t DecimalPlaces)
+void InterfacePanel::SetText(const __FlashStringHelper *ControlName, float Value, int DecimalPlaces)
 {
   SendTextHeader(ControlName);
   m_rDestination.print(Value, DecimalPlaces);
   SendDataTail();
 }
 
-void InterfacePanel::SetText(const char *ControlName, float Value, uint8_t DecimalPlaces)
+void InterfacePanel::SetText(const char *ControlName, float Value, int DecimalPlaces)
 {
   SendTextHeader(ControlName);
   m_rDestination.print(Value, DecimalPlaces);
