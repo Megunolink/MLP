@@ -8,7 +8,7 @@ enum class SpecialParameters
 
 class RecordTable : public MegunoLinkProtocol
 {
-  int m_uNumberOfDecimalPlaces;
+  int m_nNumberOfDecimalPlaces;
 
 public:
   RecordTable(Print& rDestination = Serial);
@@ -17,7 +17,7 @@ public:
 
   void SetNumberOfDecimalPlaces(uint8_t uValue)
   {
-    m_uNumberOfDecimalPlaces = uValue;
+    m_nNumberOfDecimalPlaces = uValue;
   }
 
   template<typename... Types> void AddRow(Types... Values)
@@ -136,12 +136,12 @@ private:
 
   void SendValue(float Value)
   {
-    m_rDestination.print(Value, m_uNumberOfDecimalPlaces);
+    m_rDestination.print(Value, m_nNumberOfDecimalPlaces);
   }
 
   void SendValue(double Value)
   {
-    m_rDestination.print(Value, m_uNumberOfDecimalPlaces);
+    m_rDestination.print(Value, m_nNumberOfDecimalPlaces);
   }
 
   template<typename T> void SendValue(const T Value)
