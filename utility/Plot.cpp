@@ -145,7 +145,7 @@ void Plot::HideCursor(const __FlashStringHelper* SeriesName)
   ShowCursor(SeriesName, false);
 }
 
-void Plot::SetCursorPosition(const char* SeriesName, double dPosition, uint8_t nPrecision)
+void Plot::SetCursorPosition(const char* SeriesName, double dPosition, int nPrecision)
 {
   SendDataHeader(F("C-POS"));
   m_rDestination.print(SeriesName);
@@ -154,7 +154,7 @@ void Plot::SetCursorPosition(const char* SeriesName, double dPosition, uint8_t n
   SendDataTail();
 }
 
-void Plot::SetCursorPosition(const __FlashStringHelper* SeriesName, double dPosition, uint8_t nPrecision)
+void Plot::SetCursorPosition(const __FlashStringHelper* SeriesName, double dPosition, int nPrecision)
 {
   SendDataHeader(F("C-POS"));
   m_rDestination.print(SeriesName);

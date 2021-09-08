@@ -47,12 +47,12 @@ void StreamParser::Process()
           // We have a valid message. Dispatch it. 
           m_pchBuffer[m_uNextCharacter] = '\0';
           DispatchMessage();
-          Reset();
         }
         else
         {
           Serial.println(F("Ovrflw"));
         }
+        Reset();
       }
     }
     else
