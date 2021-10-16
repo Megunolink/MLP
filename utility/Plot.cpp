@@ -355,6 +355,25 @@ void Plot::SetY2Range(float fYLimLower, float fYLimUpper)
   SendRangeDetail(fYLimLower, fYLimUpper);
 }
 
+void Plot::FitScale(bool bXScale, bool bYScale, bool bY2Scale)
+{
+  SendDataHeader(F("fit-scale"));
+  if (bXScale)
+  {
+    m_rDestination.print('X');
+  }
+  if (bYScale)
+  {
+    m_rDestination.print('Y');
+  }
+  if (bY2Scale)
+  {
+    m_rDestination.print('W');
+  }
+  SendDataTail();
+}
+
+
 void Plot::SendRangeDetail(float fYLimLower, float fYLimUpper)
 {
   m_rDestination.print(fYLimLower, 5);

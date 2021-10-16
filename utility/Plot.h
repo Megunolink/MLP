@@ -82,6 +82,11 @@ public:
   void SetYRange(float fYLimLower, float fYLimUpper);
   void SetY2Range(float fYLimLower, float fYLimUpper);
 
+  void FitXScale() { FitScale(true, false, false); }
+  void FitYScale() { FitScale(false, true, false); }
+  void FitY2Scale() { FitScale(false, false, true); }
+  void FitScale(bool bXScale, bool bYScale, bool bY2Scale);
+
   void SetYVisible(bool bVisible = true);
   void SetY2Visible(bool bVisible = true);
 
