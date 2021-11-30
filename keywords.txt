@@ -92,6 +92,10 @@ GetData	KEYWORD2
 
 TimePlot	KEYWORD1
 SendData	KEYWORD2
+FitXScale	KEYWORD2
+FitYScale	KEYWORD2
+FitY2Scale	KEYWORD2
+FitScale	KEYWORD2
 SendFloatData	KEYWORD2
 SetCursorVisibility	KEYWORD2
 SetCursorPosition	KEYWORD2
