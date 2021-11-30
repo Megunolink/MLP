@@ -1,5 +1,27 @@
+/* ***********************************************************************
+ * Updating interface from Arduino
+ * Example to illustrate changing control values in a MegunoLink interface
+ * panel using commands sent from an Arduino sketch. 
+ * 
+ * Companion MegunoLink project: UpdatingInterfaceFromArduino.mlpz
+ * 
+ * For more information:
+ *   Download MegunoLink trial: 
+ *      https://www.MegunoLink.com/download/
+ *   Getting started with interface panels:
+ *      https://www.megunolink.com/documentation/getting-started/build-arduino-interface/
+ *   Updating controls from your Arduino:
+ *      https://www.megunolink.com/documentation/interface-panel/arduino-update-interface-panel/
+ *   Control reference:
+ *      https://www.megunolink.com/documentation/interface-panel/control-reference/
+ * *********************************************************************** */
+
 #include <MegunoLink.h>
 
+/// <summary>
+/// Use InterfacePanel variables to send commands to controls on interface panels. 
+/// Method reference: https://www.megunolink.com/documentation/interface-panel/interface-panel-arduino-reference/
+/// </summary>
 InterfacePanel MyPanel;
 
 void setup()
@@ -9,7 +31,7 @@ void setup()
 
 void loop()
 {
-  // Demonstrate many of the options around updating the interface panel.
+  // Set text displayed on controls
   MyPanel.SetText(F("Item"), F(""));
   MyPanel.SetText(F("DescriptionTextbox"), F(""));
   MyPanel.SetText(F("DescriptionTextbox"), F("Demo Starting"));
@@ -19,7 +41,7 @@ void loop()
   MyPanel.SetText(F("DescriptionTextbox"), F("You can edit various controls from your arduino."));
   MyPanel.SetText(F("Item"), F("including buttons,"));
 
-  //Buttons
+  // Hide/show controls
   MyPanel.HideControl(F("MyButton"));
   delay(500);
   MyPanel.ShowControl(F("MyButton"));
@@ -32,6 +54,8 @@ void loop()
   delay(500);
   MyPanel.ShowControl(F("MyButton"));
   delay(500);
+
+  // Enable/disable controls
   MyPanel.DisableControl(F("MyButton"));
   delay(500);
   MyPanel.EnableControl(F("MyButton"));
@@ -44,6 +68,8 @@ void loop()
   delay(500);
   MyPanel.EnableControl(F("MyButton"));
   delay(500);
+
+  // Change control colors
   MyPanel.SetForeColor(F("MyButton"), F("blue"));
   delay(500);
   MyPanel.SetForeColor(F("MyButton"), F("red"));
@@ -62,7 +88,7 @@ void loop()
   delay(500);
 
 
-  //Textboxes
+  // Update content of text boxes
   MyPanel.SetText(F("Item"), F("including buttons, textboxes"));
   delay(500);
   MyPanel.SetText(F("MyTextbox"), F("you"));
@@ -81,24 +107,24 @@ void loop()
   delay(500);
 
 
-  //Gauges
+  // Update gauge values and labels
   MyPanel.SetText(F("Item"), F("including buttons, textboxes, gauges"));
   delay(500);
-  MyPanel.SetGaugeLabel(F("MyGauge"),0, F("you"));
+  MyPanel.SetGaugeLabel(F("MyGauge"), 0, F("you"));
   delay(500);
-  MyPanel.SetGaugeLabel(F("MyGauge"),0, F("can"));
+  MyPanel.SetGaugeLabel(F("MyGauge"), 0, F("can"));
   delay(500);
-  MyPanel.SetGaugeLabel(F("MyGauge"),0, F("edit"));
+  MyPanel.SetGaugeLabel(F("MyGauge"), 0, F("edit"));
   delay(500);
-  MyPanel.SetGaugeLabel(F("MyGauge"),0, F("gauge"));
+  MyPanel.SetGaugeLabel(F("MyGauge"), 0, F("gauge"));
   delay(500);
-  MyPanel.SetGaugeLabel(F("MyGauge"),0, F("labels"));
+  MyPanel.SetGaugeLabel(F("MyGauge"), 0, F("labels"));
   delay(500);
-  MyPanel.SetGaugeLabel(F("MyGauge"),0, F("from"));
+  MyPanel.SetGaugeLabel(F("MyGauge"), 0, F("from"));
   delay(500);
-  MyPanel.SetGaugeLabel(F("MyGauge"),0, F("your"));
+  MyPanel.SetGaugeLabel(F("MyGauge"), 0, F("your"));
   delay(500);
-  MyPanel.SetGaugeLabel(F("MyGauge"),0, F("arduino"));
+  MyPanel.SetGaugeLabel(F("MyGauge"), 0, F("arduino"));
   delay(500);
   MyPanel.SetNumber(F("MyGauge"), 100);
   delay(500);
@@ -110,9 +136,9 @@ void loop()
   delay(500);
   MyPanel.SetNumber(F("MyGauge"), 500);
   delay(500);
-  
 
-  //Checkboxes
+
+  // Change checkboxes
   MyPanel.SetText(F("Item"), F("including buttons, textboxes, gauges, checkboxes"));
   delay(500);
   MyPanel.SetCheck(F("MyCheckbox"));
@@ -133,7 +159,7 @@ void loop()
   delay(500);
 
 
-  //Trackbars
+  // Set value for trackbars
   MyPanel.SetText(F("Item"), F("trackbars"));
   delay(500);
   MyPanel.SetNumber(F("MyTrackbar"), 10);
@@ -148,7 +174,7 @@ void loop()
   delay(500);
 
 
-  //Progress bars
+  // Set value for progress bars
   MyPanel.SetText(F("Item"), F("trackbars, progress bars"));
   delay(500);
   MyPanel.SetProgress(F("MyProgressBar"), 10);
@@ -163,7 +189,7 @@ void loop()
   delay(500);
 
 
-  //Pictures
+  // Control picture visibility
   MyPanel.SetText(F("Item"), F("trackbars, progress bars, pictures"));
   delay(500);
   MyPanel.HideControl(F("PausePicture"));
