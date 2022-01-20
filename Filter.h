@@ -13,7 +13,7 @@ template<class T> class ExponentialFilter
 
 public:
   ExponentialFilter(T WeightNew, T Initial)
-    : m_WeightNew(WeightNew), m_Current(Initial)
+    : m_WeightNew(WeightNew), m_Current(Initial*100)
   { }
 
   void Filter(T New)
