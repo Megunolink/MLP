@@ -125,3 +125,8 @@ Audio	KEYWORD1
 Speak	KEYWORD2
 PlayAudioClip	KEYWORD2
 Stop	KEYWORD2
+
+Monkey	KEYWORD1
+ClearTriggers	KEYWORD2
+SetTrigger	KEYWORD2
+ClearTrigger	KEYWORD2
