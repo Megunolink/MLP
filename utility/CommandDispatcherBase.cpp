@@ -176,7 +176,7 @@ void CommandDispatcherBase::DispatchCommand( char *pchMessage, Print &rSource ) 
   }
   else
   {
-    Serial.println(F("Unknown command"));
+    rSource.println(F("Unknown command"));
   }
 }
 
