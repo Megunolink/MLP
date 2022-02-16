@@ -1,23 +1,21 @@
 /************************************************************************************************
 Example Description
 Data is sent from an ESP32 or ESP8266 server using a TCP connection to MegunoLink where it is
-plotted in real time.
+plotted in real time. Open the ESPTCPServerWirelessPlotting.mlpz interface in MegunoLink to view 
+the data. You'll find it inside the same folder as this Arduino code.
 
 More Information
-*  http://www.megunolink.com/documentation/plotting/
-*  https://www.megunolink.com/articles/wireless/how-do-i-connect-to-a-wireless-network-with-the-esp32/
-*  https://www.megunolink.com/articles/wireless/find-esp32-esp8266-ip-address-with-mdns/
+ * Introduction to plotting: https://www.megunolink.com/documentation/getting-started/plotting-data/
+ * Connecting to TCP servers: https://www.megunolink.com/documentation/connecting/tcp-client-connection/
+ * Safely storing network credentials: https://www.megunolink.com/articles/wireless/how-do-i-connect-to-a-wireless-network-with-the-esp32/
+ * Finding devices with multi-cast DNS: https://www.megunolink.com/articles/wireless/find-esp32-esp8266-ip-address-with-mdns/
 
 This Example Requires:
-*  The MegunoLink arduino library https://www.megunolink.com/documentation/arduino-integration/
-
-MegunoLink Interface
-You can download a pre-made interface from here:
-https://github.com/Megunolink/MLP/raw/master/examples/TimePlot/ESPTCPServerWirelessPlotting/ESPTCPServerWirelessPlotting.mlpz
+ * The MegunoLink arduino library https://www.megunolink.com/documentation/arduino-integration/
 
 You can find out more about MegunoLink and download a free trial from here
-https://www.megunolink.com/
-https://www.megunolink.com/download/
+  * https://www.megunolink.com/
+  * https://www.megunolink.com/download/
 ************************************************************************************************/
 
 #if defined(ARDUINO_ARCH_ESP32)
