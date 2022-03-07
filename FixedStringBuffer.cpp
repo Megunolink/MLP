@@ -1,13 +1,13 @@
 #include "FixedStringBuffer.h"
 
-FixedStringBuffer::FixedStringBuffer(char* pchBuffer, size_t szBuffer)
+FixedStringPrint::FixedStringPrint(char* pchBuffer, size_t szBuffer)
 {
   m_pchBuffer = pchBuffer;
   m_szBuffer = szBuffer;
   begin();
 }
 
-void FixedStringBuffer::begin()
+void FixedStringPrint::begin()
 {
   m_pchNext = m_pchBuffer;
   if (m_szBuffer > 0)
@@ -16,7 +16,7 @@ void FixedStringBuffer::begin()
   }
 }
 
-size_t FixedStringBuffer::write(uint8_t uValue)
+size_t FixedStringPrint::write(uint8_t uValue)
 {
   if ((m_pchNext + 1) < (m_pchBuffer + m_szBuffer))
   {

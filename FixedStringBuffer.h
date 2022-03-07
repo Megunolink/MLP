@@ -7,7 +7,8 @@
 
 #include "Print.h"
 
-class FixedStringBuffer : public Print
+
+class FixedStringPrint : public Print
 {
 private:
   // start of buffer that we are writing to
@@ -21,13 +22,18 @@ private:
 
 public:
 
-  FixedStringBuffer(char* pchBuffer, size_t  szBuffer);
+  FixedStringPrint(char* pchBuffer, size_t  szBuffer);
 
   void begin();
 
   inline size_t length() const
   {
     return m_pchNext - m_pchBuffer;
+  }
+
+  inline size_t available() const
+  {
+    return capacity() - length();
   }
 
   inline size_t capacity() const
@@ -50,14 +56,14 @@ public:
     return m_pchBuffer;
   }
 
-  template<class T> inline FixedStringBuffer& operator=(T value)
+  template<class T> inline FixedStringPrint& operator=(T value)
   {
     begin(); 
     print(value);
     return *this;
   }
 
-  template<class T> inline FixedStringBuffer& operator+=(T value)
+  template<class T> inline FixedStringPrint& operator+=(T value)
   {
     print(value);
     return *this;
@@ -67,4 +73,16 @@ public:
 
   virtual bool outputCanTimeout() override { return false; }
 
+};
+
+
+template<int nBufferSize> class FixedStringBuffer : public FixedStringPrint
+{
+private:
+  char m_achBuffer[nBufferSize];
+
+public:
+  FixedStringBuffer() : FixedStringPrint(m_achBuffer, sizeof(m_achBuffer))
+  {
+  }
 };
