@@ -16,12 +16,14 @@
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)ArduinoTimer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)CircularBuffer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)CommandDispatcher.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)CommandHandler.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)CommandProcessor.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)DataStore.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)DeviceAddress.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)EEPROMStore.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Filter.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)FixedStringBuffer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MegunoLink.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MessageHeaders.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TCPCommandHandler.h" />
@@ -49,6 +51,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)ArduinoTimer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)DataStore.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)DeviceAddress.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)FixedStringBuffer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)utility\Audio.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)utility\CommandDispatcherBase.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)utility\CommandParameter.cpp" />
