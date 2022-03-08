@@ -1,7 +1,7 @@
 #include "CommandParameter.h"
 
 CommandParameter::CommandParameter(Print &rSourceStream, char *pchBuffer, uint8_t uFirstParameter)
-  : m_rSourceStream(rSourceStream)
+  : Response(rSourceStream)
 {
   m_pchBuffer = pchBuffer;
   m_uNextParameter = uFirstParameter;

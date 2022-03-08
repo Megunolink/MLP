@@ -2,6 +2,8 @@
 #include <Arduino.h>
 #include <Stream.h>
 
+#include "CommandProcessor.h"
+
 #include "utility/CommandDispatcherBase.h"
 #include "utility/StreamParser.h"
 

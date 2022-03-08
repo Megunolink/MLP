@@ -16,15 +16,18 @@
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)ArduinoTimer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)CircularBuffer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)CommandDispatcher.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)CommandHandler.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)CommandProcessor.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)DataStore.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)DeviceAddress.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)EEPROMStore.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Filter.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)FixedStringBuffer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MegunoLink.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MessageHeaders.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TCPCommandHandler.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\Audio.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\CommandDispatcherBase.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\CommandParameter.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\CRC.h" />
@@ -32,7 +35,11 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\Map.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\MegunoLinkProtocol.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\Message.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\Monkey.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\Plot.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\Pushover.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\RecordTable.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\Report.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\StreamParser.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\Table.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)utility\TCPConnection.h" />
@@ -44,6 +51,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)ArduinoTimer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)DataStore.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)DeviceAddress.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)FixedStringBuffer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)utility\Audio.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)utility\CommandDispatcherBase.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)utility\CommandParameter.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)utility\CRC.cpp" />
@@ -51,7 +60,11 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)utility\Map.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)utility\MegunoLinkProtocol.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)utility\Message.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)utility\Monkey.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)utility\Plot.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)utility\Pushover.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)utility\RecordTable.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)utility\Report.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)utility\StreamParser.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)utility\Table.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)utility\TestReport.cpp" />
