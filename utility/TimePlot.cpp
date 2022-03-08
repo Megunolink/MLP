@@ -147,7 +147,9 @@ void TimePlot::SendTimeWithSeparator(const tm& Time)
 
 void TimePlot::SendTimeWithSeparator(const time_t& Time)
 {
-  m_rDestination.print(Time);
+  // Arduino's print method doesn't overload printing for 64 bit integers. 
+  // 32 bit value of time_t is good to 2038, so just cast for now. 
+  m_rDestination.print((long)Time);
   m_rDestination.print('|');
 }
 
