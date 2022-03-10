@@ -70,9 +70,6 @@ public:
   }
 
   size_t write(uint8_t uValue) override;
-
-  virtual bool outputCanTimeout() override { return false; }
-
 };
 
 
