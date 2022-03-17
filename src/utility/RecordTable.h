@@ -1,11 +1,6 @@
 #pragma once
 #include "MegunoLinkProtocol.h"
 
-enum class SpecialParameters
-{
-  CurrentTime
-};
-
 class RecordTable : public MegunoLinkProtocol
 {
   int m_nNumberOfDecimalPlaces;
@@ -119,18 +114,6 @@ private:
       {
         m_rDestination.print(',');
       }
-    }
-  }
-
-  void SendValue(SpecialParameters Param)
-  {
-    switch (Param)
-    {
-    case SpecialParameters::CurrentTime:
-      m_rDestination.print(F("[Now()]"));
-      break;
-    default:
-      break;
     }
   }
 

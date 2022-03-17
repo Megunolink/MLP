@@ -64,7 +64,19 @@ MegunoLinkProtocol::MegunoLinkProtocol(const char* Context, const __FlashStringH
 {
 }
 
-void MegunoLinkProtocol::SendDataHeader(const __FlashStringHelper *pfstrCommand)
+void MegunoLinkProtocol::SendValue(SpecialParameters Param)
+{
+  switch (Param)
+  {
+  case SpecialParameters::CurrentTime:
+    m_rDestination.print(F("[Now()]"));
+    break;
+  default:
+    break;
+  }
+}
+
+void MegunoLinkProtocol::SendDataHeader(const __FlashStringHelper *pfstrCommand, bool bIncludeSeparator /*= true*/)
 {
   m_rDestination.print('{');
   m_rDestination.print((const __FlashStringHelper *) m_pfchContext);
@@ -82,10 +94,13 @@ void MegunoLinkProtocol::SendDataHeader(const __FlashStringHelper *pfstrCommand)
   }
   m_rDestination.print('|');
   m_rDestination.print(pfstrCommand);
-  m_rDestination.print('|');
+  if (bIncludeSeparator)
+  {
+    m_rDestination.print('|');
+  }
 }
 
-void MegunoLinkProtocol::SendDataHeader(const char* pfstrCommand)
+void MegunoLinkProtocol::SendDataHeader(const char* pfstrCommand, bool bIncludeSeparator /*= true*/)
 {
   m_rDestination.print('{');
   m_rDestination.print(m_pfchContext);
@@ -96,7 +111,10 @@ void MegunoLinkProtocol::SendDataHeader(const char* pfstrCommand)
   }
   m_rDestination.print('|');
   m_rDestination.print(pfstrCommand);
-  m_rDestination.print('|');
+  if (bIncludeSeparator)
+  {
+    m_rDestination.print('|');
+  }
 }
 
 void MegunoLinkProtocol::SendDataTail()

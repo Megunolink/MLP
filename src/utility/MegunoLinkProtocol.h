@@ -1,6 +1,11 @@
 #pragma once
 #include <Arduino.h>
 
+enum class SpecialParameters
+{
+  CurrentTime
+};
+
 class MegunoLinkProtocol
 {
   // A string in flash memory on boards that support this. 
@@ -21,7 +26,8 @@ protected:
   MegunoLinkProtocol(const __FlashStringHelper *Context, const char *Channel, Print &rDestination);
   MegunoLinkProtocol(const __FlashStringHelper *Context, const __FlashStringHelper *Channel, Print &rDestination);
 
-  void SendDataHeader(const __FlashStringHelper* pfstrCommand);
+  void SendDataHeader(const __FlashStringHelper* pfstrCommand, bool bIncludeSeparator = true);
+  void SendDataHeader(const char* pfstrCommand, bool bIncludeSeparator = true);
   void SendDataTail();
 
   // Some boards don't put strings into flash. They redefine F() macro
@@ -35,8 +41,8 @@ protected:
   MegunoLinkProtocol(const char* Context, const char* Channel, Print& rDestination);
   MegunoLinkProtocol(const char* Context, const __FlashStringHelper* Channel, Print& rDestination);
 
+  void SendValue(SpecialParameters p);
 
-  void SendDataHeader(const char *pfstrCommand);
 
 public:
   void Attach(Print& rDestination);

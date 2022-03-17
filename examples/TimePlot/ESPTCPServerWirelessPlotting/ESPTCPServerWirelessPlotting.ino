@@ -1,8 +1,9 @@
 /************************************************************************************************
 Example Description
-Data is sent from an ESP32 or ESP8266 server using a TCP connection to MegunoLink where it is
-plotted in real time. Open the ESPTCPServerWirelessPlotting.mlpz interface in MegunoLink to view 
-the data. You'll find it inside the same folder as this Arduino code.
+Data is sent from an ESP32 or ESP8266 server using a TCP connection to MegunoLink plotted in 
+real time. Use a 'TCP Client' connection in MegunoLink to connect to the embedded TCP server
+to view the data. ESPTCPServerWirelessPlotting.mlpz (in same folder as this code)
+provides a ready-to-use project. 
 
 More Information
  * Introduction to plotting: https://www.megunolink.com/documentation/getting-started/plotting-data/
