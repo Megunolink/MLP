@@ -30,11 +30,14 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\Audio.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\CommandDispatcherBase.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\CommandParameter.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\EspTicker.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\CRC.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\InterfacePanel.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\Map.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\MegunoLinkBufferWrapper.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\MegunoLinkProtocol.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\Message.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\MLPMsgBuffer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\Monkey.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\Plot.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\Pushover.h" />
@@ -55,11 +58,14 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\Audio.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\CommandDispatcherBase.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\CommandParameter.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\EspTicker.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\CRC.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\InterfacePanel.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\Map.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\MegunoLinkBufferWrapper.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\MegunoLinkProtocol.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\Message.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\MLPMsgBuffer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\Monkey.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\Plot.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\Pushover.cpp" />
@@ -72,8 +78,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\XYPlot.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory).gitattributes" />
-    <None Include="$(MSBuildThisFileDirectory).gitignore" />
     <None Include="$(MSBuildThisFileDirectory)library.properties" />
     <None Include="$(MSBuildThisFileDirectory)LICENSE" />
     <None Include="$(MSBuildThisFileDirectory)README.md" />
