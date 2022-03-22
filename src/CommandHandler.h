@@ -2,7 +2,9 @@
 #include <Arduino.h>
 #include <Stream.h>
 
-#include "utility/CommandDispatcherBase.h"
+#include "CommandProcessor.h"
+
+#include "CommandDispatcherBase.h"
 #include "utility/StreamParser.h"
 
 template <int MAX_COMMANDS = 10, int CP_SERIAL_BUFFER_SIZE = 30, int MAX_VARIABLES=10> class CommandHandler : public MLP::CommandDispatcherBase, public MLP::StreamParser

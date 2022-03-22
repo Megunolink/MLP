@@ -14,61 +14,82 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)ArduinoTimer.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)CircularBuffer.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)CommandHandler.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)CommandProcessor.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)DataStore.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)DeviceAddress.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)EEPROMStore.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Filter.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)MegunoLink.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)MessageHeaders.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)TCPCommandHandler.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)utility\CommandDispatcherBase.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)utility\CommandParameter.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)utility\CRC.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)utility\InterfacePanel.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)utility\Map.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)utility\MegunoLinkProtocol.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)utility\Message.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)utility\Plot.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)utility\StreamParser.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)utility\Table.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)utility\TCPConnection.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)utility\TestReport.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)utility\TimePlot.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)utility\XYPlot.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoTimer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\CircularBuffer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\CommandDispatcher.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\CommandDispatcherBase.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\CommandHandler.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\CommandProcessor.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\DataStore.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\DeviceAddress.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\EEPROMStore.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\Filter.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\FixedStringBuffer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\Formatting.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\MegunoLink.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\MegunoLinkBufferWrapper.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\MessageHeaders.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\MLPMsgBuffer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\TCPCommandHandler.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\Audio.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\CommandDispatcherBase.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\CommandParameter.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\EspTicker.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\CRC.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\InterfacePanel.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\Map.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\MegunoLinkBufferWrapper.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\MegunoLinkProtocol.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\Message.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\MLPMsgBuffer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\Monkey.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\Plot.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\Pushover.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\RecordTable.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\Report.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\StreamParser.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\Table.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\TCPConnection.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\TestReport.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\TimePlot.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\XYPlot.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)ArduinoTimer.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)DataStore.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)DeviceAddress.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)utility\CommandDispatcherBase.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)utility\CommandParameter.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)utility\CRC.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)utility\InterfacePanel.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)utility\Map.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)utility\MegunoLinkProtocol.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)utility\Message.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)utility\Plot.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)utility\StreamParser.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)utility\Table.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)utility\TestReport.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)utility\TimePlot.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)utility\XYPlot.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\ArduinoTimer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\CommandDispatcherBase.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\DataStore.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\DeviceAddress.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\FixedStringBuffer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\MegunoLinkBufferWrapper.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\MLPMsgBuffer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\Audio.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\CommandDispatcherBase.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\CommandParameter.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\EspTicker.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\CRC.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\InterfacePanel.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\Map.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\MegunoLinkBufferWrapper.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\MegunoLinkProtocol.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\Message.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\MLPMsgBuffer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\Monkey.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\Plot.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\Pushover.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\RecordTable.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\Report.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\StreamParser.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\Table.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\TestReport.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\TimePlot.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\XYPlot.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory).gitattributes" />
-    <None Include="$(MSBuildThisFileDirectory).gitignore" />
     <None Include="$(MSBuildThisFileDirectory)library.properties" />
     <None Include="$(MSBuildThisFileDirectory)LICENSE" />
     <None Include="$(MSBuildThisFileDirectory)README.md" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="$(MSBuildThisFileDirectory)keywords.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Xml Include="$(MSBuildThisFileDirectory)Version.xml" />
   </ItemGroup>
 </Project>

@@ -1,43 +1,37 @@
-MLP
-=== 
+MegunoLink library for Arduino
+============================== 
 
-An [Arduino library](http://www.megunolink.com/documentation/arduino-libraries/) for sending MegunoLink Pro packets to the various visualisers.
-Currently supports sending data to:
+An [Arduino library](http://www.megunolink.com/documentation/arduino-libraries/) for sending data and commands to [MegunoLink](https://www.MegunoLink.com) visualizers including:
 
-* [XY-Plots](http://www.megunolink.com/documentation/plotting/)
-* [Time plots](http://www.megunolink.com/documentation/plotting/)
-* [Tables](http://www.megunolink.com/documentation/table/)
-* [Maps](http://www.megunolink.com/documentation/mapping/)
-* [Interface panel](http://www.megunolink.com/documentation/interface-panel/)
-* [Message stream](http://www.megunolink.com/documentation/monitoring-data/)
+* [Interface panel](https://www.megunolink.com/documentation/interface-panel/)
+* [XY-Plots](https://www.megunolink.com/documentation/plotting/xy-plot/)
+* [Time plots](https://www.megunolink.com/documentation/plotting/time-plot/)
+* [Property tables](https://www.megunolink.com/documentation/table/property-table/)
+* [Record tables](https://www.megunolink.com/documentation/table/record-table/)
+* [Message stream](https://www.megunolink.com/documentation/serial-monitors/message-monitor-visualizer/)
+* [Message monkey](https://www.megunolink.com/documentation/message-monkey/)
+* [Maps](https://www.megunolink.com/documentation/mapping/)
+* [Test reports](https://www.megunolink.com/documentation/program-device/test-monitor-panel/)
+* [Scheduled reporting](https://www.megunolink.com/documentation/reporting/scheduled-reporting/)
+* [Playing audio clips and speech](https://www.megunolink.com/documentation/play-sounds/)
 
 The library also supports:
 
 * A [command handler for serial commands](http://www.megunolink.com/documentation/arduino-libraries/serial-command-handler/)
 * A class to make it easier to write [timer driven code](http://www.megunolink.com/documentation/arduino-libraries/arduino-timer/) with Arduino millis() timer
-* A template for [storing data in the eeprom](http://www.megunolink.com/documentation/arduino-libraries/eepromstore/)
-* An [exponential filter](http://www.megunolink.com/documentation/arduino-libraries/exponential-filter/)
-* A [circular buffer template](http://www.megunolink.com/documentation/arduino-libraries/circular-buffer/)
+* A template for [storing data in the eeprom](https://www.megunolink.com/documentation/arduino-libraries/eepromstore/)
+* An [exponential filter](https://www.megunolink.com/documentation/arduino-libraries/exponential-filter/)
+* A [circular buffer template](https://www.megunolink.com/documentation/arduino-libraries/circular-buffer/)
 * A command processor for dispatching commands
 
-Visit www.MegunoLink.com to download [MegunoLink Pro](http://www.MegunoLink.com). 
+Visit [www.MegunoLink.com](https://www.MegunoLink.com) to [download MegunoLink](http://www.MegunoLink.com/download) and learn more. 
 
 Arduino Installation
 --------------------
-Install the library into the `libraries` folder of your Arduino installation. 
+Install the library into the `libraries` folder of your Arduino installation or use [MegunoLink's Arduino integration setup](https://www.megunolink.com/documentation/install/arduino-integration-setup/) tool.
 
-Visual Studio Installation
---------------------------
-The library can also be used with our [Arduino Build Tool for Microsoft Visual Studio](http://www.megunolink.com/building-arduino-programs-with-microsoft-visual-studio/). To
-use the library in your Arduino program, open the Property Manager (View&rarr;Other Windows&rarr;Property Manager) then:
 
-1. Select the Arduino program's project in the Property Manager
-1. Click the "Add existing property sheet" on the Property Manager toolbar. 
-1. Browse to the library project and select the file named MLPLib.props
-
-Now building the Arduino Program will also build the referenced libraries. The libraries will pick up the hardware settings (CPU, clock frequency etc) from the Arduino Program. This means if you have one 
-program targeting a Mega and another targeting the Uno, both can use the same Arduino Library project
-for common code.
+Library dependecies: none.
 
 License Information
 --------------------------
