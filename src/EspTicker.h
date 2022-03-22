@@ -30,7 +30,7 @@ private:
   Ticker m_SourceTicker;
   callback_function_t m_Handler = nullptr;
 
-  static void OnTick(CompatibleTicker* pTimer);
+  static void OnTick(EspTicker* pTimer);
 
 };
 

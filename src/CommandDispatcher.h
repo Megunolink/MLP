@@ -1,6 +1,6 @@
 #pragma once
 
-#include "utility/CommandDispatcherBase.h"
+#include "CommandDispatcherBase.h"
 
 template<int MAX_COMMANDS = 10, int MAX_VARIABLES = 10> class CommandDispatcher : public MLP::CommandDispatcherBase
 {

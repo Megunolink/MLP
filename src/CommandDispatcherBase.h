@@ -1,6 +1,6 @@
 #pragma once
 #include <Arduino.h>
-#include "CommandParameter.h"
+#include "utility/CommandParameter.h"
 
 namespace MLP
 {
