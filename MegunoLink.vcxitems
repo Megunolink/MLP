@@ -17,6 +17,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoTimer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\CircularBuffer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\CommandDispatcher.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\CommandDispatcherBase.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\CommandHandler.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\CommandProcessor.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\DataStore.h" />
@@ -24,8 +25,11 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)src\EEPROMStore.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\Filter.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\FixedStringBuffer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\Formatting.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\MegunoLink.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\MegunoLinkBufferWrapper.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\MessageHeaders.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\MLPMsgBuffer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\TCPCommandHandler.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\Audio.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\CommandDispatcherBase.h" />
@@ -52,9 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)src\ArduinoTimer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\CommandDispatcherBase.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\DataStore.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\DeviceAddress.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\FixedStringBuffer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\MegunoLinkBufferWrapper.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\MLPMsgBuffer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\Audio.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\CommandDispatcherBase.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\CommandParameter.cpp" />
