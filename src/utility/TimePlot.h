@@ -2,6 +2,7 @@
 #include <Arduino.h>
 #include <time.h>
 #include "Plot.h"
+#include "PlotFormat.h"
 
 class TimePlot : public Plot
 {
@@ -14,74 +15,6 @@ public:
   void Run(bool bEnable);
   void Stop();
   void SetXRange(float fTimespanHours);
-
-  template<class TYData> void SendData(const char * seriesName, TYData yValue, const char * seriesProperties=NULL)
-  {
-    SendHeader_Data();
-    m_rDestination.print(seriesName);
-    SendSeriesProperties(seriesProperties);
-    SendTimeSeparator();
-    m_rDestination.print(yValue);
-    SendDataTail();
-  }
-
-  template<class TYData> void SendData(const char * seriesName, TYData yValue, Colors Color, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle, Axis ax = DefaultAxis)
-  {
-    SendHeader_Data();
-    m_rDestination.print(seriesName);
-    SendSeriesProperties(Color, Line, uLineWidth, Marker, ax);
-    SendTimeSeparator();
-    m_rDestination.print(yValue);
-    SendDataTail();
-  }
-
-  template<class TYData> void SendData(const char * seriesName, TYData yValue, int32_t nColor, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle, Axis ax = DefaultAxis)
-  {
-    SendHeader_Data();
-    m_rDestination.print(seriesName);
-    SendSeriesProperties(nColor, Line, uLineWidth, Marker, ax);
-    SendTimeSeparator();
-    m_rDestination.print(yValue);
-    SendDataTail();
-  }
-
-  void SendFloatData(const char * seriesName, float yValue, int nDecimalPlaces, const char * seriesProperties=NULL);
-  void SendFloatData(const char * seriesName, float yValue, int nDecimalPlaces, Colors Color, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle, Axis ax = DefaultAxis);
-  void SendFloatData(const char * seriesName, float yValue, int nDecimalPlaces, int32_t nColor, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle, Axis ax = DefaultAxis);
-
-  template<class TYData> void SendData(const __FlashStringHelper * seriesName, TYData yValue, const char * seriesProperties=NULL)
-  {
-    SendHeader_Data();
-    m_rDestination.print(seriesName);
-    SendSeriesProperties(seriesProperties);
-    SendTimeSeparator();
-    m_rDestination.print(yValue);
-    SendDataTail();
-  }
-
-  template<class TYData> void SendData(const __FlashStringHelper * seriesName, TYData yValue, Colors Color, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle, Axis ax = DefaultAxis)
-  {
-    SendHeader_Data();
-    m_rDestination.print(seriesName);
-    SendSeriesProperties(Color, Line, uLineWidth, Marker, ax);
-    SendTimeSeparator();
-    m_rDestination.print(yValue);
-    SendDataTail();
-  }
-
-  template<class TYData> void SendData(const __FlashStringHelper * seriesName, TYData yValue, int32_t nColor, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle, Axis ax = DefaultAxis)
-  {
-    SendHeader_Data();
-    m_rDestination.print(seriesName);
-    SendSeriesProperties(nColor, Line, uLineWidth, Marker, ax);
-    SendTimeSeparator();
-    m_rDestination.print(yValue);
-    SendDataTail();
-  }
-
-  void SendFloatData(const __FlashStringHelper * seriesName, float yValue, int nDecimalPlaces, const char * seriesProperties=NULL);
-  void SendFloatData(const __FlashStringHelper * seriesName, float yValue, int nDecimalPlaces, Colors Color, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle, Axis ax = DefaultAxis);
-  void SendFloatData(const __FlashStringHelper * seriesName, float yValue, int nDecimalPlaces, int32_t nColor, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle, Axis ax = DefaultAxis);
 
   void SetCursorPositionToNow(const char* SeriesName);
   void SetCursorPositionToNow(const __FlashStringHelper* SeriesName);
@@ -99,6 +32,157 @@ public:
     Plot::SetCursorPosition(SeriesName, dPosition, nPrecision);
   }
 
+#if defined(USE_FLEXIBLE_ARGUMENTS)
+  template<class TSeriesName, class TYData> void SendData(const TSeriesName* seriesName, TYData yValue)
+  {
+    SendHeader_Data();
+    m_rDestination.print(seriesName);
+    m_rDestination.print('|');
+    SendTimeSeparator();
+    m_rDestination.print(yValue);
+    SendDataTail();
+  }
+
+  template<class TSeriesName, class TYData, typename... TProperties> void SendData(const TSeriesName* seriesName, TYData yValue, TProperties... Properties)
+  {
+    SendHeader_Data();
+    m_rDestination.print(seriesName);
+    m_rDestination.print(':');
+    SendSeriesProperties(Properties...);
+    m_rDestination.print('|');
+    SendTimeSeparator();
+    m_rDestination.print(yValue);
+    SendDataTail();
+  }
+
+  template<class TSeriesName, class TYData> void SendData(const TSeriesName* seriesName, const tm& Time, TYData yValue)
+  {
+    SendHeader_Data();
+    m_rDestination.print(seriesName);
+    m_rDestination.print('|');
+    SendTimeWithSeparator(Time);
+    m_rDestination.print(yValue);
+    SendDataTail();
+  }
+
+  template<class TSeriesName, class TYData, typename... TProperties> void SendData(const TSeriesName* seriesName, const tm& Time, TYData yValue, TProperties... Properties)
+  {
+    SendHeader_Data();
+    m_rDestination.print(seriesName);
+    m_rDestination.print(':');
+    SendSeriesProperties(Properties...);
+    m_rDestination.print('|');
+    SendTimeWithSeparator(Time);
+    m_rDestination.print(yValue);
+    SendDataTail();
+  }
+
+  template<class TSeriesName> void SendFloatData(const TSeriesName* seriesName, double yValue, int Precision)
+  {
+    SendHeader_Data();
+    m_rDestination.print(seriesName);
+    m_rDestination.print('|');
+    SendTimeSeparator();
+    m_rDestination.print(yValue, Precision);
+    SendDataTail();
+  }
+
+  template<class TSeriesName, typename... TProperties> void SendFloatData(const TSeriesName* seriesName, double yValue, int Precision, TProperties... Properties)
+  {
+    SendHeader_Data();
+    m_rDestination.print(seriesName);
+    m_rDestination.print(':');
+    SendSeriesProperties(Properties...);
+    m_rDestination.print('|');
+    SendTimeSeparator();
+    m_rDestination.print(yValue, Precision);
+    SendDataTail();
+  }
+
+  template<class TSeriesName> void SendFloatData(const TSeriesName* seriesName, const tm& Time, double yValue, int Precision)
+  {
+    SendHeader_Data();
+    m_rDestination.print(seriesName);
+    m_rDestination.print('|');
+    SendTimeWithSeparator(Time);
+    m_rDestination.print(yValue, Precision);
+    SendDataTail();
+  }
+
+  template<class TSeriesName, typename... TProperties> void SendFloatData(const TSeriesName* seriesName, const tm& Time, double yValue, int Precision, TProperties... Properties)
+  {
+    SendHeader_Data();
+    m_rDestination.print(seriesName);
+    m_rDestination.print(':');
+    SendSeriesProperties(Properties...);
+    m_rDestination.print('|');
+    SendTimeWithSeparator(Time);
+    m_rDestination.print(yValue, Precision);
+    SendDataTail();
+  }
+
+
+#else
+  template<class TYData> void SendData(const char* seriesName, TYData yValue, const char* seriesProperties = NULL)
+  {
+    SendHeader_Data();
+    m_rDestination.print(seriesName);
+    SendSeriesProperties(seriesProperties);
+    SendTimeSeparator();
+    m_rDestination.print(yValue);
+    SendDataTail();
+  }
+
+  template<class TYData> void SendData(const char* seriesName, TYData yValue, Colors Color, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle, Axis ax = DefaultAxis)
+  {
+    SendHeader_Data();
+    m_rDestination.print(seriesName);
+    SendSeriesProperties(Color, Line, uLineWidth, Marker, ax);
+    SendTimeSeparator();
+    m_rDestination.print(yValue);
+    SendDataTail();
+  }
+
+  template<class TYData> void SendData(const char* seriesName, TYData yValue, int32_t nColor, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle, Axis ax = DefaultAxis)
+  {
+    SendHeader_Data();
+    m_rDestination.print(seriesName);
+    SendSeriesProperties(nColor, Line, uLineWidth, Marker, ax);
+    SendTimeSeparator();
+    m_rDestination.print(yValue);
+    SendDataTail();
+  }
+
+  template<class TYData> void SendData(const __FlashStringHelper* seriesName, TYData yValue, const char* seriesProperties = NULL)
+  {
+    SendHeader_Data();
+    m_rDestination.print(seriesName);
+    SendSeriesProperties(seriesProperties);
+    SendTimeSeparator();
+    m_rDestination.print(yValue);
+    SendDataTail();
+  }
+
+  template<class TYData> void SendData(const __FlashStringHelper* seriesName, TYData yValue, Colors Color, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle, Axis ax = DefaultAxis)
+  {
+    SendHeader_Data();
+    m_rDestination.print(seriesName);
+    SendSeriesProperties(Color, Line, uLineWidth, Marker, ax);
+    SendTimeSeparator();
+    m_rDestination.print(yValue);
+    SendDataTail();
+  }
+
+  template<class TYData> void SendData(const __FlashStringHelper* seriesName, TYData yValue, int32_t nColor, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle, Axis ax = DefaultAxis)
+  {
+    SendHeader_Data();
+    m_rDestination.print(seriesName);
+    SendSeriesProperties(nColor, Line, uLineWidth, Marker, ax);
+    SendTimeSeparator();
+    m_rDestination.print(yValue);
+    SendDataTail();
+  }
+
 
   template<class TSeriesName, class TYData> void SendData(const TSeriesName* seriesName, const tm &Time, TYData yValue, const char* seriesProperties = NULL)
   {
@@ -109,6 +193,7 @@ public:
     m_rDestination.print(yValue);
     SendDataTail();
   }
+
 
   template<class TSeriesName, class TYData> void SendData(const TSeriesName* seriesName, const tm& Time, TYData yValue, Colors Color, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle, Axis ax = DefaultAxis)
   {
@@ -129,16 +214,6 @@ public:
     m_rDestination.print(yValue);
     SendDataTail();
   }
-
-  void SendFloatData(const char* seriesName, const tm& Time, float yValue, int nDecimalPlaces, const char* seriesProperties = NULL);
-  void SendFloatData(const char* seriesName, const tm& Time, float yValue, int nDecimalPlaces, Colors Color, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle, Axis ax = DefaultAxis);
-  void SendFloatData(const char* seriesName, const tm& Time, float yValue, int nDecimalPlaces, int32_t nColor, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle, Axis ax = DefaultAxis);
-
-  void SendFloatData(const __FlashStringHelper* seriesName, const tm& Time, float yValue, int nDecimalPlaces, const char* seriesProperties = NULL);
-  void SendFloatData(const __FlashStringHelper* seriesName, const tm& Time, float yValue, int nDecimalPlaces, Colors Color, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle, Axis ax = DefaultAxis);
-  void SendFloatData(const __FlashStringHelper* seriesName, const tm& Time, float yValue, int nDecimalPlaces, int32_t nColor, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle, Axis ax = DefaultAxis);
-
-
 
   template<class TYData> void SendData(const char* seriesName, const time_t& Time, TYData yValue, const char* seriesProperties = NULL)
   {
@@ -170,6 +245,22 @@ public:
     SendDataCore(NULL, &Time, yValue, Colors::Black, nColor, true, Line, uLineWidth, Marker, ax);
   }
 
+  void SendFloatData(const char* seriesName, float yValue, int nDecimalPlaces, const char* seriesProperties = NULL);
+  void SendFloatData(const char* seriesName, float yValue, int nDecimalPlaces, Colors Color, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle, Axis ax = DefaultAxis);
+  void SendFloatData(const char* seriesName, float yValue, int nDecimalPlaces, int32_t nColor, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle, Axis ax = DefaultAxis);
+
+  void SendFloatData(const __FlashStringHelper* seriesName, float yValue, int nDecimalPlaces, const char* seriesProperties = NULL);
+  void SendFloatData(const __FlashStringHelper* seriesName, float yValue, int nDecimalPlaces, Colors Color, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle, Axis ax = DefaultAxis);
+  void SendFloatData(const __FlashStringHelper* seriesName, float yValue, int nDecimalPlaces, int32_t nColor, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle, Axis ax = DefaultAxis);
+
+
+  void SendFloatData(const char* seriesName, const tm& Time, float yValue, int nDecimalPlaces, const char* seriesProperties = NULL);
+  void SendFloatData(const char* seriesName, const tm& Time, float yValue, int nDecimalPlaces, Colors Color, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle, Axis ax = DefaultAxis);
+  void SendFloatData(const char* seriesName, const tm& Time, float yValue, int nDecimalPlaces, int32_t nColor, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle, Axis ax = DefaultAxis);
+
+  void SendFloatData(const __FlashStringHelper* seriesName, const tm& Time, float yValue, int nDecimalPlaces, const char* seriesProperties = NULL);
+  void SendFloatData(const __FlashStringHelper* seriesName, const tm& Time, float yValue, int nDecimalPlaces, Colors Color, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle, Axis ax = DefaultAxis);
+  void SendFloatData(const __FlashStringHelper* seriesName, const tm& Time, float yValue, int nDecimalPlaces, int32_t nColor, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle, Axis ax = DefaultAxis);
   
   void SendFloatData(const char* seriesName, const time_t& Time, float yValue, int nDecimalPlaces, const char* seriesProperties = NULL);
   void SendFloatData(const char* seriesName, const time_t& Time, float yValue, int nDecimalPlaces, Colors Color, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle, Axis ax = DefaultAxis);
@@ -178,6 +269,7 @@ public:
   void SendFloatData(const __FlashStringHelper* seriesName, const time_t& Time, float yValue, int nDecimalPlaces, const char* seriesProperties = NULL);
   void SendFloatData(const __FlashStringHelper* seriesName, const time_t& Time, float yValue, int nDecimalPlaces, Colors Color, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle, Axis ax = DefaultAxis);
   void SendFloatData(const __FlashStringHelper* seriesName, const time_t& Time, float yValue, int nDecimalPlaces, int32_t nColor, LineStyle Line = Solid, uint8_t uLineWidth = 1, MarkerStyle Marker = Circle, Axis ax = DefaultAxis);
+#endif
 
 
 

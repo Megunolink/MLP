@@ -1,6 +1,9 @@
 #pragma once
 #include "MegunoLinkProtocol.h"
 
+class LineFormat;
+class MarkerFormat;
+
 class Plot : public MegunoLinkProtocol
 {
 public:
@@ -118,6 +121,21 @@ protected:
   void SendSeriesProperties(const __FlashStringHelper *SeriesProperties);
   void SendSeriesProperties(Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax);
   void SendSeriesProperties(int32_t nColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax);
+  
+  void SendSeriesProperties(Colors color);
+  void SendSeriesProperties(int32_t nColor);
+  void SendSeriesProperties(LineStyle style);
+  void SendSeriesProperties(MarkerStyle style);
+  void SendSeriesProperties(Axis ax);
+  void SendSeriesProperties(LineFormat const& fmt);
+  void SendSeriesProperties(MarkerFormat const& fmt);
+
+  template<typename T, typename... Args>
+  void SendSeriesProperties(T Property, Args... MoreProperties)
+  {
+    SendSeriesProperties(Property);
+    SendSeriesProperties(MoreProperties...);
+  }
 
   void SendHeader_Data();
   void SendTimeSeparator();

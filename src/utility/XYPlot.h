@@ -1,6 +1,7 @@
 #pragma once
 #include <Arduino.h>
 #include "Plot.h"
+#include "PlotFormat.h"
 
 class XYPlot : public Plot
 {

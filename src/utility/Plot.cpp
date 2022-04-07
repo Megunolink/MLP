@@ -1,4 +1,5 @@
 #include "Plot.h"
+#include "PlotFormat.h"
 
 Plot::Plot( const __FlashStringHelper *Context, Print &rDestination )
   : MegunoLinkProtocol(Context, rDestination)
@@ -311,6 +312,49 @@ void Plot::SendSeriesProperties(int32_t nColor, LineStyle Line, uint8_t uLineWid
     m_rDestination.print(uLineWidth);
   SendColorValue(nColor);
   m_rDestination.print('|');
+}
+
+void Plot::SendSeriesProperties(Colors color)
+{
+  m_rDestination.print((char)color);
+}
+
+void Plot::SendSeriesProperties(int32_t nColor)
+{
+  SendColorValue(nColor);
+}
+
+void Plot::SendSeriesProperties(LineStyle style)
+{
+  m_rDestination.print((char)style);
+}
+
+void Plot::SendSeriesProperties(MarkerStyle style)
+{
+  m_rDestination.print((char)style);
+}
+
+void Plot::SendSeriesProperties(Axis ax)
+{
+  m_rDestination.print((char)ax);
+}
+
+void Plot::SendSeriesProperties(LineFormat const& fmt)
+{
+  m_rDestination.print((char)fmt.Style);
+  if (fmt.Style != NoLine)
+  {
+    m_rDestination.print(fmt.Width);
+  }
+}
+
+void Plot::SendSeriesProperties(MarkerFormat const& fmt)
+{
+  m_rDestination.print((char)fmt.Style);
+  if (fmt.Style != NoMarker)
+  {
+    m_rDestination.print(fmt.Size);
+  }
 }
 
 void Plot::Clear()
