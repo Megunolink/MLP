@@ -50,3 +50,17 @@ public:
     return p.print(m_Value, m_uPrecision);
   }
 };
+
+void WriteBase64(Print& rDestination, uint8_t* pData, uint16_t Length);
+void WriteHex(Print& rDestination, uint8_t uValue);
+void WriteHex(Print& rDestination, uint16_t uValue);
+void WriteHex(Print& rDestination, uint32_t uValue);
+
+class Base64StreamEncoder
+{
+private:
+
+
+public:
+
+};
