@@ -77,9 +77,9 @@ void DeviceFileTransfer::FileDeleteResult(const char* pchFilePath, bool bSuccess
   SendDataTail();
 }
 
-void DeviceFileTransfer::AllFilesDeleted(int nRequestId)
+void DeviceFileTransfer::AllFilesDeleted(uint16_t uRequestId)
 {
   SendDataHeader(F("FXX"));
-  m_rDestination.print(nRequestId);
+  m_rDestination.print(uRequestId);
   SendDataTail();
 }
