@@ -11,5 +11,8 @@ public:
   void SendFileInfo(const char* pchFilepath, uint32_t uFileLength, time_t ttLastModified);
   void SendFileBytes(const char* pchFilepath, uint32_t nFirstByte, uint8_t* pData, uint16_t uLength, bool bMore);
   void SendFileBytes(const char* pchFilePath, Stream& rSource, uint32_t uCurrentPosition, uint16_t uMaxLength);
+
+  void FileDeleteResult(const char* pchFilePath, bool bSuccess);
+  void AllFilesDeleted(int nRequestId);
 };
 

@@ -67,3 +67,19 @@ void DeviceFileTransfer::SendFileBytes(const char* pchFilePath, Stream& rSource,
   m_rDestination.print(bMore ? '+' : 'x');
   SendDataTail();
 }
+
+void DeviceFileTransfer::FileDeleteResult(const char* pchFilePath, bool bSuccess)
+{
+  SendDataHeader(F("FX"));
+  m_rDestination.print(pchFilePath);
+  m_rDestination.print('|');
+  m_rDestination.print(bSuccess ? 'k' : 'e');
+  SendDataTail();
+}
+
+void DeviceFileTransfer::AllFilesDeleted(int nRequestId)
+{
+  SendDataHeader(F("FXX"));
+  m_rDestination.print(nRequestId);
+  SendDataTail();
+}
