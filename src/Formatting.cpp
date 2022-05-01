@@ -4,6 +4,7 @@
 *    https://github.com/Densaugeo/base64_arduino/blob/master/src/base64.hpp
 *  *********************************************************************** */
 #include "Formatting.h"
+#include "utility/CRC.h"
 
 char binary_to_base64(uint8_t v)
 {
@@ -25,7 +26,26 @@ char binary_to_base64(uint8_t v)
   return 64;
 }
 
-void WriteBase64(Print& rDestination, uint8_t* pData, uint16_t Length)
+uint8_t base64_to_binary(unsigned char c) {
+  // Capital letters - 'A' is ascii 65 and base64 0
+  if ('A' <= c && c <= 'Z') return c - 'A';
+
+  // Lowercase letters - 'a' is ascii 97 and base64 26
+  if ('a' <= c && c <= 'z') return c - 71;
+
+  // Digits - '0' is ascii 48 and base64 52
+  if ('0' <= c && c <= '9') return c + 4;
+
+  // '+' is ascii 43 and base64 62
+  if (c == '+') return 62;
+
+  // '/' is ascii 47 and base64 63
+  if (c == '/') return 63;
+
+  return 255;
+}
+
+void EncodeAsBase64(Print& rDestination, uint8_t* pData, uint16_t Length)
 {
   unsigned int full_sets = Length / 3;
 
@@ -58,6 +78,115 @@ void WriteBase64(Print& rDestination, uint8_t* pData, uint16_t Length)
     break;
   }
 }
+
+int ToSixBits(uint8_t aBlock[4])
+{
+  int iBlockByte;
+  for (iBlockByte = 0; iBlockByte < 4; ++iBlockByte)
+  {
+    uint8_t uData = aBlock[iBlockByte];
+    if (uData == '=')
+      break;
+
+    if (uData >= 'A' && uData <= 'Z')
+      uData -= 'A';
+    else if (uData >= 'a' && uData <= 'z')
+      uData = uData - 'a' + 26;
+    else if (uData >= '0' && uData <= '9')
+      uData = uData - '0' + 52;
+    else if (uData == '+')
+      uData = 62;
+    else if (uData == '/')
+      uData = 63;
+    else
+    {
+      return 0; // illegal character. 
+    }
+    aBlock[iBlockByte] = uData;
+  }
+
+  if (iBlockByte >= 2)
+  {
+    aBlock[0] = aBlock[0] << 2 | ((aBlock[1] & 0x30) >> 4);
+    if (iBlockByte >= 3)
+    {
+      aBlock[1] = (aBlock[1] & 0x0f) << 4 | ((aBlock[2] & 0x3C) >> 2);
+    }
+    else
+    {
+      return 1;
+    }
+
+    if (iBlockByte == 4)
+    {
+      aBlock[2] = (aBlock[2] & 0x03) << 6 | aBlock[3];
+      return 3;
+    }
+    else
+    {
+      return 2;
+    }
+  }
+
+  return 0; 
+}
+
+bool DecodeFromBase64(Print& rDestination, const char* pchData)
+{
+  // Receive blocks of base-64 data into a temporary buffer. 
+  // When a complete block is received, write into the message
+  // buffer. 
+  uint8_t aBlock[4];
+  uint8_t iBlockIndex = 0;
+
+  while (*pchData)
+  {
+    aBlock[iBlockIndex++] = *pchData++;
+    if (iBlockIndex == 4)
+    {
+      int nConverted = ToSixBits(aBlock);
+      if (nConverted == 0)
+      {
+        return false;
+      }
+      rDestination.write(aBlock, nConverted);
+      
+      iBlockIndex = 0;
+    }
+  }
+
+  return true; 
+}
+
+uint16_t CalculateChecksumFromBase64(const char* pchData)
+{
+  // Receive blocks of base-64 data into a temporary buffer. 
+  // When a complete block is received, update the checksum.
+  uint8_t aBlock[4];
+  uint8_t iBlockIndex = 0;
+  uint16_t uChecksum = 0xffff;
+  while (*pchData)
+  {
+    aBlock[iBlockIndex++] = *pchData++;
+    if (iBlockIndex == 4)
+    {
+      int nConverted = ToSixBits(aBlock);
+      if (nConverted == 0)
+      {
+        return 0;
+      }
+      uChecksum = CalculateChecksum(aBlock, nConverted, uChecksum);
+      iBlockIndex = 0;
+    }
+  }
+
+  return uChecksum;
+}
+
+
+
+
+
 
 void WriteHex(Print& rDestination, uint8_t uValue)
 {

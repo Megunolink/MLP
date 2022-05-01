@@ -25,5 +25,12 @@ public:
   long NextParameterAsLong(long nDefault = -1);
   unsigned long NextParameterAsUnsignedLong(unsigned long nDefault = -1);
   double NextParameterAsDouble(double fDefault = 0.0);
+
+  uint8_t NextParameterAsU8FromHex(uint8_t uDefault = 0);
+  uint16_t NextParameterAsU16FromHex(uint16_t uDefault = 0);
+  uint32_t NextParameterAsU32FromHex(uint32_t uDefault = 0);
+
+private:
+  uint8_t HexValueOf(char ch);
 };
 

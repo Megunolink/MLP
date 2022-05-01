@@ -51,16 +51,11 @@ public:
   }
 };
 
-void WriteBase64(Print& rDestination, uint8_t* pData, uint16_t Length);
+void EncodeAsBase64(Print& rDestination, uint8_t* pData, uint16_t Length);
+bool DecodeFromBase64(Print& rDestination, const char* pchData);
+uint16_t CalculateChecksumFromBase64(const char* pchData);
+
 void WriteHex(Print& rDestination, uint8_t uValue);
 void WriteHex(Print& rDestination, uint16_t uValue);
 void WriteHex(Print& rDestination, uint32_t uValue);
 
-class Base64StreamEncoder
-{
-private:
-
-
-public:
-
-};

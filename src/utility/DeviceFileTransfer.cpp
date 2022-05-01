@@ -28,7 +28,7 @@ void DeviceFileTransfer::SendFileBytes(const char* pchFilePath, uint32_t nFirstB
   m_rDestination.print('|');
   WriteHex(m_rDestination, nFirstByte);
   m_rDestination.print('|');
-  WriteBase64(m_rDestination, pData, uLength);
+  EncodeAsBase64(m_rDestination, pData, uLength);
   m_rDestination.print('|');
   WriteHex(m_rDestination, uChecksum);
   m_rDestination.print('|');
@@ -56,7 +56,7 @@ void DeviceFileTransfer::SendFileBytes(const char* pchFilePath, Stream& rSource,
       nMaxRead = uBufferSize;
     }
     uint16_t nActualRead = rSource.readBytes(abyData, nMaxRead);
-    WriteBase64(m_rDestination, abyData, nActualRead);
+    EncodeAsBase64(m_rDestination, abyData, nActualRead);
     uChecksum = CalculateChecksum(abyData, nActualRead, uChecksum);
     uMaxLength -= nActualRead;
     bMore = nActualRead == nMaxRead;
@@ -83,3 +83,15 @@ void DeviceFileTransfer::AllFilesDeleted(uint16_t uRequestId)
   m_rDestination.print(uRequestId);
   SendDataTail();
 }
+
+void DeviceFileTransfer::FileReceiveResult(const char* pchFilePath, uint32_t uStartAddress, bool bSuccess)
+{
+  SendDataHeader(F("FR"));
+  m_rDestination.print(pchFilePath);
+  m_rDestination.print('|');
+  WriteHex(m_rDestination, uStartAddress);
+  m_rDestination.print('|');
+  m_rDestination.print(bSuccess ? 'k' : 'e');
+  SendDataTail();
+}
+
