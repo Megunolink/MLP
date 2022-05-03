@@ -1,4 +1,5 @@
 #include <stdint.h>
+#include "CRC.h"
 
 #if defined(__AVR__)
 
@@ -24,7 +25,7 @@ uint16_t _crc16_update(uint16_t crc, uint8_t data)
 
 #endif
 
-uint16_t CalculateChecksum(uint8_t* pData, uint16_t uLength, uint16_t uSeed /*= 0xffff*/)
+uint16_t CalculateChecksum(uint8_t const* pData, uint16_t uLength, uint16_t uSeed /*= 0xffff*/)
 {
   uint16_t uChecksum = uSeed;
   while (uLength--)
@@ -32,4 +33,9 @@ uint16_t CalculateChecksum(uint8_t* pData, uint16_t uLength, uint16_t uSeed /*= 
     uChecksum = _crc16_update(uChecksum, *pData++);
   }
   return uChecksum;
+}
+
+uint16_t CalculateChecksum(uint8_t uData, uint16_t uSeed)
+{
+  return _crc16_update(uSeed, uData);
 }

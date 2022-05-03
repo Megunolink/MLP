@@ -131,14 +131,14 @@ int ToSixBits(uint8_t aBlock[4])
   return 0; 
 }
 
-bool DecodeFromBase64(Print& rDestination, const char* pchData)
+int DecodeFromBase64(Print& rDestination, const char* pchData)
 {
   // Receive blocks of base-64 data into a temporary buffer. 
   // When a complete block is received, write into the message
   // buffer. 
   uint8_t aBlock[4];
   uint8_t iBlockIndex = 0;
-
+  int nWritten = 0; 
   while (*pchData)
   {
     aBlock[iBlockIndex++] = *pchData++;
@@ -147,15 +147,15 @@ bool DecodeFromBase64(Print& rDestination, const char* pchData)
       int nConverted = ToSixBits(aBlock);
       if (nConverted == 0)
       {
-        return false;
+        return DECODE_BAD_DATA;
       }
-      rDestination.write(aBlock, nConverted);
+      nWritten += rDestination.write(aBlock, nConverted);
       
       iBlockIndex = 0;
     }
   }
 
-  return true; 
+  return nWritten;
 }
 
 uint16_t CalculateChecksumFromBase64(const char* pchData)

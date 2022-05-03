@@ -26,11 +26,11 @@ void DeviceFileTransfer::SendFileBytes(const char* pchFilePath, uint32_t nFirstB
   SendDataHeader(F("FD"));
   m_rDestination.print(pchFilePath);
   m_rDestination.print('|');
-  WriteHex(m_rDestination, nFirstByte);
+  m_rDestination.print(nFirstByte, HEX);
   m_rDestination.print('|');
   EncodeAsBase64(m_rDestination, pData, uLength);
   m_rDestination.print('|');
-  WriteHex(m_rDestination, uChecksum);
+  m_rDestination.print(uChecksum, HEX);
   m_rDestination.print('|');
   m_rDestination.print(bMore ? '+' : 'x');
   SendDataTail();
@@ -41,7 +41,7 @@ void DeviceFileTransfer::SendFileBytes(const char* pchFilePath, Stream& rSource,
   SendDataHeader(F("FD"));
   m_rDestination.print(pchFilePath);
   m_rDestination.print('|');
-  WriteHex(m_rDestination, uCurrentPosition);
+  m_rDestination.print(uCurrentPosition, HEX);
   m_rDestination.print('|');
 
   const uint16_t uBufferSize = 66; // must be a multiple of 3. 
@@ -62,7 +62,7 @@ void DeviceFileTransfer::SendFileBytes(const char* pchFilePath, Stream& rSource,
     bMore = nActualRead == nMaxRead;
   }
   m_rDestination.print('|');
-  WriteHex(m_rDestination, uChecksum);
+  m_rDestination.print(uChecksum, HEX);
   m_rDestination.print('|');
   m_rDestination.print(bMore ? '+' : 'x');
   SendDataTail();
@@ -84,14 +84,23 @@ void DeviceFileTransfer::AllFilesDeleted(uint16_t uRequestId)
   SendDataTail();
 }
 
-void DeviceFileTransfer::FileReceiveResult(const char* pchFilePath, uint32_t uStartAddress, bool bSuccess)
+void DeviceFileTransfer::FileReceiveResult(const char* pchFilePath, uint32_t uStartAddress, int16_t nReceived)
 {
+  uint16_t uChecksum = CalculateChecksum(nReceived >> 8);
+  uChecksum = CalculateChecksum(nReceived & 0xff, uChecksum);
+  uChecksum = CalculateChecksum((uStartAddress >> 24) & 0xff, uChecksum);
+  uChecksum = CalculateChecksum((uStartAddress >> 16) & 0xff, uChecksum);
+  uChecksum = CalculateChecksum((uStartAddress >> 8) & 0xff, uChecksum);
+  uChecksum = CalculateChecksum((uStartAddress >> 0) & 0xff, uChecksum);
+
   SendDataHeader(F("FR"));
   m_rDestination.print(pchFilePath);
   m_rDestination.print('|');
-  WriteHex(m_rDestination, uStartAddress);
+  m_rDestination.print(uStartAddress, HEX);
   m_rDestination.print('|');
-  m_rDestination.print(bSuccess ? 'k' : 'e');
+  m_rDestination.print(nReceived, HEX);
+  m_rDestination.print('|');
+  m_rDestination.print(uChecksum, HEX);
   SendDataTail();
 }
 

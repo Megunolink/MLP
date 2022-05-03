@@ -51,9 +51,11 @@ public:
   }
 };
 
-void EncodeAsBase64(Print& rDestination, uint8_t* pData, uint16_t Length);
-bool DecodeFromBase64(Print& rDestination, const char* pchData);
+#define DECODE_BAD_DATA -1
+int DecodeFromBase64(Print& rDestination, const char* pchData);
 uint16_t CalculateChecksumFromBase64(const char* pchData);
+
+void EncodeAsBase64(Print& rDestination, uint8_t* pData, uint16_t Length);
 
 void WriteHex(Print& rDestination, uint8_t uValue);
 void WriteHex(Print& rDestination, uint16_t uValue);

@@ -36,20 +36,10 @@ void DataStore::Send(uint32_t uSenderId, byte DataContext, byte DataChannel, voi
   Serial.println();
 }
 
-uint16_t DataStore::CalculateChecksum(uint16_t uSeed, uint8_t const *pStart, uint8_t uLength)
-{
-  while(uLength--)
-  {
-    uSeed = _crc16_update(uSeed, *pStart++);
-  }
-
-  return uSeed;
-}
-
 uint16_t DataStore::CalculateChecksum(CMessageHeader const &rHeader, uint8_t const * pData, uint8_t uDataSize)
 {
-  uint16_t uChecksum = CalculateChecksum(CMessageHeader::ChecksumSeed, (uint8_t const *) &rHeader + sizeof(uint16_t), sizeof(rHeader) - sizeof(uint16_t));
-  uChecksum = CalculateChecksum(uChecksum, pData, uDataSize);
+  uint16_t uChecksum = ::CalculateChecksum((uint8_t const *) &rHeader + sizeof(uint16_t), sizeof(rHeader) - sizeof(uint16_t), (uint16_t)CMessageHeader::ChecksumSeed);
+  uChecksum = ::CalculateChecksum(pData, uDataSize, uChecksum);
 
   return uChecksum;
 }
