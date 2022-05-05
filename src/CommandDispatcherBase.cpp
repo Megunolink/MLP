@@ -10,6 +10,7 @@ CommandDispatcherBase::CommandDispatcherBase( CommandCallback *pCallbackBuffer, 
   m_uLastCommand = 0;
   m_uLastVariable = 0;
   m_fnDefaultHandler = NULL;
+  m_pFirstModule = nullptr;
 }
 
 bool CommandDispatcherBase::AddCommand( const __FlashStringHelper *pCommand, void(*CallbackFunction)(CommandParameter &rParameters) )
@@ -134,6 +135,26 @@ bool CommandDispatcherBase::AddVariable(const __FlashStringHelper *pName, void *
   return false; // too many variables stored already. 
 }
 
+void CommandDispatcherBase::AddModule(CommandModule* pModule)
+{
+  if (pModule != nullptr)
+  {
+    if (m_pFirstModule == nullptr)
+    {
+      m_pFirstModule = pModule;
+    }
+    else
+    {
+      CommandModule* pLink = m_pFirstModule;
+      while (pLink->NextModule != nullptr)
+      {
+        pLink = pLink->NextModule;
+      }
+      pLink->NextModule = pModule;
+    }
+  }
+}
+
 void CommandDispatcherBase::DispatchCommand( char *pchMessage, Print &rSource ) const
 {
   uint8_t uCommand, uParameterStart;
@@ -167,6 +188,21 @@ void CommandDispatcherBase::DispatchCommand( char *pchMessage, Print &rSource ) 
     }
 
     ++pVariableMap;
+  }
+
+  // Match modules
+  CommandModule* pModule = m_pFirstModule;
+  while (pModule != nullptr)
+  {
+    uParameterStart = MatchCommand(pModule->Command, pchMessage);
+    if (uParameterStart != NO_MATCH)
+    {
+      CommandParameter Parameters(rSource, pchMessage, uParameterStart);
+      pModule->DispatchCommand(Parameters);
+      return;
+    }
+
+    pModule = pModule->NextModule;
   }
 
   // No command matched. 

@@ -77,10 +77,12 @@ void DeviceFileTransfer::FileDeleteResult(const char* pchFilePath, bool bSuccess
   SendDataTail();
 }
 
-void DeviceFileTransfer::AllFilesDeleted(uint16_t uRequestId)
+void DeviceFileTransfer::AllFilesDeleted(uint16_t uRequestId, bool bSuccess)
 {
   SendDataHeader(F("FXX"));
   m_rDestination.print(uRequestId);
+  m_rDestination.print('|');
+  m_rDestination.print(bSuccess ? 'k' : 'e');
   SendDataTail();
 }
 

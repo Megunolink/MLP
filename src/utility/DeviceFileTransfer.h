@@ -15,6 +15,6 @@ public:
   void FileReceiveResult(const char* pchFilePath, uint32_t uStartAddress, int16_t nReceived);
 
   void FileDeleteResult(const char* pchFilePath, bool bSuccess);
-  void AllFilesDeleted(uint16_t uRequestId);
+  void AllFilesDeleted(uint16_t uRequestId, bool bSuccess);
 };
 

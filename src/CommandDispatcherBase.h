@@ -1,6 +1,7 @@
 #pragma once
 #include <Arduino.h>
 #include "utility/CommandParameter.h"
+#include "CommandModule.h"
 
 namespace MLP
 {
@@ -32,6 +33,8 @@ namespace MLP
     // Handler called (if not null) when no command matches. 
     void (*m_fnDefaultHandler)();
 
+    CommandModule *m_pFirstModule;
+
   protected:
     CommandDispatcherBase(CommandCallback *pCallbackBuffer, uint8_t uCallbackBufferLength, VariableMap *pVariableMapBuffer, uint8_t uVariableMapLength);
 
@@ -54,6 +57,8 @@ namespace MLP
 #if defined(ARDUINO_ARCH_SAMD) || defined(ARDUINO_ARCH_SAM) || defined(CORE_TEENSY)
     bool AddVariable(const __FlashStringHelper *pName, int &rVariable);
 #endif
+
+    void AddModule(CommandModule* pModule);
 
     void DispatchCommand(char *pchMessage, Print& rSource) const;
 
