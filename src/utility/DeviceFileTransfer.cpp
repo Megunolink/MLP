@@ -68,25 +68,37 @@ void DeviceFileTransfer::SendFileBytes(const char* pchFilePath, Stream& rSource,
   SendDataTail();
 }
 
-void DeviceFileTransfer::FileDeleteResult(const char* pchFilePath, bool bSuccess)
+void DeviceFileTransfer::SendFileBytes(const char* pchFilePath, uint32_t uCurrentPosition, DFTResult Result)
+{
+  SendDataHeader(F("FDe"));
+  m_rDestination.print(pchFilePath);
+  m_rDestination.print('|');
+  m_rDestination.print(uCurrentPosition, HEX);
+  m_rDestination.print('|');
+  m_rDestination.print((char)Result);
+  SendDataTail();
+}
+
+
+void DeviceFileTransfer::FileDeleteResult(const char* pchFilePath, DFTResult Result)
 {
   SendDataHeader(F("FX"));
   m_rDestination.print(pchFilePath);
   m_rDestination.print('|');
-  m_rDestination.print(bSuccess ? 'k' : 'e');
+  m_rDestination.print((char)Result);
   SendDataTail();
 }
 
-void DeviceFileTransfer::AllFilesDeleted(uint16_t uRequestId, bool bSuccess)
+void DeviceFileTransfer::AllFilesDeleted(uint16_t uRequestId, DFTResult Result)
 {
   SendDataHeader(F("FXX"));
   m_rDestination.print(uRequestId);
   m_rDestination.print('|');
-  m_rDestination.print(bSuccess ? 'k' : 'e');
+  m_rDestination.print((char)Result);
   SendDataTail();
 }
 
-void DeviceFileTransfer::FileReceiveResult(const char* pchFilePath, uint32_t uStartAddress, int16_t nReceived)
+void DeviceFileTransfer::FileReceiveResult(const char* pchFilePath, uint32_t uStartAddress, int16_t nReceived, DFTResult Result)
 {
   uint16_t uChecksum = CalculateChecksum(nReceived >> 8);
   uChecksum = CalculateChecksum(nReceived & 0xff, uChecksum);
@@ -103,6 +115,31 @@ void DeviceFileTransfer::FileReceiveResult(const char* pchFilePath, uint32_t uSt
   m_rDestination.print(nReceived, HEX);
   m_rDestination.print('|');
   m_rDestination.print(uChecksum, HEX);
+  m_rDestination.print('|');
+  m_rDestination.print((char)Result);
   SendDataTail();
 }
 
+void DeviceFileTransfer::SendError(DFTResult Result, char chOperation, const char* pchFilePath, uint32_t uContext)
+{
+  SendDataHeader(F("ERR"));
+  m_rDestination.print((char)Result);
+  m_rDestination.print('|');
+  m_rDestination.print(uContext, HEX);
+  if (pchFilePath != nullptr)
+  {
+    m_rDestination.print('|');
+    m_rDestination.print(pchFilePath);
+  }
+  SendDataTail();
+}
+
+void DeviceFileTransfer::ReportSDMountFailed()
+{
+  SendError(DFTResult::SDMountFailed, 'i');
+}
+
+void DeviceFileTransfer::ReportCardMissing()
+{
+  SendError(DFTResult::SDCardMissing, 'i');
+}

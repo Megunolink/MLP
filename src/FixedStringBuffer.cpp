@@ -14,6 +14,7 @@ void FixedStringPrint::begin()
   {
     *m_pchNext = '\0';
   }
+  m_bBufferFlow = false; 
 }
 
 size_t FixedStringPrint::write(uint8_t uValue)
@@ -25,5 +26,6 @@ size_t FixedStringPrint::write(uint8_t uValue)
     return 1;
   }
 
+  m_bBufferFlow = true; 
   return 0;
 }
