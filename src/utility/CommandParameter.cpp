@@ -1,10 +1,11 @@
 #include "CommandParameter.h"
 
-CommandParameter::CommandParameter(Print &rSourceStream, char *pchBuffer, uint8_t uFirstParameter)
+CommandParameter::CommandParameter(Print &rSourceStream, char *pchBuffer, uint8_t uFirstParameter, IPAddress* pSender)
   : Response(rSourceStream)
 {
   m_pchBuffer = pchBuffer;
   m_uNextParameter = uFirstParameter;
+  m_pSender = pSender;
 }
 
 const char *CommandParameter::NextParameter()
@@ -93,6 +94,15 @@ uint32_t CommandParameter::NextParameterAsU32FromHex(uint32_t uDefault)
   }
 
   return uValue;
+}
+
+bool CommandParameter::GetSenderAddress(IPAddress& rAddress)
+{
+  if (m_pSender != nullptr)
+  {
+    rAddress = *m_pSender;
+  }
+  return m_pSender != nullptr;
 }
 
 uint8_t CommandParameter::HexValueOf(char ch)

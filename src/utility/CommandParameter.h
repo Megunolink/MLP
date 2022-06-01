@@ -1,5 +1,6 @@
 #pragma once
 #include <Arduino.h>
+#include <IPAddress.h>
 
 class CommandParameter
 {
@@ -9,10 +10,12 @@ class CommandParameter
   // Offset to next parameter in buffer. 
   uint8_t m_uNextParameter; 
 
+  // Sender address, if this command was sent from an IP address
+  // and we know the remote address. Null otherwise. 
+  IPAddress* m_pSender;
 
 public:
-  CommandParameter(Print &rSourceStream, char *pchBuffer, uint8_t nFirstParameter);
-
+  CommandParameter(Print &rSourceStream, char *pchBuffer, uint8_t nFirstParameter, IPAddress* pSender = nullptr);
 
   // The stream that the parameter came from (for replies, for example)
   Print& Response;
@@ -29,6 +32,8 @@ public:
   uint8_t NextParameterAsU8FromHex(uint8_t uDefault = 0);
   uint16_t NextParameterAsU16FromHex(uint16_t uDefault = 0);
   uint32_t NextParameterAsU32FromHex(uint32_t uDefault = 0);
+
+  bool GetSenderAddress(IPAddress& rAddress);
 
 private:
   uint8_t HexValueOf(char ch);

@@ -60,7 +60,7 @@ namespace MLP
 
     void AddModule(CommandModule* pModule);
 
-    void DispatchCommand(char *pchMessage, Print& rSource) const;
+    void DispatchCommand(char *pchMessage, Print& rSource, IPAddress *pSender = nullptr) const;
 
   protected:
     enum EConstants { NO_MATCH = 0 };
