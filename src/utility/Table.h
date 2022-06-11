@@ -65,6 +65,36 @@ public:
   }
 
   template<typename TRowName>
+  void SendData(TRowName RowName, double Value, int DecimalPlaces)
+  {
+    SendDoubleData(RowName, Value, DecimalPlaces);
+  }
+
+  template<typename TRowName, typename TDescription>
+  void SendData(TRowName RowName, double Value, int DecimalPlaces, TDescription Description)
+  {
+    SendDoubleData(RowName, Value, DecimalPlaces, Description);
+  }
+
+  template<typename TRowName>
+  void SendDoubleData(TRowName RowName, double Value, int DecimalPlaces)
+  {
+    SendHeader();
+    SendPairs(RowName, Value, DecimalPlaces);
+    SendDataTail();
+  }
+
+  template<typename TRowName, typename TDescription>
+  void SendDoubleData(TRowName RowName, double Value, int DecimalPlaces, TDescription Description)
+  {
+    SendHeader();
+    SendPairs(RowName, Value, DecimalPlaces);
+    m_rDestination.print('|');
+    m_rDestination.print(Description);
+    SendDataTail();
+  }
+
+  template<typename TRowName>
   void ShowCurrentTime(TRowName RowName)
   {
     SendHeader();
@@ -113,7 +143,16 @@ private:
     m_rDestination.print('|');
     m_rDestination.print(RowName);
     m_rDestination.print('|');
-    m_rDestination.print(Value);
+    m_rDestination.print(Value, DecimalPlaces);
+  }
+
+  template<typename TRowName>
+  void SendPairs(TRowName RowName, double Value, int DecimalPlaces)
+  {
+    m_rDestination.print('|');
+    m_rDestination.print(RowName);
+    m_rDestination.print('|');
+    m_rDestination.print(Value, DecimalPlaces);
   }
 
   template<typename TRowName, typename TValue>

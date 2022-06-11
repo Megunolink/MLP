@@ -1,6 +1,5 @@
 #include "UdpParser.h"
 #include "PrintBuffer.h"
-#include "Streaming.h"
 #include "UdpResponseStream.h"
 
 using namespace MLP;
@@ -23,7 +22,6 @@ void UdpParser::Process()
         int nCommandLength = m_rConnection.read(pchCommand, m_szMaxBufferSize - 1);
         if (nCommandLength > 0 && FindCommand(pchCommand, nCommandLength))
         {
-          Serial.println(pchCommand);
           IPAddress ipSource = m_rConnection.remoteIP();
           UdpResponseStream Response(m_rConnection, ipSource, m_rConnection.remotePort());
           m_rDispatcher.DispatchCommand(pchCommand, Response, &ipSource);

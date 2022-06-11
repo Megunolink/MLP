@@ -17,6 +17,7 @@ public:
     Magenta = 'm',
     Cyan = 'c',
     White = 'w',
+    MissingColor = ' ',
   };
 
   enum LineStyle
@@ -27,6 +28,7 @@ public:
     DashDot = ';',
     DashDotDot = '%',
     NoLine = '#',
+    MissingLineStyle = ' ',
   };
 
   enum MarkerStyle 
@@ -43,6 +45,7 @@ public:
     FilledSquare = 'S',
     FilledDiamond = 'D',
     FilledCircle = 'O',
+    MissingMarkerStyle = ' ',
   };
 
   enum Axis
@@ -50,6 +53,7 @@ public:
     DefaultAxis = ' ',
     LeftAxis = '<',
     RightAxis = '>',
+    MissingAxis = '0',
   };
 
   void SetTitle(const char *title);
@@ -68,11 +72,23 @@ public:
   void SetYlabel(const __FlashStringHelper *ylabel);
   void SetY2label(const __FlashStringHelper *ylabel);
 
-  void SetSeriesProperties(const char *SeriesName, Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax = DefaultAxis);
-  void SetSeriesProperties(const __FlashStringHelper *SeriesName, Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax = DefaultAxis);
+  template<typename TSeriesName>
+  void SetSeriesProperties(TSeriesName SeriesName, Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax = DefaultAxis)
+  {
+    SendDataHeader(F("STYLE"));
+    m_rDestination.print(SeriesName);
+    SendSeriesProperties(Color, Line, uLineWidth, Marker, ax);
+    SendDataTail();
+  }
 
-  void SetSeriesProperties(const char* SeriesName, int32_t nColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax = DefaultAxis);
-  void SetSeriesProperties(const __FlashStringHelper* SeriesName, int32_t nColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax = DefaultAxis);
+  template<typename TSeriesName>
+  void SetSeriesProperties(TSeriesName SeriesName, int32_t nColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax = DefaultAxis)
+  {
+    SendDataHeader(F("STYLE"));
+    m_rDestination.print(SeriesName);
+    SendSeriesProperties(nColor, Line, uLineWidth, Marker, ax);
+    SendDataTail();
+  }
 
   void SetSeriesProperties(const char *SeriesName, const char *SeriesProperties);
   void SetSeriesProperties(const __FlashStringHelper *SeriesName, const char *SeriesProperties);
@@ -124,7 +140,7 @@ protected:
   
   void SendSeriesProperties(Colors color);
   void SendSeriesProperties(int32_t nColor);
-  void SendSeriesProperties(LineStyle style);
+  void SendSeriesProperties(LineStyle style, uint8_t uLineWidth);
   void SendSeriesProperties(MarkerStyle style);
   void SendSeriesProperties(Axis ax);
   void SendSeriesProperties(LineFormat const& fmt);
@@ -140,6 +156,23 @@ protected:
   void SendHeader_Data();
   void SendTimeSeparator();
   void SendColorValue(int32_t nColor);
+
+  template<typename T>
+  void SendSeriesHeader(const __FlashStringHelper* pstrCmd, T SeriesName, bool bIncludeSeparator)
+  {
+    SendDataHeader(pstrCmd);
+    m_rDestination.print(SeriesName);
+    if (bIncludeSeparator)
+    {
+      m_rDestination.print('|');
+    }
+  }
+
+  template<typename T>
+  void SendSeriesHeader_Data(T SeriesName, bool bIncludeSeparator)
+  {
+    SendSeriesHeader(F("DATA"), SeriesName, bIncludeSeparator);
+  }
 
 private:
   void SendRangeDetail(float fYLimLower, float fYLimUpper);
