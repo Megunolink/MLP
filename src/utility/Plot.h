@@ -3,6 +3,7 @@
 
 class LineFormat;
 class MarkerFormat;
+class RGBColor;
 
 class Plot : public MegunoLinkProtocol
 {
@@ -82,11 +83,11 @@ public:
   }
 
   template<typename TSeriesName>
-  void SetSeriesProperties(TSeriesName SeriesName, int32_t nColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax = DefaultAxis)
+  void SetSeriesProperties(TSeriesName SeriesName, const RGBColor &Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax = DefaultAxis)
   {
     SendDataHeader(F("STYLE"));
     m_rDestination.print(SeriesName);
-    SendSeriesProperties(nColor, Line, uLineWidth, Marker, ax);
+    SendSeriesProperties(Color, Line, uLineWidth, Marker, ax);
     SendDataTail();
   }
 
@@ -136,10 +137,10 @@ protected:
   void SendSeriesProperties(const char *SeriesProperties);
   void SendSeriesProperties(const __FlashStringHelper *SeriesProperties);
   void SendSeriesProperties(Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax);
-  void SendSeriesProperties(int32_t nColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax);
+  void SendSeriesProperties(const RGBColor& Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax);
   
   void SendSeriesProperties(Colors color);
-  void SendSeriesProperties(int32_t nColor);
+  void SendSeriesProperties(const RGBColor& Color);
   void SendSeriesProperties(LineStyle style, uint8_t uLineWidth);
   void SendSeriesProperties(MarkerStyle style);
   void SendSeriesProperties(Axis ax);
@@ -155,7 +156,7 @@ protected:
 
   void SendHeader_Data();
   void SendTimeSeparator();
-  void SendColorValue(int32_t nColor);
+  void SendColorValue(const RGBColor& Color);
 
   template<typename T>
   void SendSeriesHeader(const __FlashStringHelper* pstrCmd, T SeriesName, bool bIncludeSeparator)

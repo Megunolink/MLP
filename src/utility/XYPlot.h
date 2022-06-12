@@ -43,10 +43,10 @@ public:
   }
 
   template<typename TSeriesName, typename TXData, typename TYData> 
-  void SendData(TSeriesName seriesName, TXData xValue, TYData yValue, int32_t nColor, LineStyle Line = MissingLineStyle, uint8_t uLineWidth = 0, MarkerStyle Marker = MissingMarkerStyle, Axis ax = MissingAxis)
+  void SendData(TSeriesName seriesName, TXData xValue, TYData yValue, const RGBColor& Color, LineStyle Line = MissingLineStyle, uint8_t uLineWidth = 0, MarkerStyle Marker = MissingMarkerStyle, Axis ax = MissingAxis)
   {
     SendSeriesHeader_Data(seriesName, false);
-    SendSeriesProperties(nColor, Line, uLineWidth, Marker, ax);
+    SendSeriesProperties(Color, Line, uLineWidth, Marker, ax);
     m_rDestination.print(xValue);
     m_rDestination.print('|');
     m_rDestination.print(yValue);
@@ -81,10 +81,10 @@ public:
   }
 
   template<typename TSeriesName, typename TXData> 
-  void SendData(TSeriesName seriesName, TXData xValue, float yValue, int nDecimalPlaces, int32_t nColor, LineStyle Line = MissingLineStyle, uint8_t uLineWidth = 0, MarkerStyle Marker = MissingMarkerStyle, Axis ax = MissingAxis)
+  void SendData(TSeriesName seriesName, TXData xValue, float yValue, int nDecimalPlaces, const RGBColor& Color, LineStyle Line = MissingLineStyle, uint8_t uLineWidth = 0, MarkerStyle Marker = MissingMarkerStyle, Axis ax = MissingAxis)
   {
     SendSeriesHeader_Data(seriesName, false);
-    SendSeriesProperties(nColor, Line, uLineWidth, Marker, ax);
+    SendSeriesProperties(Color, Line, uLineWidth, Marker, ax);
     m_rDestination.print(xValue);
     m_rDestination.print('|');
     m_rDestination.print(yValue, nDecimalPlaces);

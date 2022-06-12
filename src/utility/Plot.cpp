@@ -257,10 +257,10 @@ void Plot::SendSeriesProperties(Colors Color, LineStyle Line, uint8_t uLineWidth
   m_rDestination.print('|');
 }
 
-void Plot::SendSeriesProperties(int32_t nColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
+void Plot::SendSeriesProperties(const RGBColor& Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
 {
   m_rDestination.print(':');
-  SendSeriesProperties(nColor);
+  SendSeriesProperties(Color);
   SendSeriesProperties(Line, uLineWidth);
   SendSeriesProperties(Marker);
   SendSeriesProperties(ax);
@@ -275,9 +275,9 @@ void Plot::SendSeriesProperties(Colors color)
   }
 }
 
-void Plot::SendSeriesProperties(int32_t nColor)
+void Plot::SendSeriesProperties(const RGBColor& Color)
 {
-  SendColorValue(nColor);
+  SendColorValue(Color);
 }
 
 void Plot::SendSeriesProperties(LineStyle style, uint8_t uLineWidth)
@@ -395,12 +395,13 @@ void Plot::SendRangeDetail(float fYLimLower, float fYLimUpper)
   SendDataTail();
 }
 
-void Plot::SendColorValue(int32_t nColor)
+void Plot::SendColorValue(const RGBColor& Color)
 {
   char achBuffer[8];
   achBuffer[0] = '&';
   achBuffer[7] = 0;
   char* pchBuffer = achBuffer + 6;
+  int32_t nColor = Color.PackedValue;
   for (int i = 0; i < 6; ++i)
   {
     char chTemp = nColor & 0x0f;

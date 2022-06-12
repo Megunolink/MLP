@@ -67,11 +67,11 @@ void TimePlot::SendTimeWithSeparator(const time_t& Time)
   m_rDestination.print('|');
 }
 
-void TimePlot::SendProperties(Colors Color, int32_t nColor, bool bUseIntColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
+void TimePlot::SendProperties(Colors Color, RGBColor CustomColor, bool bUseIntColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
 {
   if (bUseIntColor)
   {
-    SendSeriesProperties(nColor, Line, uLineWidth, Marker, ax);
+    SendSeriesProperties(CustomColor, Line, uLineWidth, Marker, ax);
   }
   else
   {
@@ -114,11 +114,11 @@ void TimePlot::SendFloatDataCore(const tm* pTime, const time_t* pEpoch, float yV
   SendDataTail();
 }
 
-void TimePlot::SendFloatDataCore(const tm* pTime, const time_t* pEpoch, float yValue, int nDecimalPlaces, Colors Color, int32_t nColor, bool bUseIntColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
+void TimePlot::SendFloatDataCore(const tm* pTime, const time_t* pEpoch, float yValue, int nDecimalPlaces, Colors Color, RGBColor CustomColor, bool bUseIntColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
 {
   if (bUseIntColor)
   {
-    SendSeriesProperties(nColor, Line, uLineWidth, Marker, ax);
+    SendSeriesProperties(CustomColor, Line, uLineWidth, Marker, ax);
   }
   else
   {

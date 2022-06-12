@@ -28,3 +28,22 @@ public:
   Plot::MarkerStyle Style;
   uint8_t Size;
 };
+
+class RGBColor
+{
+public:
+  RGBColor(uint8_t uRed, uint8_t uGreen, uint8_t uBlue)
+  {
+    PackedValue = uRed;
+    PackedValue = (PackedValue << 8) | uGreen;
+    PackedValue = (PackedValue << 8) | uBlue;
+  }
+
+  RGBColor(uint32_t uPackedValue)
+  {
+    PackedValue = uPackedValue;
+  }
+
+
+  uint32_t PackedValue;
+};

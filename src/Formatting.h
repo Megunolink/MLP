@@ -51,6 +51,7 @@ public:
   }
 };
 
+
 #define DECODE_BAD_DATA -1
 int DecodeFromBase64(Print& rDestination, const char* pchData);
 uint16_t CalculateChecksumFromBase64(const char* pchData);

@@ -148,10 +148,10 @@ public:
   }
 
   template<typename TSeries, typename TYData>
-  void SendData(TSeries seriesName, TYData yValue, int32_t nColor, LineStyle Line = MissingLineStyle, uint8_t uLineWidth = 0, MarkerStyle Marker = MissingMarkerStyle, Axis ax = MissingAxis)
+  void SendData(TSeries seriesName, TYData yValue, const RGBColor& Color, LineStyle Line = MissingLineStyle, uint8_t uLineWidth = 0, MarkerStyle Marker = MissingMarkerStyle, Axis ax = MissingAxis)
   {
     SendSeriesHeader_Data(seriesName, false);
-    SendDataCore(nullptr, nullptr, yValue, Red, nColor, true, Line, uLineWidth, Marker, ax);
+    SendDataCore(nullptr, nullptr, yValue, Red, Color, true, Line, uLineWidth, Marker, ax);
   }
 
   template<class TSeriesName, class TYData> 
@@ -169,10 +169,10 @@ public:
   }
 
   template<class TSeriesName, class TYData> 
-  void SendData(const TSeriesName* seriesName, const tm& Time, TYData yValue, int32_t nColor, LineStyle Line = MissingLineStyle, uint8_t uLineWidth = 0, MarkerStyle Marker = MissingMarkerStyle, Axis ax = MissingAxis)
+  void SendData(const TSeriesName* seriesName, const tm& Time, TYData yValue, const RGBColor& Color, LineStyle Line = MissingLineStyle, uint8_t uLineWidth = 0, MarkerStyle Marker = MissingMarkerStyle, Axis ax = MissingAxis)
   {
     SendSeriesHeader_Data(seriesName, false);
-    SendDataCore(&Time, nullptr, yValue, Red, nColor, true, Line, uLineWidth, Marker, ax);
+    SendDataCore(&Time, nullptr, yValue, Red, Color, true, Line, uLineWidth, Marker, ax);
   }
 
   template<class TSeriesName, class TYData>
@@ -190,10 +190,10 @@ public:
   }
 
   template<class TSeriesName, class TYData>
-  void SendData(TSeriesName seriesName, const time_t& Time, TYData yValue, int32_t nColor, LineStyle Line = MissingLineStyle, uint8_t uLineWidth = 0, MarkerStyle Marker = MissingMarkerStyle, Axis ax = MissingAxis)
+  void SendData(TSeriesName seriesName, const time_t& Time, TYData yValue, const RGBColor& Color, LineStyle Line = MissingLineStyle, uint8_t uLineWidth = 0, MarkerStyle Marker = MissingMarkerStyle, Axis ax = MissingAxis)
   {
     SendSeriesHeader_Data(seriesName, false);
-    SendDataCore(NULL, &Time, yValue, Colors::Black, nColor, true, Line, uLineWidth, Marker, ax);
+    SendDataCore(NULL, &Time, yValue, Colors::Black, Color, true, Line, uLineWidth, Marker, ax);
   }
 
   template<class TSeriesName>
@@ -211,10 +211,10 @@ public:
   }
 
   template<class TSeriesName>
-  void SendFloatData(TSeriesName seriesName, float yValue, int nDecimalPlaces, int32_t nColor, LineStyle Line = MissingLineStyle, uint8_t uLineWidth = 0, MarkerStyle Marker = MissingMarkerStyle, Axis ax = MissingAxis)
+  void SendFloatData(TSeriesName seriesName, float yValue, int nDecimalPlaces, const RGBColor& Color, LineStyle Line = MissingLineStyle, uint8_t uLineWidth = 0, MarkerStyle Marker = MissingMarkerStyle, Axis ax = MissingAxis)
   {
     SendSeriesHeader_Data(seriesName, false);
-    SendFloatDataCore(NULL, NULL, yValue, nDecimalPlaces, Colors::Black, nColor, true, Line, uLineWidth, Marker, ax);
+    SendFloatDataCore(NULL, NULL, yValue, nDecimalPlaces, Colors::Black, Color, true, Line, uLineWidth, Marker, ax);
   }
 
   template<class TSeriesName>
@@ -232,10 +232,10 @@ public:
   }
 
   template<class TSeriesName>
-  void SendFloatData(TSeriesName seriesName, const tm& Time, float yValue, int nDecimalPlaces, int32_t nColor, LineStyle Line = MissingLineStyle, uint8_t uLineWidth = 0, MarkerStyle Marker = MissingMarkerStyle, Axis ax = MissingAxis)
+  void SendFloatData(TSeriesName seriesName, const tm& Time, float yValue, int nDecimalPlaces, const RGBColor& Color, LineStyle Line = MissingLineStyle, uint8_t uLineWidth = 0, MarkerStyle Marker = MissingMarkerStyle, Axis ax = MissingAxis)
   {
     SendSeriesHeader_Data(seriesName, false);
-    SendFloatDataCore(&Time, NULL, yValue, nDecimalPlaces, Colors::Black, nColor, true, Line, uLineWidth, Marker, ax);
+    SendFloatDataCore(&Time, NULL, yValue, nDecimalPlaces, Colors::Black, Color, true, Line, uLineWidth, Marker, ax);
   }
 
   template<class TSeriesName>
@@ -253,10 +253,10 @@ public:
   }
 
   template<class TSeriesName>
-  void SendFloatData(TSeriesName seriesName, const time_t& Time, float yValue, int nDecimalPlaces, int32_t nColor, LineStyle Line = MissingLineStyle, uint8_t uLineWidth = 0, MarkerStyle Marker = MissingMarkerStyle, Axis ax = MissingAxis)
+  void SendFloatData(TSeriesName seriesName, const time_t& Time, float yValue, int nDecimalPlaces, const RGBColor& Color, LineStyle Line = MissingLineStyle, uint8_t uLineWidth = 0, MarkerStyle Marker = MissingMarkerStyle, Axis ax = MissingAxis)
   {
     SendSeriesHeader_Data(seriesName, false);
-    SendFloatDataCore(NULL, &Time, yValue, nDecimalPlaces, Red, nColor, true, Line, uLineWidth, Marker, ax);
+    SendFloatDataCore(NULL, &Time, yValue, nDecimalPlaces, Red, Color, true, Line, uLineWidth, Marker, ax);
   }
 
 #endif
@@ -288,9 +288,9 @@ private:
   }
 
   template<class TYData> 
-  void SendDataCore(const tm* pTime, const time_t* pEpoch, TYData YValue, Colors Color, int32_t nColor, bool bUseIntColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
+  void SendDataCore(const tm* pTime, const time_t* pEpoch, TYData YValue, Colors Color, RGBColor CustomColor, bool bUseIntColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
   {
-    SendProperties(Color, nColor, bUseIntColor, Line, uLineWidth, Marker, ax);
+    SendProperties(Color, CustomColor, bUseIntColor, Line, uLineWidth, Marker, ax);
     SendTime(pTime, pEpoch);
 
     m_rDestination.print(YValue);
@@ -298,10 +298,10 @@ private:
     SendDataTail();
   }
 
-  void SendProperties(Colors Color, int32_t nColor, bool bUseIntColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax);
+  void SendProperties(Colors Color, RGBColor CustomColor, bool bUseIntColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax);
 
   void SendTime(const tm* pTime, const time_t* pEpoch);
 
   void SendFloatDataCore(const tm* pTime, const time_t* pEpoch, float yValue, int nDecimalPlaces, const char* seriesProperties);
-  void SendFloatDataCore(const tm* pTime, const time_t* pEpoch, float yValue, int nDecimalPlaces, Colors Color, int32_t nColor, bool bUseIntColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax);
+  void SendFloatDataCore(const tm* pTime, const time_t* pEpoch, float yValue, int nDecimalPlaces, Colors Color, RGBColor CustomColor, bool bUseIntColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax);
 };
