@@ -15,7 +15,10 @@ void DeviceFileTransfer::SendFileInfo(const char* pchFilepath, uint32_t uFileLen
   m_rDestination.print('|');
   m_rDestination.print(uFileLength);
   m_rDestination.print('|');
-  m_rDestination.print(ttLastModified);
+
+  // Arduino's print method doesn't overload printing for 64 bit integers. 
+  // 32 bit value of time_t is good to 2038, so just cast for now. 
+  m_rDestination.print((long)ttLastModified);
   SendDataTail();
 }
 
