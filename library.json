@@ -1,0 +1,24 @@
+{
+  "name": "MegunoLink",
+  "version": "1.39.0",
+  "description": "Library for storing data in the eeprom, processing serial messages and plotting data with MegunoLink.",
+  "keywords": "MegunoLink, command handler, filter, timer, circular buffer",
+  "homepage": "https://www.MegunoLink.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Megunolink/MLP.git"
+  },
+  "authors": [
+    {
+      "name": "Number Eight Innovation",
+      "email": "support@MegunoLink.com",
+      "url": "https://www.MegunoLink.com"
+    }
+  ],
+  "license": "LGPL-3.0-only",
+  "frameworks": "arduino",
+  "platforms": "*",
+  "build": {
+    "libLDFMode" : "deep"
+  }
+} 
