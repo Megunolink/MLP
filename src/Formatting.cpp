@@ -45,7 +45,7 @@ uint8_t base64_to_binary(unsigned char c) {
   return 255;
 }
 
-void EncodeAsBase64(Print& rDestination, uint8_t* pData, uint16_t Length)
+void EncodeAsBase64(Print& rDestination, const uint8_t* pData, uint16_t Length)
 {
   unsigned int full_sets = Length / 3;
 

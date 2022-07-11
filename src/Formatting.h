@@ -56,7 +56,7 @@ public:
 int DecodeFromBase64(Print& rDestination, const char* pchData);
 uint16_t CalculateChecksumFromBase64(const char* pchData);
 
-void EncodeAsBase64(Print& rDestination, uint8_t* pData, uint16_t Length);
+void EncodeAsBase64(Print& rDestination, const uint8_t* pData, uint16_t Length);
 
 void WriteHex(Print& rDestination, uint8_t uValue);
 void WriteHex(Print& rDestination, uint16_t uValue);
