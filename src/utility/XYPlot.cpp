@@ -16,6 +16,7 @@ XYPlot::XYPlot( const __FlashStringHelper *channelName, Print &rDestination )
 {
 }
 
+#if 0
 void XYPlot::SendData(const __FlashStringHelper * seriesName, float *xValues, float *yValues, unsigned NumberOfValues, int nDecimalPlaces, const char * seriesProperties /*= NULL*/)
 {
   SendHeader_Data();
@@ -45,6 +46,8 @@ void XYPlot::SendData(float *xValues, float *yValues, unsigned NumberOfValues, i
   }
   SendDataTail();
 }
+#endif
+
 
 void XYPlot::SetXRange(float fXLimMin, float fXlimMax)
 {

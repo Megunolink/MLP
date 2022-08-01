@@ -38,92 +38,6 @@ void TimePlot::Stop()
   Run(false);
 }
 
-void TimePlot::SendFloatData(const char * seriesName, float yValue, int nDecimalPlaces, const char * seriesProperties/*=NULL*/)
-{
-  SendDataHeader(F("DATA"));
-  m_rDestination.print(seriesName);
-  SendSeriesProperties(seriesProperties);
-  m_rDestination.print(F("T|"));
-  m_rDestination.print(yValue, nDecimalPlaces);
-  SendDataTail();
-}
-
-void TimePlot::SendFloatData(const char * seriesName, float yValue, int nDecimalPlaces, Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
-{
-  SendDataHeader(F("DATA"));
-  m_rDestination.print(seriesName);
-  SendSeriesProperties(Color, Line, uLineWidth, Marker, ax);
-  m_rDestination.print(F("T|"));
-  m_rDestination.print(yValue, nDecimalPlaces);
-  SendDataTail();
-}
-
-void TimePlot::SendFloatData(const char * seriesName, float yValue, int nDecimalPlaces, int32_t nColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
-{
-  SendDataHeader(F("DATA"));
-  m_rDestination.print(seriesName);
-  SendSeriesProperties(nColor, Line, uLineWidth, Marker, ax);
-  m_rDestination.print(F("T|"));
-  m_rDestination.print(yValue, nDecimalPlaces);
-  SendDataTail();
-}
-
-void TimePlot::SendFloatData(const __FlashStringHelper * seriesName, float yValue, int nDecimalPlaces, const char * seriesProperties/*=NULL*/)
-{
-  SendDataHeader(F("DATA"));
-  m_rDestination.print(seriesName);
-  SendFloatDataCore(NULL, NULL, yValue, nDecimalPlaces, seriesProperties);
-
-}
-
-void TimePlot::SendFloatData(const __FlashStringHelper * seriesName, float yValue, int nDecimalPlaces, Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
-{
-  SendDataHeader(F("DATA"));
-  m_rDestination.print(seriesName);
-  SendFloatDataCore(NULL, NULL, yValue, nDecimalPlaces, Color, 0, false, Line, uLineWidth, Marker, ax);
-}
-
-void TimePlot::SendFloatData(const __FlashStringHelper * seriesName, float yValue, int nDecimalPlaces, int32_t nColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
-{
-  SendDataHeader(F("DATA"));
-  m_rDestination.print(seriesName);
-  SendFloatDataCore(NULL, NULL, yValue, nDecimalPlaces, Colors::Black, nColor, true, Line, uLineWidth, Marker, ax);
-}
-
-void TimePlot::SetCursorPositionToNow(const char* SeriesName)
-{
-  SendDataHeader(F("C-POSD"));
-  m_rDestination.print(SeriesName);
-  m_rDestination.print(F("|T"));
-  SendDataTail();
-}
-
-void TimePlot::SetCursorPositionToNow(const __FlashStringHelper* SeriesName)
-{
-  SendDataHeader(F("C-POSD"));
-  m_rDestination.print(SeriesName);
-  m_rDestination.print(F("|T"));
-  SendDataTail();
-}
-
-void TimePlot::SetCursorPosition(const char* SeriesName, const tm& Time)
-{
-  SendDataHeader(F("C-POSD"));
-  m_rDestination.print(SeriesName);
-  m_rDestination.print(F("|"));
-  SendTime(Time);
-  SendDataTail();
-}
-
-void TimePlot::SetCursorPosition(const __FlashStringHelper* SeriesName, const tm& Time)
-{
-  SendDataHeader(F("C-POSD"));
-  m_rDestination.print(SeriesName);
-  m_rDestination.print(F("|"));
-  SendTime(Time);
-  SendDataTail();
-}
-
 void TimePlot::SendTime(const tm& Time)
 {
   m_rDestination.print(1900 + Time.tm_year);
@@ -153,76 +67,32 @@ void TimePlot::SendTimeWithSeparator(const time_t& Time)
   m_rDestination.print('|');
 }
 
-void TimePlot::SendFloatData(const char* seriesName, const tm& Time, float yValue, int nDecimalPlaces, const char* seriesProperties/*=NULL*/)
+void TimePlot::SendProperties(Colors Color, RGBColor CustomColor, bool bUseIntColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
 {
-  SendHeaderCore(seriesName);
-  SendFloatDataCore(&Time, NULL, yValue, nDecimalPlaces, seriesProperties);
+  if (bUseIntColor)
+  {
+    SendSeriesProperties(CustomColor, Line, uLineWidth, Marker, ax);
+  }
+  else
+  {
+    SendSeriesProperties(Color, Line, uLineWidth, Marker, ax);
+  }
 }
 
-void TimePlot::SendFloatData(const char* seriesName, const tm& Time, float yValue, int nDecimalPlaces, Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
+void TimePlot::SendTime(const tm* pTime, const time_t* pEpoch)
 {
-  SendHeaderCore(seriesName);
-  SendFloatDataCore(&Time, NULL, yValue, nDecimalPlaces, Color, 0, false, Line, uLineWidth, Marker, ax);
-}
-
-void TimePlot::SendFloatData(const char* seriesName, const tm& Time, float yValue, int nDecimalPlaces, int32_t nColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
-{
-  SendHeaderCore(seriesName);
-  SendFloatDataCore(&Time, NULL, yValue, nDecimalPlaces, Colors::Black, nColor, true, Line, uLineWidth, Marker, ax);
-}
-
-void TimePlot::SendFloatData(const __FlashStringHelper* seriesName, const tm& Time, float yValue, int nDecimalPlaces, const char* seriesProperties/*=NULL*/)
-{
-  SendHeaderCore(seriesName);
-  SendFloatDataCore(&Time, NULL, yValue, nDecimalPlaces, seriesProperties);
-}
-
-void TimePlot::SendFloatData(const __FlashStringHelper* seriesName, const tm& Time, float yValue, int nDecimalPlaces, Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
-{
-  SendHeaderCore(seriesName);
-  SendFloatDataCore(&Time, NULL, yValue, nDecimalPlaces, Color, 0, false, Line, uLineWidth, Marker, ax);
-}
-
-void TimePlot::SendFloatData(const __FlashStringHelper* seriesName, const tm& Time, float yValue, int nDecimalPlaces, int32_t nColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
-{
-  SendHeaderCore(seriesName);
-  SendFloatDataCore(&Time, NULL, yValue, nDecimalPlaces, Colors::Black, nColor, true, Line, uLineWidth, Marker, ax);
-}
-
-void TimePlot::SendFloatData(const char* seriesName, const time_t& Time, float yValue, int nDecimalPlaces, const char* seriesProperties )
-{
-  SendHeaderCore(seriesName);
-  SendFloatDataCore(NULL, &Time, yValue, nDecimalPlaces, seriesProperties);
-}
-
-void TimePlot::SendFloatData(const char* seriesName, const time_t& Time, float yValue, int nDecimalPlaces, Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
-{
-  SendHeaderCore(seriesName);
-  SendFloatDataCore(NULL, &Time, yValue, nDecimalPlaces, Color, 0, false, Line, uLineWidth, Marker, ax);
-}
-
-void TimePlot::SendFloatData(const char* seriesName, const time_t& Time, float yValue, int nDecimalPlaces, int32_t nColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
-{
-  SendHeaderCore(seriesName);
-  SendFloatDataCore(NULL, &Time, yValue, nDecimalPlaces, Colors::Black, nColor, true, Line, uLineWidth, Marker, ax);
-}
-
-void TimePlot::SendFloatData(const __FlashStringHelper* seriesName, const time_t& Time, float yValue, int nDecimalPlaces, const char* seriesProperties)
-{
-  SendHeaderCore(seriesName);
-  SendFloatDataCore(NULL, &Time, yValue, nDecimalPlaces, seriesProperties);
-}
-
-void TimePlot::SendFloatData(const __FlashStringHelper* seriesName, const time_t& Time, float yValue, int nDecimalPlaces, Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
-{
-  SendHeaderCore(seriesName);
-  SendFloatDataCore(NULL, &Time, yValue, nDecimalPlaces, Color, 0, false, Line, uLineWidth, Marker, ax);
-}
-
-void TimePlot::SendFloatData(const __FlashStringHelper* seriesName, const time_t& Time, float yValue, int nDecimalPlaces, int32_t nColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
-{
-  SendHeaderCore(seriesName);
-  SendFloatDataCore(NULL, &Time, yValue, nDecimalPlaces, Colors::Black, nColor, true, Line, uLineWidth, Marker, ax);
+  if (pTime != NULL)
+  {
+    SendTimeWithSeparator(*pTime);
+  }
+  else if (pEpoch != NULL)
+  {
+    SendTimeWithSeparator(*pEpoch);
+  }
+  else
+  {
+    SendTimeSeparator();
+  }
 }
 
 void TimePlot::SendFloatDataCore(const tm* pTime, const time_t* pEpoch, float yValue, int nDecimalPlaces, const char* seriesProperties)
@@ -244,11 +114,11 @@ void TimePlot::SendFloatDataCore(const tm* pTime, const time_t* pEpoch, float yV
   SendDataTail();
 }
 
-void TimePlot::SendFloatDataCore(const tm* pTime, const time_t* pEpoch, float yValue, int nDecimalPlaces, Colors Color, int32_t nColor, bool bUseIntColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
+void TimePlot::SendFloatDataCore(const tm* pTime, const time_t* pEpoch, float yValue, int nDecimalPlaces, Colors Color, RGBColor CustomColor, bool bUseIntColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
 {
   if (bUseIntColor)
   {
-    SendSeriesProperties(nColor, Line, uLineWidth, Marker, ax);
+    SendSeriesProperties(CustomColor, Line, uLineWidth, Marker, ax);
   }
   else
   {

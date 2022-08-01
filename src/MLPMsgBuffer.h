@@ -12,23 +12,31 @@ class MLPMsgDestination : public Print
 {
 protected:
 
-  // Buffer that we are writing to. Buffer should
-  // be large enough to hold the biggest message we'll send. 
-  static const int nBufferSize = 128;
-  char m_achBuffer[nBufferSize];
+  /// <summary>
+  /// Buffer that we are writing to. Buffer should
+  /// be large enough to hold the biggest message we'll send. 
+  /// </summary>
+  char * const m_pchStart;
 
-  // Next location in buffer to write to
+  /// <summary>
+  /// Size of the buffer. 
+  /// </summary>
+  int const m_nBufferSize;
+
+  /// <summary>
+  /// Next location in buffer to write to 
+  /// </summary>
   char* m_pchNext;
 
 public:
 
-  MLPMsgDestination();
+  MLPMsgDestination(char* pchStart, int nLength);
 
   void begin();
 
   inline size_t length() const
   {
-    return m_pchNext - m_achBuffer;
+    return m_pchNext - m_pchStart;
   }
 
   inline size_t available() const
@@ -38,15 +46,17 @@ public:
 
   inline size_t capacity() const
   {
-    return sizeof(m_achBuffer);
+    return m_nBufferSize;
   }
 
   inline char const* c_str() const
   {
-    return m_achBuffer;
+    return m_pchStart;
   }
 
-  size_t write(uint8_t uValue) override;
+  virtual size_t write(uint8_t uValue) override;
 
-  virtual void flush() {}
+  virtual void flush() = 0;
+
+  virtual void EndTransmission();
 };

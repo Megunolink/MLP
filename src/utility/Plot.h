@@ -1,6 +1,10 @@
 #pragma once
 #include "MegunoLinkProtocol.h"
 
+class LineFormat;
+class MarkerFormat;
+class RGBColor;
+
 class Plot : public MegunoLinkProtocol
 {
 public:
@@ -14,6 +18,7 @@ public:
     Magenta = 'm',
     Cyan = 'c',
     White = 'w',
+    MissingColor = ' ',
   };
 
   enum LineStyle
@@ -24,6 +29,7 @@ public:
     DashDot = ';',
     DashDotDot = '%',
     NoLine = '#',
+    MissingLineStyle = ' ',
   };
 
   enum MarkerStyle 
@@ -40,6 +46,7 @@ public:
     FilledSquare = 'S',
     FilledDiamond = 'D',
     FilledCircle = 'O',
+    MissingMarkerStyle = ' ',
   };
 
   enum Axis
@@ -47,6 +54,7 @@ public:
     DefaultAxis = ' ',
     LeftAxis = '<',
     RightAxis = '>',
+    MissingAxis = '0',
   };
 
   void SetTitle(const char *title);
@@ -65,11 +73,23 @@ public:
   void SetYlabel(const __FlashStringHelper *ylabel);
   void SetY2label(const __FlashStringHelper *ylabel);
 
-  void SetSeriesProperties(const char *SeriesName, Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax = DefaultAxis);
-  void SetSeriesProperties(const __FlashStringHelper *SeriesName, Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax = DefaultAxis);
+  template<typename TSeriesName>
+  void SetSeriesProperties(TSeriesName SeriesName, Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax = DefaultAxis)
+  {
+    SendDataHeader(F("STYLE"));
+    m_rDestination.print(SeriesName);
+    SendSeriesProperties(Color, Line, uLineWidth, Marker, ax);
+    SendDataTail();
+  }
 
-  void SetSeriesProperties(const char* SeriesName, int32_t nColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax = DefaultAxis);
-  void SetSeriesProperties(const __FlashStringHelper* SeriesName, int32_t nColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax = DefaultAxis);
+  template<typename TSeriesName>
+  void SetSeriesProperties(TSeriesName SeriesName, const RGBColor &Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax = DefaultAxis)
+  {
+    SendDataHeader(F("STYLE"));
+    m_rDestination.print(SeriesName);
+    SendSeriesProperties(Color, Line, uLineWidth, Marker, ax);
+    SendDataTail();
+  }
 
   void SetSeriesProperties(const char *SeriesName, const char *SeriesProperties);
   void SetSeriesProperties(const __FlashStringHelper *SeriesName, const char *SeriesProperties);
@@ -117,11 +137,43 @@ protected:
   void SendSeriesProperties(const char *SeriesProperties);
   void SendSeriesProperties(const __FlashStringHelper *SeriesProperties);
   void SendSeriesProperties(Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax);
-  void SendSeriesProperties(int32_t nColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax);
+  void SendSeriesProperties(const RGBColor& Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax);
+  
+  void SendSeriesProperties(Colors color);
+  void SendSeriesProperties(const RGBColor& Color);
+  void SendSeriesProperties(LineStyle style, uint8_t uLineWidth);
+  void SendSeriesProperties(MarkerStyle style);
+  void SendSeriesProperties(Axis ax);
+  void SendSeriesProperties(LineFormat const& fmt);
+  void SendSeriesProperties(MarkerFormat const& fmt);
+
+  template<typename T, typename... Args>
+  void SendSeriesProperties(T Property, Args... MoreProperties)
+  {
+    SendSeriesProperties(Property);
+    SendSeriesProperties(MoreProperties...);
+  }
 
   void SendHeader_Data();
   void SendTimeSeparator();
-  void SendColorValue(int32_t nColor);
+  void SendColorValue(const RGBColor& Color);
+
+  template<typename T>
+  void SendSeriesHeader(const __FlashStringHelper* pstrCmd, T SeriesName, bool bIncludeSeparator)
+  {
+    SendDataHeader(pstrCmd);
+    m_rDestination.print(SeriesName);
+    if (bIncludeSeparator)
+    {
+      m_rDestination.print('|');
+    }
+  }
+
+  template<typename T>
+  void SendSeriesHeader_Data(T SeriesName, bool bIncludeSeparator)
+  {
+    SendSeriesHeader(F("DATA"), SeriesName, bIncludeSeparator);
+  }
 
 private:
   void SendRangeDetail(float fYLimLower, float fYLimUpper);

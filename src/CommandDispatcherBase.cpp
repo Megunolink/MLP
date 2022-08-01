@@ -10,6 +10,7 @@ CommandDispatcherBase::CommandDispatcherBase( CommandCallback *pCallbackBuffer, 
   m_uLastCommand = 0;
   m_uLastVariable = 0;
   m_fnDefaultHandler = NULL;
+  m_pFirstModule = nullptr;
 }
 
 bool CommandDispatcherBase::AddCommand( const __FlashStringHelper *pCommand, void(*CallbackFunction)(CommandParameter &rParameters) )
@@ -26,25 +27,6 @@ bool CommandDispatcherBase::AddCommand( const __FlashStringHelper *pCommand, voi
 
   return false; // too many commands stored already. 
 }
-
-#if 0
-bool CommandDispatcherBase::AddCommand(PGM_P pCommand, void(*CallbackFunction)(CommandParameter& rParameters))
-{
-  if (m_uLastCommand < m_uMaxCommands)
-  {
-    m_pCommands[m_uLastCommand].m_Callback = CallbackFunction;
-    m_pCommands[m_uLastCommand].m_strCommand = pCommand;
-    ++m_uLastCommand;
-    return true;
-  }
-
-  Serial.println(F("AddCommand: full"));
-
-  return false; // too many commands stored already. 
-}
-#endif
-
-
 
 void CommandDispatcherBase::SetDefaultHandler( void(*CallbackFunction)() )
 {
@@ -134,7 +116,27 @@ bool CommandDispatcherBase::AddVariable(const __FlashStringHelper *pName, void *
   return false; // too many variables stored already. 
 }
 
-void CommandDispatcherBase::DispatchCommand( char *pchMessage, Print &rSource ) const
+void CommandDispatcherBase::AddModule(CommandModule* pModule)
+{
+  if (pModule != nullptr)
+  {
+    if (m_pFirstModule == nullptr)
+    {
+      m_pFirstModule = pModule;
+    }
+    else
+    {
+      CommandModule* pLink = m_pFirstModule;
+      while (pLink->NextModule != nullptr)
+      {
+        pLink = pLink->NextModule;
+      }
+      pLink->NextModule = pModule;
+    }
+  }
+}
+
+void CommandDispatcherBase::DispatchCommand( char *pchMessage, Print &rSource, IPAddress* pSender) const
 {
   uint8_t uCommand, uParameterStart;
   CommandCallback *pCommand;
@@ -146,7 +148,7 @@ void CommandDispatcherBase::DispatchCommand( char *pchMessage, Print &rSource ) 
 
     if (uParameterStart != NO_MATCH)
     {
-      CommandParameter Parameters(rSource, pchMessage, uParameterStart);
+      CommandParameter Parameters(rSource, pchMessage, uParameterStart, pSender);
       pCommand->m_Callback(Parameters);
       return;
     }
@@ -169,6 +171,21 @@ void CommandDispatcherBase::DispatchCommand( char *pchMessage, Print &rSource ) 
     ++pVariableMap;
   }
 
+  // Match modules
+  CommandModule* pModule = m_pFirstModule;
+  while (pModule != nullptr)
+  {
+    uParameterStart = MatchCommand(pModule->Command, pchMessage);
+    if (uParameterStart != NO_MATCH)
+    {
+      CommandParameter Parameters(rSource, pchMessage, uParameterStart);
+      pModule->DispatchCommand(Parameters);
+      return;
+    }
+
+    pModule = pModule->NextModule;
+  }
+
   // No command matched. 
   if (m_fnDefaultHandler != NULL)
   {
@@ -176,7 +193,7 @@ void CommandDispatcherBase::DispatchCommand( char *pchMessage, Print &rSource ) 
   }
   else
   {
-    rSource.println(F("Unknown command"));
+    rSource.println(F("Unk cmd"));
   }
 }
 

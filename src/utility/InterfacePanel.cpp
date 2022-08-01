@@ -103,20 +103,6 @@ void InterfacePanel::SetListName(const char * ControlName, const char *ValueName
   SendDataTail();
 }
 
-void InterfacePanel::SetListName(const __FlashStringHelper* ControlName, const __FlashStringHelper* ValueName)
-{
-  SendControlHeader(ControlName, F("SelectedName"));
-  m_rDestination.print(ValueName);
-  SendDataTail();
-}
-
-void InterfacePanel::SetListName(const char* ControlName, const __FlashStringHelper* ValueName)
-{
-  SendControlHeader(ControlName, F("SelectedName"));
-  m_rDestination.print(ValueName);
-  SendDataTail();
-}
-
 void InterfacePanel::SetIndicator(const char* ControlName, bool bOn)
 {
   SendControlHeader(ControlName, F("On"));
@@ -328,48 +314,6 @@ void InterfacePanel::DisableControl(const char * ControlName)
 void InterfacePanel::DisableControl(const __FlashStringHelper * ControlName)
 {
   EnableControl(ControlName, false);
-}
-
-void InterfacePanel::SetForeColor(const char *ControlName, const char *Color)
-{
-  SendControlHeader(ControlName, F("ForeColor"));
-  m_rDestination.print(Color);
-  SendDataTail();
-}
-
-void InterfacePanel::SetForeColor(const __FlashStringHelper *ControlName, const __FlashStringHelper *Color)
-{
-  SendControlHeader(ControlName, F("ForeColor"));
-  m_rDestination.print(Color);
-  SendDataTail();
-}
-
-void InterfacePanel::SetBackColor(const char *ControlName, const char *Color)
-{
-  SendControlHeader(ControlName, F("BackColor"));
-  m_rDestination.print(Color);
-  SendDataTail();
-}
-
-void InterfacePanel::SetBackColor(const __FlashStringHelper *ControlName, const __FlashStringHelper *Color)
-{
-  SendControlHeader(ControlName, F("BackColor"));
-  m_rDestination.print(Color);
-  SendDataTail();
-}
-
-void InterfacePanel::SetIndicatorColor(const char* ControlName, const char* Color)
-{
-  SendControlHeader(ControlName, F("IndicatorColor"));
-  m_rDestination.print(Color);
-  SendDataTail();
-}
-
-void InterfacePanel::SetIndicatorColor(const __FlashStringHelper *ControlName, const __FlashStringHelper *Color)
-{
-  SendControlHeader(ControlName, F("IndicatorColor"));
-  m_rDestination.print(Color);
-  SendDataTail();
 }
 
 void InterfacePanel::SetReadOnly(const char *ControlName, bool ReadOnly)

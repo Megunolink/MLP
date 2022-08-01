@@ -1,4 +1,5 @@
 #include "Plot.h"
+#include "PlotFormat.h"
 
 Plot::Plot( const __FlashStringHelper *Context, Print &rDestination )
   : MegunoLinkProtocol(Context, rDestination)
@@ -163,53 +164,7 @@ void Plot::SetCursorPosition(const __FlashStringHelper* SeriesName, double dPosi
   SendDataTail();
 }
 
-void Plot::SetSeriesProperties(const char *SeriesName, Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax /*= DefaultAxis */)
-{
-  char Data[6] = {':', Color, Marker, ax, Line, '\0'}; // Line must be last as it is followed by the line-width. 
-
-  SendDataHeader(F("STYLE"));
-  m_rDestination.print(SeriesName);
-  m_rDestination.print(Data);
-  m_rDestination.print(uLineWidth);
-  SendDataTail();
-}
-
-void Plot::SetSeriesProperties(const __FlashStringHelper *SeriesName, Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax /*= DefaultAxis */)
-{
-  char Data[6] = {':', Color, Marker, ax, Line, '\0'}; // Line must be last as it is followed by the line-width. 
-
-  SendDataHeader(F("STYLE"));
-  m_rDestination.print(SeriesName);
-  m_rDestination.print(Data);
-  m_rDestination.print(uLineWidth);
-  SendDataTail();
-}
-
-void Plot::SetSeriesProperties(const char* SeriesName, int32_t nColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax /*= DefaultAxis */)
-{
-  char Data[6] = { ':', Marker, ax, Line, '\0' }; // Line must be last as it is followed by the line-width. 
-
-  SendDataHeader(F("STYLE"));
-  m_rDestination.print(SeriesName);
-  m_rDestination.print(Data);
-  m_rDestination.print(uLineWidth);
-  SendColorValue(nColor);
-  SendDataTail();
-}
-
-void Plot::SetSeriesProperties(const __FlashStringHelper* SeriesName, int32_t nColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax /*= DefaultAxis */)
-{
-  char Data[5] = { ':', Marker, ax, Line, '\0' }; // Line must be last as it is followed by the line-width. 
-
-  SendDataHeader(F("STYLE"));
-  m_rDestination.print(SeriesName);
-  m_rDestination.print(Data);
-  m_rDestination.print(uLineWidth);
-  SendColorValue(nColor);
-  SendDataTail();
-}
-
-void Plot::SetSeriesProperties(const char *SeriesName, const char *SeriesProperties )
+void Plot::SetSeriesProperties(const char* SeriesName, const char* SeriesProperties)
 {
   SendDataHeader(F("STYLE"));
   m_rDestination.print(SeriesName);
@@ -218,7 +173,7 @@ void Plot::SetSeriesProperties(const char *SeriesName, const char *SeriesPropert
   SendDataTail();
 }
 
-void Plot::SetSeriesProperties(const __FlashStringHelper *SeriesName, const char *SeriesProperties )
+void Plot::SetSeriesProperties(const __FlashStringHelper* SeriesName, const char* SeriesProperties)
 {
   SendDataHeader(F("STYLE"));
   m_rDestination.print(SeriesName);
@@ -227,7 +182,7 @@ void Plot::SetSeriesProperties(const __FlashStringHelper *SeriesName, const char
   SendDataTail();
 }
 
-void Plot::SetSeriesProperties(const __FlashStringHelper *SeriesName, const __FlashStringHelper *SeriesProperties )
+void Plot::SetSeriesProperties(const __FlashStringHelper* SeriesName, const __FlashStringHelper* SeriesProperties)
 {
   SendDataHeader(F("STYLE"));
   m_rDestination.print(SeriesName);
@@ -294,23 +249,81 @@ void Plot::SendSeriesProperties( const __FlashStringHelper *SeriesProperties )
 
 void Plot::SendSeriesProperties(Colors Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
 {
-  char Data[6] = { ':', Color, Marker, ax, Line, '\0' };
-
-  m_rDestination.print(Data);
-  if (Line != NoLine)
-    m_rDestination.print(uLineWidth);
+  m_rDestination.print(':');
+  SendSeriesProperties(Color);
+  SendSeriesProperties(Line, uLineWidth);
+  SendSeriesProperties(Marker);
+  SendSeriesProperties(ax);
   m_rDestination.print('|');
 }
 
-void Plot::SendSeriesProperties(int32_t nColor, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
+void Plot::SendSeriesProperties(const RGBColor& Color, LineStyle Line, uint8_t uLineWidth, MarkerStyle Marker, Axis ax)
 {
-  char Data[5] = { ':', Marker, ax, Line, '\0' };
-
-  m_rDestination.print(Data);
-  if (Line != NoLine)
-    m_rDestination.print(uLineWidth);
-  SendColorValue(nColor);
+  m_rDestination.print(':');
+  SendSeriesProperties(Color);
+  SendSeriesProperties(Line, uLineWidth);
+  SendSeriesProperties(Marker);
+  SendSeriesProperties(ax);
   m_rDestination.print('|');
+}
+
+void Plot::SendSeriesProperties(Colors color)
+{
+  if (color != MissingColor)
+  {
+    m_rDestination.print((char)color);
+  }
+}
+
+void Plot::SendSeriesProperties(const RGBColor& Color)
+{
+  SendColorValue(Color);
+}
+
+void Plot::SendSeriesProperties(LineStyle style, uint8_t uLineWidth)
+{
+  if (style != MissingLineStyle)
+  {
+    m_rDestination.print((char)style);
+    if (style != NoLine && uLineWidth > 0)
+    {
+      m_rDestination.print(uLineWidth);
+    }
+  }
+}
+
+void Plot::SendSeriesProperties(MarkerStyle style)
+{
+  if (style != MissingMarkerStyle)
+  {
+    m_rDestination.print((char)style);
+  }
+}
+
+void Plot::SendSeriesProperties(Axis ax)
+{
+  if (ax != MissingAxis)
+  {
+    m_rDestination.print((char)ax);
+  }
+}
+
+void Plot::SendSeriesProperties(LineFormat const& fmt)
+{
+  m_rDestination.print((char)fmt.Style);
+  if (fmt.Style != NoLine)
+  {
+    m_rDestination.print(fmt.Width);
+  }
+}
+
+void Plot::SendSeriesProperties(MarkerFormat const& fmt)
+{
+  m_rDestination.print((char)fmt.Style);
+  if (fmt.Style != NoMarker)
+  {
+    m_rDestination.print(fmt.Size);
+  }
 }
 
 void Plot::Clear()
@@ -382,12 +395,13 @@ void Plot::SendRangeDetail(float fYLimLower, float fYLimUpper)
   SendDataTail();
 }
 
-void Plot::SendColorValue(int32_t nColor)
+void Plot::SendColorValue(const RGBColor& Color)
 {
   char achBuffer[8];
   achBuffer[0] = '&';
   achBuffer[7] = 0;
   char* pchBuffer = achBuffer + 6;
+  int32_t nColor = Color.PackedValue;
   for (int i = 0; i < 6; ++i)
   {
     char chTemp = nColor & 0x0f;

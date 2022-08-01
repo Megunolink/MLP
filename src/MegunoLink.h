@@ -10,3 +10,4 @@
 #include "utility/Audio.h"
 #include "utility/Pushover.h"
 #include "utility/Monkey.h"
+#include "utility/DeviceFileTransfer.h"

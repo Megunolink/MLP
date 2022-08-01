@@ -20,6 +20,8 @@ private:
   // Next location in buffer to write to
   char* m_pchNext;
 
+  // True if we've tried to write more than can fit in the buffer. 
+  bool m_bBufferFlow;
 public:
 
   FixedStringPrint(char* pchBuffer, size_t  szBuffer);
@@ -70,6 +72,8 @@ public:
   }
 
   size_t write(uint8_t uValue) override;
+
+  bool IsOverflow() const { return m_bBufferFlow; }
 };
 
 

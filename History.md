@@ -1,0 +1,16 @@
+MegunoLink library for Arduino Change History
+=============================================
+
+1.40
+----
+* Added `RGBColor` class to send custom colors to plots and resolve build errors for some micros. 
+* Added support for device file transfer visualizer. 
+* New examples for speech and audio.
+* Added support to expand command handler with pluggable modules. 
+* Added support to send double precision values to XYPlots without casting. 
+* Added core support for Udp and Tcp communications. 
+* Cleaned up and consolodated plotting and table methods. 
+* Fixed build errors for Teensy. 
+* Fixed build errors for Due.
+* Added library meta data file for PlatformIO/Visual Studio Code.
+* Improvements to const-correctness. 
