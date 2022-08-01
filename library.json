@@ -1,6 +1,6 @@
 {
   "name": "MegunoLink",
-  "version": "1.39.0",
+  "version": "1.40.0",
   "description": "Library for storing data in the eeprom, processing serial messages and plotting data with MegunoLink.",
   "keywords": "MegunoLink, command handler, filter, timer, circular buffer",
   "homepage": "https://www.MegunoLink.com",
@@ -19,6 +19,6 @@
   "frameworks": "arduino",
   "platforms": "*",
   "build": {
-    "libLDFMode" : "deep"
+    "libLDFMode": "deep"
   }
 } 
