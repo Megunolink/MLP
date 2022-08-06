@@ -40,7 +40,7 @@
 
 // MegunoLink command handler library. If this include fails, you may need to
 // install the Arduino library: http://www.megunolink.com/documentation/arduino-integration/
-#include "TCPCommandHandler.h"
+#include "ESPTCPCommandHandler.h"
 #include "CommandProcessor.h"
 
 #define USEWIFICONFIGFILE
@@ -57,7 +57,8 @@ const char *WiFiPassword = "Your Password";
 const uint8_t ServerPort = 23;
 WiFiServer Server(ServerPort);
 
-TCPCommandHandler<2> Cmds(Server);
+const int MaxConnections = 2;
+TcpCommandHandler<MaxConnections> Cmds(Server);
 CommandProcessor<> SerialCmds(Cmds);
 
 long LastBlink = 0; // Time we last blinked the LED
@@ -65,7 +66,7 @@ int OnTime = 10; // Amount of time the LED remains on [milliseconds]
 int OffTime = 100; // Amount of time the LED remains off [milliseconds]
 
 #if defined(ARDUINO_ARCH_ESP32)
-const int LEDPin = 23; // Pin the LED is attached to 
+const int LEDPin = 2; // Pin the LED is attached to 
 #elif defined(ARDUINO_ARCH_ESP8266)
 const int LEDPin = BUILTIN_LED; // Pin the LED is attached to 
 #endif
@@ -190,7 +191,9 @@ void setup()
 // the loop function runs over and over again until power down or reset
 void loop() 
 {
+#if defined(ARDUINO_ARCH_ESP8266)
   MDNS.update();
+#endif
   
   // Check for serial commands and dispatch them.
   Cmds.Process();
