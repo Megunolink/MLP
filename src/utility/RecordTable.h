@@ -127,6 +127,12 @@ private:
     m_rDestination.print(Value, m_nNumberOfDecimalPlaces);
   }
 
+  void SendValue(const SpecialParameters p)
+  {
+    MegunoLinkProtocol::SendValue(p);
+  }
+
+
   template<typename T> void SendValue(const T Value)
   {
     m_rDestination.print(Value);
