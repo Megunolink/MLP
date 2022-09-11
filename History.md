@@ -1,6 +1,13 @@
 MegunoLink library for Arduino Change History
 =============================================
 
+1.41
+----
+* Updated examples to use ESP command handler for Tcp connections
+* Excluded `MDNS.update();` call for ESP32, where it is not supported
+* Fixed compile time error when sending SpecialParameters::CurrentTime to record table
+* Fixed examples to use correct name for TcpCommandHandler on ESP hardware. 
+
 1.40
 ----
 * Added `RGBColor` class to send custom colors to plots and resolve build errors for some micros. 
