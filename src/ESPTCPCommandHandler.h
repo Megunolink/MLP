@@ -4,11 +4,11 @@
 #include <Arduino.h>
 #include <Stream.h>
 
-#include "utility/CommandDispatcherBase.h"
+#include "CommandDispatcherBase.h"
 #include "utility/TCPConnection.h"
 
 template<int MAX_CONNECTIONS = 1, int MAX_COMMANDS = 10, int CP_SERIAL_BUFFER_SIZE = 30, int MAX_VARIABLES = 10>
-class TCPCommandHandler
+class TcpCommandHandler
   : public MLP::CommandDispatcherBase
   , public Print
 {
@@ -26,7 +26,7 @@ class TCPCommandHandler
 
 public:
 
-  TCPCommandHandler(WiFiServer &rServer, char chStartOfMessage = '!', char chEndOfMessage = '\r')
+  TcpCommandHandler(WiFiServer &rServer, char chStartOfMessage = '!', char chEndOfMessage = '\r')
     : CommandDispatcherBase(m_Commands, MAX_COMMANDS, m_Variables, MAX_VARIABLES)
     , m_rServer(rServer)
   {

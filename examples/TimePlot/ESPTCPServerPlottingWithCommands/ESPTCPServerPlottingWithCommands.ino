@@ -22,12 +22,12 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266mDNS.h>
 #else
-#error Not compatible
+#error Not compatible with the selected board. 
 #endif
 
 // MegunoLink command handler library. If this include fails, you may need to
 // install the Arduino library: http://www.megunolink.com/documentation/arduino-integration/
-#include "TCPCommandHandler.h"
+#include "ESPTCPCommandHandler.h"
 #include "CommandProcessor.h"
 #include "MegunoLink.h"
 #include "ArduinoTimer.h"
@@ -49,7 +49,8 @@ WiFiServer Server(ServerPort);
 
 ArduinoTimer SendTimer;
 uint32_t PlottingPeriod = 200;
-TCPCommandHandler<2> Cmds(Server);
+const int MaxConnections = 2;
+TcpCommandHandler<MaxConnections> Cmds(Server);
 CommandProcessor<> SerialCmds(Cmds);
 
 
@@ -155,7 +156,9 @@ void setup()
 // the loop function runs over and over again until power down or reset
 void loop()
 {
+#if defined(ARDUINO_ARCH_ESP8266)
   MDNS.update();
+#endif
 
   // Check for serial commands and dispatch them.
   Cmds.Process();
