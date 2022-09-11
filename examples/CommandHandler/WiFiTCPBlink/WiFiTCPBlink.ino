@@ -34,7 +34,7 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266mDNS.h>
 #else
-#error Not compatible
+#error Not compatible with the selected board. 
 #endif
 
 

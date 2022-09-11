@@ -191,7 +191,9 @@ void setup()
 
 void loop() 
 {
+#if defined(ARDUINO_ARCH_ESP8266)
   MDNS.update();
+#endif
 
   CheckForNewClients();
 
