@@ -141,7 +141,7 @@
     <ClInclude Include="utility\XYPlot.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ArduinoTimer.h">
+    <ClInclude Include="MegunoArduinoTimer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CircularBuffer.h">
@@ -197,7 +197,7 @@
     <ClCompile Include="utility\XYPlot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ArduinoTimer.cpp">
+    <ClCompile Include="MegunoArduinoTimer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

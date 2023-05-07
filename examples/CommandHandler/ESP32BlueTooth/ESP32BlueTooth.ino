@@ -26,7 +26,7 @@ https://www.megunolink.com/download/
  
 #include "BluetoothSerial.h"
 #include "CommandHandler.h"
-#include "ArduinoTimer.h"
+#include "MegunoArduinoTimer.h"
 
 BluetoothSerial SerialBT;
 CommandHandler<> Cmds(SerialBT);

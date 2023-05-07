@@ -2,7 +2,7 @@
 
 #include "CommandDispatcherBase.h"
 #include "Udp.h"
-#include "ArduinoTimer.h"
+#include "MegunoArduinoTimer.h"
 #include "BlockParser.h"
 
 namespace MLP
@@ -24,7 +24,7 @@ namespace MLP
     const size_t m_szMaxBufferSize;
 
     // Timer to perioidcally check for network packets. 
-    ArduinoTimer m_tmrPacketCheck;
+    MegunoArduinoTimer m_tmrPacketCheck;
     
     // Interval between checking for new packets. 
     const unsigned PacketCheckInterval = 10; // ms

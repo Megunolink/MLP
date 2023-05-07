@@ -15,7 +15,7 @@ https://www.megunolink.com/download/
 ************************************************************************************************/
 
 #include "CircularBuffer.h"
-#include "ArduinoTimer.h"
+#include "MegunoArduinoTimer.h"
 
 // The buffer which will hold button presses. We use the time stamp from 
 // the micros timer to store the time a button press was registered. So
@@ -31,7 +31,7 @@ const int ButtonPin = 3;
 // The amount of time between writing out all the data in the circular buffer
 // and a timer to keep track if that amount of time has passed yet. 
 const int PrintingPeriod = 10; // seconds
-ArduinoTimer PrintingTimer;
+MegunoArduinoTimer PrintingTimer;
 
 void setup() 
 {

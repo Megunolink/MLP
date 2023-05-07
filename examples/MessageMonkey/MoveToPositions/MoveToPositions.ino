@@ -10,7 +10,7 @@ in place of a motor driver implementation.
 
 #include "MegunoLink.h"
 #include "CommandHandler.h"
-#include "ArduinoTimer.h"
+#include "MegunoArduinoTimer.h"
 
 
 // --- Serial command handlers. 
@@ -33,7 +33,7 @@ void Cmd_MoveTo(CommandParameter &p)
 // --- Mock motor driver
 bool FindingHome = false; 
 bool MovingMotor = false; 
-ArduinoTimer MotorMovingTimer; // in place of real motor driver.
+MegunoArduinoTimer MotorMovingTimer; // in place of real motor driver.
 
 void FindHome()
 {
@@ -89,7 +89,7 @@ void TrackMotorState()
     Mky.SetTrigger(F("MoveDone"));
   }
 
-  static ArduinoTimer ProgressReporter;
+  static MegunoArduinoTimer ProgressReporter;
   if (ProgressReporter.TimePassed_Milliseconds(300))
   {
     if (FindingHome)

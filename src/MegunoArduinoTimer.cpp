@@ -1,11 +1,11 @@
-#include "ArduinoTimer.h"
+#include "MegunoArduinoTimer.h"
 
-ArduinoTimer::ArduinoTimer()
+MegunoArduinoTimer::MegunoArduinoTimer()
 {
   m_uStartTime = 0;
 }
 
-bool ArduinoTimer::TimePassed_Milliseconds(uint32_t uPeriod, bool bAutoReset)
+bool MegunoArduinoTimer::TimePassed_Milliseconds(uint32_t uPeriod, bool bAutoReset)
 {
   uint32_t uNow;
 
@@ -20,7 +20,7 @@ bool ArduinoTimer::TimePassed_Milliseconds(uint32_t uPeriod, bool bAutoReset)
   return false;
 }
 
-bool ArduinoTimer::TimePassed_Seconds(uint16_t uPeriod, bool bAutoReset)
+bool MegunoArduinoTimer::TimePassed_Seconds(uint16_t uPeriod, bool bAutoReset)
 {
   uint32_t uNow;
 
@@ -35,7 +35,7 @@ bool ArduinoTimer::TimePassed_Seconds(uint16_t uPeriod, bool bAutoReset)
   return false;
 }
 
-bool ArduinoTimer::TimePassed_Minutes(uint16_t uPeriod, bool bAutoReset)
+bool MegunoArduinoTimer::TimePassed_Minutes(uint16_t uPeriod, bool bAutoReset)
 {
   uint32_t uNow;
   uint32_t uDelta;
@@ -53,7 +53,7 @@ bool ArduinoTimer::TimePassed_Minutes(uint16_t uPeriod, bool bAutoReset)
   return false;
 }
 
-bool ArduinoTimer::TimePassed_Hours( uint16_t uPeriod, bool bAutoReset /*= true*/ )
+bool MegunoArduinoTimer::TimePassed_Hours( uint16_t uPeriod, bool bAutoReset /*= true*/ )
 {
   uint32_t uNow;
   uint32_t uDelta;

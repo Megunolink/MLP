@@ -105,7 +105,7 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="ArduinoTimer.h" />
+    <ClInclude Include="MegunoArduinoTimer.h" />
     <ClInclude Include="CircularBuffer.h" />
     <ClInclude Include="CommandHandler.h" />
     <ClInclude Include="CommandProcessor.h" />
@@ -126,7 +126,7 @@
     <ClInclude Include="utility\XYPlot.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ArduinoTimer.cpp" />
+    <ClCompile Include="MegunoArduinoTimer.cpp" />
     <ClCompile Include="utility\CommandDispatcherBase.cpp" />
     <ClCompile Include="utility\CommandParameter.cpp" />
     <ClCompile Include="utility\InterfacePanel.cpp" />

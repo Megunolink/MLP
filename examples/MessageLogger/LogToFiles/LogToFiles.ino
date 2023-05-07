@@ -1,10 +1,10 @@
 #include "MegunoLink.h"
 #include "CommandHandler.h"
-#include "ArduinoTimer.h"
+#include "MegunoArduinoTimer.h"
 
 Message Msg;
 CommandHandler<> Cmds;
-ArduinoTimer ExperimentTimer;
+MegunoArduinoTimer ExperimentTimer;
 
 
 int FileNumber = 1;

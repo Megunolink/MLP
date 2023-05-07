@@ -1,6 +1,6 @@
 #include "MegunoLink.h"
 #include "CommandHandler.h" 
-#include "ArduinoTimer.h"
+#include "MegunoArduinoTimer.h"
 
 InterfacePanel ParametersPanel;
 CommandHandler<> SerialCommandHandler;
@@ -11,7 +11,7 @@ int OffTime = 100; // Amount of time the LED remains off [milliseconds]
 
 bool GotOnTime = false; // True when MegunoLink has supplied the on time value.
 bool GotOffTime = false; // True when MegunoLink has supplied the off time value. 
-ArduinoTimer RequestTimer;  // Timer to periodically request parameters
+MegunoArduinoTimer RequestTimer;  // Timer to periodically request parameters
 
 void setup() 
 {

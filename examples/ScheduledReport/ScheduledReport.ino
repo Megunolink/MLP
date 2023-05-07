@@ -5,13 +5,13 @@
 *  ********************************************************************************************** */
 
 #include "MegunoLink.h"
-#include "ArduinoTimer.h"
+#include "MegunoArduinoTimer.h"
 
 Report ReportGenerator;
-ArduinoTimer ReportTimer;
+MegunoArduinoTimer ReportTimer;
 
 TimePlot ADCValuePlot;
-ArduinoTimer PlotTimer;
+MegunoArduinoTimer PlotTimer;
 
 void setup() 
 {

@@ -2,7 +2,7 @@
 *  A wraper to simplify timed actions on the Arduino platform. 
 *  Usage:
 *     // Create a class or global timer variable. 
-*     ArduinoTimer MyTimer; 
+*     MegunoArduinoTimer MyTimer; 
 *     
 *     // For timed action.
 *     if (MyTimer.TimePassed_Seconds(10))
@@ -14,13 +14,13 @@
 #pragma once
 #include <Arduino.h>
 
-class ArduinoTimer
+class MegunoArduinoTimer
 {
   uint32_t m_uStartTime;
 public:
-  ArduinoTimer();
+  MegunoArduinoTimer();
   
-  inline ArduinoTimer(bool bReset)  __attribute__((always_inline))
+  inline MegunoArduinoTimer(bool bReset)  __attribute__((always_inline))
   {
     if (bReset)
       Reset();

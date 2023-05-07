@@ -30,7 +30,7 @@
 #include "ESPTCPCommandHandler.h"
 #include "CommandProcessor.h"
 #include "MegunoLink.h"
-#include "ArduinoTimer.h"
+#include "MegunoArduinoTimer.h"
 
 #define USEWIFICONFIGFILE
 #ifdef USEWIFICONFIGFILE
@@ -47,7 +47,7 @@ const uint8_t ServerPort = 23;
 WiFiServer Server(ServerPort);
 
 
-ArduinoTimer SendTimer;
+MegunoArduinoTimer SendTimer;
 uint32_t PlottingPeriod = 200;
 const int MaxConnections = 2;
 TcpCommandHandler<MaxConnections> Cmds(Server);

@@ -7,16 +7,16 @@
 *  ********************************************************************************************** */
 
 #include "MegunoLink.h" 
-#include "ArduinoTimer.h"
+#include "MegunoArduinoTimer.h"
 
 // The plot we are sending data to. 
 TimePlot MyPlot;
 
 // A timer to trigger sending data. 
-ArduinoTimer SendDataTimer;
+MegunoArduinoTimer SendDataTimer;
 
 // Timer to maintain the system time. 
-ArduinoTimer ClockTick;
+MegunoArduinoTimer ClockTick;
 
 /* ----------------------------------------------------------------------------------------------
 *  Time Functions

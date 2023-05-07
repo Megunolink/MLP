@@ -10,7 +10,7 @@
 *  ********************************************************************************************** */
 
 #include "MegunoLink.h" // For communicating with MegunoLink 
-#include "ArduinoTimer.h" // To periodically send data. 
+#include "MegunoArduinoTimer.h" // To periodically send data. 
 
 // Progress value variables (the data we'll send)
 int Fish, Turtles; 
@@ -21,7 +21,7 @@ Table MyTable;
 
 // To keep track of when we should send data. 
 // See: https://www.megunolink.com/documentation/arduino-libraries/arduino-timer/
-ArduinoTimer SendTimer;
+MegunoArduinoTimer SendTimer;
 
 void setup()
 {

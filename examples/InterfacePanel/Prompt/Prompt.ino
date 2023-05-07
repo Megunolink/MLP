@@ -1,13 +1,13 @@
 #include "MegunoLink.h"
 #include "CommandHandler.h"
-#include "ArduinoTimer.h"
+#include "MegunoArduinoTimer.h"
 
 InterfacePanel Panel;
 CommandHandler<> SerialCmds;
 
 bool WaitingForPromptResponse = false; 
 int CurrentPromptId = 1;
-ArduinoTimer PromptTimeout;
+MegunoArduinoTimer PromptTimeout;
 
 void Cmd_BeginMissileLaunch(CommandParameter& p)
 {

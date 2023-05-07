@@ -6,11 +6,11 @@
 *  ********************************************************************************************** */
 
 #include "MegunoLink.h"     // for communicating with MegunoLink. 
-#include "ArduinoTimer.h"   // a timer to send data.
+#include "MegunoArduinoTimer.h"   // a timer to send data.
 #include "CommandHandler.h" // for handling serial commands. 
 
 // Timer to keep track of sending data to MegunoLink.
-ArduinoTimer SendTimer;
+MegunoArduinoTimer SendTimer;
 
 // Interval between sending updates to MegunoLink
 long UpdateInterval = 1000; // milliseconds. 

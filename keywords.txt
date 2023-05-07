@@ -1,4 +1,4 @@
-ArduinoTimer	KEYWORD1
+MegunoArduinoTimer	KEYWORD1
 Reset	KEYWORD2
 EllapsedMilliseconds	KEYWORD2
 EllapsedSeconds	KEYWORD2

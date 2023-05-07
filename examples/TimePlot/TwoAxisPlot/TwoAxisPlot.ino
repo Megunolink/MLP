@@ -20,15 +20,15 @@ https://www.megunolink.com/download/
 
 
 #include "MegunoLink.h"
-#include "ArduinoTimer.h"
+#include "MegunoArduinoTimer.h"
 
 // Uncomment if you would like to use plotting channels
 // TimePlot MyPlot("Waveforms"); //"Waveforms" = the taget plotting channel (remember to select this in megunolink)
 
 TimePlot MyPlot; //no channel selected
 
-ArduinoTimer PlotPropertiesTimer;
-ArduinoTimer PlotSendTimer;
+MegunoArduinoTimer PlotPropertiesTimer;
+MegunoArduinoTimer PlotSendTimer;
 
 void setup()
 {

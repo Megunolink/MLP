@@ -12,10 +12,10 @@
    ************************************************************************ */
 
 #include "MegunoLink.h"
-#include "ArduinoTimer.h"
+#include "MegunoArduinoTimer.h"
 
 RecordTable MyTable;
-ArduinoTimer SendDataTimer;
+MegunoArduinoTimer SendDataTimer;
 
 void setup()
 {

@@ -18,14 +18,14 @@ This example requires:
 
 #include <MegunoLink.h>
 #include <CommandHandler.h>
-#include <ArduinoTimer.h>
+#include <MegunoArduinoTimer.h>
 #include <PString.h>
 
 #define Rows 4
 
 InterfacePanel MyPanel;
 CommandHandler<> SerialCommandHandler;
-ArduinoTimer RequestRowTimer;
+MegunoArduinoTimer RequestRowTimer;
 
 // Structure to store the values sent from MegunoLink
 struct Config {

@@ -10,10 +10,10 @@
  *    https://www.megunolink.com/documentation/arduino-libraries/arduino-timer/
  */
 #include "MegunoLink.h"
-#include "ArduinoTimer.h"
+#include "MegunoArduinoTimer.h"
 
 int nCounter = 10; 
-ArduinoTimer Countdown;
+MegunoArduinoTimer Countdown;
 Audio Sounds;
 
 void setup() 

@@ -6,7 +6,7 @@
  *    https://www.megunolink.com/articles/how-do-i/sending-initial-settings/
  */
 #include "MegunoLink.h"
-#include "ArduinoTimer.h"
+#include "MegunoArduinoTimer.h"
 #include "CommandHandler.h"
 
 // To process serial commands. 
@@ -17,7 +17,7 @@ TimePlot Plot;
 InterfacePanel Panel;
 
 // To periodically send measurements.
-ArduinoTimer SendMeasurementsTimer;
+MegunoArduinoTimer SendMeasurementsTimer;
 unsigned long UpdateInterval = 100;
 
 // Command handler to send settings when the 'SendConfig'

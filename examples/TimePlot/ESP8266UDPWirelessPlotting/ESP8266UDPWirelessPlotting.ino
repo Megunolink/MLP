@@ -22,7 +22,7 @@ You can find out more about MegunoLink and download a free trial from here
 #include "WiFiUdp.h"
 
 #include "MegunoLink.h"
-#include "ArduinoTimer.h"
+#include "MegunoArduinoTimer.h"
 
 // Setup WiFi credentials (SSID and password). 
 #define USE_WIFI_CONFIG_FILE // Comment out this line to use Option 2 below
@@ -48,7 +48,7 @@ const int SourcePort = 52790;
 const int DestinationPort = 52791;
 
 WiFiUDP UdpConnection;
-ArduinoTimer SendTimer;
+MegunoArduinoTimer SendTimer;
 
 void setup()
 {

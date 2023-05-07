@@ -24,7 +24,7 @@ https://www.megunolink.com/download/
 #include "ESPmDNS.h"
 
 #include "MegunoLink.h"
-#include "ArduinoTimer.h"
+#include "MegunoArduinoTimer.h"
 
 
 #define USEWIFICONFIGFILE
@@ -43,7 +43,7 @@ const uint ServerPort = 23;
 WiFiServer Server(ServerPort);
 WiFiClient RemoteClient;
 
-ArduinoTimer SendTimer;
+MegunoArduinoTimer SendTimer;
 
 /*  Connect to a WiFi network. Assumes the SSID and
  *  password are stored in global variables SSID and

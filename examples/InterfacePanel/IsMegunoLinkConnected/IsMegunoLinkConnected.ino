@@ -24,12 +24,12 @@ https://www.megunolink.com/download/
 ************************************************************************************************/
 
 #include "MegunoLink.h"
-#include "ArduinoTimer.h"
+#include "MegunoArduinoTimer.h"
 #include "CommandHandler.h"
 
 InterfacePanel MyPanel;
-ArduinoTimer MLPCheckTimer;
-ArduinoTimer StatusPrintTimer;
+MegunoArduinoTimer MLPCheckTimer;
+MegunoArduinoTimer StatusPrintTimer;
 CommandHandler<> MyCommandHanlder;
 
 uint32_t LastAnnounceTime = 0;

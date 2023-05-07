@@ -23,10 +23,10 @@ https://www.megunolink.com/download/
 #include "MegunoLink.h"
 #include <EtherCard.h>
 #include <MegunoLink.h>
-#include <ArduinoTimer.h>
+#include <MegunoArduinoTimer.h>
 #include <PString.h> 
 
-ArduinoTimer PlotTimer;
+MegunoArduinoTimer PlotTimer;
 
 static byte mymac[] = { 0x1A,0x2B,0x3C,0x4D,0x5E,0x6F };
 byte Ethernet::buffer[700];
