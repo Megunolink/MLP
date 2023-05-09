@@ -24,7 +24,7 @@ namespace MLP
     const size_t m_szMaxBufferSize;
 
     // Timer to perioidcally check for network packets. 
-    ArduinoTimer m_tmrPacketCheck;
+    ::ArduinoTimer m_tmrPacketCheck;
     
     // Interval between checking for new packets. 
     const unsigned PacketCheckInterval = 10; // ms
