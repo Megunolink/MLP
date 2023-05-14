@@ -1,29 +1,31 @@
 /************************************************************************************************
 Example Description
-In this example we process commands sent from MegunoLink's Interface Panel using a UDP connection.
+In this example we process commands sent from MegunoLink's Interface Panel using a UDP connection
+and the Microchip ENC28J60 chip. 
  
 More Information
 *  https://www.megunolink.com/documentation/interface-panel/
  
 This Example Requires:
-*  The MegunoLink arduino library https://www.megunolink.com/documentation/arduino-integration/
-*  The Pstring Library http://arduiniana.org/libraries/pstring/
-*  The EtherCard Library https://github.com/njh/EtherCard. 
+*  The MegunoLink library for Arduino 
+   https://www.megunolink.com/documentation/arduino-integration/
+*  The EtherCard Library
+   https://github.com/njh/EtherCard. 
  
 MegunoLink Interface
-You can download a pre-made interface from here:
-https://github.com/Megunolink/MLP/raw/master/examples/CommandHandler/ENC28J60UDPCommandHandler/ENC28J60UDPCommandHandler.mlpz
+You can download a pre-made interface from:
+* https://github.com/Megunolink/MLP/raw/master/examples/CommandHandler/ENC28J60UDPCommandHandler/ENC28J60UDPCommandHandler.mlpz
  
-You can find out more about MegunoLink and download a free trial from here
-https://www.megunolink.com/
-https://www.megunolink.com/download/
+You can find out more about MegunoLink and download a free trial from:
+* https://www.megunolink.com/
+* https://www.megunolink.com/download/
 ************************************************************************************************/
 
 #include <EtherCard.h>
 #include <IPAddress.h>
 #include <MegunoLink.h>
 #include <CommandDispatcher.h>
-#include <PString.h>
+#include <FixedStringBuffer.h>
 
 
 // ethernet mac address - must be unique on your network
@@ -62,17 +64,16 @@ void Cmd_GetADCValue(CommandParameter &p)
   uint16_t ADCValue = analogRead(0);
 
   // Update the value shown in table on the example interface panel
-  char MessageBuffer[100];
-  PString Message(MessageBuffer, sizeof(MessageBuffer));
+  FixedStringBuffer<100> Message;
   Table MLPTable("", Message);
   MLPTable.SendData("A0", ADCValue);
-  ether.sendUdp(MessageBuffer, Message.length(), srcPort, dstIP, dstPort);
+  ether.sendUdp(Message, Message.length(), srcPort, dstIP, dstPort);
 
   // Update the text box on the example interface panel
   Message.begin();
   InterfacePanel MyPanel("", Message);
   MyPanel.SetText("adcTextBox", ADCValue);
-  ether.sendUdp(MessageBuffer, Message.length(), srcPort, dstIP, dstPort);
+  ether.sendUdp(Message, Message.length(), srcPort, dstIP, dstPort);
 }
 
 void Cmd_Hello(CommandParameter &p)
