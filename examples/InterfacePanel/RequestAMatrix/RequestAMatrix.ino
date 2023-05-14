@@ -12,14 +12,14 @@ Visit:
 * http://www.MegunoLink.com to download MegunoLink.
 
 This example requires:
-* The PString library http://arduiniana.org/libraries/pstring/
-* Our MegunoLink Arduino library https://www.megunolink.com/documentation/arduino-library/
+* Our MegunoLink Arduino library
+  https://www.megunolink.com/documentation/arduino-library/
 ************************************************************************ */
 
 #include <MegunoLink.h>
 #include <CommandHandler.h>
 #include <ArduinoTimer.h>
-#include <PString.h>
+#include <FixedStringBuffer.h>
 
 #define Rows 4
 
@@ -86,8 +86,7 @@ void loop()
   {
     if (CurrentRow <= Rows)
     {
-      char buffer[4];
-      PString cmd(buffer, sizeof(buffer));
+      FixedStringBuffer<4> cmd;
       cmd.print("G");
       cmd.print(CurrentRow);
       MyPanel.CallCommand(cmd); //This sends the request message
