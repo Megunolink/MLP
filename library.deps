@@ -1,2 +1,0 @@
-; dependencies for testing all examples
-depends=--git-url https://github.com/arduino-libraries/Servo,--git-url https://github.com/Megunolink/WiFiConfig,--git-url https://github.com/njh/EtherCard,--git-url https://github.com/arduino-libraries/Ethernet
