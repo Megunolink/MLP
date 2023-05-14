@@ -28,7 +28,7 @@ jobs:
 #        PRETTYNAME : "MegunoLink library for Arduino"
 #      run: bash ci/doxy_gen_and_deploy.sh
 
-    - name: Install test dependencies
+    - name: Set configuration
       run: arduino-cli config set library.enable_unsafe_install true 
 
     - name: Install test dependencies
