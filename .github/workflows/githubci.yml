@@ -29,6 +29,7 @@ jobs:
 #      run: bash ci/doxy_gen_and_deploy.sh
 
     - name: Install test dependencies
+      run: arduino-cli config set library.enable_unsafe_install true 
       run: arduino-cli lib install --git-url https://github.com/arduino-libraries/Servo --git-url https://github.com/Megunolink/WiFiConfig --git-url https://github.com/njh/EtherCard --git-url https://github.com/arduino-libraries/Ethernet
       
     - name: Test the code on supported platforms
