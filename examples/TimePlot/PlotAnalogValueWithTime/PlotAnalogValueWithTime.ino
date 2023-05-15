@@ -1,9 +1,10 @@
 /* **********************************************************************************************
 *  Example program to plot data from the analoge to digital converter on a chart using
 *  time supplied from the Aurdio. Normally the Time Plot will use the computer's local time
-*  for the x-axis. In this example, we generate our own local time. 
-*  Visit http://www.megunolink.com/documentation/plotting/
-*  for more information. 
+*  for the x-axis. In this example, we generate our own local time. You could use a real-time
+*  clock module too, if one is available. 
+*  
+*  Visit http://www.megunolink.com/documentation/plotting/ for more information. 
 *  ********************************************************************************************** */
 
 #include "MegunoLink.h" 
@@ -20,8 +21,7 @@ ArduinoTimer ClockTick;
 
 /* ----------------------------------------------------------------------------------------------
 *  Time Functions
-*  Normally keep track of the current time with a real-time clock. Here we fake time
-*  using standard system functions. 
+*  Normally keep track of the current time with a real-time clock. Here we fake time.
  */
 
 void SetupClock()
@@ -51,11 +51,31 @@ void MaintainClock()
 tm GetCurrentTime()
 {
   time_t CurrentEpoc = time(NULL);
-    Serial.println(CurrentEpoc);
+
   tm CurrentTime;
   gmtime_r(&CurrentEpoc, &CurrentTime);
   return CurrentTime;
 }
+
+#if !defined(__AVR__)
+// AVR boards (e.g., Uno, Mega2560) implement some clock functions
+// that aren't available for other devices. So we'll roll our own
+// for the sake of the example. 
+
+time_t CurrentTime;
+
+#define UNIX_OFFSET 946684800 // Offset between AVR time and Windows time epochs.
+void set_system_time(time_t t)
+{
+  CurrentTime = t;
+}
+
+void system_tick()
+{
+  ++CurrentTime;
+}
+#endif
+
 
 /* ----------------------------------------------------------------------------------------------
 *  Program setup and loop. 
@@ -80,7 +100,7 @@ void loop()
     // Using time epoch. This will be interpreted
     // as local time by MegunoLink. 
     time_t EpochTime = time(NULL) + UNIX_OFFSET;
-    float DataValue1 = analogRead(1);
+    float DataValue1 = analogRead(0);
     MyPlot.SendFloatData(F("ADCValue1"), EpochTime, DataValue1, 3);
   }
 }
