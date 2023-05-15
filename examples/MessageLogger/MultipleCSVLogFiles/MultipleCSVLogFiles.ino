@@ -35,12 +35,20 @@ void loop()
   Cmds.Process();
   if ((millis() - ExperimentStartTime) < (SamplingPeriod * 1000))
   {
+    int Value1 = analogRead(A0);
+#if defined(A1)
+    int Value2 = analogRead(A1);
+#else
+    // Some boards only have 1 analog input. For them we'll get another value from the first port. 
+    int Value2 = analogRead(A0);
+#endif
+
     Msg.Begin();
     Serial.print(millis() - ExperimentStartTime); //Milliseconds since run started
     Serial.print(",");
-    Serial.print(analogRead(A0));
+    Serial.print(Value1);
     Serial.print(",");
-    Serial.print(analogRead(A1));
+    Serial.print(Value2);
     Msg.End();
 
     delay(100);

@@ -57,6 +57,11 @@ namespace MLP
 #if defined(ARDUINO_ARCH_SAMD) || defined(ARDUINO_ARCH_SAM) || defined(CORE_TEENSY)
     bool AddVariable(const __FlashStringHelper *pName, int &rVariable);
 #endif
+#if defined(ARDUINO_ARCH_ESP8266)
+    bool AddVariable(const __FlashStringHelper* pName, unsigned long& rVariable);
+    bool AddVariable(const __FlashStringHelper* pName, long& rVariable);
+#endif
+
 
     void AddModule(CommandModule* pModule);
 
