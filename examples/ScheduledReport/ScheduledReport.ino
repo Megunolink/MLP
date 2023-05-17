@@ -14,7 +14,7 @@ Report ReportGenerator;
 ::ArduinoTimer ReportTimer;
 
 TimePlot ADCValuePlot;
-ArduinoTimer PlotTimer;
+::ArduinoTimer PlotTimer;
 
 void setup() 
 {

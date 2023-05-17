@@ -61,7 +61,9 @@ namespace MLP
     bool AddVariable(const __FlashStringHelper* pName, unsigned long& rVariable);
     bool AddVariable(const __FlashStringHelper* pName, long& rVariable);
 #endif
-
+#if defined(ARDUINO_ARCH_RP2040)
+    bool AddVariable(const __FlashStringHelper* pName, int& rVariable);
+#endif
 
     void AddModule(CommandModule* pModule);
 
