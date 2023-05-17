@@ -4,7 +4,9 @@
 *  for the x-axis. In this example, we generate our own local time. You could use a real-time
 *  clock module too, if one is available. 
 *  
-*  Visit http://www.megunolink.com/documentation/plotting/ for more information. 
+*  More Information
+*    - http://www.megunolink.com/documentation/plotting/
+*    - https://www.megunolink.com/documentation/arduino-libraries/arduino-timer/
 *  ********************************************************************************************** */
 
 #include "MegunoLink.h" 
@@ -14,10 +16,10 @@
 TimePlot MyPlot;
 
 // A timer to trigger sending data. 
-ArduinoTimer SendDataTimer;
+::ArduinoTimer SendDataTimer;
 
 // Timer to maintain the system time. 
-ArduinoTimer ClockTick;
+::ArduinoTimer ClockTick;
 
 /* ----------------------------------------------------------------------------------------------
 *  Time Functions

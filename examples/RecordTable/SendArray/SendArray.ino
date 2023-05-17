@@ -1,21 +1,23 @@
 /* ************************************************************************
-   Send an array of data to a MegunoLink Record Table
-   This example demonstrates sending an array of data read from the 
-   Arduino analog inputs to a MegunoLink Record Table. The analog 
-   measurements will be random unless you connect sensors to the analog 
-   inputs. 
+Send an array of data to a MegunoLink Record Table
+This example demonstrates sending an array of data read from the Arduino 
+analog inputs to a MegunoLink Record Table. The analog measurements will 
+be random unless you connect sensors to the analog inputs. 
 
-   Visit:
-   * http://www.MegunoLink.com to download MegunoLink.
-   * https://www.megunolink.com/documentation/table/record-table/ to learn
-     more about record tables. 
+The MegunoLink project for this example is in the same folder as this
+Arduino code. To download a free MegunoLink trial, visit:
+  - http://www.MegunoLink.com to download MegunoLink.
+
+More Information
+  - https://www.megunolink.com/documentation/table/record-table/
+  - https://www.megunolink.com/documentation/arduino-libraries/arduino-timer/
    ************************************************************************ */
 
 #include "MegunoLink.h"
 #include "ArduinoTimer.h"
 
 RecordTable MyTable;
-ArduinoTimer SendDataTimer;
+::ArduinoTimer SendDataTimer;
 
 void setup()
 {

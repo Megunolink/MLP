@@ -1,11 +1,20 @@
 /*************************************************************
-== Description ==
 This example demonstrates message monkey triggers that could
 be used to send commands to move a motor after it has reached
 the home position. 
 
 To keep the example simple, serial messages are displayed
 in place of a motor driver implementation. 
+
+The MegunoLink project for this example is in the same folder as this
+Arduino code. To download a free MegunoLink trial, visit:
+  - http://www.MegunoLink.com to download MegunoLink.
+
+More Information
+  - https://www.megunolink.com/documentation/message-monkey/
+  - https://www.megunolink.com/documentation/interface-panel/requesting-data-from-an-interface-panel/
+  - https://www.megunolink.com/documentation/getting-started/processing-serial-commands/
+  - https://www.megunolink.com/documentation/arduino-libraries/arduino-timer/
 ************************************************************** */
 
 #include "MegunoLink.h"
@@ -33,7 +42,7 @@ void Cmd_MoveTo(CommandParameter &p)
 // --- Mock motor driver
 bool FindingHome = false; 
 bool MovingMotor = false; 
-ArduinoTimer MotorMovingTimer; // in place of real motor driver.
+::ArduinoTimer MotorMovingTimer; // in place of real motor driver.
 
 void FindHome()
 {
@@ -89,7 +98,7 @@ void TrackMotorState()
     Mky.SetTrigger(F("MoveDone"));
   }
 
-  static ArduinoTimer ProgressReporter;
+  static ::ArduinoTimer ProgressReporter;
   if (ProgressReporter.TimePassed_Milliseconds(300))
   {
     if (FindingHome)

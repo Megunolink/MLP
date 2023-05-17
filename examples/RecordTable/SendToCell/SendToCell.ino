@@ -1,20 +1,25 @@
 /* ************************************************************************
-   Send to Record Table cells. 
+Send to Record Table cells. 
    
-   This example demonstrates sending data to individual cells in a 
-   MegunoLink record table. 
+This example demonstrates sending data to individual cells in a MegunoLink 
+record table. Every second it sends a random symbol to a random cell in 
+the record table. 
 
-   Visit:
-   * http://www.MegunoLink.com to download MegunoLink.
-   * https://www.megunolink.com/documentation/table/record-table/ to learn
-     more about record tables. 
-   ************************************************************************ */
+The MegunoLink project for this example is in the same folder as this
+Arduino code. To download a free MegunoLink trial, visit:
+  - http://www.MegunoLink.com to download MegunoLink.
+
+More Information
+  - https://www.megunolink.com/documentation/table/record-table/
+  - https://www.megunolink.com/documentation/arduino-libraries/arduino-timer/
+
+************************************************************************ */
 
 #include "MegunoLink.h"
 #include "ArduinoTimer.h"
 
 RecordTable MyTable;
-ArduinoTimer SendDataTimer;
+::ArduinoTimer SendDataTimer;
 
 void setup()
 {

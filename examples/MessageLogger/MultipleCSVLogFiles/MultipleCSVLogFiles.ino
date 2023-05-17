@@ -1,7 +1,21 @@
-/* **********************************************************************************************
-*  Example program to send CSV data through Megunolinks message system and log data to a text file
-*  based on a file name supplied from the Arduino. 
-*  ********************************************************************************************** */
+/* ***********************************************************************
+Example program to send CSV data through Megunolinks message system and 
+log data to a text file based on a file name supplied as a parameter to
+the serial command which starts logging. 
+
+The MegunoLink project for this example is in the same folder as this
+Arduino code. To download a free MegunoLink trial, visit:
+  - http://www.MegunoLink.com to download MegunoLink.
+
+More Information
+  - https://www.megunolink.com/documentation/logging/message-logger/
+  - https://www.megunolink.com/documentation/getting-started/processing-serial-commands/
+  - https://www.megunolink.com/documentation/arduino-libraries/arduino-timer/
+
+This example requires:
+  - Our MegunoLink Arduino library
+    https://www.megunolink.com/documentation/arduino-library/
+* *********************************************************************** */
 
 #include "MegunoLink.h"
 #include "CommandHandler.h"
@@ -9,7 +23,7 @@
 
 Message Msg;
 CommandHandler<> Cmds;
-ArduinoTimer ExperimentTimer;
+::ArduinoTimer ExperimentTimer;
 
 
 int SamplingPeriod = 10;

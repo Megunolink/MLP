@@ -7,6 +7,8 @@
 *      https://www.megunolink.com/documentation/table/property-table/
 *    Installing the MegunoLink Arduino library:
 *      https://www.megunolink.com/documentation/getting-started/arduino-integration/
+*    ArduinoTimer reference:
+*      https://www.megunolink.com/documentation/arduino-libraries/arduino-timer/
 *  ********************************************************************************************** */
 
 #include "MegunoLink.h" // For communicating with MegunoLink 
@@ -21,7 +23,7 @@ Table MyTable;
 
 // To keep track of when we should send data. 
 // See: https://www.megunolink.com/documentation/arduino-libraries/arduino-timer/
-ArduinoTimer SendTimer;
+::ArduinoTimer SendTimer;
 
 void setup()
 {

@@ -1,14 +1,17 @@
 
-/* **********************************************************************************************
+/* *********************************************************************************
 *  Example program to trigger a scheduled report in MegunoLink. 
-*  Visit https://www.megunolink.com/documentation/scheduled-reporting/ for more information. 
-*  ********************************************************************************************** */
+* 
+*  More Information
+*    - https://www.megunolink.com/documentation/scheduled-reporting/
+*    - https://www.megunolink.com/documentation/arduino-libraries/arduino-timer/
+*  ********************************************************************************* */
 
 #include "MegunoLink.h"
 #include "ArduinoTimer.h"
 
 Report ReportGenerator;
-ArduinoTimer ReportTimer;
+::ArduinoTimer ReportTimer;
 
 TimePlot ADCValuePlot;
 ArduinoTimer PlotTimer;

@@ -1,20 +1,23 @@
 /* ************************************************************************
-   Basic Demonstration of MegunoLinks Record Table
-   This example demonstrates MegunoLinks Record Table visualiser by outputting
-   10 lines of data every 5 seconds. The table is then reset and 10 new records
-   are generated.
+Basic Demonstration of MegunoLinks Record Table
+This example demonstrates MegunoLinks Record Table visualiser by outputting
+10 lines of data every 5 seconds. The table is then reset and 10 new records
+are generated.
 
-   Visit:
-   * http://www.MegunoLink.com to download MegunoLink.
-   * https://www.megunolink.com/documentation/table/record-table/ to learn
-     more about record tables. 
+The MegunoLink project for this example is in the same folder as this
+Arduino code. To download a free MegunoLink trial, visit:
+  - http://www.MegunoLink.com to download MegunoLink.
+
+More Information
+  - https://www.megunolink.com/documentation/table/record-table/
+  - https://www.megunolink.com/documentation/arduino-libraries/arduino-timer/
    ************************************************************************ */
 
 #include "MegunoLink.h"
 #include "ArduinoTimer.h"
 
 RecordTable MyTable;
-ArduinoTimer TableRefreshTimer;
+::ArduinoTimer TableRefreshTimer;
 
 void setup()
 {

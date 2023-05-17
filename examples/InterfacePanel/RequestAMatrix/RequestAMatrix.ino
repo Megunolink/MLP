@@ -6,10 +6,14 @@ handler Arduino library can be used to query a matrix of text boxes to retrieve
 a configuration that can be used by the program to execute instructions.
 
 The example folder also contains a MegunoLink project, with an Interface
-Panel to update the variables.
+Panel to update the variables. To download a free MegunoLink trial, visit:
+  - http://www.MegunoLink.com to download MegunoLink.
 
-Visit:
-* http://www.MegunoLink.com to download MegunoLink.
+More Information
+  - https://www.megunolink.com/documentation/getting-started/build-arduino-interface/
+  - https://www.megunolink.com/documentation/interface-panel/requesting-data-from-an-interface-panel/
+  - https://www.megunolink.com/documentation/getting-started/processing-serial-commands/
+  - https://www.megunolink.com/documentation/arduino-libraries/arduino-timer/
 
 This example requires:
 * Our MegunoLink Arduino library
@@ -25,7 +29,7 @@ This example requires:
 
 InterfacePanel MyPanel;
 CommandHandler<> SerialCommandHandler;
-ArduinoTimer RequestRowTimer;
+::ArduinoTimer RequestRowTimer;
 
 // Structure to store the values sent from MegunoLink
 struct Config {

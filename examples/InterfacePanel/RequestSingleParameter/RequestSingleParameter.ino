@@ -1,3 +1,26 @@
+/* ************************************************************************
+Requesting parameters from interface panel
+
+This program demonstrates requesting values from controls on a MegunoLink's 
+Interface Panel. Control values are requested by sending commands to the
+interface panel (see RequestParameters) and the response is processed using
+and our command handler (see Cmd_SetOnTime and Cmd_SetOffTime). 
+
+The MegunoLink project for this example is in the same folder as this
+Arduino code. To download a free MegunoLink trial, visit:
+  - http://www.MegunoLink.com to download MegunoLink.
+
+More Information
+  - https://www.megunolink.com/documentation/getting-started/build-arduino-interface/
+  - https://www.megunolink.com/documentation/interface-panel/requesting-data-from-an-interface-panel/
+  - https://www.megunolink.com/documentation/getting-started/processing-serial-commands/
+  - https://www.megunolink.com/documentation/arduino-libraries/arduino-timer/
+ 
+This example requires: 
+  - Our MegunoLink Arduino library
+    https://www.megunolink.com/documentation/arduino-library/
+************************************************************************ */
+
 #include "MegunoLink.h"
 #include "CommandHandler.h" 
 #include "ArduinoTimer.h"
@@ -11,7 +34,7 @@ int OffTime = 100; // Amount of time the LED remains off [milliseconds]
 
 bool GotOnTime = false; // True when MegunoLink has supplied the on time value.
 bool GotOffTime = false; // True when MegunoLink has supplied the off time value. 
-ArduinoTimer RequestTimer;  // Timer to periodically request parameters
+::ArduinoTimer RequestTimer;  // Timer to periodically request parameters
 
 void setup() 
 {
