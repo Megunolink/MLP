@@ -1,6 +1,12 @@
 MegunoLink library for Arduino Change History
 =============================================
 
+1.42
+----
+* Fixed compatibility issues with Arduino mbed platforms (e.g., Pi Pico). Thanks to [maxgerhardt](https://github.com/maxgerhardt) for identifying this problem. 
+* Miscellaneous bug fixes and tidy up. 
+* Added continuous integration work flow to build all examples on several platforms following suggestion from [maxgerhardt](https://github.com/maxgerhardt). 
+
 1.41
 ----
 * Updated examples to use ESP command handler for Tcp connections
