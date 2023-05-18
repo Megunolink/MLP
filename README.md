@@ -1,6 +1,8 @@
 MegunoLink library for Arduino
 ============================== 
 
+![example build test](https://github.com/github/docs/actions/workflows/githubci.yml/badge.svg?event=push)
+
 An [Arduino library](http://www.megunolink.com/documentation/arduino-libraries/) for sending data and commands to [MegunoLink](https://www.MegunoLink.com) visualizers including:
 
 * [Interface panel](https://www.megunolink.com/documentation/interface-panel/)
