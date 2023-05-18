@@ -53,6 +53,18 @@ bool CommandDispatcherBase::AddVariable(const __FlashStringHelper *pName, uint32
   return AddVariable(pName, &rVariable, ProcessVariable_uint32);
 }
 
+#if defined(ARDUINO_ARCH_ESP8266) || defined(ARDUINO_ARCH_ESP32)
+bool CommandDispatcherBase::AddVariable(const __FlashStringHelper* pName, unsigned long& rVariable)
+{
+  return AddVariable(pName, &rVariable, ProcessVariable_uint32);
+}
+
+bool CommandDispatcherBase::AddVariable(const __FlashStringHelper* pName, long& rVariable)
+{
+  return AddVariable(pName, &rVariable, ProcessVariable_int32);
+}
+#endif
+
 bool CommandDispatcherBase::AddVariable(const __FlashStringHelper *pName, int8_t &rVariable)
 {
   return AddVariable(pName, &rVariable, ProcessVariable_int8);
@@ -70,6 +82,13 @@ bool CommandDispatcherBase::AddVariable(const __FlashStringHelper *pName, int32_
 
 #if defined(ARDUINO_ARCH_SAMD) || defined(ARDUINO_ARCH_SAM) || defined(CORE_TEENSY)
 bool CommandDispatcherBase::AddVariable(const __FlashStringHelper *pName, int &rVariable)
+{
+  return AddVariable(pName, &rVariable, ProcessVariable_int32);
+}
+#endif
+
+#if defined(ARDUINO_ARCH_RP2040)
+bool CommandDispatcherBase::AddVariable(const __FlashStringHelper* pName, int& rVariable)
 {
   return AddVariable(pName, &rVariable, ProcessVariable_int32);
 }

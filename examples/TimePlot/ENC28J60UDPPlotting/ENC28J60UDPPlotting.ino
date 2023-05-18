@@ -1,22 +1,24 @@
 /************************************************************************************************
 Example Description
-In this example we plot sinewave data on MegunoLink's Time Plot visualiser
+In this example we plot sinewave data on MegunoLink's Time Plot visualiser using a UDP connection
+and the Microchip ENC28J60 chip. 
  
 More Information
 *  http://www.megunolink.com/documentation/plotting/
  
 This Example Requires:
-*  The MegunoLink arduino library https://www.megunolink.com/documentation/arduino-integration/
-*  The Pstring Library http://arduiniana.org/libraries/pstring/
-*  The EtherCard Library https://github.com/njh/EtherCard. 
+*  The MegunoLink arduino library
+   https://www.megunolink.com/documentation/arduino-integration/
+*  The EtherCard Library
+   https://github.com/njh/EtherCard. 
  
 MegunoLink Interface
-You can download a pre-made interface from here:
-https://github.com/Megunolink/MLP/raw/master/examples/TimePlot/ENC28J60UDPPlotting/ENC28J60UDPPlotting.mlpz
+You can download a pre-made interface from:
+* https://github.com/Megunolink/MLP/raw/master/examples/TimePlot/ENC28J60UDPPlotting/ENC28J60UDPPlotting.mlpz
  
-You can find out more about MegunoLink and download a free trial from here
-https://www.megunolink.com/
-https://www.megunolink.com/download/
+You can find out more about MegunoLink and download a free trial from:
+* https://www.megunolink.com/
+* https://www.megunolink.com/download/
 ************************************************************************************************/
 
 
@@ -24,7 +26,7 @@ https://www.megunolink.com/download/
 #include <EtherCard.h>
 #include <MegunoLink.h>
 #include <ArduinoTimer.h>
-#include <PString.h> 
+#include <FixedStringBuffer.h>
 
 ArduinoTimer PlotTimer;
 
@@ -35,10 +37,6 @@ const int srcPort PROGMEM = 4321;
 
 const static uint8_t dstIP[] = { 255,255,255,255 }; //Broadcast address. You can replace this with a specific machines IP
 
-
-
-
-
 void setup()
 {
   Serial.begin(9600);
@@ -46,9 +44,13 @@ void setup()
 
   // Change 'SS' to your Slave Select pin, if you arn't using the default pin
   if (ether.begin(sizeof Ethernet::buffer, mymac, SS) == 0)
+  {
     Serial.println("Failed to access Ethernet controller");
+  }
   if (!ether.dhcpSetup())
+  {
     Serial.println("DHCP failed");
+  }
 
   ether.printIp("IP:  ", ether.myip);
   ether.printIp("GW:  ", ether.gwip);
@@ -62,8 +64,9 @@ void loop()
   // to have reliable timing.
   if (PlotTimer.TimePassed_Milliseconds(200)) 
   {
-    char MessageBuffer[100];
-    PString Message(MessageBuffer, sizeof(MessageBuffer));
+    // The commands for MegunoLink are assembled in the Message buffer
+    // then sent using sendUdp.
+    FixedStringBuffer<100> Message;
     TimePlot MyPlot("", Message);
 
     double dY, dY2;
@@ -79,6 +82,6 @@ void loop()
     //Send Data To MegunoLink Pro
     MyPlot.SendData(F("Sinewave"), dY); // Sinewave = series name, dY = data to plot
     MyPlot.SendData(F("Cosinewave"), dY2); // By wrapping strings in F("") we can save ram by storing strings in program memory
-    ether.sendUdp(MessageBuffer, Message.length(), srcPort, dstIP, dstPort);
+    ether.sendUdp(Message, Message.length(), srcPort, dstIP, dstPort);
   }
 }

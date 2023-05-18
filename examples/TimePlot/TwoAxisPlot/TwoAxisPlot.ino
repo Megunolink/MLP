@@ -5,6 +5,7 @@ y-axes.
  
 More Information
 *  http://www.megunolink.com/documentation/plotting/
+*  https://www.megunolink.com/documentation/arduino-libraries/arduino-timer/
 
 This Example Requires:
 *  The MegunoLink arduino library https://www.megunolink.com/documentation/arduino-integration/
@@ -27,8 +28,8 @@ https://www.megunolink.com/download/
 
 TimePlot MyPlot; //no channel selected
 
-ArduinoTimer PlotPropertiesTimer;
-ArduinoTimer PlotSendTimer;
+::ArduinoTimer PlotPropertiesTimer;
+::ArduinoTimer PlotSendTimer;
 
 void setup()
 {

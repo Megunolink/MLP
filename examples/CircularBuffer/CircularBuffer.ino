@@ -4,14 +4,16 @@ This example demonstrates our Circular Buffer library. Button push timestamps ar
 circular buffer and periodically written out the serial port.
 
 More Information
-*  https://www.megunolink.com/documentation/arduino-libraries/circular-buffer/
- 
+  * https://www.megunolink.com/documentation/arduino-libraries/circular-buffer/
+  * https://www.megunolink.com/documentation/arduino-libraries/arduino-timer/
+
 This Example Requires:
-*  The MegunoLink arduino library https://www.megunolink.com/documentation/arduino-integration/
+  * The MegunoLink arduino library https://www.megunolink.com/documentation/arduino-integration/
  
-You can find out more about MegunoLink and download a free trial from here
-https://www.megunolink.com/
-https://www.megunolink.com/download/
+You can find out more about MegunoLink and download a free trial from:
+  * https://www.megunolink.com/
+  * https://www.megunolink.com/download/
+
 ************************************************************************************************/
 
 #include "CircularBuffer.h"
@@ -31,7 +33,7 @@ const int ButtonPin = 3;
 // The amount of time between writing out all the data in the circular buffer
 // and a timer to keep track if that amount of time has passed yet. 
 const int PrintingPeriod = 10; // seconds
-ArduinoTimer PrintingTimer;
+::ArduinoTimer PrintingTimer;
 
 void setup() 
 {

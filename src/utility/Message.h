@@ -24,7 +24,7 @@ public:
   Message(const __FlashStringHelper *channelName, Print &rDestination = Serial);
 
   Message(MessageDestination Destination, Print& rDestination = Serial);
-  Message(MessageDestination Destination, const char* channelName = NULL, Print& rDestination = Serial);
+  Message(MessageDestination Destination, const char* channelName, Print& rDestination = Serial);
   Message(MessageDestination Destination, const __FlashStringHelper *channelName, Print &rDestination = Serial);
 
   void Begin();

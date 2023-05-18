@@ -1,3 +1,27 @@
+/* ************************************************************************
+Prompting the user
+
+On receiving a serial message to "launch a missle", this program sends a 
+command to MegunoLink requesting confirmation. In response, MegunoLink 
+displays a message box and sends a serial message to either confirm or 
+abort the "launch". A simple timeout also aborts the launch if confirmation
+isn't received in time. 
+
+The example folder also contains a MegunoLink project, with an Interface
+Panel for this example. To download a free MegunoLink trial, visit:
+  - http://www.MegunoLink.com to download MegunoLink.
+
+More Information
+  - https://www.megunolink.com/documentation/getting-started/build-arduino-interface/
+  - https://www.megunolink.com/documentation/interface-panel/prompt/
+  - https://www.megunolink.com/documentation/getting-started/processing-serial-commands/
+  - https://www.megunolink.com/documentation/arduino-libraries/arduino-timer/
+
+This example requires:
+* Our MegunoLink Arduino library
+  https://www.megunolink.com/documentation/arduino-library/
+************************************************************************ */
+
 #include "MegunoLink.h"
 #include "CommandHandler.h"
 #include "ArduinoTimer.h"
@@ -7,7 +31,7 @@ CommandHandler<> SerialCmds;
 
 bool WaitingForPromptResponse = false; 
 int CurrentPromptId = 1;
-ArduinoTimer PromptTimeout;
+::ArduinoTimer PromptTimeout;
 
 void Cmd_BeginMissileLaunch(CommandParameter& p)
 {

@@ -10,8 +10,7 @@ More Information
 *  https://www.megunolink.com/documentation/arduino-libraries/serial-command-handler/
  
 This Example Requires:
-*  The MegunoLink arduino library https://www.megunolink.com/documentation/arduino-integration/
-*  The Pstring Library http://arduiniana.org/libraries/pstring/
+*  The MegunoLink library for Arduino https://www.megunolink.com/documentation/arduino-integration/
 
 MegunoLink Interface
 You can download a pre-made interface from here:
@@ -24,29 +23,29 @@ https://www.megunolink.com/download/
 
 #include "MegunoLink.h"
 #include "CommandHandler.h"
-#include "PString.h" //This example requires the PString library http://arduiniana.org/libraries/pstring/
-
+#include "FixedStringBuffer.h"
 
 CommandHandler<> SerialCommandHandler;
 
 void Cmd_SetSSID(CommandParameter &Parameters)
 {
-  char buffer[50]; //Create character buffer for PString to use
-  PString mystring(buffer, sizeof(buffer)); //Initialise PString object
-  mystring.print(Parameters.RemainingParameters()); //Print the characters from MegunoLink into PString buffer
+  // Create local fixed size character buffer on the stack
+  FixedStringBuffer<50> mystring;
+
+  // Put the characters from MegunoLink into buffer
+  mystring.print(Parameters.RemainingParameters()); 
   
   Serial.print("NewSSID:");
-  Serial.println(buffer);
+  Serial.println(mystring);
 }
 
 void setup()
 {
   Serial.begin(9600);
-  Serial.println("MegunoLink Pro - Handling Strings");
+  Serial.println("MegunoLink - Handling Strings");
   Serial.println("-----------------------------");
 
   SerialCommandHandler.AddCommand(F("SetSSID"), Cmd_SetSSID);
-
 }
 
 void loop()

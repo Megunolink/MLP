@@ -1,0 +1,38 @@
+name: Arduino Library CI
+
+on: [pull_request, push, repository_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+    - uses: actions/checkout@v3
+    - uses: actions/checkout@v3
+      with:
+         repository: PaulMartinsen/ci-arduino
+         path: ci
+
+    - name: Install the prerequisites
+      run: bash ci/actions_install.sh
+
+#    - name: Check for correct code formatting with clang-format
+#      run: python3 ci/run-clang-format.py -e "ci/*" -e "bin/*" -r .
+
+#    - name: Check for correct documentation with doxygen
+#      env:
+#        GH_REPO_TOKEN: ${{ secrets.GH_REPO_TOKEN }}
+#        PRETTYNAME : "MegunoLink library for Arduino"
+#      run: bash ci/doxy_gen_and_deploy.sh
+
+    - name: Set configuration
+      run: arduino-cli config set library.enable_unsafe_install true 
+
+    - name: Install test dependencies
+      run: arduino-cli lib install --git-url https://github.com/arduino-libraries/Servo --git-url https://github.com/Megunolink/WiFiConfig --git-url https://github.com/njh/EtherCard --git-url https://github.com/arduino-libraries/Ethernet
+      
+    - name: Test the code on supported platforms
+      run: python3 ci/build_platform.py main_platforms

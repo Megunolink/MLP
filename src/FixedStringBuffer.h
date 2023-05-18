@@ -5,7 +5,7 @@
 *  *********************************************************************** */
 #pragma once
 
-#include "Print.h"
+#include <Arduino.h>
 
 
 class FixedStringPrint : public Print

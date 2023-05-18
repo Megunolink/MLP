@@ -9,19 +9,25 @@ https://www.megunolink.com/documentation/plotting/plotting-message-reference/
 More Information
 *  http://www.megunolink.com/documentation/plotting/
  
-MegunoLink Interface
-You can download a pre-made interface from here:
-https://github.com/Megunolink/MLP/raw/master/examples/TimePlot/EthernetUDPlotting/EthernetUDPPlotting.mlpz
+This Example Requires:
+* The MegunoLink library for Arduino 
+  https://www.megunolink.com/documentation/arduino-integration/
+* The Ethernet library
+  https://www.arduino.cc/reference/en/libraries/ethernet/
+  https://github.com/arduino-libraries/Ethernet
  
-You can find out more about MegunoLink and download a free trial from here
-https://www.megunolink.com/
-https://www.megunolink.com/download/
+MegunoLink Interface
+You can download a pre-made interface from:
+* https://github.com/Megunolink/MLP/raw/master/examples/TimePlot/EthernetUDPlotting/EthernetUDPPlotting.mlpz
+ 
+You can find out more about MegunoLink and download a free trial from:
+* https://www.megunolink.com/
+* https://www.megunolink.com/download/
 ************************************************************************************************/
 
-
-#include <SPI.h>         // needed for Arduino versions later than 0018
+#include <SPI.h>
 #include <Ethernet.h>
-#include <EthernetUdp.h>         // UDP library from: bjoern@cs.stanford.edu 12/30/2008
+#include <EthernetUdp.h>
 
 // Enter a MAC address
 byte mac[] = {
@@ -39,16 +45,13 @@ EthernetUDP Udp;
 // Timer Variables
 unsigned long LastPlotTime = 0;
 
-
-
-
 void setup() 
 {
   Serial.begin(9600);
   Serial.println("Setup Started");
   
-  // start the Ethernet and UDP:
-  Ethernet.begin(mac); //IP address will be found automatically
+  // start the Ethernet and UDP. An IP address will be found automatically.
+  Ethernet.begin(mac); 
   Udp.begin(localPort);
 
   Serial.println("Setup Complete");
@@ -62,8 +65,10 @@ void loop()
   //Plot Data Every 1000ms
   if((millis()-LastPlotTime)>1000)
   {
-    Serial.println("sending udp data"); //notify user using normal serial port
     LastPlotTime = millis();
+
+    //notify user using normal serial port
+    Serial.println("sending udp data"); 
 
     //Send UDP data
     Udp.beginPacket(localIPAddress, localPort);
@@ -71,8 +76,6 @@ void loop()
     Udp.print(adcval);
     Udp.write("}\n");
     Udp.endPacket();
-    
-    
   }
 }
 

@@ -13,7 +13,7 @@
 #include "ArduinoTimer.h"
 
 int nCounter = 10; 
-ArduinoTimer Countdown;
+::ArduinoTimer Countdown;
 Audio Sounds;
 
 void setup() 

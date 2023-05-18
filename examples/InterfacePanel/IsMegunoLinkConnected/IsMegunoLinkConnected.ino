@@ -9,10 +9,11 @@ More Information
 *  https://www.megunolink.com/documentation/build-arduino-interface/
 *  https://www.megunolink.com/documentation/interface-panel/
 *  https://www.megunolink.com/documentation/arduino-libraries/serial-command-handler/
- 
+*  https://www.megunolink.com/documentation/getting-started/processing-serial-commands/
+*  https://www.megunolink.com/documentation/arduino-libraries/arduino-timer/
+
 This Example Requires:
 *  The MegunoLink arduino library https://www.megunolink.com/documentation/arduino-integration/
-*  The Pstring Library http://arduiniana.org/libraries/pstring/
 
 MegunoLink Interface
 You can download a pre-made interface from here:
@@ -28,8 +29,8 @@ https://www.megunolink.com/download/
 #include "CommandHandler.h"
 
 InterfacePanel MyPanel;
-ArduinoTimer MLPCheckTimer;
-ArduinoTimer StatusPrintTimer;
+::ArduinoTimer MLPCheckTimer;
+::ArduinoTimer StatusPrintTimer;
 CommandHandler<> MyCommandHanlder;
 
 uint32_t LastAnnounceTime = 0;

@@ -3,7 +3,7 @@
 *  *********************************************************************** */
 #pragma once
 
-#include "Print.h"
+#include <Arduino.h>
 
 #if !defined(typeof)
 #define typeof(x) __typeof__(x)

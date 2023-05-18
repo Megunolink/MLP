@@ -1,8 +1,11 @@
 /* **********************************************************************************************
 *  Example program to send data to a MegunoLink property table and
 *  receive property values back that update variables in the sketch. 
-*  Visit http://www.megunolink.com/documentation/property-table/
-*  for more information. 
+* 
+*  More Information
+*    - http://www.megunolink.com/documentation/property-table/
+*    - https://www.megunolink.com/documentation/arduino-libraries/arduino-timer/
+*    - https://www.megunolink.com/documentation/getting-started/processing-serial-commands/
 *  ********************************************************************************************** */
 
 #include "MegunoLink.h"     // for communicating with MegunoLink. 
@@ -10,7 +13,7 @@
 #include "CommandHandler.h" // for handling serial commands. 
 
 // Timer to keep track of sending data to MegunoLink.
-ArduinoTimer SendTimer;
+::ArduinoTimer SendTimer;
 
 // Interval between sending updates to MegunoLink
 long UpdateInterval = 1000; // milliseconds. 
