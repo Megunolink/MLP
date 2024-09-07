@@ -53,7 +53,7 @@ bool CommandDispatcherBase::AddVariable(const __FlashStringHelper *pName, uint32
   return AddVariable(pName, &rVariable, ProcessVariable_uint32);
 }
 
-#if defined(ARDUINO_ARCH_ESP8266) || defined(ARDUINO_ARCH_ESP32)
+#if (defined(ARDUINO_ARCH_ESP8266) || defined(ARDUINO_ARCH_ESP32)) && (ESP_ARDUINO_VERSION_MAJOR < 3)
 bool CommandDispatcherBase::AddVariable(const __FlashStringHelper* pName, unsigned long& rVariable)
 {
   return AddVariable(pName, &rVariable, ProcessVariable_uint32);
