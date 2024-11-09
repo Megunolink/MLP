@@ -42,6 +42,7 @@ const char *WiFiPassword = "Your Password";
 const uint ServerPort = 23;
 WiFiServer Server(ServerPort);
 WiFiClient RemoteClient;
+#define HallAnalogPin 34
 
 ArduinoTimer SendTimer;
 
@@ -139,7 +140,7 @@ void SendHallValue()
   if (RemoteClient.connected())
   {
     TimePlot HallPlot("", RemoteClient);
-    HallPlot.SendData("Magnetic Field", hallRead());
+    HallPlot.SendData("Magnetic Field", analogRead(HallAnalogPin));
   }
 }
 
