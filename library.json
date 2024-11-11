@@ -1,6 +1,6 @@
 {
   "name": "MegunoLink",
-  "version": "1.42.0",
+  "version": "1.43.0",
   "description": "Library for storing data in the eeprom, processing serial messages and plotting data with MegunoLink.",
   "keywords": "MegunoLink, command handler, filter, timer, circular buffer",
   "homepage": "https://www.MegunoLink.com",
